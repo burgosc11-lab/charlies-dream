@@ -33,9 +33,11 @@ def fetch_ticker(symbol):
     price = info.get("currentPrice") or info.get("regularMarketPrice") or info.get("navPrice")
 
     dividend_yield = info.get("dividendYield")
-    dividend_yield_pct = round(dividend_yield * 100, 4) if dividend_yield else None
+    dividend_yield_pct = round(dividend_yield, 4) if dividend_yield else None
 
     dividend_per_share = info.get("dividendRate")
+    if dividend_per_share is None and price and dividend_yield:
+        dividend_per_share = round(price * dividend_yield / 100, 4)
 
     ex_div_raw = info.get("exDividendDate")
     ex_div_date = None
