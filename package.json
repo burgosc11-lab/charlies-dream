@@ -1,0 +1,14 @@
+{
+  "name": "charlies-dream",
+  "version": "1.0.0",
+  "description": "Dividend tracker — automated data fetcher",
+  "scripts": {
+    "fetch": "node fetch-dividends.js"
+  },
+  "dependencies": {
+    "yahoo-finance2": "^2.11.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
