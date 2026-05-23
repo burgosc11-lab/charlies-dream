@@ -1,31 +1,34 @@
 name: Update Dividend Data
 
 on:
-  # Run every weekday at 12:00 UTC (8:00 AM Eastern / 7:00 AM Central)
-  # Market opens at 9:30 AM ET — this runs before open so data is fresh
+  # Run every weekday at 13:30 UTC (9:30 AM Eastern — market open)
   schedule:
-    - cron: '0 12 * * 1-5'
+    - cron: '30 13 * * 1-5'
 
-  # Also allow manual trigger from the GitHub Actions tab at any time
+  # Allow manual trigger from the GitHub Actions tab at any time
   workflow_dispatch:
 
 # Required so the bot can write data.json back to the repo
 permissions:
   contents: write
 
+env:
+  # Opt into Node.js 24 now to avoid the deprecation warning
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js 20
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
