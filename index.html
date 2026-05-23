@@ -417,6 +417,9 @@ function badgeInfo(ds){
 function countTicker(t){return stocks.filter(s=>s.ticker===t).length;}
 function dupIndex(row){return stocks.filter(s=>s.ticker===row.ticker).indexOf(row)+1;}
 function $c(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function $div(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:5,maximumFractionDigits:5});}
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmtDate(ds){if(!ds)return null;const[,m,d]=ds.split('-');return MONTHS[parseInt(m)-1]+' '+parseInt(d);}
 
 function getSorted(){
   const up=[],pa=[],na=[];
@@ -531,8 +534,7 @@ function renderCards(){
       const mo=annual!=null?annual/12:null;
       const alt=(idx+i)%2===1?'alt':'';
       const url=tvUrl(s.ticker);
-      const manual=s.manualDate?' ✎':'';
-      const dateHtml=s.exDividendDate?`<span class="sc-date-val">${s.exDividendDate}${manual}</span>`:`<span class="sc-date-na"><i class="ti ti-clock-question"></i> Not announced</span>`;
+      const dateHtml=s.exDividendDate?`<span class="sc-date-val">${fmtDate(s.exDividendDate)}</span>`:`<span class="sc-date-na"><i class="ti ti-clock-question"></i> Not announced</span>`;
       return`<div class="stock-card ${alt} ${extraCls}">
         <div class="sc-top">
           <div class="sc-ticker-wrap"><a class="sc-ticker" href="${url}" target="_blank" style="text-decoration:none;color:var(--accent)">${s.ticker}</a>${dupLabel}</div>
@@ -540,7 +542,7 @@ function renderCards(){
         </div>
         <div class="sc-grid">
           <div class="sc-cell"><span class="sc-cell-label">Yield</span><span class="sc-cell-val">${y?y.toFixed(2)+'%':'<span class="muted">—</span>'}</span></div>
-          <div class="sc-cell"><span class="sc-cell-label">Div/share</span><span class="sc-cell-val">${s.dividendPerShare?$c(s.dividendPerShare):'<span class="muted">—</span>'}</span></div>
+          <div class="sc-cell"><span class="sc-cell-label">Div/share</span><span class="sc-cell-val">${s.dividendPerShare?$div(s.dividendPerShare):'<span class="muted">—</span>'}</span></div>
           <div class="sc-cell"><span class="sc-cell-label">SnowBall</span><span class="sc-cell-val ${mo!=null?'green':''}">${mo!=null?$c(mo):'<span class="muted">—</span>'}</span></div>
           <div class="sc-cell"><span class="sc-cell-label">Shares</span><span class="sc-cell-val">${s.shares!=null?s.shares.toLocaleString():'<span class="muted">—</span>'}</span></div>
         </div>
@@ -571,13 +573,12 @@ function renderTable(){
       const cnt=countTicker(s.ticker);
       const dupLabel=cnt>1?`<span class="dup-badge">${dupIndex(s)}/${cnt}</span>`:'';
       const url=tvUrl(s.ticker);
-      const manual=s.manualDate?` <span style="font-size:9px;color:var(--t4)">✎</span>`:'';
-      const dateCell=s.exDividendDate?`<span class="num" style="font-size:12px;color:var(--t2)">${s.exDividendDate}${manual}</span>`:`<div class="date-na-wrap"><i class="ti ti-clock-question"></i> <span style="font-style:italic;font-size:11px;color:var(--t4)">Not announced</span><span class="date-na-tip">No date for ${s.ticker}</span></div>`;
+      const dateCell=s.exDividendDate?`<span class="num" style="font-size:12px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span>`:`<div class="date-na-wrap"><i class="ti ti-clock-question"></i> <span style="font-style:italic;font-size:11px;color:var(--t4)">Not announced</span><span class="date-na-tip">No date for ${s.ticker}</span></div>`;
       return`<tr class="${stripe} ${extraCls}">
         <td><div class="ticker-cell"><a class="ticker-link" href="${url}" target="_blank" title="Open ${s.ticker} on TradingView">${s.ticker}</a>${dupLabel}</div></td>
         <td class="num">${s.price?$c(s.price):'<span style="color:var(--t4)">—</span>'}</td>
         <td class="num">${y?y.toFixed(2)+'%':'<span style="color:var(--t4)">—</span>'}</td>
-        <td class="num">${s.dividendPerShare?$c(s.dividendPerShare):'<span style="color:var(--t4)">—</span>'}</td>
+        <td class="num">${s.dividendPerShare?$div(s.dividendPerShare):'<span style="color:var(--t4)">—</span>'}</td>
         <td>${dateCell}</td>
         <td class="num">${s.shares!=null?s.shares.toLocaleString():'<span style="color:var(--t4)">—</span>'}</td>
         <td>${mo!=null?`<span class="snow-val">${$c(mo)}</span>`:'<span style="color:var(--t4)">—</span>'}</td>
