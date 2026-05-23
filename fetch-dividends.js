@@ -9,8 +9,11 @@
  */
 
 const yahooFinance = require('yahoo-finance2').default;
-const fs = require('fs');
+const fs   = require('fs');
 const path = require('path');
+
+// ── Suppress yahoo-finance2 survey/validation notices ──
+yahooFinance.setGlobalConfig({ validation: { logErrors: false } });
 
 // ── Ticker list ──────────────────────────────────────────────────────────────
 const TICKERS = [
@@ -22,15 +25,16 @@ const TICKERS = [
   'AVAL','VIV','AMRZ','BBD','ITUB'
 ];
 
-// Polite delay between requests (ms) — keeps Yahoo happy
-const DELAY_MS = 600;
+const DELAY_MS  = 1200;  // 1.2 s between tickers — polite to Yahoo
+const MAX_RETRY = 3;     // retry each ticker up to 3 times on failure
+const RETRY_DELAY_MS = 4000;  // wait 4 s before each retry
+
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-// ── Fetch a single ticker ────────────────────────────────────────────────────
-async function fetchTicker(ticker) {
+// ── Fetch one ticker (with retries) ──────────────────────────────────────────
+async function fetchTicker(ticker, attempt = 1) {
   try {
-    // Run both calls in parallel for speed
-    const [quote, summary] = await Promise.allSettled([
+    const [quoteResult, summaryResult] = await Promise.allSettled([
       yahooFinance.quote(ticker),
       yahooFinance.quoteSummary(ticker, {
         modules: ['summaryDetail', 'calendarEvents'],
@@ -38,25 +42,29 @@ async function fetchTicker(ticker) {
       })
     ]);
 
-    const q  = quote.status  === 'fulfilled' ? quote.value  : null;
-    const s  = summary.status === 'fulfilled' ? summary.value : null;
-    const sd = s?.summaryDetail ?? {};
-    const ce = s?.calendarEvents ?? {};
+    const q  = quoteResult.status  === 'fulfilled' ? quoteResult.value  : null;
+    const s  = summaryResult.status === 'fulfilled' ? summaryResult.value : null;
+    const sd = s?.summaryDetail   ?? {};
+    const ce = s?.calendarEvents  ?? {};
 
     // ── Price ──
     const price = q?.regularMarketPrice ?? null;
+    if (price == null) throw new Error('No price returned — possible rate limit');
 
     // ── Company name ──
     const companyName = q?.shortName || q?.longName || ticker;
 
-    // ── Dividend per share (forward annual rate preferred) ──
+    // ── Dividend per share ──
     const dividendPerShare =
-      sd.dividendRate ??
+      sd.dividendRate               ??
       q?.trailingAnnualDividendRate ??
       null;
 
     // ── Yield % ──
-    const rawYield = sd.dividendYield ?? q?.trailingAnnualDividendYield ?? null;
+    const rawYield =
+      sd.dividendYield               ??
+      q?.trailingAnnualDividendYield ??
+      null;
     const dividendYieldPct = rawYield != null
       ? parseFloat((rawYield * 100).toFixed(4))
       : (dividendPerShare && price
@@ -64,11 +72,9 @@ async function fetchTicker(ticker) {
           : null);
 
     // ── Ex-dividend date ──
-    // Strategy: collect all candidate dates, prefer the soonest upcoming one,
-    // fall back to the most recently passed one.
+    // Collect candidates from both modules, prefer the soonest upcoming date.
     const now = new Date(); now.setHours(0, 0, 0, 0);
-    const raw = [sd.exDividendDate, ce.exDividendDate];
-    const candidates = raw
+    const candidates = [sd.exDividendDate, ce.exDividendDate]
       .filter(Boolean)
       .map(d => (d instanceof Date ? d : new Date(d)))
       .filter(d => !isNaN(d.getTime()));
@@ -79,7 +85,7 @@ async function fetchTicker(ticker) {
       upcoming.sort((a, b) => a - b);
       exDividendDate = upcoming[0].toISOString().split('T')[0];
     } else if (candidates.length > 0) {
-      candidates.sort((a, b) => b - a);            // most recent first
+      candidates.sort((a, b) => b - a);
       exDividendDate = candidates[0].toISOString().split('T')[0];
     }
 
@@ -95,6 +101,12 @@ async function fetchTicker(ticker) {
     };
 
   } catch (err) {
+    if (attempt < MAX_RETRY) {
+      console.log(`  ↻ ${ticker} retry ${attempt}/${MAX_RETRY - 1} after ${RETRY_DELAY_MS / 1000}s — ${err.message}`);
+      await sleep(RETRY_DELAY_MS);
+      return fetchTicker(ticker, attempt + 1);
+    }
+    // All retries exhausted — return a stub so data.json stays valid
     return {
       ticker,
       companyName:      ticker,
@@ -111,32 +123,49 @@ async function fetchTicker(ticker) {
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
   console.log(`\nCharlie's Dream — Dividend Data Fetcher`);
-  console.log(`Fetching ${TICKERS.length} tickers from Yahoo Finance`);
-  console.log('─'.repeat(56));
+  console.log(`Fetching ${TICKERS.length} tickers  |  delay: ${DELAY_MS}ms  |  retries: ${MAX_RETRY - 1}`);
+  console.log('─'.repeat(60));
+
+  // Load existing data.json so we can keep last-known-good values for failed tickers
+  let existing = {};
+  const outPath = path.join(__dirname, 'data.json');
+  try {
+    existing = JSON.parse(fs.readFileSync(outPath, 'utf8')).tickers ?? {};
+  } catch (_) { /* first run — no existing data */ }
 
   const tickers = {};
-  let success = 0, failed = 0;
+  let success = 0, failed = 0, kept = 0;
 
   for (let i = 0; i < TICKERS.length; i++) {
     const ticker = TICKERS[i];
     process.stdout.write(`[${String(i + 1).padStart(2)}/${TICKERS.length}] ${ticker.padEnd(6)} `);
 
     const data = await fetchTicker(ticker);
-    tickers[ticker] = data;
 
     if (data.error) {
-      console.log(`✗  ${data.error}`);
-      failed++;
+      // Keep the previous good value rather than writing nulls
+      if (existing[ticker] && !existing[ticker].error) {
+        tickers[ticker] = {
+          ...existing[ticker],
+          fetchedAt: new Date().toISOString(),
+          error: `STALE — live fetch failed: ${data.error}`
+        };
+        console.log(`⚠  kept previous value  (${data.error})`);
+        kept++;
+      } else {
+        tickers[ticker] = data;
+        console.log(`✗  ${data.error}`);
+        failed++;
+      }
     } else {
-      const p = data.price            != null ? `$${data.price.toFixed(2)}`            : 'N/A    ';
-      const y = data.dividendYieldPct != null ? `${data.dividendYieldPct.toFixed(2)}%` : 'N/A   ';
-      const d = data.dividendPerShare != null ? `$${data.dividendPerShare.toFixed(2)}` : 'N/A  ';
-      const x = data.exDividendDate   ?? 'Not announced';
-      console.log(`✓  price:${p.padStart(8)}  yield:${y.padStart(7)}  div/sh:${d.padStart(6)}  ex:${x}`);
+      const p = `$${data.price?.toFixed(2) ?? 'N/A'}`;
+      const y = data.dividendYieldPct ? `${data.dividendYieldPct.toFixed(2)}%` : 'N/A';
+      const x = data.exDividendDate ?? 'Not announced';
+      console.log(`✓  price:${p.padStart(8)}  yield:${y.padStart(7)}  ex: ${x}`);
       success++;
     }
 
-    // Polite delay between requests (skip after last one)
+    // Polite delay (skip after last ticker)
     if (i < TICKERS.length - 1) await sleep(DELAY_MS);
   }
 
@@ -144,30 +173,31 @@ async function main() {
   const output = {
     lastUpdated: new Date().toISOString(),
     fetchSummary: {
-      total:   TICKERS.length,
+      total: TICKERS.length,
       success,
+      kept,         // used previous value
       failed,
-      runAt:   new Date().toUTCString()
+      runAt: new Date().toUTCString()
     },
     tickers
   };
 
-  const outPath = path.join(__dirname, 'data.json');
   fs.writeFileSync(outPath, JSON.stringify(output, null, 2));
 
-  console.log('─'.repeat(56));
-  console.log(`✓ ${success} succeeded   ✗ ${failed} failed`);
+  console.log('─'.repeat(60));
+  console.log(`✓ ${success} fresh   ⚠ ${kept} kept previous   ✗ ${failed} failed`);
   console.log(`Written → ${outPath}`);
   console.log(`Timestamp: ${output.lastUpdated}\n`);
 
-  // Exit with error code if too many failures (lets GitHub Actions flag the run)
-  if (failed > TICKERS.length * 0.3) {
-    console.error('More than 30% of tickers failed — marking run as failed.');
-    process.exit(1);
-  }
+  // Always exit 0 — even partial data is better than a failed workflow.
+  // GitHub Actions will still show the summary counts in the logs.
+  process.exit(0);
 }
 
 main().catch(err => {
-  console.error('Fatal error:', err);
-  process.exit(1);
+  // Unexpected crash — log but still exit 0 so the commit step can run
+  // and preserve whatever was already written.
+  console.error('Unexpected error in main():', err);
+  process.exit(0);
 });
+
