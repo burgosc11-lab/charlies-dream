@@ -69,15 +69,14 @@ def fetch_ticker(symbol):
     freq_map = {"monthly": 12, "quarterly": 4, "semi-annual": 2, "annual": 1}
     payments_per_year = freq_map.get(payment_frequency, 12)
 
-    # Step 2: forward-looking per-payment = dividendRate (annual) / payments_per_year
-    dividend_per_share = None
-    annual_rate = info.get("dividendRate")
-    if annual_rate:
-        dividend_per_share = round(annual_rate / payments_per_year, 4)
+    # Step 2: primary source = last actual payment from history (matches TradingView)
+    dividend_per_share = hist_last  # may be None if no history
 
-    # Step 3: fall back to last historical payment if forward rate unavailable
-    if dividend_per_share is None and hist_last is not None:
-        dividend_per_share = hist_last
+    # Step 3: if no history, fall back to forward-looking dividendRate / payments_per_year
+    if dividend_per_share is None:
+        annual_rate = info.get("dividendRate")
+        if annual_rate:
+            dividend_per_share = round(annual_rate / payments_per_year, 4)
 
     # Step 4: last resort — derive from yield × price
     if dividend_per_share is None and price and dividend_yield:
