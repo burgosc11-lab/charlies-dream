@@ -26,6 +26,23 @@ def load_existing_data():
     return {"tickers": {}}
 
 
+def detect_frequency(hist):
+    """Return payment frequency string from dividend history index."""
+    if len(hist) >= 3:
+        avg_days = (hist.index[-1] - hist.index[-3]).days / 2
+    elif len(hist) >= 2:
+        avg_days = (hist.index[-1] - hist.index[-2]).days
+    else:
+        return "unknown"
+    if avg_days < 45:
+        return "monthly"
+    elif avg_days < 120:
+        return "quarterly"
+    elif avg_days < 270:
+        return "semi-annual"
+    return "annual"
+
+
 def fetch_ticker(symbol):
     ticker = yf.Ticker(symbol)
     info = ticker.info
@@ -35,9 +52,24 @@ def fetch_ticker(symbol):
     dividend_yield = info.get("dividendYield")
     dividend_yield_pct = round(dividend_yield, 4) if dividend_yield else None
 
-    dividend_per_share = info.get("dividendRate")
-    if dividend_per_share is None and price and dividend_yield:
-        dividend_per_share = round(price * dividend_yield / 100, 4)
+    # Use dividend payment history for accurate per-payment amount + frequency
+    dividend_per_share = None
+    payment_frequency = None
+    try:
+        hist = ticker.dividends
+        if not hist.empty:
+            dividend_per_share = round(float(hist.iloc[-1]), 4)
+            payment_frequency = detect_frequency(hist)
+    except Exception:
+        pass
+
+    # Fallback: derive per-payment from annualised rate in info
+    if dividend_per_share is None:
+        annual_rate = info.get("dividendRate")
+        if annual_rate:
+            # Assume monthly (most common for these tickers) and divide
+            dividend_per_share = round(annual_rate / 12, 4)
+            payment_frequency = "monthly"
 
     ex_div_raw = info.get("exDividendDate")
     ex_div_date = None
@@ -50,6 +82,7 @@ def fetch_ticker(symbol):
         "price": price,
         "dividendYieldPct": dividend_yield_pct,
         "dividendPerShare": dividend_per_share,
+        "paymentFrequency": payment_frequency,
         "exDividendDate": ex_div_date,
         "companyName": company_name,
         "fetchedAt": datetime.now(timezone.utc).isoformat(),
@@ -97,6 +130,7 @@ def main():
                     "price": None,
                     "dividendYieldPct": None,
                     "dividendPerShare": None,
+                    "paymentFrequency": None,
                     "exDividendDate": None,
                     "companyName": symbol,
                     "fetchedAt": datetime.now(timezone.utc).isoformat(),

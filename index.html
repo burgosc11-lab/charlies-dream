@@ -325,67 +325,72 @@ const SK='charlies_dream_v2';
 let uid=1;
 function newId(){return uid++;}
 
+// dividendPerShare = per-payment amount (monthly, quarterly, etc.)
+// paymentFrequency = 'monthly' | 'quarterly' | 'semi-annual' | 'annual'
 const BASE_TICKERS=[
-  {ticker:'GLAD',price:19.15,dividendYieldPct:9.40, dividendPerShare:1.80, exDividendDate:'2026-05-20'},
-  {ticker:'LTC', price:37.24,dividendYieldPct:5.93, dividendPerShare:2.28, exDividendDate:'2026-05-21'},
-  {ticker:'LAND',price:11.90,dividendYieldPct:5.40, dividendPerShare:0.64, exDividendDate:'2026-05-22'},
-  {ticker:'GOOD',price:11.62,dividendYieldPct:7.50, dividendPerShare:0.87, exDividendDate:'2026-05-22'},
-  {ticker:'DOC', price:16.85,dividendYieldPct:6.10, dividendPerShare:1.02, exDividendDate:'2026-05-22'},
-  {ticker:'DSL', price:11.20,dividendYieldPct:12.50,dividendPerShare:1.40, exDividendDate:'2026-05-22'},
-  {ticker:'GAIN',price:16.43,dividendYieldPct:9.13, dividendPerShare:1.50, exDividendDate:'2026-05-22'},
-  {ticker:'DIV', price:12.65,dividendYieldPct:7.20, dividendPerShare:0.91, exDividendDate:'2026-05-22'},
-  {ticker:'PSEC',price:2.49, dividendYieldPct:24.94,dividendPerShare:0.54, exDividendDate:'2026-05-27'},
-  {ticker:'EPR', price:48.71,dividendYieldPct:6.80, dividendPerShare:3.42, exDividendDate:'2026-05-29'},
-  {ticker:'O',   price:62.30,dividendYieldPct:5.23, dividendPerShare:3.25, exDividendDate:'2026-05-29'},
-  {ticker:'AGNC',price:10.24,dividendYieldPct:14.06,dividendPerShare:1.44, exDividendDate:'2026-05-29'},
-  {ticker:'DX',  price:12.17,dividendYieldPct:11.50,dividendPerShare:1.40, exDividendDate:'2026-05-29'},
-  {ticker:'TYG', price:22.40,dividendYieldPct:8.50, dividendPerShare:1.90, exDividendDate:'2026-05-29'},
-  {ticker:'ORC', price:6.78, dividendYieldPct:17.70,dividendPerShare:1.20, exDividendDate:'2026-05-29'},
-  {ticker:'EARN',price:6.45, dividendYieldPct:14.40,dividendPerShare:0.93, exDividendDate:'2026-05-29'},
-  {ticker:'MDV', price:18.60,dividendYieldPct:7.10, dividendPerShare:1.32, exDividendDate:'2026-05-29'},
-  {ticker:'ECC', price:9.80, dividendYieldPct:18.40,dividendPerShare:1.80, exDividendDate:'2026-05-29'},
-  {ticker:'EIC', price:14.20,dividendYieldPct:10.20,dividendPerShare:1.45, exDividendDate:'2026-05-29'},
-  {ticker:'SCM', price:13.85,dividendYieldPct:9.50, dividendPerShare:1.32, exDividendDate:'2026-05-29'},
-  {ticker:'SAR', price:24.10,dividendYieldPct:9.10, dividendPerShare:2.19, exDividendDate:'2026-05-29'},
-  {ticker:'IVR', price:8.05, dividendYieldPct:17.33,dividendPerShare:0.48, exDividendDate:'2026-05-29'},
-  {ticker:'EFC', price:13.58,dividendYieldPct:11.48,dividendPerShare:1.56, exDividendDate:'2026-05-29'},
-  {ticker:'APLE',price:14.60,dividendYieldPct:7.80, dividendPerShare:0.96, exDividendDate:'2026-05-29'},
-  {ticker:'NLOP',price:19.20,dividendYieldPct:6.40, dividendPerShare:1.23, exDividendDate:'2026-05-29'},
-  {ticker:'JEPQ',price:59.85,dividendYieldPct:10.31,dividendPerShare:6.18, exDividendDate:'2026-06-01'},
-  {ticker:'MAIN',price:50.65,dividendYieldPct:8.53, dividendPerShare:4.32, exDividendDate:'2026-06-08'},
-  {ticker:'ARR', price:19.20,dividendYieldPct:15.00,dividendPerShare:2.88, exDividendDate:'2026-06-13'},
-  {ticker:'PECO',price:39.75,dividendYieldPct:3.27, dividendPerShare:1.30, exDividendDate:'2026-06-13'},
-  {ticker:'PFLT',price:8.97, dividendYieldPct:13.71,dividendPerShare:1.23, exDividendDate:'2026-06-15'},
-  {ticker:'CSWC',price:22.15,dividendYieldPct:11.58,dividendPerShare:0.19, exDividendDate:'2026-06-15'},
-  {ticker:'TRIN',price:13.80,dividendYieldPct:13.50,dividendPerShare:1.86, exDividendDate:'2026-06-15'},
-  {ticker:'CION',price:13.40,dividendYieldPct:11.80,dividendPerShare:1.58, exDividendDate:'2026-06-15'},
-  {ticker:'PNNT',price:6.50, dividendYieldPct:12.00,dividendPerShare:0.78, exDividendDate:'2026-06-15'},
-  {ticker:'AVAL',price:2.85, dividendYieldPct:9.50, dividendPerShare:0.27, exDividendDate:'2026-06-15'},
-  {ticker:'VIV', price:9.85, dividendYieldPct:8.20, dividendPerShare:0.81, exDividendDate:'2026-06-15'},
-  {ticker:'BBD', price:2.38, dividendYieldPct:5.90, dividendPerShare:0.14, exDividendDate:'2026-06-15'},
-  {ticker:'ITUB',price:8.41, dividendYieldPct:6.18, dividendPerShare:0.52, exDividendDate:'2026-06-15'},
-  {ticker:'OXSQ',price:1.78, dividendYieldPct:23.60,dividendPerShare:0.42, exDividendDate:'2026-06-16'},
-  {ticker:'HRZN',price:4.54, dividendYieldPct:29.08,dividendPerShare:1.32, exDividendDate:'2026-06-19'},
-  {ticker:'ADC', price:75.40,dividendYieldPct:4.16, dividendPerShare:3.21, exDividendDate:'2026-06-27'},
-  {ticker:'BBAR',price:11.50,dividendYieldPct:6.80, dividendPerShare:0.78, exDividendDate:'2026-06-30'},
-  {ticker:'BMA', price:28.40,dividendYieldPct:7.20, dividendPerShare:2.04, exDividendDate:'2026-06-30'},
-  {ticker:'BST', price:38.50,dividendYieldPct:9.40, dividendPerShare:3.62, exDividendDate:'2026-07-11'},
-  {ticker:'GWRS',price:42.80,dividendYieldPct:2.10, dividendPerShare:0.90, exDividendDate:'2026-09-15'},
-  {ticker:'SLG', price:40.55,dividendYieldPct:7.62, dividendPerShare:3.09, exDividendDate:'2026-09-30'},
-  {ticker:'GROW',price:3.10, dividendYieldPct:5.20, dividendPerShare:0.09, exDividendDate:null},
-  {ticker:'BCIC',price:14.50,dividendYieldPct:7.80, dividendPerShare:1.13, exDividendDate:null},
-  {ticker:'SPMC',price:12.30,dividendYieldPct:9.80, dividendPerShare:1.20, exDividendDate:null},
-  {ticker:'XRN', price:7.20, dividendYieldPct:10.50,dividendPerShare:0.76, exDividendDate:null},
-  {ticker:'TBLD',price:21.30,dividendYieldPct:8.60, dividendPerShare:1.83, exDividendDate:null},
-  {ticker:'HSHP',price:8.40, dividendYieldPct:16.70,dividendPerShare:1.40, exDividendDate:null},
-  {ticker:'BTX', price:4.20, dividendYieldPct:8.50, dividendPerShare:0.36, exDividendDate:null},
-  {ticker:'SMA', price:16.40,dividendYieldPct:9.20, dividendPerShare:1.51, exDividendDate:null},
-  {ticker:'AMRZ',price:24.50,dividendYieldPct:7.60, dividendPerShare:1.86, exDividendDate:null},
+  {ticker:'GLAD',price:18.95,dividendYieldPct:9.74, dividendPerShare:0.15,  paymentFrequency:'monthly',   exDividendDate:'2026-05-20'},
+  {ticker:'LTC', price:38.48,dividendYieldPct:5.93, dividendPerShare:0.19,  paymentFrequency:'monthly',   exDividendDate:'2026-05-21'},
+  {ticker:'LAND',price:9.63, dividendYieldPct:5.82, dividendPerShare:0.047, paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
+  {ticker:'GOOD',price:12.68,dividendYieldPct:9.46, dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
+  {ticker:'DOC', price:19.73,dividendYieldPct:6.18, dividendPerShare:0.102, paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
+  {ticker:'DSL', price:10.88,dividendYieldPct:12.13,dividendPerShare:0.11,  paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
+  {ticker:'GAIN',price:15.90,dividendYieldPct:6.04, dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
+  {ticker:'DIV', price:19.54,dividendYieldPct:6.57, dividendPerShare:0.106, paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
+  {ticker:'PSEC',price:2.28, dividendYieldPct:21.88,dividendPerShare:0.045, paymentFrequency:'monthly',   exDividendDate:'2026-05-27'},
+  {ticker:'EPR', price:58.62,dividendYieldPct:6.12, dividendPerShare:0.31,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'O',   price:62.02,dividendYieldPct:5.23, dividendPerShare:0.271, paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'AGNC',price:10.21,dividendYieldPct:14.12,dividendPerShare:0.12,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'DX',  price:12.72,dividendYieldPct:16.04,dividendPerShare:0.17,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'TYG', price:46.18,dividendYieldPct:11.73,dividendPerShare:0.475, paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'ORC', price:6.76, dividendYieldPct:17.75,dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'EARN',price:4.81, dividendYieldPct:19.96,dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'MDV', price:18.24,dividendYieldPct:6.58, dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'ECC', price:4.04, dividendYieldPct:29.70,dividendPerShare:0.06,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'EIC', price:10.66,dividendYieldPct:12.95,dividendPerShare:0.11,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'SCM', price:9.08, dividendYieldPct:16.30,dividendPerShare:0.113, paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'SAR', price:22.23,dividendYieldPct:13.50,dividendPerShare:0.25,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'IVR', price:7.87, dividendYieldPct:18.30,dividendPerShare:0.12,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'EFC', price:13.49,dividendYieldPct:11.56,dividendPerShare:0.13,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'APLE',price:14.47,dividendYieldPct:6.63, dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'NLOP',price:11.86,dividendYieldPct:null, dividendPerShare:null,  paymentFrequency:null,        exDividendDate:'2026-05-29'},
+  {ticker:'JEPQ',price:60.21,dividendYieldPct:10.43,dividendPerShare:0.591, paymentFrequency:'monthly',   exDividendDate:'2026-06-01'},
+  {ticker:'MAIN',price:49.63,dividendYieldPct:8.83, dividendPerShare:0.26,  paymentFrequency:'monthly',   exDividendDate:'2026-06-08'},
+  {ticker:'ARR', price:16.57,dividendYieldPct:17.38,dividendPerShare:0.24,  paymentFrequency:'monthly',   exDividendDate:'2026-06-13'},
+  {ticker:'PECO',price:40.30,dividendYieldPct:3.22, dividendPerShare:0.108, paymentFrequency:'monthly',   exDividendDate:'2026-06-13'},
+  {ticker:'PFLT',price:8.11, dividendYieldPct:15.17,dividendPerShare:0.103, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'CSWC',price:22.77,dividendYieldPct:11.25,dividendPerShare:0.193, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'TRIN',price:16.49,dividendYieldPct:12.37,dividendPerShare:0.17,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'CION',price:6.55, dividendYieldPct:18.32,dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'PNNT',price:3.80, dividendYieldPct:4.21, dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'AVAL',price:4.23, dividendYieldPct:4.10, dividendPerShare:0.014, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'VIV', price:13.38,dividendYieldPct:7.04, dividendPerShare:0.476, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'BBD', price:3.47, dividendYieldPct:4.77, dividendPerShare:0.004, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'OXSQ',price:1.28, dividendYieldPct:32.43,dividendPerShare:0.035, paymentFrequency:'monthly',   exDividendDate:'2026-06-16'},
+  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.06,  paymentFrequency:'monthly',   exDividendDate:'2026-06-19'},
+  {ticker:'ADC', price:75.46,dividendYieldPct:4.25, dividendPerShare:0.267, paymentFrequency:'monthly',   exDividendDate:'2026-06-27'},
+  {ticker:'BBAR',price:15.28,dividendYieldPct:1.95, dividendPerShare:0.038, paymentFrequency:'monthly',   exDividendDate:'2026-06-30'},
+  {ticker:'BMA', price:75.95,dividendYieldPct:5.59, dividendPerShare:0.553, paymentFrequency:'monthly',   exDividendDate:'2026-06-30'},
+  {ticker:'BST', price:46.49,dividendYieldPct:6.45, dividendPerShare:0.25,  paymentFrequency:'monthly',   exDividendDate:'2026-07-11'},
+  {ticker:'GWRS',price:7.22, dividendYieldPct:4.20, dividendPerShare:0.025, paymentFrequency:'monthly',   exDividendDate:'2026-09-15'},
+  {ticker:'SLG', price:43.27,dividendYieldPct:6.19, dividendPerShare:0.618, paymentFrequency:'quarterly', exDividendDate:'2026-09-30'},
+  {ticker:'GROW',price:2.69, dividendYieldPct:3.39, dividendPerShare:0.008, paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'BCIC',price:7.52, dividendYieldPct:14.77,dividendPerShare:0.03,  paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'SPMC',price:10.91,dividendYieldPct:22.00,dividendPerShare:0.20,  paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'XRN', price:37.42,dividendYieldPct:15.31,dividendPerShare:0.25,  paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'TBLD',price:22.77,dividendYieldPct:5.49, dividendPerShare:0.104, paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'HSHP',price:14.20,dividendYieldPct:6.69, dividendPerShare:0.15,  paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'BTX', price:8.91, dividendYieldPct:7.07, dividendPerShare:0.053, paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'SMA', price:30.98,dividendYieldPct:5.16, dividendPerShare:0.132, paymentFrequency:'monthly',   exDividendDate:null},
+  {ticker:'AMRZ',price:49.95,dividendYieldPct:0.22, dividendPerShare:0.11,  paymentFrequency:'monthly',   exDividendDate:null},
 ];
 
 function makeBase(){return BASE_TICKERS.map(d=>({...d,id:newId(),shares:null,avgCost:null,manualDate:false,manualDivShare:false}));}
+// Returns payments-per-year so SnowBall calc stays correct regardless of frequency
+function freqMult(s){const f=s.paymentFrequency;return f==='monthly'?12:f==='quarterly'?4:f==='semi-annual'?2:f==='annual'?1:12;}
+
 function load(){
-  try{const s=JSON.parse(localStorage.getItem(SK)||'null');if(s&&s.length){s.forEach(r=>{if(!r.id){r.id=newId();}else{uid=Math.max(uid,r.id+1);}if(r.manualDivShare===undefined)r.manualDivShare=false;});return s;}}catch(e){}
+  try{const s=JSON.parse(localStorage.getItem(SK)||'null');if(s&&s.length){s.forEach(r=>{if(!r.id){r.id=newId();}else{uid=Math.max(uid,r.id+1);}if(r.manualDivShare===undefined)r.manualDivShare=false;if(r.paymentFrequency===undefined)r.paymentFrequency='monthly';});return s;}}catch(e){}
   return makeBase();
 }
 function save(s){try{localStorage.setItem(SK,JSON.stringify(s));}catch(e){}}
@@ -522,7 +527,7 @@ function renderCards(){
       const cnt=countTicker(s.ticker);
       const dupLabel=cnt>1?`<span class="sc-dup">${dupIndex(s)}/${cnt}</span>`:'';
       const y=s.dividendYieldPct;
-      const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*s.shares:null;
+      const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*freqMult(s)*s.shares:null;
       const mo=annual!=null?annual/12:null;
       const alt=(idx+i)%2===1?'alt':'';
       const url=tvUrl(s.ticker);
@@ -560,7 +565,7 @@ function renderTable(){
     return arr.map((s,i)=>{
       const bi=badgeInfo(s.exDividendDate);
       const y=s.dividendYieldPct;
-      const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*s.shares:null;
+      const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*freqMult(s)*s.shares:null;
       const mo=annual!=null?annual/12:null;
       const stripe=(idx+i)%2===0?'even':'odd';
       const cnt=countTicker(s.ticker);
@@ -593,7 +598,7 @@ function renderAll(){renderCards();renderTable();updateSummary();checkAlerts();c
 function updateSummary(){
   let annual=0,hasShares=false,withShares=0,nextDays=Infinity,nextTicker='';
   stocks.forEach(s=>{
-    if(s.dividendPerShare!=null&&s.shares!=null){annual+=s.dividendPerShare*s.shares;hasShares=true;withShares++;}
+    if(s.dividendPerShare!=null&&s.shares!=null){annual+=s.dividendPerShare*freqMult(s)*s.shares;hasShares=true;withShares++;}
     if(s.exDividendDate&&classify(s.exDividendDate)==='upcoming'){const d=daysTo(s.exDividendDate);if(d!=null&&d<nextDays){nextDays=d;nextTicker=s.ticker;}}
   });
   const mo=annual/12;
@@ -676,6 +681,7 @@ function applyLiveData(live){
       price:f.price??s.price,
       dividendYieldPct:f.dividendYieldPct??s.dividendYieldPct,
       dividendPerShare:s.manualDivShare?s.dividendPerShare:(f.dividendPerShare??s.dividendPerShare),
+      paymentFrequency:s.manualDivShare?s.paymentFrequency:(f.paymentFrequency??s.paymentFrequency),
       exDividendDate:s.manualDate?s.exDividendDate:(f.exDividendDate??s.exDividendDate)
     };
   });
@@ -699,7 +705,7 @@ async function doRefresh(){
   if(!applyLiveData(live)){
     stocks=stocks.map(s=>{
       const f=BASE_TICKERS.find(b=>b.ticker===s.ticker);
-      if(f)return{...s,price:f.price,dividendYieldPct:f.dividendYieldPct,dividendPerShare:s.manualDivShare?s.dividendPerShare:f.dividendPerShare,exDividendDate:s.manualDate?s.exDividendDate:f.exDividendDate};
+      if(f)return{...s,price:f.price,dividendYieldPct:f.dividendYieldPct,dividendPerShare:s.manualDivShare?s.dividendPerShare:f.dividendPerShare,paymentFrequency:s.manualDivShare?s.paymentFrequency:f.paymentFrequency,exDividendDate:s.manualDate?s.exDividendDate:f.exDividendDate};
       return s;
     });
     save(stocks);
