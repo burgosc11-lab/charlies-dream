@@ -417,7 +417,7 @@ function badgeInfo(ds){
 function countTicker(t){return stocks.filter(s=>s.ticker===t).length;}
 function dupIndex(row){return stocks.filter(s=>s.ticker===row.ticker).indexOf(row)+1;}
 function $c(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function $div(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:5,maximumFractionDigits:5});}
+function $div(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:3,maximumFractionDigits:3});}
 const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function fmtDate(ds){if(!ds)return null;const[,m,d]=ds.split('-');return MONTHS[parseInt(m)-1]+' '+parseInt(d);}
 
