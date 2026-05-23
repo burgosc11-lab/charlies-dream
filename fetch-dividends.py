@@ -52,24 +52,36 @@ def fetch_ticker(symbol):
     dividend_yield = info.get("dividendYield")
     dividend_yield_pct = round(dividend_yield, 4) if dividend_yield else None
 
-    # Use dividend payment history for accurate per-payment amount + frequency
-    dividend_per_share = None
+    # Step 1: detect frequency from dividend history (most reliable)
     payment_frequency = None
+    hist_last = None
     try:
         hist = ticker.dividends
         if not hist.empty:
-            dividend_per_share = round(float(hist.iloc[-1]), 4)
+            hist_last = round(float(hist.iloc[-1]), 4)
             payment_frequency = detect_frequency(hist)
     except Exception:
         pass
 
-    # Fallback: derive per-payment from annualised rate in info
-    if dividend_per_share is None:
-        annual_rate = info.get("dividendRate")
-        if annual_rate:
-            # Assume monthly (most common for these tickers) and divide
-            dividend_per_share = round(annual_rate / 12, 4)
-            payment_frequency = "monthly"
+    if payment_frequency is None:
+        payment_frequency = "monthly"  # safe default for these tickers
+
+    freq_map = {"monthly": 12, "quarterly": 4, "semi-annual": 2, "annual": 1}
+    payments_per_year = freq_map.get(payment_frequency, 12)
+
+    # Step 2: forward-looking per-payment = dividendRate (annual) / payments_per_year
+    dividend_per_share = None
+    annual_rate = info.get("dividendRate")
+    if annual_rate:
+        dividend_per_share = round(annual_rate / payments_per_year, 4)
+
+    # Step 3: fall back to last historical payment if forward rate unavailable
+    if dividend_per_share is None and hist_last is not None:
+        dividend_per_share = hist_last
+
+    # Step 4: last resort — derive from yield × price
+    if dividend_per_share is None and price and dividend_yield:
+        dividend_per_share = round(price * dividend_yield / 100 / payments_per_year, 4)
 
     ex_div_raw = info.get("exDividendDate")
     ex_div_date = None
