@@ -1,153 +1,744 @@
-Charlie's Dream
-55 entries · 55 tickers
-Tracked: 0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Charlie's Dream — Dividend Tracker</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#f5f0e8;--surface:#ede8df;--card:#faf7f2;--row-alt:#f2ece2;
+  --border:#d9d0c0;--border2:#c8bfad;
+  --text:#1a1510;--t2:#5a5040;--t3:#9a8f7a;--t4:#b8ad99;
+  --accent:#2c2010;--green:#1a5c3a;--amber:#8a5a00;--red:#8a1a1a;--blue:#1a3a7a;
+  --sans:'DM Sans',sans-serif;--serif:'Lora',serif;
+  --r6:6px;--r10:10px;--r14:14px;--r20:20px;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-webkit-font-smoothing:antialiased;min-height:100vh;font-size:14px}
+.app{padding:16px 16px 48px;max-width:700px;margin:0 auto}
+/* Header */
+.hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:10px}
+.hdr-left h1{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-.3px;color:var(--accent);font-style:italic;line-height:1.2}
+.hdr-left .sub{font-size:11px;color:var(--t3);margin-top:3px}
+.hdr-right{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.tracked-label{font-size:11px;color:var(--t2);background:var(--surface);border:1px solid var(--border);border-radius:var(--r20);padding:4px 9px;white-space:nowrap}
+.hdr-btn{background:var(--accent);color:#faf7f2;font-family:var(--sans);font-size:12px;font-weight:500;padding:8px 13px;border-radius:var(--r20);border:none;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;min-height:36px}
+.hdr-btn:active{opacity:.75}
+.hdr-btn.notif-on{background:#1a3a7a}
+.hdr-btn.notif-off{background:var(--surface);color:var(--t2);border:1px solid var(--border)}
+/* Hero */
+.hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r14);padding:18px 20px;margin-bottom:14px}
+.hero-label{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;font-weight:500}
+.hero-amount{font-family:var(--serif);font-size:40px;font-weight:400;color:var(--accent);letter-spacing:-2px;line-height:1;display:flex;align-items:baseline;gap:4px}
+.hero-currency{font-size:22px;color:var(--t2)}
+.hero-sub{font-size:12px;color:var(--t3);margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.hero-sub strong{color:var(--accent);font-weight:500}
+.next-val{color:var(--amber);font-weight:500}
+.hero-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap;gap:8px}
+.last-updated{font-size:11px;color:var(--t4);font-style:italic}
+.refresh-btn{font-family:var(--sans);font-size:12px;font-weight:500;padding:8px 16px;border-radius:var(--r20);cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:var(--t2);display:flex;align-items:center;gap:6px;min-height:36px;transition:all .15s}
+.refresh-btn:hover{background:var(--border);color:var(--accent);border-color:var(--accent)}
+.refresh-btn.spinning i{animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Progress */
+.progress-wrap{height:2px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden;display:none}
+.progress-wrap.show{display:block}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .25s ease;width:0%}
+/* Alert */
+.alert{border-radius:var(--r10);padding:10px 14px;margin-bottom:12px;display:none;align-items:flex-start;gap:8px;font-size:12px}
+.alert.show{display:flex}
+.alert button{background:none;border:none;cursor:pointer;font-size:18px;margin-left:auto;line-height:1;padding:0 0 0 8px;flex-shrink:0}
+.alert-warn{background:#fdf6e3;border:1px solid #d4a017;color:var(--amber)}
+.alert-warn button{color:var(--t3)}
+.alert-info{background:#e8f0fd;border:1px solid #6b8fd4;color:var(--blue)}
+.alert-info button{color:#6b8fd4}
+/* Notif strip */
+.notif-strip{background:#e8f0fd;border:1px solid #6b8fd4;border-radius:var(--r10);padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--blue);display:none;align-items:flex-start;gap:8px}
+.notif-strip.show{display:flex}
+.notif-strip button{background:none;border:none;cursor:pointer;color:#6b8fd4;font-size:18px;margin-left:auto}
+/* Add row */
+.add-row{display:flex;gap:8px;margin-bottom:16px;align-items:center;justify-content:flex-end}
+.kindle-input{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:14px;padding:10px 12px;border-radius:var(--r10);outline:none;text-transform:uppercase;letter-spacing:.5px;width:110px;min-height:42px;transition:border-color .15s}
+.kindle-input::placeholder{color:var(--t4);text-transform:none;letter-spacing:0}
+.kindle-input:focus{border-color:var(--accent)}
+.kindle-btn{font-family:var(--sans);font-size:13px;font-weight:500;padding:10px 16px;border-radius:var(--r10);cursor:pointer;border:1px solid var(--border);display:flex;align-items:center;gap:6px;white-space:nowrap;min-height:42px}
+.kindle-btn.primary{background:var(--accent);color:#faf7f2;border-color:var(--accent)}
+.kindle-btn.primary:hover{opacity:.88}
+.kindle-btn.ghost{background:var(--card);color:var(--t2)}
+.kindle-btn.ghost:hover{background:var(--surface)}
+/* Section label */
+.section-lbl{font-size:10px;font-weight:500;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+/* Mobile card list */
+.card-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--r14);overflow:hidden}
+.div-label{padding:6px 14px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--t4);background:var(--surface);border-bottom:1px solid var(--border)}
+.stock-card{background:var(--card);border-bottom:1px solid var(--border);padding:13px 14px;cursor:pointer;transition:background .1s}
+.stock-card:last-child{border-bottom:none}
+.stock-card.alt{background:var(--row-alt)}
+.stock-card:active{background:#e8e0d0}
+.stock-card.passed{opacity:.38}
+.stock-card.na-row{opacity:.55}
+.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.sc-ticker-wrap{display:flex;align-items:center;gap:6px}
+.sc-ticker{font-weight:600;font-size:15px;letter-spacing:-.2px;color:var(--accent)}
+.sc-dup{font-size:9px;font-weight:600;color:var(--t3);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 4px}
+.sc-right{display:flex;align-items:center;gap:8px}
+.sc-price{font-size:14px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
+.badge{font-size:10px;font-weight:500;padding:3px 8px;border-radius:5px}
+.b-soon{background:#fdf3d0;color:var(--amber);border:1px solid #e8c84a}
+.b-ok{background:#e8f5ee;color:var(--green);border:1px solid #a8d8bb}
+.b-dim{background:var(--surface);color:var(--t3);border:1px solid var(--border)}
+.b-pass{background:var(--bg);color:var(--t4);border:1px solid var(--border)}
+.b-wait{background:#f5ede8;color:#7a4a30;border:1px solid #c8a888;font-style:italic}
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sc-cell{display:flex;flex-direction:column;gap:2px}
+.sc-cell-label{font-size:9px;color:var(--t4);text-transform:uppercase;letter-spacing:.4px;font-weight:500}
+.sc-cell-val{font-size:12px;color:var(--t2);font-variant-numeric:tabular-nums}
+.sc-cell-val.green{color:var(--green);font-weight:500}
+.muted{color:var(--t4);font-style:italic;font-size:11px}
+.sc-date{display:flex;align-items:center;gap:6px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.sc-date-label{font-size:10px;color:var(--t3);font-weight:500;text-transform:uppercase;letter-spacing:.3px;flex-shrink:0}
+.sc-date-val{font-size:12px;color:var(--t2);font-variant-numeric:tabular-nums}
+.sc-date-na{font-size:11px;color:var(--t4);font-style:italic;display:flex;align-items:center;gap:4px}
+.sc-tv-btn{margin-left:auto;font-size:11px;color:var(--t3);text-decoration:none;display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;background:var(--surface);border:1px solid var(--border);flex-shrink:0}
+/* Desktop table */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r14);overflow:hidden;display:none}
+.tbl-scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:13px;table-layout:fixed;min-width:100%}
+thead th{padding:9px 0 9px 12px;text-align:left;font-size:10px;font-weight:500;color:var(--t3);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);background:var(--surface);white-space:nowrap;position:relative;overflow:visible;user-select:none}
+th .th-text{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding-right:16px}
+tr.divider-row td{padding:5px 12px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--t4);background:var(--surface);border-bottom:1px solid var(--border);border-top:1px solid var(--border)}
+.resize-handle{position:absolute;right:-4px;top:0;width:8px;height:100%;cursor:col-resize;z-index:5;display:flex;align-items:center;justify-content:center}
+.resize-handle::after{content:'';display:block;width:2px;height:55%;background:var(--border2);border-radius:1px;transition:background .1s}
+.resize-handle:hover::after,.resize-handle.dragging::after{background:var(--accent)}
+tbody tr{border-bottom:1px solid var(--border);transition:background .08s}
+tbody tr:last-child{border-bottom:none}
+tbody tr.even{background:var(--card)}
+tbody tr.odd{background:var(--row-alt)}
+tbody tr:hover:not(.divider-row){background:#e8e0d0 !important}
+tbody tr.passed{opacity:.35}
+tbody tr.na-row{opacity:.55}
+tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ticker-cell{display:flex;align-items:center;gap:2px}
+.ticker-link{font-weight:600;font-size:13px;letter-spacing:-.2px;color:var(--text);text-decoration:none;border-bottom:1px dotted var(--t4)}
+.ticker-link:hover{color:var(--accent)}
+.tv-ext{font-size:10px;color:var(--t3);opacity:0;margin-left:3px;text-decoration:none}
+.ticker-cell:hover .tv-ext{opacity:1}
+.dup-badge{font-size:9px;font-weight:600;color:var(--t3);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 4px;margin-left:4px}
+.num{font-variant-numeric:tabular-nums;font-size:13px}
+.snow-val{font-size:13px;font-weight:500;color:var(--green)}
+.date-na-wrap{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--t4);font-style:italic;position:relative;cursor:default}
+.date-na-wrap:hover .date-na-tip{display:block}
+.date-na-tip{display:none;position:absolute;left:0;bottom:calc(100%+5px);background:var(--accent);color:#faf7f2;font-size:10px;padding:4px 8px;border-radius:5px;white-space:nowrap;z-index:10;pointer-events:none;font-style:normal}
+@media(min-width:600px){.card-list{display:none}.table-wrap{display:block}}
+.footer-row{display:flex;justify-content:space-between;margin-top:12px;font-size:11px;color:var(--t4);flex-wrap:wrap;gap:4px}
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,21,16,.6);display:none;align-items:flex-end;justify-content:center;z-index:20}
+@media(min-width:600px){.modal-overlay{align-items:center}}
+.modal-overlay.show{display:flex}
+.modal-box{background:var(--card);border:1px solid var(--border2);border-radius:var(--r14) var(--r14) 0 0;width:100%;max-width:520px;overflow:hidden;max-height:90vh;display:flex;flex-direction:column}
+@media(min-width:600px){.modal-box{border-radius:var(--r14);max-height:85vh}}
+.modal-hdr{padding:18px 18px 13px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative}
+.drag-bar{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;background:var(--border2);border-radius:2px}
+@media(min-width:600px){.drag-bar{display:none}}
+.modal-title{font-family:var(--serif);font-size:15px;font-weight:400;font-style:italic;color:var(--accent)}
+.modal-close{background:var(--surface);border:1px solid var(--border);color:var(--t2);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.modal-body{padding:10px 16px;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch}
+.modal-body::-webkit-scrollbar{width:3px}
+.modal-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+/* Edit modal col layout: ticker | shares | cost | divshare | exdate | rm */
+.col-labels{display:grid;grid-template-columns:58px 68px 72px 72px 1fr 28px;gap:5px;padding:0 0 7px;font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);margin-bottom:2px;font-weight:500}
+.edit-row{border-bottom:1px solid var(--border);padding:7px 0}
+.edit-row:last-child{border-bottom:none}
+.edit-row-main{display:grid;grid-template-columns:58px 68px 72px 72px 1fr 28px;gap:5px;align-items:center;margin-bottom:5px}
+.edit-row-date{display:flex;align-items:center;gap:6px;padding-left:63px}
+.edit-date-lbl{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.3px;font-weight:500;white-space:nowrap}
+.edit-sym{font-size:12px;font-weight:600;color:var(--text);display:flex;flex-direction:column}
+.edit-sym .dup-n{font-size:9px;color:var(--t3);font-weight:400;margin-top:1px}
+.edit-input{background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:12px;padding:7px 7px;border-radius:var(--r6);outline:none;width:100%;text-align:right;transition:border-color .12s;min-height:36px}
+.edit-input.date-inp{text-align:left;font-size:12px;flex:1;min-height:36px}
+.edit-input::placeholder{color:var(--t4)}
+.edit-input:focus{border-color:var(--accent)}
+.rm-btn{background:none;border:none;cursor:pointer;color:var(--t4);padding:5px;border-radius:6px;font-size:15px;display:flex;align-items:center;justify-content:center;min-width:28px;min-height:36px}
+.rm-btn:active{color:var(--red);background:#fde8e8}
+.modal-ftr{padding:12px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;flex-shrink:0;background:var(--card)}
+.add-dup-btn{font-family:var(--sans);font-size:12px;color:var(--accent);background:none;border:1px solid var(--border2);border-radius:var(--r10);padding:9px 12px;cursor:pointer;display:flex;align-items:center;gap:5px;min-height:40px}
+.add-dup-btn:active{background:var(--surface)}
+.modal-actions{display:flex;gap:8px}
+/* Notification settings panel */
+.notif-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r14);padding:14px 16px;margin-bottom:14px;display:none}
+.notif-panel.show{display:block}
+.notif-panel h3{font-family:var(--serif);font-size:14px;font-weight:400;font-style:italic;color:var(--accent);margin-bottom:10px}
+.notif-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:12px;color:var(--t2)}
+.notif-row:last-child{margin-bottom:0}
+.notif-row span{color:var(--t3);font-size:11px;max-width:300px}
+.toggle-wrap{position:relative;width:38px;height:22px;flex-shrink:0}
+.toggle-wrap input{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;z-index:1;margin:0}
+.toggle-track{width:38px;height:22px;background:var(--border);border-radius:11px;transition:background .2s;pointer-events:none}
+.toggle-wrap input:checked ~ .toggle-track{background:var(--accent)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .2s;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle-wrap input:checked ~ .toggle-thumb{transform:translateX(16px)}
+</style>
+</head>
+<body>
+<div class="app">
 
-Alerts
+  <div class="hdr">
+    <div class="hdr-left">
+      <h1>Charlie's Dream</h1>
+      <div class="sub" id="pos-label">— positions</div>
+    </div>
+    <div class="hdr-right">
+      <span class="tracked-label" id="tracked-pill">Tracked: —</span>
+      <button class="hdr-btn notif-off" id="notif-btn" onclick="toggleNotifPanel()" title="Notification settings">
+        <i class="ti ti-bell" style="font-size:13px"></i> Alerts
+      </button>
+      <button class="hdr-btn" onclick="openModal()"><i class="ti ti-pencil" style="font-size:12px"></i> Edit</button>
+    </div>
+  </div>
 
-Edit
-Monthly income
-$
-0.00
-Annual: —
-Next ex-div: LAND · Today
-Seed data (live fetch unavailable)
+  <!-- Notification settings panel -->
+  <div class="notif-panel" id="notif-panel">
+    <h3>Alert settings</h3>
+    <div class="notif-row">
+      <div>
+        <strong style="font-size:12px;color:var(--text)">Browser notifications</strong><br>
+        <span>Get notified when an ex-div date is approaching. The app must be open (or pinned as a tab) to receive alerts.</span>
+      </div>
+      <div class="toggle-wrap">
+        <input type="checkbox" id="toggle-notif" onchange="handleNotifToggle(this.checked)"/>
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </div>
+    </div>
+    <div class="notif-row">
+      <div>
+        <strong style="font-size:12px;color:var(--text)">Alert timing</strong><br>
+        <span>Notify 1 business day before ex-div. If ex-div falls on a Monday, alert is sent on Thursday (so you can buy Friday).</span>
+      </div>
+      <span style="font-size:11px;color:var(--green);font-weight:500">Always on</span>
+    </div>
+    <div class="notif-row">
+      <div>
+        <strong style="font-size:12px;color:var(--text)">Test alert</strong><br>
+        <span>Send a test browser notification right now to confirm it's working.</span>
+      </div>
+      <button onclick="sendTestNotif()" style="font-family:var(--sans);font-size:12px;padding:5px 12px;border-radius:var(--r10);border:1px solid var(--border);background:var(--surface);color:var(--t2);cursor:pointer">Test</button>
+    </div>
+  </div>
 
-Refresh
-Ex-div this week — LAND: TODAY · GOOD: TODAY · DOC: TODAY · DSL: TODAY · GAIN: TODAY · DIV: TODAY · PSEC: 5d · EPR: 7d · O: 7d · AGNC: 7d · DX: 7d · TYG: 7d · ORC: 7d · EARN: 7d · MDV: 7d · ECC: 7d · EIC: 7d · SCM: 7d · SAR: 7d · IVR: 7d · EFC: 7d · APLE: 7d · NLOP: 7d
-×
-Ticker
+  <div class="hero">
+    <div class="hero-label">Monthly income</div>
+    <div class="hero-amount"><span class="hero-currency">$</span><span id="hero-monthly">0.00</span></div>
+    <div class="hero-sub">
+      <span>Annual: <strong id="hero-annual">—</strong></span>
+      <span>Next ex-div: <span class="next-val" id="hero-next">—</span></span>
+    </div>
+    <div class="hero-footer">
+      <span class="last-updated" id="last-updated">Not yet refreshed</span>
+      <button class="refresh-btn" id="refresh-btn" onclick="doRefresh()">
+        <i class="ti ti-refresh" style="font-size:13px"></i> Refresh
+      </button>
+    </div>
+  </div>
 
-Add
+  <div class="progress-wrap" id="prog-wrap"><div class="progress-fill" id="prog-fill"></div></div>
 
-Watchlist
-LAND
-$11.90	5.40%	$0.64	2026-05-22	—	—	Today
-GOOD
-$11.62	7.50%	$0.87	2026-05-22	—	—	Today
-DOC
-$16.85	6.10%	$1.02	2026-05-22	—	—	Today
-DSL
-$11.20	12.50%	$1.40	2026-05-22	—	—	Today
-GAIN
-$16.43	9.13%	$1.50	2026-05-22	—	—	Today
-DIV
-$12.65	7.20%	$0.91	2026-05-22	—	—	Today
-PSEC
-$2.49	24.94%	$0.54	2026-05-27	—	—	5d
-EPR
-$48.71	6.80%	$3.42	2026-05-29	—	—	7d
-O
-$62.30	5.23%	$3.25	2026-05-29	—	—	7d
-AGNC
-$10.24	14.06%	$1.44	2026-05-29	—	—	7d
-DX
-$12.17	11.50%	$1.40	2026-05-29	—	—	7d
-TYG
-$22.40	8.50%	$1.90	2026-05-29	—	—	7d
-ORC
-$6.78	17.70%	$1.20	2026-05-29	—	—	7d
-EARN
-$6.45	14.40%	$0.93	2026-05-29	—	—	7d
-MDV
-$18.60	7.10%	$1.32	2026-05-29	—	—	7d
-ECC
-$9.80	18.40%	$1.80	2026-05-29	—	—	7d
-EIC
-$14.20	10.20%	$1.45	2026-05-29	—	—	7d
-SCM
-$13.85	9.50%	$1.32	2026-05-29	—	—	7d
-SAR
-$24.10	9.10%	$2.19	2026-05-29	—	—	7d
-IVR
-$8.05	17.33%	$0.48	2026-05-29	—	—	7d
-EFC
-$13.58	11.48%	$1.56	2026-05-29	—	—	7d
-APLE
-$14.60	7.80%	$0.96	2026-05-29	—	—	7d
-NLOP
-$19.20	6.40%	$1.23	2026-05-29	—	—	7d
-JEPQ
-$59.85	10.31%	$6.18	2026-06-01	—	—	10d
-MAIN
-$50.65	8.53%	$4.32	2026-06-08	—	—	17d
-ARR
-$19.20	15.00%	$2.88	2026-06-13	—	—	22d
-PECO
-$39.75	3.27%	$1.30	2026-06-13	—	—	22d
-PFLT
-$8.97	13.71%	$1.23	2026-06-15	—	—	24d
-CSWC
-$22.15	11.58%	$0.19	2026-06-15	—	—	24d
-TRIN
-$13.80	13.50%	$1.86	2026-06-15	—	—	24d
-CION
-$13.40	11.80%	$1.58	2026-06-15	—	—	24d
-PNNT
-$6.50	12.00%	$0.78	2026-06-15	—	—	24d
-AVAL
-$2.85	9.50%	$0.27	2026-06-15	—	—	24d
-VIV
-$9.85	8.20%	$0.81	2026-06-15	—	—	24d
-BBD
-$2.38	5.90%	$0.14	2026-06-15	—	—	24d
-ITUB
-$8.41	6.18%	$0.52	2026-06-15	—	—	24d
-OXSQ
-$1.78	23.60%	$0.42	2026-06-16	—	—	25d
-HRZN
-$4.54	29.08%	$1.32	2026-06-19	—	—	28d
-ADC
-$75.40	4.16%	$3.21	2026-06-27	—	—	36d
-BBAR
-$11.50	6.80%	$0.78	2026-06-30	—	—	39d
-BMA
-$28.40	7.20%	$2.04	2026-06-30	—	—	39d
-BST
-$38.50	9.40%	$3.62	2026-07-11	—	—	50d
-GWRS
-$42.80	2.10%	$0.90	2026-09-15	—	—	116d
-SLG
-$40.55	7.62%	$3.09	2026-09-30	—	—	131d
-Passed — awaiting next announcement
-LTC
-$37.24	5.93%	$2.28	2026-05-21	—	—	Passed
-GLAD
-$19.15	9.40%	$1.80	2026-05-20	—	—	Passed
-Date not yet announced
-AMRZ
-$24.50	7.60%	$1.86	
-Not announced
-—	—	Pending
-BCIC
-$14.50	7.80%	$1.13	
-Not announced
-—	—	Pending
-BTX
-$4.20	8.50%	$0.36	
-Not announced
-—	—	Pending
-GROW
-$3.10	5.20%	$0.09	
-Not announced
-—	—	Pending
-HSHP
-$8.40	16.70%	$1.40	
-Not announced
-—	—	Pending
-SMA
-$16.40	9.20%	$1.51	
-Not announced
-—	—	Pending
-SPMC
-$12.30	9.80%	$1.20	
-Not announced
-—	—	Pending
-TBLD
-$21.30	8.60%	$1.83	
-Not announced
-—	—	Pending
-XRN
-$7.20	10.50%	$0.76	
-Not announced
-—	—	Pending
-Tap ticker → TradingView · Edit to manage shares & dates
+  <div class="alert alert-warn" id="alert-bar">
+    <i class="ti ti-bell" style="font-size:14px;flex-shrink:0"></i>
+    <span id="alert-text" style="flex:1"></span>
+    <button onclick="document.getElementById('alert-bar').classList.remove('show')">×</button>
+  </div>
+
+  <div class="notif-strip" id="notif-strip">
+    <i class="ti ti-bell-ringing" style="font-size:14px;flex-shrink:0"></i>
+    <span id="notif-strip-text" style="flex:1"></span>
+    <button onclick="document.getElementById('notif-strip').classList.remove('show')">×</button>
+  </div>
+
+  <div class="add-row">
+    <input class="kindle-input" id="inp-ticker" type="text" placeholder="Ticker" maxlength="8" autocapitalize="characters" onkeydown="if(event.key==='Enter')addStock()"/>
+    <button class="kindle-btn primary" id="add-btn" onclick="addStock()"><i class="ti ti-plus"></i> Add</button>
+    <button class="kindle-btn ghost" onclick="resetData()"><i class="ti ti-refresh" style="font-size:13px"></i></button>
+  </div>
+
+  <div class="section-lbl">Watchlist</div>
+  <div class="card-list" id="card-list"></div>
+
+  <div class="table-wrap">
+    <div class="tbl-scroll">
+      <table id="main-table">
+        <thead><tr>
+          <th style="width:96px"><span class="th-text">Ticker</span><div class="resize-handle"></div></th>
+          <th style="width:86px"><span class="th-text">Price</span><div class="resize-handle"></div></th>
+          <th style="width:68px"><span class="th-text">Yield</span><div class="resize-handle"></div></th>
+          <th style="width:92px"><span class="th-text">Div / share</span><div class="resize-handle"></div></th>
+          <th style="width:130px"><span class="th-text">Ex-div date</span><div class="resize-handle"></div></th>
+          <th style="width:68px"><span class="th-text">Shares</span><div class="resize-handle"></div></th>
+          <th style="width:98px"><span class="th-text">SnowBall</span><div class="resize-handle"></div></th>
+          <th style="width:78px"><span class="th-text">Status</span><div class="resize-handle"></div></th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <span id="status-msg">Tap ticker → TradingView · Edit to manage shares &amp; dates</span>
+    <span id="updated-at"></span>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="drag-bar"></div>
+      <div class="modal-title">Edit portfolio</div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="col-labels">
+        <span>Ticker</span>
+        <span style="text-align:right">Shares</span>
+        <span style="text-align:right">Avg cost</span>
+        <span style="text-align:right">Div/share</span>
+        <span>Ex-div date</span>
+        <span></span>
+      </div>
+      <div id="edit-rows"></div>
+    </div>
+    <div class="modal-ftr">
+      <button class="add-dup-btn" onclick="addDuplicatePrompt()"><i class="ti ti-copy" style="font-size:13px"></i> Add date for ticker</button>
+      <div class="modal-actions">
+        <button class="kindle-btn ghost" onclick="closeModal()">Cancel</button>
+        <button class="kindle-btn primary" onclick="savePortfolio()"><i class="ti ti-check"></i> Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SK='charlies_dream_v2';
+let uid=1;
+function newId(){return uid++;}
+
+const BASE_TICKERS=[
+  {ticker:'GLAD',price:19.15,dividendYieldPct:9.40, dividendPerShare:1.80, exDividendDate:'2026-05-20'},
+  {ticker:'LTC', price:37.24,dividendYieldPct:5.93, dividendPerShare:2.28, exDividendDate:'2026-05-21'},
+  {ticker:'LAND',price:11.90,dividendYieldPct:5.40, dividendPerShare:0.64, exDividendDate:'2026-05-22'},
+  {ticker:'GOOD',price:11.62,dividendYieldPct:7.50, dividendPerShare:0.87, exDividendDate:'2026-05-22'},
+  {ticker:'DOC', price:16.85,dividendYieldPct:6.10, dividendPerShare:1.02, exDividendDate:'2026-05-22'},
+  {ticker:'DSL', price:11.20,dividendYieldPct:12.50,dividendPerShare:1.40, exDividendDate:'2026-05-22'},
+  {ticker:'GAIN',price:16.43,dividendYieldPct:9.13, dividendPerShare:1.50, exDividendDate:'2026-05-22'},
+  {ticker:'DIV', price:12.65,dividendYieldPct:7.20, dividendPerShare:0.91, exDividendDate:'2026-05-22'},
+  {ticker:'PSEC',price:2.49, dividendYieldPct:24.94,dividendPerShare:0.54, exDividendDate:'2026-05-27'},
+  {ticker:'EPR', price:48.71,dividendYieldPct:6.80, dividendPerShare:3.42, exDividendDate:'2026-05-29'},
+  {ticker:'O',   price:62.30,dividendYieldPct:5.23, dividendPerShare:3.25, exDividendDate:'2026-05-29'},
+  {ticker:'AGNC',price:10.24,dividendYieldPct:14.06,dividendPerShare:1.44, exDividendDate:'2026-05-29'},
+  {ticker:'DX',  price:12.17,dividendYieldPct:11.50,dividendPerShare:1.40, exDividendDate:'2026-05-29'},
+  {ticker:'TYG', price:22.40,dividendYieldPct:8.50, dividendPerShare:1.90, exDividendDate:'2026-05-29'},
+  {ticker:'ORC', price:6.78, dividendYieldPct:17.70,dividendPerShare:1.20, exDividendDate:'2026-05-29'},
+  {ticker:'EARN',price:6.45, dividendYieldPct:14.40,dividendPerShare:0.93, exDividendDate:'2026-05-29'},
+  {ticker:'MDV', price:18.60,dividendYieldPct:7.10, dividendPerShare:1.32, exDividendDate:'2026-05-29'},
+  {ticker:'ECC', price:9.80, dividendYieldPct:18.40,dividendPerShare:1.80, exDividendDate:'2026-05-29'},
+  {ticker:'EIC', price:14.20,dividendYieldPct:10.20,dividendPerShare:1.45, exDividendDate:'2026-05-29'},
+  {ticker:'SCM', price:13.85,dividendYieldPct:9.50, dividendPerShare:1.32, exDividendDate:'2026-05-29'},
+  {ticker:'SAR', price:24.10,dividendYieldPct:9.10, dividendPerShare:2.19, exDividendDate:'2026-05-29'},
+  {ticker:'IVR', price:8.05, dividendYieldPct:17.33,dividendPerShare:0.48, exDividendDate:'2026-05-29'},
+  {ticker:'EFC', price:13.58,dividendYieldPct:11.48,dividendPerShare:1.56, exDividendDate:'2026-05-29'},
+  {ticker:'APLE',price:14.60,dividendYieldPct:7.80, dividendPerShare:0.96, exDividendDate:'2026-05-29'},
+  {ticker:'NLOP',price:19.20,dividendYieldPct:6.40, dividendPerShare:1.23, exDividendDate:'2026-05-29'},
+  {ticker:'JEPQ',price:59.85,dividendYieldPct:10.31,dividendPerShare:6.18, exDividendDate:'2026-06-01'},
+  {ticker:'MAIN',price:50.65,dividendYieldPct:8.53, dividendPerShare:4.32, exDividendDate:'2026-06-08'},
+  {ticker:'ARR', price:19.20,dividendYieldPct:15.00,dividendPerShare:2.88, exDividendDate:'2026-06-13'},
+  {ticker:'PECO',price:39.75,dividendYieldPct:3.27, dividendPerShare:1.30, exDividendDate:'2026-06-13'},
+  {ticker:'PFLT',price:8.97, dividendYieldPct:13.71,dividendPerShare:1.23, exDividendDate:'2026-06-15'},
+  {ticker:'CSWC',price:22.15,dividendYieldPct:11.58,dividendPerShare:0.19, exDividendDate:'2026-06-15'},
+  {ticker:'TRIN',price:13.80,dividendYieldPct:13.50,dividendPerShare:1.86, exDividendDate:'2026-06-15'},
+  {ticker:'CION',price:13.40,dividendYieldPct:11.80,dividendPerShare:1.58, exDividendDate:'2026-06-15'},
+  {ticker:'PNNT',price:6.50, dividendYieldPct:12.00,dividendPerShare:0.78, exDividendDate:'2026-06-15'},
+  {ticker:'AVAL',price:2.85, dividendYieldPct:9.50, dividendPerShare:0.27, exDividendDate:'2026-06-15'},
+  {ticker:'VIV', price:9.85, dividendYieldPct:8.20, dividendPerShare:0.81, exDividendDate:'2026-06-15'},
+  {ticker:'BBD', price:2.38, dividendYieldPct:5.90, dividendPerShare:0.14, exDividendDate:'2026-06-15'},
+  {ticker:'ITUB',price:8.41, dividendYieldPct:6.18, dividendPerShare:0.52, exDividendDate:'2026-06-15'},
+  {ticker:'OXSQ',price:1.78, dividendYieldPct:23.60,dividendPerShare:0.42, exDividendDate:'2026-06-16'},
+  {ticker:'HRZN',price:4.54, dividendYieldPct:29.08,dividendPerShare:1.32, exDividendDate:'2026-06-19'},
+  {ticker:'ADC', price:75.40,dividendYieldPct:4.16, dividendPerShare:3.21, exDividendDate:'2026-06-27'},
+  {ticker:'BBAR',price:11.50,dividendYieldPct:6.80, dividendPerShare:0.78, exDividendDate:'2026-06-30'},
+  {ticker:'BMA', price:28.40,dividendYieldPct:7.20, dividendPerShare:2.04, exDividendDate:'2026-06-30'},
+  {ticker:'BST', price:38.50,dividendYieldPct:9.40, dividendPerShare:3.62, exDividendDate:'2026-07-11'},
+  {ticker:'GWRS',price:42.80,dividendYieldPct:2.10, dividendPerShare:0.90, exDividendDate:'2026-09-15'},
+  {ticker:'SLG', price:40.55,dividendYieldPct:7.62, dividendPerShare:3.09, exDividendDate:'2026-09-30'},
+  {ticker:'GROW',price:3.10, dividendYieldPct:5.20, dividendPerShare:0.09, exDividendDate:null},
+  {ticker:'BCIC',price:14.50,dividendYieldPct:7.80, dividendPerShare:1.13, exDividendDate:null},
+  {ticker:'SPMC',price:12.30,dividendYieldPct:9.80, dividendPerShare:1.20, exDividendDate:null},
+  {ticker:'XRN', price:7.20, dividendYieldPct:10.50,dividendPerShare:0.76, exDividendDate:null},
+  {ticker:'TBLD',price:21.30,dividendYieldPct:8.60, dividendPerShare:1.83, exDividendDate:null},
+  {ticker:'HSHP',price:8.40, dividendYieldPct:16.70,dividendPerShare:1.40, exDividendDate:null},
+  {ticker:'BTX', price:4.20, dividendYieldPct:8.50, dividendPerShare:0.36, exDividendDate:null},
+  {ticker:'SMA', price:16.40,dividendYieldPct:9.20, dividendPerShare:1.51, exDividendDate:null},
+  {ticker:'AMRZ',price:24.50,dividendYieldPct:7.60, dividendPerShare:1.86, exDividendDate:null},
+];
+
+function makeBase(){return BASE_TICKERS.map(d=>({...d,id:newId(),shares:null,avgCost:null,manualDate:false,manualDivShare:false}));}
+function load(){
+  try{const s=JSON.parse(localStorage.getItem(SK)||'null');if(s&&s.length){s.forEach(r=>{if(!r.id){r.id=newId();}else{uid=Math.max(uid,r.id+1);}if(r.manualDivShare===undefined)r.manualDivShare=false;});return s;}}catch(e){}
+  return makeBase();
+}
+function save(s){try{localStorage.setItem(SK,JSON.stringify(s));}catch(e){}}
+let stocks=load(),lastRefreshed=null;
+
+// Notification state
+let notifEnabled=false;
+let notifiedKeys=JSON.parse(localStorage.getItem(SK+'_notifkeys')||'[]');
+function saveNotifKeys(){localStorage.setItem(SK+'_notifkeys',JSON.stringify(notifiedKeys));}
+
+function tvUrl(t){return`https://www.tradingview.com/symbols/${t}/financials-dividends/`;}
+function today0(){const d=new Date();d.setHours(0,0,0,0);return d;}
+function daysTo(ds){if(!ds)return null;return Math.round((new Date(ds)-today0())/86400000);}
+function classify(ds){if(!ds)return'na';return daysTo(ds)>=0?'upcoming':'passed';}
+function badgeInfo(ds){
+  if(!ds)return{label:'Pending',cls:'b-wait'};
+  const d=daysTo(ds);
+  if(d<0)  return{label:'Passed', cls:'b-pass'};
+  if(d===0)return{label:'Today',  cls:'b-soon'};
+  if(d<=7) return{label:d+'d',    cls:'b-soon'};
+  if(d<=30)return{label:d+'d',    cls:'b-ok'};
+  return{label:d+'d',cls:'b-dim'};
+}
+function countTicker(t){return stocks.filter(s=>s.ticker===t).length;}
+function dupIndex(row){return stocks.filter(s=>s.ticker===row.ticker).indexOf(row)+1;}
+function $c(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function getSorted(){
+  const up=[],pa=[],na=[];
+  stocks.forEach(s=>{const c=classify(s.exDividendDate);if(c==='upcoming')up.push(s);else if(c==='passed')pa.push(s);else na.push(s);});
+  up.sort((a,b)=>new Date(a.exDividendDate)-new Date(b.exDividendDate));
+  pa.sort((a,b)=>new Date(b.exDividendDate)-new Date(a.exDividendDate));
+  na.sort((a,b)=>a.ticker.localeCompare(b.ticker));
+  return{up,pa,na};
+}
+
+// ── SMART NOTIFICATION LOGIC ──
+function alertDateFor(exDateStr){
+  if(!exDateStr) return null;
+  const ex=new Date(exDateStr); ex.setHours(0,0,0,0);
+  const dow=ex.getDay();
+  if(dow===1){const thu=new Date(ex); thu.setDate(ex.getDate()-3); return thu;}
+  else{const prev=new Date(ex); prev.setDate(ex.getDate()-1); return prev;}
+}
+
+function shouldAlertToday(exDateStr){
+  if(!exDateStr) return false;
+  const alertDate=alertDateFor(exDateStr);
+  if(!alertDate) return false;
+  return alertDate.getTime()===today0().getTime();
+}
+
+function checkNotifications(){
+  const toAlert=[];
+  stocks.forEach(s=>{
+    if(!s.exDividendDate) return;
+    const key=s.ticker+'_'+s.exDividendDate;
+    if(notifiedKeys.includes(key)) return;
+    if(shouldAlertToday(s.exDividendDate)){
+      const d=daysTo(s.exDividendDate);
+      const isMonday=new Date(s.exDividendDate).getDay()===1;
+      const msg=isMonday
+        ?`${s.ticker} ex-div on Monday ${s.exDividendDate} — buy today (Friday) to capture the dividend`
+        :`${s.ticker} ex-div TOMORROW ${s.exDividendDate} — buy today to capture the dividend`;
+      toAlert.push({ticker:s.ticker,msg,key});
+    }
+  });
+  if(!toAlert.length) return;
+  const msgs=toAlert.map(a=>a.msg).join(' · ');
+  document.getElementById('notif-strip-text').textContent=msgs;
+  document.getElementById('notif-strip').classList.add('show');
+  if(notifEnabled && Notification.permission==='granted'){
+    toAlert.forEach(a=>{
+      new Notification('Charlie\'s Dream — Dividend Alert 📈',{
+        body:a.msg,
+        icon:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%232c2010"/><text x="16" y="22" text-anchor="middle" font-size="18" fill="white">$</text></svg>',
+        tag:a.key
+      });
+    });
+  }
+  toAlert.forEach(a=>{notifiedKeys.push(a.key);});
+  saveNotifKeys();
+}
+
+function checkAlerts(){
+  const al=stocks.filter(s=>classify(s.exDividendDate)==='upcoming'&&daysTo(s.exDividendDate)<=7)
+    .map(s=>{const d=daysTo(s.exDividendDate);return d===0?`${s.ticker}: TODAY`:`${s.ticker}: ${d}d`;});
+  if(al.length){document.getElementById('alert-text').textContent='Ex-div this week — '+al.join(' · ');document.getElementById('alert-bar').classList.add('show');}
+}
+
+// ── NOTIFICATION UI ──
+let notifPanelOpen=false;
+function toggleNotifPanel(){
+  notifPanelOpen=!notifPanelOpen;
+  document.getElementById('notif-panel').classList.toggle('show',notifPanelOpen);
+}
+
+async function handleNotifToggle(on){
+  if(on){
+    if(!('Notification' in window)){alert('Browser notifications are not supported in this browser.');document.getElementById('toggle-notif').checked=false;return;}
+    const perm=await Notification.requestPermission();
+    if(perm==='granted'){
+      notifEnabled=true;
+      document.getElementById('notif-btn').className='hdr-btn notif-on';
+      document.getElementById('notif-btn').innerHTML='<i class="ti ti-bell-ringing" style="font-size:13px"></i> Alerts ON';
+    } else {
+      notifEnabled=false;
+      document.getElementById('toggle-notif').checked=false;
+      document.getElementById('notif-btn').className='hdr-btn notif-off';
+      document.getElementById('notif-btn').innerHTML='<i class="ti ti-bell" style="font-size:13px"></i> Alerts';
+      alert('Notification permission denied. Please allow notifications in your browser settings.');
+    }
+  } else {
+    notifEnabled=false;
+    document.getElementById('notif-btn').className='hdr-btn notif-off';
+    document.getElementById('notif-btn').innerHTML='<i class="ti ti-bell" style="font-size:13px"></i> Alerts';
+  }
+}
+
+function sendTestNotif(){
+  if(!('Notification' in window)){alert('Notifications not supported in this browser.');return;}
+  if(Notification.permission!=='granted'){alert('Enable notifications first using the toggle above.');return;}
+  new Notification("Charlie's Dream — Test Alert 📈",{body:"This is a test. You'll receive alerts like this the day before ex-dividend dates (Thursday for Mondays).",tag:'test-'+Date.now()});
+}
+
+// ── RENDER ──
+function renderCards(){
+  const cl=document.getElementById('card-list');
+  const{up,pa,na}=getSorted();
+  let html='',idx=0;
+  function block(arr,extraCls=''){
+    return arr.map((s,i)=>{
+      const bi=badgeInfo(s.exDividendDate);
+      const cnt=countTicker(s.ticker);
+      const dupLabel=cnt>1?`<span class="sc-dup">${dupIndex(s)}/${cnt}</span>`:'';
+      const y=s.dividendYieldPct;
+      const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*s.shares:null;
+      const mo=annual!=null?annual/12:null;
+      const alt=(idx+i)%2===1?'alt':'';
+      const url=tvUrl(s.ticker);
+      const manual=s.manualDate?' ✎':'';
+      const dateHtml=s.exDividendDate?`<span class="sc-date-val">${s.exDividendDate}${manual}</span>`:`<span class="sc-date-na"><i class="ti ti-clock-question"></i> Not announced</span>`;
+      return`<div class="stock-card ${alt} ${extraCls}">
+        <div class="sc-top">
+          <div class="sc-ticker-wrap"><a class="sc-ticker" href="${url}" target="_blank" style="text-decoration:none;color:var(--accent)">${s.ticker}</a>${dupLabel}</div>
+          <div class="sc-right"><span class="sc-price">${s.price?$c(s.price):'—'}</span><span class="badge ${bi.cls}">${bi.label}</span></div>
+        </div>
+        <div class="sc-grid">
+          <div class="sc-cell"><span class="sc-cell-label">Yield</span><span class="sc-cell-val">${y?y.toFixed(2)+'%':'<span class="muted">—</span>'}</span></div>
+          <div class="sc-cell"><span class="sc-cell-label">Div/share</span><span class="sc-cell-val">${s.dividendPerShare?$c(s.dividendPerShare):'<span class="muted">—</span>'}</span></div>
+          <div class="sc-cell"><span class="sc-cell-label">SnowBall</span><span class="sc-cell-val ${mo!=null?'green':''}">${mo!=null?$c(mo):'<span class="muted">—</span>'}</span></div>
+          <div class="sc-cell"><span class="sc-cell-label">Shares</span><span class="sc-cell-val">${s.shares!=null?s.shares.toLocaleString():'<span class="muted">—</span>'}</span></div>
+        </div>
+        <div class="sc-date">
+          <span class="sc-date-label">Ex-div</span>${dateHtml}
+          <a class="sc-tv-btn" href="${url}" target="_blank" onclick="event.stopPropagation()"><i class="ti ti-external-link"></i> TV</a>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  if(up.length){html+=block(up);idx+=up.length;}
+  if(pa.length){html+=`<div class="div-label">Passed — awaiting next announcement</div>`;html+=block(pa,'passed');idx+=pa.length;}
+  if(na.length){html+=`<div class="div-label">Date not yet announced</div>`;html+=block(na,'na-row');}
+  if(!html)html=`<div style="padding:2rem;text-align:center;font-size:13px;color:var(--t3)">No positions yet.</div>`;
+  cl.innerHTML=html;
+}
+
+function renderTable(){
+  const tb=document.getElementById('tbody');
+  const{up,pa,na}=getSorted();
+  function rows(arr,idx,extraCls=''){
+    return arr.map((s,i)=>{
+      const bi=badgeInfo(s.exDividendDate);
+      const y=s.dividendYieldPct;
+      const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*s.shares:null;
+      const mo=annual!=null?annual/12:null;
+      const stripe=(idx+i)%2===0?'even':'odd';
+      const cnt=countTicker(s.ticker);
+      const dupLabel=cnt>1?`<span class="dup-badge">${dupIndex(s)}/${cnt}</span>`:'';
+      const url=tvUrl(s.ticker);
+      const manual=s.manualDate?` <span style="font-size:9px;color:var(--t4)">✎</span>`:'';
+      const dateCell=s.exDividendDate?`<span class="num" style="font-size:12px;color:var(--t2)">${s.exDividendDate}${manual}</span>`:`<div class="date-na-wrap"><i class="ti ti-clock-question"></i> <span style="font-style:italic;font-size:11px;color:var(--t4)">Not announced</span><span class="date-na-tip">No date for ${s.ticker}</span></div>`;
+      return`<tr class="${stripe} ${extraCls}">
+        <td><div class="ticker-cell"><a class="ticker-link" href="${url}" target="_blank" title="Open ${s.ticker} on TradingView">${s.ticker}</a>${dupLabel}</div></td>
+        <td class="num">${s.price?$c(s.price):'<span style="color:var(--t4)">—</span>'}</td>
+        <td class="num">${y?y.toFixed(2)+'%':'<span style="color:var(--t4)">—</span>'}</td>
+        <td class="num">${s.dividendPerShare?$c(s.dividendPerShare):'<span style="color:var(--t4)">—</span>'}</td>
+        <td>${dateCell}</td>
+        <td class="num">${s.shares!=null?s.shares.toLocaleString():'<span style="color:var(--t4)">—</span>'}</td>
+        <td>${mo!=null?`<span class="snow-val">${$c(mo)}</span>`:'<span style="color:var(--t4)">—</span>'}</td>
+        <td><span class="badge ${bi.cls}">${bi.label}</span></td>
+      </tr>`;
+    }).join('');
+  }
+  let html='',idx=0;
+  if(up.length){html+=rows(up,idx);idx+=up.length;}
+  if(pa.length){html+=`<tr class="divider-row"><td colspan="8">Passed — awaiting next announcement</td></tr>`;html+=rows(pa,idx,'passed');idx+=pa.length;}
+  if(na.length){html+=`<tr class="divider-row"><td colspan="8">Date not yet announced</td></tr>`;html+=rows(na,idx,'na-row');}
+  if(!html)html=`<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--t3);font-size:13px">No positions.</td></tr>`;
+  tb.innerHTML=html;
+}
+
+function renderAll(){renderCards();renderTable();updateSummary();checkAlerts();checkNotifications();}
+
+function updateSummary(){
+  let annual=0,hasShares=false,withShares=0,nextDays=Infinity,nextTicker='';
+  stocks.forEach(s=>{
+    if(s.dividendPerShare!=null&&s.shares!=null){annual+=s.dividendPerShare*s.shares;hasShares=true;withShares++;}
+    if(s.exDividendDate&&classify(s.exDividendDate)==='upcoming'){const d=daysTo(s.exDividendDate);if(d!=null&&d<nextDays){nextDays=d;nextTicker=s.ticker;}}
+  });
+  const mo=annual/12;
+  const unique=new Set(stocks.map(s=>s.ticker)).size;
+  document.getElementById('hero-monthly').textContent=hasShares?mo.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'0.00';
+  document.getElementById('hero-annual').textContent=hasShares?$c(annual):'—';
+  document.getElementById('hero-next').textContent=nextTicker?nextTicker+(nextDays===0?' · Today':nextDays===1?' · Tomorrow':` · ${nextDays}d`):'—';
+  document.getElementById('pos-label').textContent=stocks.length+' entries · '+unique+' tickers';
+  document.getElementById('tracked-pill').textContent=`Tracked: ${withShares}`;
+  if(lastRefreshed)document.getElementById('last-updated').textContent='Updated: '+lastRefreshed;
+}
+
+// ── MODAL WITH DIV/SHARE EDITING ──
+function buildEditRows(){
+  const{up,pa,na}=getSorted();
+  const ordered=[...up,...pa,...na];
+  return ordered.map(s=>{
+    const cnt=countTicker(s.ticker);
+    const dupN=cnt>1?`<span class="dup-n">(${dupIndex(s)}/${cnt})</span>`:'';
+    const divShareVal=s.dividendPerShare!=null?s.dividendPerShare:'';
+    const divSharePlaceholder=BASE_TICKERS.find(b=>b.ticker===s.ticker)?.dividendPerShare?.toFixed(2)||'0.00';
+    return`<div class="edit-row" id="er-${s.id}">
+      <div class="edit-row-main">
+        <span class="edit-sym">${s.ticker}${dupN}</span>
+        <input class="edit-input" type="number" min="0" step="any" placeholder="0" value="${s.shares!=null?s.shares:''}" data-id="${s.id}" data-field="shares" inputmode="decimal" aria-label="${s.ticker} shares"/>
+        <input class="edit-input" type="number" min="0" step="any" placeholder="0.00" value="${s.avgCost!=null?s.avgCost:''}" data-id="${s.id}" data-field="avgCost" inputmode="decimal" aria-label="${s.ticker} avg cost"/>
+        <input class="edit-input" type="number" min="0" step="0.01" placeholder="${divSharePlaceholder}" value="${divShareVal}" data-id="${s.id}" data-field="dividendPerShare" inputmode="decimal" aria-label="${s.ticker} div per share" title="Annual dividend per share — edit to override"/>
+        <input class="edit-input date-inp" type="date" value="${s.exDividendDate||''}" data-id="${s.id}" data-field="exDividendDate" aria-label="${s.ticker} ex-div date"/>
+        <button class="rm-btn" onclick="removeInModal('${s.id}')" aria-label="Remove ${s.ticker}"><i class="ti ti-x"></i></button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openModal(){document.getElementById('edit-rows').innerHTML=buildEditRows();document.getElementById('modal-overlay').classList.add('show');}
+function removeInModal(id){
+  const nid=parseInt(id);stocks=stocks.filter(s=>s.id!==nid);save(stocks);
+  const row=document.getElementById('er-'+id);
+  if(row){row.style.opacity='0';row.style.transition='opacity .15s';setTimeout(()=>row.remove(),160);}
+  updateSummary();
+}
+function addDuplicatePrompt(){
+  const t=prompt('Ticker to add another ex-div date for (max 4):');
+  if(!t)return;
+  const ticker=t.trim().toUpperCase();
+  const ex=stocks.filter(s=>s.ticker===ticker);
+  if(!ex.length){alert(ticker+' not found — add it first.');return;}
+  if(ex.length>=4){alert(ticker+' already has 4 entries (max).');return;}
+  stocks.push({...ex[0],id:newId(),exDividendDate:null,shares:null,avgCost:null,manualDate:false,manualDivShare:false});
+  save(stocks);document.getElementById('edit-rows').innerHTML=buildEditRows();
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('show');renderAll();}
+function savePortfolio(){
+  document.querySelectorAll('#edit-rows .edit-input').forEach(inp=>{
+    const id=parseInt(inp.dataset.id);const s=stocks.find(x=>x.id===id);if(!s)return;
+    const f=inp.dataset.field;const v=inp.value.trim();
+    if(f==='exDividendDate'){s.exDividendDate=v||null;s.manualDate=!!v;}
+    else if(f==='dividendPerShare'){
+      const base=BASE_TICKERS.find(b=>b.ticker===s.ticker);
+      if(v===''){s.dividendPerShare=base?base.dividendPerShare:null;s.manualDivShare=false;}
+      else{s.dividendPerShare=parseFloat(v);s.manualDivShare=true;}
+    } else {s[f]=v===''?null:parseFloat(v);}
+  });
+  save(stocks);closeModal();
+}
+
+// ── LIVE DATA FROM data.json ──
+async function fetchLiveData(){
+  try{const r=await fetch('data.json?t='+Date.now());if(r.ok)return await r.json();}catch(e){}
+  return null;
+}
+
+function applyLiveData(live){
+  if(!live||!live.tickers)return false;
+  stocks=stocks.map(s=>{
+    const f=live.tickers[s.ticker];
+    if(!f)return s;
+    return{
+      ...s,
+      price:f.price??s.price,
+      dividendYieldPct:f.dividendYieldPct??s.dividendYieldPct,
+      dividendPerShare:s.manualDivShare?s.dividendPerShare:(f.dividendPerShare??s.dividendPerShare),
+      exDividendDate:s.manualDate?s.exDividendDate:(f.exDividendDate??s.exDividendDate)
+    };
+  });
+  save(stocks);
+  if(live.lastUpdated){
+    const ts=new Date(live.lastUpdated);
+    lastRefreshed=ts.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+ts.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('last-updated').textContent='Updated: '+lastRefreshed;
+    document.getElementById('updated-at').textContent=lastRefreshed;
+  }
+  return true;
+}
+
+async function doRefresh(){
+  const btn=document.getElementById('refresh-btn');
+  btn.disabled=true;btn.classList.add('spinning');
+  const prog=document.getElementById('prog-wrap');const fill=document.getElementById('prog-fill');
+  prog.classList.add('show');fill.style.width='0%';
+  for(let i=1;i<=10;i++){await new Promise(r=>setTimeout(r,80));fill.style.width=(i*10)+'%';}
+  const live=await fetchLiveData();
+  if(!applyLiveData(live)){
+    stocks=stocks.map(s=>{
+      const f=BASE_TICKERS.find(b=>b.ticker===s.ticker);
+      if(f)return{...s,price:f.price,dividendYieldPct:f.dividendYieldPct,dividendPerShare:s.manualDivShare?s.dividendPerShare:f.dividendPerShare,exDividendDate:s.manualDate?s.exDividendDate:f.exDividendDate};
+      return s;
+    });
+    save(stocks);
+    const now=new Date();
+    lastRefreshed=now.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('last-updated').textContent='Seed data (live fetch unavailable)';
+    document.getElementById('updated-at').textContent='seed data only';
+  }
+  setTimeout(()=>{prog.classList.remove('show');fill.style.width='0%';},400);
+  btn.disabled=false;btn.classList.remove('spinning');
+  renderAll();
+}
+
+function addStock(){
+  const t=document.getElementById('inp-ticker').value.trim().toUpperCase();
+  if(!t)return;
+  if(countTicker(t)>=4){document.getElementById('status-msg').textContent=t+' max 4 entries.';return;}
+  const base=BASE_TICKERS.find(d=>d.ticker===t);
+  const ex=stocks.find(s=>s.ticker===t);
+  const tmpl=ex||base||{ticker:t,price:null,dividendYieldPct:null,dividendPerShare:null};
+  stocks.push({...tmpl,id:newId(),exDividendDate:base?base.exDividendDate:null,shares:null,avgCost:null,manualDate:false,manualDivShare:false});
+  save(stocks);document.getElementById('inp-ticker').value='';renderAll();
+}
+function resetData(){uid=1;stocks=makeBase();save(stocks);renderAll();}
+
+/* Column resize */
+(function(){
+  let active=false,th=null,startX=0,startW=0;const MIN=40;
+  function down(clientX,target){const h=target.closest('.resize-handle');if(!h)return false;th=h.closest('th');startX=clientX;startW=th.offsetWidth;active=true;h.classList.add('dragging');document.body.style.cursor='col-resize';document.body.style.userSelect='none';return true;}
+  function move(clientX){if(!active||!th)return;th.style.width=Math.max(MIN,startW+(clientX-startX))+'px';}
+  function up(){if(!active)return;active=false;document.querySelectorAll('.resize-handle.dragging').forEach(h=>h.classList.remove('dragging'));document.body.style.cursor='';document.body.style.userSelect='';th=null;}
+  document.addEventListener('mousedown',e=>{if(down(e.clientX,e.target))e.preventDefault();});
+  document.addEventListener('mousemove',e=>move(e.clientX));
+  document.addEventListener('mouseup',up);
+})();
+
+renderAll();
+// Auto-load live data on page open
+(async function(){const live=await fetchLiveData();if(applyLiveData(live))renderAll();})();
+</script>
+</body>
+</html>
