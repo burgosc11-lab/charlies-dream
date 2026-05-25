@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-23T15:01:45.697556+00:00",
+  "lastUpdated": "2026-05-25T19:08:24.247984+00:00",
   "fetchSummary": {
     "total": 55,
     "success": 55,
@@ -14,7 +14,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": null,
       "companyName": "JPMorgan Nasdaq Equity Premium Income ETF",
-      "fetchedAt": "2026-05-23T15:00:11.796304+00:00",
+      "fetchedAt": "2026-05-25T19:06:40.583683+00:00",
       "error": null
     },
     "MAIN": {
@@ -24,17 +24,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-08",
       "companyName": "Main Street Capital Corporation",
-      "fetchedAt": "2026-05-23T15:00:13.553635+00:00",
+      "fetchedAt": "2026-05-25T19:06:42.453927+00:00",
       "error": null
     },
     "PECO": {
       "price": 40.3,
       "dividendYieldPct": 3.22,
-      "dividendPerShare": 0.11,
+      "dividendPerShare": 0.108,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "Phillips Edison & Company, Inc.",
-      "fetchedAt": "2026-05-23T15:00:15.127895+00:00",
+      "fetchedAt": "2026-05-25T19:06:44.278219+00:00",
       "error": null
     },
     "GLAD": {
@@ -44,7 +44,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Capital Corporation",
-      "fetchedAt": "2026-05-23T15:00:16.891672+00:00",
+      "fetchedAt": "2026-05-25T19:06:46.378055+00:00",
       "error": null
     },
     "GAIN": {
@@ -54,7 +54,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Investment Corporatio",
-      "fetchedAt": "2026-05-23T15:00:18.617236+00:00",
+      "fetchedAt": "2026-05-25T19:06:48.432803+00:00",
       "error": null
     },
     "GOOD": {
@@ -64,27 +64,27 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Commercial Corporation",
-      "fetchedAt": "2026-05-23T15:00:20.376069+00:00",
+      "fetchedAt": "2026-05-25T19:06:50.304506+00:00",
       "error": null
     },
     "PFLT": {
       "price": 8.11,
       "dividendYieldPct": 15.17,
-      "dividendPerShare": 0.1,
+      "dividendPerShare": 0.103,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "companyName": "PennantPark Floating Rate Capital Ltd.",
-      "fetchedAt": "2026-05-23T15:00:22.160913+00:00",
+      "fetchedAt": "2026-05-25T19:06:52.218577+00:00",
       "error": null
     },
     "ADC": {
       "price": 75.46,
       "dividendYieldPct": 4.25,
-      "dividendPerShare": 0.27,
+      "dividendPerShare": 0.267,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Agree Realty Corporation",
-      "fetchedAt": "2026-05-23T15:00:23.982833+00:00",
+      "fetchedAt": "2026-05-25T19:06:54.255934+00:00",
       "error": null
     },
     "EPR": {
@@ -94,7 +94,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "EPR Properties",
-      "fetchedAt": "2026-05-23T15:00:25.835842+00:00",
+      "fetchedAt": "2026-05-25T19:06:56.258199+00:00",
       "error": null
     },
     "LTC": {
@@ -104,17 +104,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-22",
       "companyName": "LTC Properties, Inc.",
-      "fetchedAt": "2026-05-23T15:00:27.619661+00:00",
+      "fetchedAt": "2026-05-25T19:06:58.269536+00:00",
       "error": null
     },
     "O": {
       "price": 62.02,
       "dividendYieldPct": 5.23,
-      "dividendPerShare": 0.27,
+      "dividendPerShare": 0.271,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Realty Income Corporation",
-      "fetchedAt": "2026-05-23T15:00:29.540402+00:00",
+      "fetchedAt": "2026-05-25T19:07:00.486633+00:00",
       "error": null
     },
     "AGNC": {
@@ -124,17 +124,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "AGNC Investment Corp.",
-      "fetchedAt": "2026-05-23T15:00:31.231061+00:00",
+      "fetchedAt": "2026-05-25T19:07:02.355520+00:00",
       "error": null
     },
     "DOC": {
       "price": 19.73,
       "dividendYieldPct": 6.18,
-      "dividendPerShare": 0.1,
+      "dividendPerShare": 0.102,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "Healthpeak Properties, Inc.",
-      "fetchedAt": "2026-05-23T15:00:33.088439+00:00",
+      "fetchedAt": "2026-05-25T19:07:04.634901+00:00",
       "error": null
     },
     "DX": {
@@ -144,68 +144,68 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-21",
       "companyName": "Dynex Capital, Inc.",
-      "fetchedAt": "2026-05-23T15:00:34.880039+00:00",
+      "fetchedAt": "2026-05-25T19:07:07.041614+00:00",
       "error": null
     },
     "PSEC": {
       "price": 2.28,
       "dividendYieldPct": 21.88,
-      "dividendPerShare": 0.04,
+      "dividendPerShare": 0.045,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-27",
       "companyName": "Prospect Capital Corporation",
-      "fetchedAt": "2026-05-23T15:00:36.599181+00:00",
+      "fetchedAt": "2026-05-25T19:07:08.975486+00:00",
       "error": null
     },
     "TYG": {
       "price": 46.18,
       "dividendYieldPct": 11.73,
-      "dividendPerShare": 0.47,
+      "dividendPerShare": 0.475,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-03",
       "companyName": "Tortoise Energy Infrastructure Corporation",
-      "fetchedAt": "2026-05-23T15:00:38.366566+00:00",
+      "fetchedAt": "2026-05-25T19:07:10.904301+00:00",
       "error": null
     },
     "GROW": {
       "price": 2.69,
       "dividendYieldPct": 3.39,
-      "dividendPerShare": 0.01,
+      "dividendPerShare": 0.008,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "U.S. Global Investors, Inc.",
-      "fetchedAt": "2026-05-23T15:00:40.261195+00:00",
+      "fetchedAt": "2026-05-25T19:07:12.985877+00:00",
       "error": null
     },
     "OXSQ": {
       "price": 1.28,
       "dividendYieldPct": 32.43,
-      "dividendPerShare": 0.04,
+      "dividendPerShare": 0.035,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-16",
       "companyName": "Oxford Square Capital Corp.",
-      "fetchedAt": "2026-05-23T15:00:42.157965+00:00",
+      "fetchedAt": "2026-05-25T19:07:14.945783+00:00",
       "error": null
     },
     "BCIC": {
       "price": 7.515,
       "dividendYieldPct": 14.77,
-      "dividendPerShare": 0.09,
+      "dividendPerShare": 0.03,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "BCP Investment Corp.",
-      "fetchedAt": "2026-05-23T15:00:43.864656+00:00",
+      "fetchedAt": "2026-05-25T19:07:16.835566+00:00",
       "error": null
     },
     "NLOP": {
       "price": 11.86,
       "dividendYieldPct": null,
-      "dividendPerShare": null,
+      "dividendPerShare": 3.3,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-03-30",
       "companyName": "Net Lease Office Properties",
-      "fetchedAt": "2026-05-23T15:00:45.659153+00:00",
-      "error": "Special/liquidating distribution — no regular dividend"
+      "fetchedAt": "2026-05-25T19:07:18.640548+00:00",
+      "error": null
     },
     "EARN": {
       "price": 4.81,
@@ -214,17 +214,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Ellington Credit Company",
-      "fetchedAt": "2026-05-23T15:00:47.378637+00:00",
+      "fetchedAt": "2026-05-25T19:07:20.377811+00:00",
       "error": null
     },
     "GWRS": {
       "price": 7.22,
       "dividendYieldPct": 4.2,
-      "dividendPerShare": 0.03,
+      "dividendPerShare": 0.025,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "companyName": "Global Water Resources, Inc.",
-      "fetchedAt": "2026-05-23T15:00:49.012283+00:00",
+      "fetchedAt": "2026-05-25T19:07:22.241400+00:00",
       "error": null
     },
     "MDV": {
@@ -234,7 +234,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Modiv Industrial, Inc.",
-      "fetchedAt": "2026-05-23T15:00:50.683507+00:00",
+      "fetchedAt": "2026-05-25T19:07:23.933072+00:00",
       "error": null
     },
     "SPMC": {
@@ -244,7 +244,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "Sound Point Meridian Capital, Inc.",
-      "fetchedAt": "2026-05-23T15:00:52.314370+00:00",
+      "fetchedAt": "2026-05-25T19:07:25.591452+00:00",
       "error": null
     },
     "EIC": {
@@ -254,37 +254,37 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-10",
       "companyName": "Eagle Point Income Company Inc.",
-      "fetchedAt": "2026-05-23T15:00:54.081240+00:00",
+      "fetchedAt": "2026-05-25T19:07:27.358287+00:00",
       "error": null
     },
     "SCM": {
       "price": 9.08,
       "dividendYieldPct": 16.3,
-      "dividendPerShare": 0.11,
+      "dividendPerShare": 0.113,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Stellus Capital Investment Corporation",
-      "fetchedAt": "2026-05-23T15:00:55.714024+00:00",
+      "fetchedAt": "2026-05-25T19:07:29.208653+00:00",
       "error": null
     },
     "PNNT": {
       "price": 3.8,
       "dividendYieldPct": 4.21,
-      "dividendPerShare": 0.0133,
+      "dividendPerShare": 0.08,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "companyName": "PennantPark Investment Corporation",
-      "fetchedAt": "2026-05-23T15:00:57.419834+00:00",
+      "fetchedAt": "2026-05-25T19:07:31.057291+00:00",
       "error": null
     },
     "HRZN": {
       "price": 4.01,
       "dividendYieldPct": 17.91,
-      "dividendPerShare": 0.09,
+      "dividendPerShare": 0.06,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-17",
       "companyName": "Horizon Technology Finance Corporation",
-      "fetchedAt": "2026-05-23T15:00:59.121938+00:00",
+      "fetchedAt": "2026-05-25T19:07:32.857056+00:00",
       "error": null
     },
     "SAR": {
@@ -294,7 +294,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-04",
       "companyName": "Saratoga Investment Corp.",
-      "fetchedAt": "2026-05-23T15:01:00.875138+00:00",
+      "fetchedAt": "2026-05-25T19:07:34.912855+00:00",
       "error": null
     },
     "CION": {
@@ -304,17 +304,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-12",
       "companyName": "CION Investment Corporation",
-      "fetchedAt": "2026-05-23T15:01:02.537896+00:00",
+      "fetchedAt": "2026-05-25T19:07:36.698216+00:00",
       "error": null
     },
     "LAND": {
       "price": 9.63,
       "dividendYieldPct": 5.82,
-      "dividendPerShare": 0.05,
+      "dividendPerShare": 0.047,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Land Corporation",
-      "fetchedAt": "2026-05-23T15:01:04.201616+00:00",
+      "fetchedAt": "2026-05-25T19:07:38.582561+00:00",
       "error": null
     },
     "ECC": {
@@ -324,17 +324,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-10",
       "companyName": "Eagle Point Credit Company Inc.",
-      "fetchedAt": "2026-05-23T15:01:05.881574+00:00",
+      "fetchedAt": "2026-05-25T19:07:40.426624+00:00",
       "error": null
     },
     "XRN": {
       "price": 37.42,
       "dividendYieldPct": 15.31,
-      "dividendPerShare": 0.16,
+      "dividendPerShare": 0.25,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-22",
       "companyName": "Chiron Real Estate Inc.",
-      "fetchedAt": "2026-05-23T15:01:07.610151+00:00",
+      "fetchedAt": "2026-05-25T19:07:42.271053+00:00",
       "error": null
     },
     "DIV": {
@@ -344,17 +344,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": null,
       "companyName": "Global X SuperDividend U.S. ETF",
-      "fetchedAt": "2026-05-23T15:01:09.392585+00:00",
+      "fetchedAt": "2026-05-25T19:07:44.080404+00:00",
       "error": null
     },
     "TBLD": {
       "price": 22.77,
       "dividendYieldPct": 5.49,
-      "dividendPerShare": 0.1042,
+      "dividendPerShare": 0.104,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-11",
       "companyName": "Thornburg Income Builder Opportunities Trust",
-      "fetchedAt": "2026-05-23T15:01:11.014075+00:00",
+      "fetchedAt": "2026-05-25T19:07:45.804233+00:00",
       "error": null
     },
     "HSHP": {
@@ -364,7 +364,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-18",
       "companyName": "Himalaya Shipping Ltd.",
-      "fetchedAt": "2026-05-23T15:01:12.601104+00:00",
+      "fetchedAt": "2026-05-25T19:07:47.502971+00:00",
       "error": null
     },
     "IVR": {
@@ -374,7 +374,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-26",
       "companyName": "Invesco Mortgage Capital Inc.",
-      "fetchedAt": "2026-05-23T15:01:14.300077+00:00",
+      "fetchedAt": "2026-05-25T19:07:49.397508+00:00",
       "error": null
     },
     "DSL": {
@@ -384,7 +384,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-13",
       "companyName": "DoubleLine Income Solutions Fund",
-      "fetchedAt": "2026-05-23T15:01:16.028057+00:00",
+      "fetchedAt": "2026-05-25T19:07:51.289961+00:00",
       "error": null
     },
     "ORC": {
@@ -394,17 +394,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Orchid Island Capital, Inc.",
-      "fetchedAt": "2026-05-23T15:01:17.709533+00:00",
+      "fetchedAt": "2026-05-25T19:07:53.122988+00:00",
       "error": null
     },
     "CSWC": {
       "price": 22.77,
       "dividendYieldPct": 11.25,
-      "dividendPerShare": 0.25,
+      "dividendPerShare": 0.193,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "Capital Southwest Corporation",
-      "fetchedAt": "2026-05-23T15:01:19.542182+00:00",
+      "fetchedAt": "2026-05-25T19:07:55.187042+00:00",
       "error": null
     },
     "TRIN": {
@@ -414,7 +414,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-11",
       "companyName": "Trinity Capital Inc.",
-      "fetchedAt": "2026-05-23T15:01:21.205527+00:00",
+      "fetchedAt": "2026-05-25T19:07:57.040777+00:00",
       "error": null
     },
     "BST": {
@@ -424,7 +424,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "BlackRock Science and Technology Trust",
-      "fetchedAt": "2026-05-23T15:01:23.075737+00:00",
+      "fetchedAt": "2026-05-25T19:07:58.852467+00:00",
       "error": null
     },
     "EFC": {
@@ -434,27 +434,27 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Ellington Financial Inc.",
-      "fetchedAt": "2026-05-23T15:01:24.816144+00:00",
+      "fetchedAt": "2026-05-25T19:08:00.735309+00:00",
       "error": null
     },
     "BTX": {
       "price": 8.91,
       "dividendYieldPct": 7.07,
-      "dividendPerShare": 0.05,
+      "dividendPerShare": 0.053,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "BlackRock Innovation and Growth Term Trust",
-      "fetchedAt": "2026-05-23T15:01:26.479636+00:00",
+      "fetchedAt": "2026-05-25T19:08:02.487392+00:00",
       "error": null
     },
     "SMA": {
       "price": 30.98,
       "dividendYieldPct": 5.16,
-      "dividendPerShare": 0.14,
+      "dividendPerShare": 0.132,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "SmartStop Self Storage REIT, Inc.",
-      "fetchedAt": "2026-05-23T15:01:28.081584+00:00",
+      "fetchedAt": "2026-05-25T19:08:04.308800+00:00",
       "error": null
     },
     "ARR": {
@@ -464,17 +464,17 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "companyName": "ARMOUR Residential REIT, Inc.",
-      "fetchedAt": "2026-05-23T15:01:29.818104+00:00",
+      "fetchedAt": "2026-05-25T19:08:06.202887+00:00",
       "error": null
     },
     "BBAR": {
       "price": 15.28,
       "dividendYieldPct": 1.95,
-      "dividendPerShare": 0.04,
+      "dividendPerShare": 0.038,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-04-20",
       "companyName": "Banco BBVA Argentina S.A.",
-      "fetchedAt": "2026-05-23T15:01:31.765279+00:00",
+      "fetchedAt": "2026-05-25T19:08:08.443561+00:00",
       "error": null
     },
     "APLE": {
@@ -484,77 +484,77 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Apple Hospitality REIT, Inc.",
-      "fetchedAt": "2026-05-23T15:01:33.498406+00:00",
+      "fetchedAt": "2026-05-25T19:08:10.233794+00:00",
       "error": null
     },
     "SLG": {
       "price": 43.27,
       "dividendYieldPct": 6.19,
-      "dividendPerShare": 0.62,
+      "dividendPerShare": 0.618,
       "paymentFrequency": "quarterly",
       "exDividendDate": "2026-03-31",
       "companyName": "SL Green Realty Corp.",
-      "fetchedAt": "2026-05-23T15:01:35.427148+00:00",
+      "fetchedAt": "2026-05-25T19:08:12.336215+00:00",
       "error": null
     },
     "BMA": {
       "price": 75.95,
       "dividendYieldPct": 5.59,
-      "dividendPerShare": 0.53,
+      "dividendPerShare": 0.553,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-18",
       "companyName": "Banco Macro S.A.",
-      "fetchedAt": "2026-05-23T15:01:37.112787+00:00",
+      "fetchedAt": "2026-05-25T19:08:14.170423+00:00",
       "error": null
     },
     "AVAL": {
       "price": 4.23,
       "dividendYieldPct": 4.1,
-      "dividendPerShare": 0.01,
+      "dividendPerShare": 0.014,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Grupo Aval Acciones y Valores S.A.",
-      "fetchedAt": "2026-05-23T15:01:38.885025+00:00",
+      "fetchedAt": "2026-05-25T19:08:16.333254+00:00",
       "error": null
     },
     "VIV": {
       "price": 13.38,
       "dividendYieldPct": 7.04,
-      "dividendPerShare": 0.06,
+      "dividendPerShare": 0.476,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-28",
-      "companyName": "Telefônica Brasil S.A.",
-      "fetchedAt": "2026-05-23T15:01:40.614207+00:00",
+      "companyName": "Telef\u00f4nica Brasil S.A.",
+      "fetchedAt": "2026-05-25T19:08:18.286623+00:00",
       "error": null
     },
     "AMRZ": {
       "price": 49.95,
       "dividendYieldPct": 0.22,
       "dividendPerShare": 0.11,
-      "paymentFrequency": "quarterly",
+      "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-12",
       "companyName": "Amrize Ltd",
-      "fetchedAt": "2026-05-23T15:01:42.160805+00:00",
+      "fetchedAt": "2026-05-25T19:08:20.002868+00:00",
       "error": null
     },
     "BBD": {
       "price": 3.47,
       "dividendYieldPct": 4.77,
-      "dividendPerShare": 0.0142,
+      "dividendPerShare": 0.004,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-03",
       "companyName": "Banco Bradesco S.A.",
-      "fetchedAt": "2026-05-23T15:01:43.913534+00:00",
+      "fetchedAt": "2026-05-25T19:08:22.322152+00:00",
       "error": null
     },
     "ITUB": {
       "price": 7.82,
       "dividendYieldPct": 1.35,
-      "dividendPerShare": 0.0092,
+      "dividendPerShare": 0.003,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-02",
-      "companyName": "Itaú Unibanco Holding S.A.",
-      "fetchedAt": "2026-05-23T15:01:45.697556+00:00",
+      "companyName": "Ita\u00fa Unibanco Holding S.A.",
+      "fetchedAt": "2026-05-25T19:08:24.247912+00:00",
       "error": null
     }
   }
