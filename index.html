@@ -180,6 +180,20 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
 .toggle-wrap input:checked ~ .toggle-track{background:var(--accent)}
 .toggle-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .2s;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .toggle-wrap input:checked ~ .toggle-thumb{transform:translateX(16px)}
+/* Search bar */
+.search-row{position:relative;margin-bottom:10px}
+.search-inp{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:14px;padding:10px 36px 10px 36px;border-radius:var(--r10);outline:none;width:100%;min-height:42px;transition:border-color .15s}
+.search-inp::placeholder{color:var(--t4)}
+.search-inp:focus{border-color:var(--accent)}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:15px;pointer-events:none}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--t3);font-size:17px;line-height:1;padding:4px;display:none}
+.search-clear.show{display:block}
+/* Section label row with sort toggle */
+.section-lbl-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.section-lbl-row .section-lbl{margin-bottom:0}
+.sort-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--r6);padding:4px 9px;cursor:pointer;color:var(--t3);font-size:11px;font-family:var(--sans);font-weight:500;display:flex;align-items:center;gap:4px;transition:all .15s;min-height:26px;letter-spacing:.2px}
+.sort-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sort-btn.active{background:var(--accent);color:#faf7f2;border-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -216,7 +230,7 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
     <div class="notif-row">
       <div>
         <strong style="font-size:12px;color:var(--text)">Alert timing</strong><br>
-        <span>Notify 1 business day before ex-div. If ex-div falls on a Monday, alert is sent on Thursday (so you can buy Friday).</span>
+        <span>Notify 1 business day before ex-div. Monday ex-divs alert on Thursday (buy Friday). Market holidays alert 2 business days before.</span>
       </div>
       <span style="font-size:11px;color:var(--green);font-weight:500">Always on</span>
     </div>
@@ -264,7 +278,17 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
     <button class="kindle-btn ghost" onclick="resetData()"><i class="ti ti-refresh" style="font-size:13px"></i></button>
   </div>
 
-  <div class="section-lbl">Watchlist</div>
+  <div class="search-row">
+    <i class="ti ti-search search-icon"></i>
+    <input class="search-inp" id="search-inp" type="text" placeholder="Search ticker…" maxlength="8" autocapitalize="characters" oninput="onSearchInput()"/>
+    <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search">×</button>
+  </div>
+  <div class="section-lbl-row">
+    <div class="section-lbl">Watchlist</div>
+    <button class="sort-btn" id="sort-alpha-btn" onclick="toggleSort()" title="Sort alphabetically by ticker">
+      <i class="ti ti-sort-ascending" style="font-size:12px"></i> A–Z
+    </button>
+  </div>
   <div class="card-list" id="card-list"></div>
 
   <div class="table-wrap">
@@ -417,26 +441,76 @@ function badgeInfo(ds){
 function countTicker(t){return stocks.filter(s=>s.ticker===t).length;}
 function dupIndex(row){return stocks.filter(s=>s.ticker===row.ticker).indexOf(row)+1;}
 function $c(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function $div(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:3,maximumFractionDigits:3});}
+function $div(n){if(n==null||isNaN(n))return'—';const dp=parseFloat(n.toFixed(2))===0?3:2;return'$'+n.toLocaleString('en-US',{minimumFractionDigits:dp,maximumFractionDigits:dp});}
 const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function fmtDate(ds){if(!ds)return null;const[,m,d]=ds.split('-');return MONTHS[parseInt(m)-1]+' '+parseInt(d);}
 
-function getSorted(){
+// ── SEARCH & SORT STATE ──
+let sortMode='date'; // 'date' | 'alpha'
+
+function getSearchQuery(){const el=document.getElementById('search-inp');return el?el.value.trim().toUpperCase():'';}
+function getSearchFiltered(){const q=getSearchQuery();return q?stocks.filter(s=>s.ticker.includes(q)):stocks;}
+
+function onSearchInput(){
+  const q=document.getElementById('search-inp').value.trim();
+  document.getElementById('search-clear').classList.toggle('show',q.length>0);
+  renderAll();
+}
+function clearSearch(){
+  document.getElementById('search-inp').value='';
+  document.getElementById('search-clear').classList.remove('show');
+  renderAll();
+}
+function toggleSort(){
+  sortMode=sortMode==='date'?'alpha':'date';
+  document.getElementById('sort-alpha-btn').classList.toggle('active',sortMode==='alpha');
+  renderAll();
+}
+
+function getSorted(filtered=true){
+  const src=filtered?getSearchFiltered():stocks;
   const up=[],pa=[],na=[];
-  stocks.forEach(s=>{const c=classify(s.exDividendDate);if(c==='upcoming')up.push(s);else if(c==='passed')pa.push(s);else na.push(s);});
-  up.sort((a,b)=>new Date(a.exDividendDate)-new Date(b.exDividendDate));
-  pa.sort((a,b)=>new Date(b.exDividendDate)-new Date(a.exDividendDate));
-  na.sort((a,b)=>a.ticker.localeCompare(b.ticker));
+  src.forEach(s=>{const c=classify(s.exDividendDate);if(c==='upcoming')up.push(s);else if(c==='passed')pa.push(s);else na.push(s);});
+  if(sortMode==='alpha'){
+    const byAlphaDate=(a,b)=>{
+      const tc=a.ticker.localeCompare(b.ticker);if(tc!==0)return tc;
+      if(!a.exDividendDate&&!b.exDividendDate)return 0;
+      if(!a.exDividendDate)return 1;if(!b.exDividendDate)return -1;
+      return new Date(a.exDividendDate)-new Date(b.exDividendDate);
+    };
+    up.sort(byAlphaDate);pa.sort(byAlphaDate);na.sort(byAlphaDate);
+  } else {
+    up.sort((a,b)=>new Date(a.exDividendDate)-new Date(b.exDividendDate));
+    pa.sort((a,b)=>new Date(b.exDividendDate)-new Date(a.exDividendDate));
+    na.sort((a,b)=>a.ticker.localeCompare(b.ticker));
+  }
   return{up,pa,na};
+}
+
+// ── US MARKET HOLIDAYS ──
+const MARKET_HOLIDAYS=new Set([
+  '2026-01-01','2026-01-19','2026-02-16','2026-04-03',
+  '2026-05-25','2026-06-19','2026-07-03','2026-09-07',
+  '2026-11-26','2026-12-25',
+  '2027-01-01','2027-01-18'
+]);
+function isMarketHoliday(d){
+  const s=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  return MARKET_HOLIDAYS.has(s);
+}
+function prevBizDay(d){
+  const r=new Date(d); r.setHours(0,0,0,0);
+  do{r.setDate(r.getDate()-1);}while(r.getDay()===0||r.getDay()===6||isMarketHoliday(r));
+  return r;
 }
 
 // ── SMART NOTIFICATION LOGIC ──
 function alertDateFor(exDateStr){
   if(!exDateStr) return null;
   const ex=new Date(exDateStr); ex.setHours(0,0,0,0);
-  const dow=ex.getDay();
-  if(dow===1){const thu=new Date(ex); thu.setDate(ex.getDate()-3); return thu;}
-  else{const prev=new Date(ex); prev.setDate(ex.getDate()-1); return prev;}
+  // Monday or market holiday: alert 2 business days before so user has 1 full trading day to buy
+  if(ex.getDay()===1||isMarketHoliday(ex)){return prevBizDay(prevBizDay(ex));}
+  return prevBizDay(ex);
 }
 
 function shouldAlertToday(exDateStr){
@@ -454,10 +528,14 @@ function checkNotifications(){
     if(notifiedKeys.includes(key)) return;
     if(shouldAlertToday(s.exDividendDate)){
       const d=daysTo(s.exDividendDate);
-      const isMonday=new Date(s.exDividendDate).getDay()===1;
+      const exDate=new Date(s.exDividendDate);
+      const isMonday=exDate.getDay()===1;
+      const isHol=isMarketHoliday(exDate);
       const msg=isMonday
-        ?`${s.ticker} ex-div on Monday ${s.exDividendDate} — buy today (Friday) to capture the dividend`
-        :`${s.ticker} ex-div TOMORROW ${s.exDividendDate} — buy today to capture the dividend`;
+        ?`${s.ticker} ex-div Monday ${fmtDate(s.exDividendDate)} — buy tomorrow (Friday) to capture the dividend`
+        :isHol
+        ?`${s.ticker} ex-div falls on a market holiday (${fmtDate(s.exDividendDate)}) — buy tomorrow, last trading day before`
+        :`${s.ticker} ex-div TOMORROW (${fmtDate(s.exDividendDate)}) — buy today to capture the dividend`;
       toAlert.push({ticker:s.ticker,msg,key});
     }
   });
@@ -614,7 +692,7 @@ function updateSummary(){
 
 // ── MODAL WITH DIV/SHARE EDITING ──
 function buildEditRows(){
-  const{up,pa,na}=getSorted();
+  const{up,pa,na}=getSorted(false);
   const ordered=[...up,...pa,...na];
   return ordered.map(s=>{
     const cnt=countTicker(s.ticker);
