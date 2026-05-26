@@ -308,11 +308,6 @@ tbody tr:hover .row-del{opacity:1}
 
   <div class="progress-wrap" id="prog-wrap"><div class="progress-fill" id="prog-fill"></div></div>
 
-  <div class="alert alert-warn" id="alert-bar">
-    <i class="ti ti-bell" style="font-size:14px;flex-shrink:0"></i>
-    <span id="alert-text" style="flex:1"></span>
-    <button onclick="document.getElementById('alert-bar').classList.remove('show')">×</button>
-  </div>
 
   <div class="notif-strip" id="notif-strip">
     <i class="ti ti-bell-ringing" style="font-size:14px;flex-shrink:0"></i>
@@ -728,11 +723,6 @@ function checkNotifications(){
   saveNotifKeys();
 }
 
-function checkAlerts(){
-  const al=stocks.filter(s=>classify(s.exDividendDate)==='upcoming'&&daysTo(s.exDividendDate)<=7)
-    .map(s=>{const d=daysTo(s.exDividendDate);return d===0?`${s.ticker}: TODAY`:`${s.ticker}: ${d}d`;});
-  if(al.length){document.getElementById('alert-text').textContent='Ex-div this week — '+al.join(' · ');document.getElementById('alert-bar').classList.add('show');}
-}
 
 // ── NOTIFICATION UI ──
 let notifPanelOpen=false;
@@ -874,7 +864,7 @@ function rollShares(){
   if(changed)save(stocks);
 }
 
-function renderAll(){rollShares();renderCards();renderTable();updateSummary();checkAlerts();checkNotifications();}
+function renderAll(){rollShares();renderCards();renderTable();updateSummary();checkNotifications();}
 
 function updateSummary(){
   let annual=0,hasShares=false,withShares=0,nextDays=Infinity,nextTicker='';
