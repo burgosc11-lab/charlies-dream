@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-<title>Charlie's Dream — Dividend Tracker</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>THE LIST — Dividend Tracker</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="THE LIST"/>
+<meta name="theme-color" content="#2c2010"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap"/>
@@ -32,8 +41,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 /* Hero */
 .hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r14);padding:18px 20px;margin-bottom:14px}
 .hero-label{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;font-weight:500}
-.hero-amount{font-family:var(--serif);font-size:40px;font-weight:400;color:var(--accent);letter-spacing:-2px;line-height:1;display:flex;align-items:baseline;gap:4px}
-.hero-currency{font-size:22px;color:var(--t2)}
+.hero-amount{font-family:var(--serif);font-size:54px;font-weight:400;color:var(--accent);letter-spacing:-3px;line-height:1;display:flex;align-items:baseline;gap:4px}
+.hero-currency{font-size:28px;color:var(--t2)}
 .hero-sub{font-size:12px;color:var(--t3);margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 14px}
 .hero-sub strong{color:var(--accent);font-weight:500}
 .next-val{color:var(--amber);font-weight:500}
@@ -134,6 +143,17 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
 .date-na-tip{display:none;position:absolute;left:0;bottom:calc(100%+5px);background:var(--accent);color:#faf7f2;font-size:10px;padding:4px 8px;border-radius:5px;white-space:nowrap;z-index:10;pointer-events:none;font-style:normal}
 @media(min-width:600px){.card-list{display:none}.table-wrap{display:block}}
 .footer-row{display:flex;justify-content:space-between;margin-top:12px;font-size:11px;color:var(--t4);flex-wrap:wrap;gap:4px}
+/* Inline table editing */
+td.editable{cursor:text;position:relative}
+td.editable:hover{background:rgba(44,32,16,.06) !important;outline:1px dashed var(--border2)}
+td.editable:hover::after{content:'✎';position:absolute;right:5px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--t3);pointer-events:none}
+.cell-inp{background:#fffef8;border:1.5px solid var(--accent);color:var(--text);font-family:var(--sans);font-size:13px;padding:3px 6px;border-radius:4px;outline:none;width:100%;box-sizing:border-box;font-variant-numeric:tabular-nums}
+.cell-inp[type="number"]{text-align:right}
+.cell-inp[type="date"]{text-align:left;font-size:12px}
+.del-td{width:28px;padding:0 2px !important;text-align:center}
+.row-del{background:none;border:none;cursor:pointer;color:var(--t4);font-size:13px;padding:4px 5px;border-radius:4px;opacity:0;transition:opacity .12s;display:inline-flex;align-items:center}
+tbody tr:hover .row-del{opacity:1}
+.row-del:hover{color:var(--red);background:#fde8e8}
 /* Modal */
 .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,21,16,.6);display:none;align-items:flex-end;justify-content:center;z-index:20}
 @media(min-width:600px){.modal-overlay{align-items:center}}
@@ -180,6 +200,20 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
 .toggle-wrap input:checked ~ .toggle-track{background:var(--accent)}
 .toggle-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .2s;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .toggle-wrap input:checked ~ .toggle-thumb{transform:translateX(16px)}
+/* Search bar */
+.search-row{position:relative;margin-bottom:10px}
+.search-inp{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:14px;padding:10px 36px 10px 36px;border-radius:var(--r10);outline:none;width:100%;min-height:42px;transition:border-color .15s}
+.search-inp::placeholder{color:var(--t4)}
+.search-inp:focus{border-color:var(--accent)}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:15px;pointer-events:none}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--t3);font-size:17px;line-height:1;padding:4px;display:none}
+.search-clear.show{display:block}
+/* Section label row with sort toggle */
+.section-lbl-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.section-lbl-row .section-lbl{margin-bottom:0}
+.sort-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--r6);padding:4px 9px;cursor:pointer;color:var(--t3);font-size:11px;font-family:var(--sans);font-weight:500;display:flex;align-items:center;gap:4px;transition:all .15s;min-height:26px;letter-spacing:.2px}
+.sort-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sort-btn.active{background:var(--accent);color:#faf7f2;border-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -187,7 +221,7 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
 
   <div class="hdr">
     <div class="hdr-left">
-      <h1>Charlie's Dream</h1>
+      <h1>THE LIST</h1>
       <div class="sub" id="pos-label">— positions</div>
     </div>
     <div class="hdr-right">
@@ -216,7 +250,7 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
     <div class="notif-row">
       <div>
         <strong style="font-size:12px;color:var(--text)">Alert timing</strong><br>
-        <span>Notify 1 business day before ex-div. If ex-div falls on a Monday, alert is sent on Thursday (so you can buy Friday).</span>
+        <span>Notify 1 business day before ex-div. Monday ex-divs alert on Thursday (buy Friday). Market holidays alert 2 business days before.</span>
       </div>
       <span style="font-size:11px;color:var(--green);font-weight:500">Always on</span>
     </div>
@@ -226,6 +260,20 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
         <span>Send a test browser notification right now to confirm it's working.</span>
       </div>
       <button onclick="sendTestNotif()" style="font-family:var(--sans);font-size:12px;padding:5px 12px;border-radius:var(--r10);border:1px solid var(--border);background:var(--surface);color:var(--t2);cursor:pointer">Test</button>
+    </div>
+    <div class="notif-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;width:100%;gap:10px">
+        <div>
+          <strong style="font-size:12px;color:var(--text)">📱 iPhone background alerts</strong><br>
+          <span>Add THE LIST to your Home Screen first, then tap Subscribe. You'll get a real push alert the day before each ex-div date — even when the app is closed.</span>
+        </div>
+        <button onclick="subscribePush()" id="push-sub-btn" style="font-family:var(--sans);font-size:12px;padding:5px 12px;border-radius:var(--r10);border:1px solid var(--border);background:var(--surface);color:var(--t2);cursor:pointer;white-space:nowrap;flex-shrink:0">Subscribe</button>
+      </div>
+      <div id="push-sub-wrap" style="display:none;width:100%">
+        <div style="font-size:10px;color:var(--t3);margin-bottom:5px;font-weight:500">Step 2 — Copy this entire JSON and paste it into GitHub Secret named <code style="background:var(--surface);border:1px solid var(--border);padding:1px 5px;border-radius:3px;font-size:9px">PUSH_SUBSCRIPTION</code>:</div>
+        <textarea id="push-sub-json" onclick="this.select()" style="width:100%;height:72px;font-size:9px;font-family:monospace;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r6);padding:6px;color:var(--t2);resize:none;outline:none" readonly></textarea>
+        <div style="font-size:10px;color:var(--green);margin-top:4px">✓ Subscription active — GitHub Actions will push alerts to this device every weekday morning.</div>
+      </div>
     </div>
   </div>
 
@@ -264,7 +312,17 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
     <button class="kindle-btn ghost" onclick="resetData()"><i class="ti ti-refresh" style="font-size:13px"></i></button>
   </div>
 
-  <div class="section-lbl">Watchlist</div>
+  <div class="search-row">
+    <i class="ti ti-search search-icon"></i>
+    <input class="search-inp" id="search-inp" type="text" placeholder="Search ticker…" maxlength="8" autocapitalize="characters" oninput="onSearchInput()"/>
+    <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search">×</button>
+  </div>
+  <div class="section-lbl-row">
+    <div class="section-lbl">Watchlist</div>
+    <button class="sort-btn" id="sort-alpha-btn" onclick="toggleSort()" title="Sort alphabetically by ticker">
+      <i class="ti ti-sort-ascending" style="font-size:12px"></i> A–Z
+    </button>
+  </div>
   <div class="card-list" id="card-list"></div>
 
   <div class="table-wrap">
@@ -279,6 +337,7 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
           <th style="width:68px"><span class="th-text">Shares</span><div class="resize-handle"></div></th>
           <th style="width:98px"><span class="th-text">SnowBall</span><div class="resize-handle"></div></th>
           <th style="width:78px"><span class="th-text">Status</span><div class="resize-handle"></div></th>
+          <th style="width:28px;padding:0"><span class="th-text"></span></th>
         </tr></thead>
         <tbody id="tbody"></tbody>
       </table>
@@ -286,7 +345,7 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
   </div>
 
   <div class="footer-row">
-    <span id="status-msg">Tap ticker → TradingView · Edit to manage shares &amp; dates</span>
+    <span id="status-msg">Click cell to edit · Ticker → TradingView · Hover row → delete</span>
     <span id="updated-at"></span>
   </div>
 </div>
@@ -321,68 +380,162 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
 </div>
 
 <script>
-const SK='charlies_dream_v2';
+const SK='charlies_dream_v5';
 let uid=1;
 function newId(){return uid++;}
 
 // dividendPerShare = per-payment amount (monthly, quarterly, etc.)
 // paymentFrequency = 'monthly' | 'quarterly' | 'semi-annual' | 'annual'
 const BASE_TICKERS=[
-  {ticker:'GLAD',price:18.95,dividendYieldPct:9.74, dividendPerShare:0.15,  paymentFrequency:'monthly',   exDividendDate:'2026-05-20'},
-  {ticker:'LTC', price:38.48,dividendYieldPct:5.93, dividendPerShare:0.19,  paymentFrequency:'monthly',   exDividendDate:'2026-05-21'},
-  {ticker:'LAND',price:9.63, dividendYieldPct:5.82, dividendPerShare:0.047, paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
-  {ticker:'GOOD',price:12.68,dividendYieldPct:9.46, dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
-  {ticker:'DOC', price:19.73,dividendYieldPct:6.18, dividendPerShare:0.102, paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
-  {ticker:'DSL', price:10.88,dividendYieldPct:12.13,dividendPerShare:0.11,  paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
-  {ticker:'GAIN',price:15.90,dividendYieldPct:6.04, dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
-  {ticker:'DIV', price:19.54,dividendYieldPct:6.57, dividendPerShare:0.106, paymentFrequency:'monthly',   exDividendDate:'2026-05-22'},
-  {ticker:'PSEC',price:2.28, dividendYieldPct:21.88,dividendPerShare:0.045, paymentFrequency:'monthly',   exDividendDate:'2026-05-27'},
-  {ticker:'EPR', price:58.62,dividendYieldPct:6.12, dividendPerShare:0.31,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'O',   price:62.02,dividendYieldPct:5.23, dividendPerShare:0.271, paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'AGNC',price:10.21,dividendYieldPct:14.12,dividendPerShare:0.12,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'DX',  price:12.72,dividendYieldPct:16.04,dividendPerShare:0.17,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'TYG', price:46.18,dividendYieldPct:11.73,dividendPerShare:0.475, paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'ORC', price:6.76, dividendYieldPct:17.75,dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'EARN',price:4.81, dividendYieldPct:19.96,dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'MDV', price:18.24,dividendYieldPct:6.58, dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'ECC', price:4.04, dividendYieldPct:29.70,dividendPerShare:0.06,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'EIC', price:10.66,dividendYieldPct:12.95,dividendPerShare:0.11,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'SCM', price:9.08, dividendYieldPct:16.30,dividendPerShare:0.113, paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'SAR', price:22.23,dividendYieldPct:13.50,dividendPerShare:0.25,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'IVR', price:7.87, dividendYieldPct:18.30,dividendPerShare:0.12,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'EFC', price:13.49,dividendYieldPct:11.56,dividendPerShare:0.13,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'APLE',price:14.47,dividendYieldPct:6.63, dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
-  {ticker:'NLOP',price:11.86,dividendYieldPct:null, dividendPerShare:null,  paymentFrequency:null,        exDividendDate:'2026-05-29'},
-  {ticker:'JEPQ',price:60.21,dividendYieldPct:10.43,dividendPerShare:0.591, paymentFrequency:'monthly',   exDividendDate:'2026-06-01'},
-  {ticker:'MAIN',price:49.63,dividendYieldPct:8.83, dividendPerShare:0.26,  paymentFrequency:'monthly',   exDividendDate:'2026-06-08'},
-  {ticker:'ARR', price:16.57,dividendYieldPct:17.38,dividendPerShare:0.24,  paymentFrequency:'monthly',   exDividendDate:'2026-06-13'},
-  {ticker:'PECO',price:40.30,dividendYieldPct:3.22, dividendPerShare:0.108, paymentFrequency:'monthly',   exDividendDate:'2026-06-13'},
-  {ticker:'PFLT',price:8.11, dividendYieldPct:15.17,dividendPerShare:0.103, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'CSWC',price:22.77,dividendYieldPct:11.25,dividendPerShare:0.193, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'TRIN',price:16.49,dividendYieldPct:12.37,dividendPerShare:0.17,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'CION',price:6.55, dividendYieldPct:18.32,dividendPerShare:0.10,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'PNNT',price:3.80, dividendYieldPct:4.21, dividendPerShare:0.08,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'AVAL',price:4.23, dividendYieldPct:4.10, dividendPerShare:0.014, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'VIV', price:13.38,dividendYieldPct:7.04, dividendPerShare:0.476, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'BBD', price:3.47, dividendYieldPct:4.77, dividendPerShare:0.004, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003, paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
-  {ticker:'OXSQ',price:1.28, dividendYieldPct:32.43,dividendPerShare:0.035, paymentFrequency:'monthly',   exDividendDate:'2026-06-16'},
-  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.06,  paymentFrequency:'monthly',   exDividendDate:'2026-06-19'},
-  {ticker:'ADC', price:75.46,dividendYieldPct:4.25, dividendPerShare:0.267, paymentFrequency:'monthly',   exDividendDate:'2026-06-27'},
-  {ticker:'BBAR',price:15.28,dividendYieldPct:1.95, dividendPerShare:0.038, paymentFrequency:'monthly',   exDividendDate:'2026-06-30'},
-  {ticker:'BMA', price:75.95,dividendYieldPct:5.59, dividendPerShare:0.553, paymentFrequency:'monthly',   exDividendDate:'2026-06-30'},
-  {ticker:'BST', price:46.49,dividendYieldPct:6.45, dividendPerShare:0.25,  paymentFrequency:'monthly',   exDividendDate:'2026-07-11'},
-  {ticker:'GWRS',price:7.22, dividendYieldPct:4.20, dividendPerShare:0.025, paymentFrequency:'monthly',   exDividendDate:'2026-09-15'},
-  {ticker:'SLG', price:43.27,dividendYieldPct:6.19, dividendPerShare:0.618, paymentFrequency:'quarterly', exDividendDate:'2026-09-30'},
-  {ticker:'GROW',price:2.69, dividendYieldPct:3.39, dividendPerShare:0.008, paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'BCIC',price:7.52, dividendYieldPct:14.77,dividendPerShare:0.03,  paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'SPMC',price:10.91,dividendYieldPct:22.00,dividendPerShare:0.20,  paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'XRN', price:37.42,dividendYieldPct:15.31,dividendPerShare:0.25,  paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'TBLD',price:22.77,dividendYieldPct:5.49, dividendPerShare:0.104, paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'HSHP',price:14.20,dividendYieldPct:6.69, dividendPerShare:0.15,  paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'BTX', price:8.91, dividendYieldPct:7.07, dividendPerShare:0.053, paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'SMA', price:30.98,dividendYieldPct:5.16, dividendPerShare:0.132, paymentFrequency:'monthly',   exDividendDate:null},
-  {ticker:'AMRZ',price:49.95,dividendYieldPct:0.22, dividendPerShare:0.11,  paymentFrequency:'monthly',   exDividendDate:null},
+  // ── No upcoming date announced ──
+  {ticker:'DSL', price:10.88,dividendYieldPct:12.13,dividendPerShare:0.11,   paymentFrequency:'monthly',   exDividendDate:'2026-05-13'},
+  {ticker:'DX',  price:12.72,dividendYieldPct:16.04,dividendPerShare:0.17,   paymentFrequency:'monthly',   exDividendDate:'2026-05-21'},
+  {ticker:'GWRS',price:7.22, dividendYieldPct:4.20, dividendPerShare:0.03,   paymentFrequency:'monthly',   exDividendDate:'2026-05-15'},
+  {ticker:'ARR', price:16.57,dividendYieldPct:17.38,dividendPerShare:0.24,   paymentFrequency:'monthly',   exDividendDate:'2026-05-15'},
+  {ticker:'PFLT',price:8.11, dividendYieldPct:15.17,dividendPerShare:0.10,   paymentFrequency:'monthly',   exDividendDate:'2026-05-15'},
+  {ticker:'PNNT',price:3.80, dividendYieldPct:4.21, dividendPerShare:0.0133, paymentFrequency:'monthly',   exDividendDate:'2026-05-15'},
+  {ticker:'HSHP',price:14.20,dividendYieldPct:6.69, dividendPerShare:0.15,   paymentFrequency:'monthly',   exDividendDate:'2026-05-18'},
+  {ticker:'TBLD',price:22.77,dividendYieldPct:5.49, dividendPerShare:0.1042, paymentFrequency:'monthly',   exDividendDate:'2026-05-11'},
+  {ticker:'NLOP',price:11.86,dividendYieldPct:null, dividendPerShare:null,   paymentFrequency:null,        exDividendDate:'2026-03-30'},
+  {ticker:'BBAR',price:15.28,dividendYieldPct:1.95, dividendPerShare:0.04,   paymentFrequency:'monthly',   exDividendDate:'2026-04-20'},
+  {ticker:'SLG', price:43.27,dividendYieldPct:6.19, dividendPerShare:0.62,   paymentFrequency:'quarterly', exDividendDate:'2026-03-31'},
+  {ticker:'AMRZ',price:49.95,dividendYieldPct:0.22, dividendPerShare:0.11,   paymentFrequency:'quarterly', exDividendDate:'2026-05-12'},
+  {ticker:'DIV', price:19.54,dividendYieldPct:6.57, dividendPerShare:0.106,  paymentFrequency:'monthly',   exDividendDate:null},
+  // ── May 26 ──
+  {ticker:'IVR', price:7.87, dividendYieldPct:18.30,dividendPerShare:0.12,   paymentFrequency:'monthly',   exDividendDate:'2026-05-26'},
+  // ── May 27 ──
+  {ticker:'PSEC',price:2.28, dividendYieldPct:21.88,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-05-27'},
+  // ── May 28 ──
+  {ticker:'VIV', price:13.38,dividendYieldPct:7.04, dividendPerShare:0.062,  paymentFrequency:'monthly',   exDividendDate:'2026-05-28'},
+  // ── May 29 ──
+  {ticker:'EPR', price:58.62,dividendYieldPct:6.12, dividendPerShare:0.310,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'O',   price:62.02,dividendYieldPct:5.23, dividendPerShare:0.271,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'AGNC',price:10.21,dividendYieldPct:14.12,dividendPerShare:0.12,   paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'ORC', price:6.76, dividendYieldPct:17.75,dividendPerShare:0.10,   paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'EARN',price:4.81, dividendYieldPct:19.96,dividendPerShare:0.08,   paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'MDV', price:18.24,dividendYieldPct:6.58, dividendPerShare:0.10,   paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'SCM', price:9.08, dividendYieldPct:16.30,dividendPerShare:0.113,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'EFC', price:13.49,dividendYieldPct:11.56,dividendPerShare:0.13,   paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'APLE',price:14.47,dividendYieldPct:6.63, dividendPerShare:0.08,   paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'ADC', price:75.46,dividendYieldPct:4.25, dividendPerShare:0.267,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'SMA', price:30.98,dividendYieldPct:5.16, dividendPerShare:0.136,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  {ticker:'AVAL',price:4.23, dividendYieldPct:4.10, dividendPerShare:0.012,  paymentFrequency:'monthly',   exDividendDate:'2026-05-29'},
+  // ── Jun 01 ──
+  {ticker:'JEPQ',price:60.21,dividendYieldPct:10.43,dividendPerShare:0.59095,paymentFrequency:'monthly',   exDividendDate:'2026-06-01'},
+  // ── Jun 02 ──
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003,  paymentFrequency:'monthly',   exDividendDate:'2026-06-02'},
+  {ticker:'BMA', price:75.95,dividendYieldPct:5.59, dividendPerShare:0.509,  paymentFrequency:'monthly',   exDividendDate:'2026-06-02'},
+  // ── Jun 03 ──
+  {ticker:'TYG', price:46.18,dividendYieldPct:11.73,dividendPerShare:0.475,  paymentFrequency:'monthly',   exDividendDate:'2026-06-03'},
+  {ticker:'BBD', price:3.47, dividendYieldPct:4.77, dividendPerShare:0.002,  paymentFrequency:'monthly',   exDividendDate:'2026-06-03'},
+  // ── Jun 04 ──
+  {ticker:'SAR', price:22.23,dividendYieldPct:13.50,dividendPerShare:0.250,  paymentFrequency:'monthly',   exDividendDate:'2026-06-04'},
+  // ── Jun 08 ──
+  {ticker:'MAIN',price:49.63,dividendYieldPct:8.83, dividendPerShare:0.260,  paymentFrequency:'monthly',   exDividendDate:'2026-06-08'},
+  // ── Jun 10 ──
+  {ticker:'ECC', price:4.04, dividendYieldPct:29.70,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-06-10'},
+  {ticker:'EIC', price:10.66,dividendYieldPct:12.95,dividendPerShare:0.110,  paymentFrequency:'monthly',   exDividendDate:'2026-06-10'},
+  // ── Jun 11 ──
+  {ticker:'TRIN',price:16.49,dividendYieldPct:12.37,dividendPerShare:0.170,  paymentFrequency:'monthly',   exDividendDate:'2026-06-11'},
+  // ── Jun 12 ──
+  {ticker:'CION',price:6.55, dividendYieldPct:18.32,dividendPerShare:0.100,  paymentFrequency:'monthly',   exDividendDate:'2026-06-12'},
+  // ── Jun 15 ──
+  {ticker:'DOC', price:19.73,dividendYieldPct:6.18, dividendPerShare:0.102,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'PECO',price:40.30,dividendYieldPct:3.22, dividendPerShare:0.108,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'CSWC',price:22.77,dividendYieldPct:11.25,dividendPerShare:0.193,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'CSWC',price:22.77,dividendYieldPct:11.25,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'BST', price:46.49,dividendYieldPct:6.45, dividendPerShare:0.250,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'GROW',price:2.69, dividendYieldPct:3.39, dividendPerShare:0.008,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'BCIC',price:7.515,dividendYieldPct:14.77,dividendPerShare:0.090,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'SPMC',price:10.91,dividendYieldPct:22.00,dividendPerShare:0.200,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  {ticker:'BTX', price:8.91, dividendYieldPct:7.07, dividendPerShare:0.053,  paymentFrequency:'monthly',   exDividendDate:'2026-06-15'},
+  // ── Jun 16 ──
+  {ticker:'OXSQ',price:1.28, dividendYieldPct:32.43,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-06-16'},
+  // ── Jun 17 ──
+  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-06-17'},
+  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.030,  paymentFrequency:'monthly',   exDividendDate:'2026-06-17'},
+  // ── Jun 22 ──
+  {ticker:'MAIN',price:49.63,dividendYieldPct:8.83, dividendPerShare:0.300,  paymentFrequency:'monthly',   exDividendDate:'2026-06-22'},
+  {ticker:'LTC', price:38.48,dividendYieldPct:5.93, dividendPerShare:0.190,  paymentFrequency:'monthly',   exDividendDate:'2026-06-22'},
+  {ticker:'XRN', price:37.42,dividendYieldPct:15.31,dividendPerShare:0.160,  paymentFrequency:'monthly',   exDividendDate:'2026-06-22'},
+  // ── Jun 23 ──
+  {ticker:'GLAD',price:18.95,dividendYieldPct:9.74, dividendPerShare:0.150,  paymentFrequency:'monthly',   exDividendDate:'2026-06-23'},
+  {ticker:'LAND',price:9.63, dividendYieldPct:5.82, dividendPerShare:0.047,  paymentFrequency:'monthly',   exDividendDate:'2026-06-23'},
+  {ticker:'GOOD',price:12.68,dividendYieldPct:9.46, dividendPerShare:0.100,  paymentFrequency:'monthly',   exDividendDate:'2026-06-23'},
+  {ticker:'GAIN',price:15.90,dividendYieldPct:6.04, dividendPerShare:0.080,  paymentFrequency:'monthly',   exDividendDate:'2026-06-23'},
+  // ── Jun 26 ──
+  {ticker:'PSEC',price:2.28, dividendYieldPct:21.88,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-06-26'},
+  // ── Jun 30 ──
+  {ticker:'SCM', price:9.08, dividendYieldPct:16.30,dividendPerShare:0.113,  paymentFrequency:'monthly',   exDividendDate:'2026-06-30'},
+  {ticker:'AVAL',price:4.23, dividendYieldPct:4.10, dividendPerShare:0.012,  paymentFrequency:'monthly',   exDividendDate:'2026-06-30'},
+  // ── Jul 02 ──
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003,  paymentFrequency:'monthly',   exDividendDate:'2026-07-02'},
+  // ── Jul 08 ──
+  {ticker:'MAIN',price:49.63,dividendYieldPct:8.83, dividendPerShare:0.265,  paymentFrequency:'monthly',   exDividendDate:'2026-07-08'},
+  // ── Jul 13 ──
+  {ticker:'ECC', price:4.04, dividendYieldPct:29.70,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-07-13'},
+  {ticker:'EIC', price:10.66,dividendYieldPct:12.95,dividendPerShare:0.110,  paymentFrequency:'monthly',   exDividendDate:'2026-07-13'},
+  // ── Jul 15 ──
+  {ticker:'PECO',price:40.30,dividendYieldPct:3.22, dividendPerShare:0.108,  paymentFrequency:'monthly',   exDividendDate:'2026-07-15'},
+  {ticker:'BCIC',price:7.515,dividendYieldPct:14.77,dividendPerShare:0.090,  paymentFrequency:'monthly',   exDividendDate:'2026-07-15'},
+  {ticker:'SPMC',price:10.91,dividendYieldPct:22.00,dividendPerShare:0.200,  paymentFrequency:'monthly',   exDividendDate:'2026-07-15'},
+  // ── Jul 16 ──
+  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-07-16'},
+  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.030,  paymentFrequency:'monthly',   exDividendDate:'2026-07-16'},
+  // ── Jul 17 ──
+  {ticker:'CION',price:6.55, dividendYieldPct:18.32,dividendPerShare:0.100,  paymentFrequency:'monthly',   exDividendDate:'2026-07-17'},
+  {ticker:'OXSQ',price:1.28, dividendYieldPct:32.43,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-07-17'},
+  // ── Jul 20 ──
+  {ticker:'XRN', price:37.42,dividendYieldPct:15.31,dividendPerShare:0.160,  paymentFrequency:'monthly',   exDividendDate:'2026-07-20'},
+  // ── Jul 24 ──
+  {ticker:'TYG', price:46.18,dividendYieldPct:11.73,dividendPerShare:0.475,  paymentFrequency:'monthly',   exDividendDate:'2026-07-24'},
+  // ── Jul 29 ──
+  {ticker:'PSEC',price:2.28, dividendYieldPct:21.88,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-07-29'},
+  // ── Jul 31 ──
+  {ticker:'AVAL',price:4.23, dividendYieldPct:4.10, dividendPerShare:0.012,  paymentFrequency:'monthly',   exDividendDate:'2026-07-31'},
+  // ── Aug 04 ──
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003,  paymentFrequency:'monthly',   exDividendDate:'2026-08-04'},
+  // ── Aug 07 ──
+  {ticker:'MAIN',price:49.63,dividendYieldPct:8.83, dividendPerShare:0.265,  paymentFrequency:'monthly',   exDividendDate:'2026-08-07'},
+  // ── Aug 11 ──
+  {ticker:'ECC', price:4.04, dividendYieldPct:29.70,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-08-11'},
+  {ticker:'EIC', price:10.66,dividendYieldPct:12.95,dividendPerShare:0.110,  paymentFrequency:'monthly',   exDividendDate:'2026-08-11'},
+  // ── Aug 14 ──
+  {ticker:'CION',price:6.55, dividendYieldPct:18.32,dividendPerShare:0.100,  paymentFrequency:'monthly',   exDividendDate:'2026-08-14'},
+  {ticker:'BCIC',price:7.515,dividendYieldPct:14.77,dividendPerShare:0.090,  paymentFrequency:'monthly',   exDividendDate:'2026-08-14'},
+  {ticker:'SPMC',price:10.91,dividendYieldPct:22.00,dividendPerShare:0.200,  paymentFrequency:'monthly',   exDividendDate:'2026-08-14'},
+  // ── Aug 17 ──
+  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-08-17'},
+  {ticker:'HRZN',price:4.01, dividendYieldPct:17.91,dividendPerShare:0.030,  paymentFrequency:'monthly',   exDividendDate:'2026-08-17'},
+  {ticker:'OXSQ',price:1.28, dividendYieldPct:32.43,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-08-17'},
+  // ── Aug 20 ──
+  {ticker:'XRN', price:37.42,dividendYieldPct:15.31,dividendPerShare:0.160,  paymentFrequency:'monthly',   exDividendDate:'2026-08-20'},
+  // ── Aug 24 ──
+  {ticker:'TYG', price:46.18,dividendYieldPct:11.73,dividendPerShare:0.475,  paymentFrequency:'monthly',   exDividendDate:'2026-08-24'},
+  // ── Aug 27 ──
+  {ticker:'PSEC',price:2.28, dividendYieldPct:21.88,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-08-27'},
+  // ── Aug 31 ──
+  {ticker:'AVAL',price:4.23, dividendYieldPct:4.10, dividendPerShare:0.012,  paymentFrequency:'monthly',   exDividendDate:'2026-08-31'},
+  // ── Sep 02 ──
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003,  paymentFrequency:'monthly',   exDividendDate:'2026-09-02'},
+  // ── Sep 08 ──
+  {ticker:'MAIN',price:49.63,dividendYieldPct:8.83, dividendPerShare:0.265,  paymentFrequency:'monthly',   exDividendDate:'2026-09-08'},
+  // ── Sep 10 ──
+  {ticker:'ECC', price:4.04, dividendYieldPct:29.70,dividendPerShare:0.060,  paymentFrequency:'monthly',   exDividendDate:'2026-09-10'},
+  {ticker:'EIC', price:10.66,dividendYieldPct:12.95,dividendPerShare:0.110,  paymentFrequency:'monthly',   exDividendDate:'2026-09-10'},
+  // ── Sep 11 ──
+  {ticker:'CION',price:6.55, dividendYieldPct:18.32,dividendPerShare:0.100,  paymentFrequency:'monthly',   exDividendDate:'2026-09-11'},
+  // ── Sep 15 ──
+  {ticker:'BCIC',price:7.515,dividendYieldPct:14.77,dividendPerShare:0.090,  paymentFrequency:'monthly',   exDividendDate:'2026-09-15'},
+  {ticker:'SPMC',price:10.91,dividendYieldPct:22.00,dividendPerShare:0.200,  paymentFrequency:'monthly',   exDividendDate:'2026-09-15'},
+  // ── Sep 16 ──
+  {ticker:'OXSQ',price:1.28, dividendYieldPct:32.43,dividendPerShare:0.035,  paymentFrequency:'monthly',   exDividendDate:'2026-09-16'},
+  // ── Oct 02 ──
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003,  paymentFrequency:'monthly',   exDividendDate:'2026-10-02'},
+  // ── Nov 04 ──
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003,  paymentFrequency:'monthly',   exDividendDate:'2026-11-04'},
+  // ── Dec 02 ──
+  {ticker:'ITUB',price:7.82, dividendYieldPct:1.35, dividendPerShare:0.003,  paymentFrequency:'monthly',   exDividendDate:'2026-12-02'},
 ];
 
 function makeBase(){return BASE_TICKERS.map(d=>({...d,id:newId(),shares:null,avgCost:null,manualDate:false,manualDivShare:false}));}
@@ -417,26 +570,76 @@ function badgeInfo(ds){
 function countTicker(t){return stocks.filter(s=>s.ticker===t).length;}
 function dupIndex(row){return stocks.filter(s=>s.ticker===row.ticker).indexOf(row)+1;}
 function $c(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function $div(n){if(n==null||isNaN(n))return'—';return'$'+n.toLocaleString('en-US',{minimumFractionDigits:3,maximumFractionDigits:3});}
+function $div(n){if(n==null||isNaN(n))return'—';const dp=Math.round(n*1000)%10!==0?3:2;return'$'+n.toLocaleString('en-US',{minimumFractionDigits:dp,maximumFractionDigits:dp});}
 const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function fmtDate(ds){if(!ds)return null;const[,m,d]=ds.split('-');return MONTHS[parseInt(m)-1]+' '+parseInt(d);}
 
-function getSorted(){
+// ── SEARCH & SORT STATE ──
+let sortMode='date'; // 'date' | 'alpha'
+
+function getSearchQuery(){const el=document.getElementById('search-inp');return el?el.value.trim().toUpperCase():'';}
+function getSearchFiltered(){const q=getSearchQuery();return q?stocks.filter(s=>s.ticker.includes(q)):stocks;}
+
+function onSearchInput(){
+  const q=document.getElementById('search-inp').value.trim();
+  document.getElementById('search-clear').classList.toggle('show',q.length>0);
+  renderAll();
+}
+function clearSearch(){
+  document.getElementById('search-inp').value='';
+  document.getElementById('search-clear').classList.remove('show');
+  renderAll();
+}
+function toggleSort(){
+  sortMode=sortMode==='date'?'alpha':'date';
+  document.getElementById('sort-alpha-btn').classList.toggle('active',sortMode==='alpha');
+  renderAll();
+}
+
+function getSorted(filtered=true){
+  const src=filtered?getSearchFiltered():stocks;
   const up=[],pa=[],na=[];
-  stocks.forEach(s=>{const c=classify(s.exDividendDate);if(c==='upcoming')up.push(s);else if(c==='passed')pa.push(s);else na.push(s);});
-  up.sort((a,b)=>new Date(a.exDividendDate)-new Date(b.exDividendDate));
-  pa.sort((a,b)=>new Date(b.exDividendDate)-new Date(a.exDividendDate));
-  na.sort((a,b)=>a.ticker.localeCompare(b.ticker));
+  src.forEach(s=>{const c=classify(s.exDividendDate);if(c==='upcoming')up.push(s);else if(c==='passed')pa.push(s);else na.push(s);});
+  if(sortMode==='alpha'){
+    const byAlphaDate=(a,b)=>{
+      const tc=a.ticker.localeCompare(b.ticker);if(tc!==0)return tc;
+      if(!a.exDividendDate&&!b.exDividendDate)return 0;
+      if(!a.exDividendDate)return 1;if(!b.exDividendDate)return -1;
+      return new Date(a.exDividendDate)-new Date(b.exDividendDate);
+    };
+    up.sort(byAlphaDate);pa.sort(byAlphaDate);na.sort(byAlphaDate);
+  } else {
+    up.sort((a,b)=>new Date(a.exDividendDate)-new Date(b.exDividendDate));
+    pa.sort((a,b)=>new Date(b.exDividendDate)-new Date(a.exDividendDate));
+    na.sort((a,b)=>a.ticker.localeCompare(b.ticker));
+  }
   return{up,pa,na};
+}
+
+// ── US MARKET HOLIDAYS ──
+const MARKET_HOLIDAYS=new Set([
+  '2026-01-01','2026-01-19','2026-02-16','2026-04-03',
+  '2026-05-25','2026-06-19','2026-07-03','2026-09-07',
+  '2026-11-26','2026-12-25',
+  '2027-01-01','2027-01-18'
+]);
+function isMarketHoliday(d){
+  const s=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  return MARKET_HOLIDAYS.has(s);
+}
+function prevBizDay(d){
+  const r=new Date(d); r.setHours(0,0,0,0);
+  do{r.setDate(r.getDate()-1);}while(r.getDay()===0||r.getDay()===6||isMarketHoliday(r));
+  return r;
 }
 
 // ── SMART NOTIFICATION LOGIC ──
 function alertDateFor(exDateStr){
   if(!exDateStr) return null;
   const ex=new Date(exDateStr); ex.setHours(0,0,0,0);
-  const dow=ex.getDay();
-  if(dow===1){const thu=new Date(ex); thu.setDate(ex.getDate()-3); return thu;}
-  else{const prev=new Date(ex); prev.setDate(ex.getDate()-1); return prev;}
+  // Monday or market holiday: alert 2 business days before so user has 1 full trading day to buy
+  if(ex.getDay()===1||isMarketHoliday(ex)){return prevBizDay(prevBizDay(ex));}
+  return prevBizDay(ex);
 }
 
 function shouldAlertToday(exDateStr){
@@ -454,10 +657,14 @@ function checkNotifications(){
     if(notifiedKeys.includes(key)) return;
     if(shouldAlertToday(s.exDividendDate)){
       const d=daysTo(s.exDividendDate);
-      const isMonday=new Date(s.exDividendDate).getDay()===1;
+      const exDate=new Date(s.exDividendDate);
+      const isMonday=exDate.getDay()===1;
+      const isHol=isMarketHoliday(exDate);
       const msg=isMonday
-        ?`${s.ticker} ex-div on Monday ${s.exDividendDate} — buy today (Friday) to capture the dividend`
-        :`${s.ticker} ex-div TOMORROW ${s.exDividendDate} — buy today to capture the dividend`;
+        ?`${s.ticker} ex-div Monday ${fmtDate(s.exDividendDate)} — buy tomorrow (Friday) to capture the dividend`
+        :isHol
+        ?`${s.ticker} ex-div falls on a market holiday (${fmtDate(s.exDividendDate)}) — buy tomorrow, last trading day before`
+        :`${s.ticker} ex-div TOMORROW (${fmtDate(s.exDividendDate)}) — buy today to capture the dividend`;
       toAlert.push({ticker:s.ticker,msg,key});
     }
   });
@@ -467,7 +674,7 @@ function checkNotifications(){
   document.getElementById('notif-strip').classList.add('show');
   if(notifEnabled && Notification.permission==='granted'){
     toAlert.forEach(a=>{
-      new Notification('Charlie\'s Dream — Dividend Alert 📈',{
+      new Notification('THE LIST — Dividend Alert 📈',{
         body:a.msg,
         icon:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%232c2010"/><text x="16" y="22" text-anchor="middle" font-size="18" fill="white">$</text></svg>',
         tag:a.key
@@ -516,7 +723,7 @@ async function handleNotifToggle(on){
 function sendTestNotif(){
   if(!('Notification' in window)){alert('Notifications not supported in this browser.');return;}
   if(Notification.permission!=='granted'){alert('Enable notifications first using the toggle above.');return;}
-  new Notification("Charlie's Dream — Test Alert 📈",{body:"This is a test. You'll receive alerts like this the day before ex-dividend dates (Thursday for Mondays).",tag:'test-'+Date.now()});
+  new Notification("THE LIST — Test Alert 📈",{body:"This is a test. You'll receive alerts like this the day before ex-dividend dates (Thursday for Mondays).",tag:'test-'+Date.now()});
 }
 
 // ── RENDER ──
@@ -578,23 +785,53 @@ function renderTable(){
         <td><div class="ticker-cell"><a class="ticker-link" href="${url}" target="_blank" title="Open ${s.ticker} on TradingView">${s.ticker}</a>${dupLabel}</div></td>
         <td class="num">${s.price?$c(s.price):'<span style="color:var(--t4)">—</span>'}</td>
         <td class="num">${y?y.toFixed(2)+'%':'<span style="color:var(--t4)">—</span>'}</td>
-        <td class="num">${s.dividendPerShare?$div(s.dividendPerShare):'<span style="color:var(--t4)">—</span>'}</td>
-        <td>${dateCell}</td>
-        <td class="num">${s.shares!=null?s.shares.toLocaleString():'<span style="color:var(--t4)">—</span>'}</td>
+        <td class="num editable" onclick="editCell(this,${s.id},'dividendPerShare')" title="Click to edit">${s.dividendPerShare?$div(s.dividendPerShare):'<span style="color:var(--t4)">—</span>'}</td>
+        <td class="editable" onclick="editCell(this,${s.id},'exDividendDate')" title="Click to edit">${dateCell}</td>
+        <td class="num editable" onclick="editCell(this,${s.id},'shares')" title="Click to edit">${s.shares!=null?s.shares.toLocaleString():'<span style="color:var(--t4)">—</span>'}</td>
         <td>${mo!=null?`<span class="snow-val">${$c(mo)}</span>`:'<span style="color:var(--t4)">—</span>'}</td>
         <td><span class="badge ${bi.cls}">${bi.label}</span></td>
+        <td class="del-td"><button class="row-del" onclick="deleteRow(${s.id})" title="Remove ${s.ticker}"><i class="ti ti-x"></i></button></td>
       </tr>`;
     }).join('');
   }
   let html='',idx=0;
   if(up.length){html+=rows(up,idx);idx+=up.length;}
-  if(pa.length){html+=`<tr class="divider-row"><td colspan="8">Passed — awaiting next announcement</td></tr>`;html+=rows(pa,idx,'passed');idx+=pa.length;}
-  if(na.length){html+=`<tr class="divider-row"><td colspan="8">Date not yet announced</td></tr>`;html+=rows(na,idx,'na-row');}
-  if(!html)html=`<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--t3);font-size:13px">No positions.</td></tr>`;
+  if(pa.length){html+=`<tr class="divider-row"><td colspan="9">Passed — awaiting next announcement</td></tr>`;html+=rows(pa,idx,'passed');idx+=pa.length;}
+  if(na.length){html+=`<tr class="divider-row"><td colspan="9">Date not yet announced</td></tr>`;html+=rows(na,idx,'na-row');}
+  if(!html)html=`<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--t3);font-size:13px">No positions.</td></tr>`;
   tb.innerHTML=html;
 }
 
-function renderAll(){renderCards();renderTable();updateSummary();checkAlerts();checkNotifications();}
+// ── SHARE ROLLOVER ──
+// When a ticker's ex-div date is "passed" and shares are set on it,
+// automatically move those shares to the earliest upcoming entry for
+// the same ticker. If no upcoming entry exists (date not announced yet),
+// shares stay put and are not moved.
+function rollShares(){
+  let changed=false;
+  const tickers=[...new Set(stocks.map(s=>s.ticker))];
+  tickers.forEach(ticker=>{
+    const all=stocks.filter(s=>s.ticker===ticker);
+    // upcoming entries for this ticker, sorted earliest first
+    const upcoming=all
+      .filter(s=>s.exDividendDate&&classify(s.exDividendDate)==='upcoming')
+      .sort((a,b)=>new Date(a.exDividendDate)-new Date(b.exDividendDate));
+    // passed entries that carry shares, most recent first
+    const passedWithShares=all
+      .filter(s=>classify(s.exDividendDate)==='passed'&&s.shares!=null)
+      .sort((a,b)=>new Date(b.exDividendDate)-new Date(a.exDividendDate));
+    if(!passedWithShares.length)return; // nothing to roll
+    if(!upcoming.length)return;         // no future date announced — wait
+    // Move shares from the most-recently-passed entry to the earliest upcoming
+    const target=upcoming[0];
+    if(target.shares==null){target.shares=passedWithShares[0].shares;changed=true;}
+    // Clear shares from ALL passed entries for this ticker to prevent double-counting
+    passedWithShares.forEach(s=>{if(s.shares!=null){s.shares=null;changed=true;}});
+  });
+  if(changed)save(stocks);
+}
+
+function renderAll(){rollShares();renderCards();renderTable();updateSummary();checkAlerts();checkNotifications();}
 
 function updateSummary(){
   let annual=0,hasShares=false,withShares=0,nextDays=Infinity,nextTicker='';
@@ -614,7 +851,7 @@ function updateSummary(){
 
 // ── MODAL WITH DIV/SHARE EDITING ──
 function buildEditRows(){
-  const{up,pa,na}=getSorted();
+  const{up,pa,na}=getSorted(false);
   const ordered=[...up,...pa,...na];
   return ordered.map(s=>{
     const cnt=countTicker(s.ticker);
@@ -642,12 +879,11 @@ function removeInModal(id){
   updateSummary();
 }
 function addDuplicatePrompt(){
-  const t=prompt('Ticker to add another ex-div date for (max 4):');
+  const t=prompt('Ticker to add another ex-div date for:');
   if(!t)return;
   const ticker=t.trim().toUpperCase();
   const ex=stocks.filter(s=>s.ticker===ticker);
   if(!ex.length){alert(ticker+' not found — add it first.');return;}
-  if(ex.length>=4){alert(ticker+' already has 4 entries (max).');return;}
   stocks.push({...ex[0],id:newId(),exDividendDate:null,shares:null,avgCost:null,manualDate:false,manualDivShare:false});
   save(stocks);document.getElementById('edit-rows').innerHTML=buildEditRows();
 }
@@ -683,7 +919,7 @@ function applyLiveData(live){
       dividendYieldPct:f.dividendYieldPct??s.dividendYieldPct,
       dividendPerShare:s.manualDivShare?s.dividendPerShare:(f.dividendPerShare??s.dividendPerShare),
       paymentFrequency:s.manualDivShare?s.paymentFrequency:(f.paymentFrequency??s.paymentFrequency),
-      exDividendDate:s.manualDate?s.exDividendDate:(f.exDividendDate??s.exDividendDate)
+      exDividendDate:s.exDividendDate
     };
   });
   save(stocks);
@@ -723,7 +959,6 @@ async function doRefresh(){
 function addStock(){
   const t=document.getElementById('inp-ticker').value.trim().toUpperCase();
   if(!t)return;
-  if(countTicker(t)>=4){document.getElementById('status-msg').textContent=t+' max 4 entries.';return;}
   const base=BASE_TICKERS.find(d=>d.ticker===t);
   const ex=stocks.find(s=>s.ticker===t);
   const tmpl=ex||base||{ticker:t,price:null,dividendYieldPct:null,dividendPerShare:null};
@@ -731,6 +966,44 @@ function addStock(){
   save(stocks);document.getElementById('inp-ticker').value='';renderAll();
 }
 function resetData(){uid=1;stocks=makeBase();save(stocks);renderAll();}
+
+// ── INLINE TABLE EDITING ──
+function editCell(td,id,field){
+  if(td.querySelector('.cell-inp'))return; // already open
+  const s=stocks.find(x=>x.id===id);if(!s)return;
+  const isDate=field==='exDividendDate';
+  const inp=document.createElement('input');
+  inp.className='cell-inp';
+  inp.type=isDate?'date':'number';
+  inp.value=s[field]!=null?s[field]:'';
+  if(!isDate){inp.min='0';inp.step=field==='dividendPerShare'?'0.001':'any';}
+  const origPad=td.style.padding;
+  td.innerHTML='';td.style.padding='4px';
+  td.appendChild(inp);inp.focus();
+  if(!isDate)inp.select();
+  let committed=false;
+  function commit(){
+    if(committed)return;committed=true;
+    const s=stocks.find(x=>x.id===id);if(!s){renderAll();return;}
+    const v=inp.value.trim();
+    if(field==='exDividendDate'){s.exDividendDate=v||null;s.manualDate=!!v;}
+    else if(field==='dividendPerShare'){
+      if(v===''){const base=BASE_TICKERS.find(b=>b.ticker===s.ticker);s.dividendPerShare=base?base.dividendPerShare:null;s.manualDivShare=false;}
+      else{s.dividendPerShare=parseFloat(v)||null;s.manualDivShare=true;}
+    } else {s[field]=v===''?null:parseFloat(v);}
+    save(stocks);renderAll();
+  }
+  function cancel(){committed=true;renderAll();}
+  inp.addEventListener('blur',commit);
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){inp.removeEventListener('blur',commit);commit();}
+    if(e.key==='Escape'){inp.removeEventListener('blur',commit);cancel();}
+  });
+}
+
+function deleteRow(id){
+  stocks=stocks.filter(s=>s.id!==id);save(stocks);renderAll();
+}
 
 /* Column resize */
 (function(){
@@ -744,8 +1017,56 @@ function resetData(){uid=1;stocks=makeBase();save(stocks);renderAll();}
 })();
 
 renderAll();
-// Auto-load live data on page open
-(async function(){const live=await fetchLiveData();if(applyLiveData(live))renderAll();})();
+
+// ── PWA: SERVICE WORKER + PUSH NOTIFICATIONS ──
+// Replace the placeholder below with your real VAPID public key (see setup instructions)
+const VAPID_PUBLIC_KEY = 'BP3xJ_rtUn-ABqsyUeBsZnu9XgAWpUm8cr8fy0m9eGdSUXN6TLa_8v-jIzxEE0P54GQme6gaUt7M6U15To7R5cw';
+
+function urlB64ToUint8(b64){
+  const pad='='.repeat((4-b64.length%4)%4);
+  const s=(b64+pad).replace(/-/g,'+').replace(/_/g,'/');
+  const raw=atob(s);
+  return Uint8Array.from(raw,c=>c.charCodeAt(0));
+}
+
+// Register service worker (enables offline use + push)
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').then(reg=>{
+    console.log('SW registered, scope:',reg.scope);
+  }).catch(e=>console.warn('SW registration failed:',e));
+}
+
+// Called when user taps "Subscribe" in the Alerts panel
+async function subscribePush(){
+  if(!('serviceWorker' in navigator)||!('PushManager' in window)){
+    alert('Push not available. Make sure you opened this app from your Home Screen icon, not Safari directly.');
+    return;
+  }
+  if(VAPID_PUBLIC_KEY==='YOUR_VAPID_PUBLIC_KEY_HERE'){
+    alert('VAPID key not configured yet. Generate your keys and add the public key to index.html first (see setup instructions).');
+    return;
+  }
+  const perm=await Notification.requestPermission();
+  if(perm!=='granted'){
+    alert('Notifications blocked. Go to iPhone Settings → THE LIST → Notifications and enable them.');
+    return;
+  }
+  try{
+    const reg=await navigator.serviceWorker.ready;
+    const existing=await reg.pushManager.getSubscription();
+    if(existing) await existing.unsubscribe();
+    const sub=await reg.pushManager.subscribe({
+      userVisibleOnly:true,
+      applicationServerKey:urlB64ToUint8(VAPID_PUBLIC_KEY)
+    });
+    document.getElementById('push-sub-json').value=JSON.stringify(sub);
+    document.getElementById('push-sub-wrap').style.display='block';
+    document.getElementById('push-sub-btn').textContent='Resubscribe';
+    document.getElementById('push-sub-json').select();
+  }catch(e){
+    alert('Subscription failed: '+e.message+'\n\nMake sure you opened the app from your Home Screen icon.');
+  }
+}
 </script>
 </body>
 </html>
