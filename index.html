@@ -214,6 +214,19 @@ tbody tr:hover .row-del{opacity:1}
 .sort-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--r6);padding:4px 9px;cursor:pointer;color:var(--t3);font-size:11px;font-family:var(--sans);font-weight:500;display:flex;align-items:center;gap:4px;transition:all .15s;min-height:26px;letter-spacing:.2px}
 .sort-btn:hover{border-color:var(--accent);color:var(--accent)}
 .sort-btn.active{background:var(--accent);color:#faf7f2;border-color:var(--accent)}
+/* Export / Import overlay */
+.xfer-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,21,16,.55);display:none;align-items:center;justify-content:center;z-index:30;padding:16px}
+.xfer-overlay.show{display:flex}
+.xfer-box{background:var(--card);border:1px solid var(--border2);border-radius:var(--r14);width:100%;max-width:480px;overflow:hidden}
+.xfer-hdr{padding:16px 18px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.xfer-title{font-family:var(--serif);font-size:15px;font-weight:400;font-style:italic;color:var(--accent)}
+.xfer-close{background:var(--surface);border:1px solid var(--border);color:var(--t2);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center}
+.xfer-body{padding:14px 18px 18px;display:flex;flex-direction:column;gap:12px}
+.xfer-label{font-size:11px;font-weight:500;color:var(--t2);margin-bottom:4px}
+.xfer-hint{font-size:11px;color:var(--t3)}
+.xfer-ta{width:100%;height:100px;font-size:10px;font-family:monospace;background:var(--surface);border:1px solid var(--border);border-radius:var(--r6);padding:8px;color:var(--t2);resize:none;outline:none}
+.xfer-ta:focus{border-color:var(--accent)}
+.xfer-actions{display:flex;gap:8px;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -229,6 +242,7 @@ tbody tr:hover .row-del{opacity:1}
       <button class="hdr-btn notif-off" id="notif-btn" onclick="toggleNotifPanel()" title="Notification settings">
         <i class="ti ti-bell" style="font-size:13px"></i> Alerts
       </button>
+      <button class="hdr-btn" onclick="openXfer()"><i class="ti ti-database-export" style="font-size:13px"></i> Export</button>
       <button class="hdr-btn" onclick="openModal()"><i class="ti ti-pencil" style="font-size:12px"></i> Edit</button>
     </div>
   </div>
@@ -347,6 +361,35 @@ tbody tr:hover .row-del{opacity:1}
   <div class="footer-row">
     <span id="status-msg">Click cell to edit · Ticker → TradingView · Hover row → delete</span>
     <span id="updated-at"></span>
+  </div>
+</div>
+
+<!-- Export / Import Modal -->
+<div class="xfer-overlay" id="xfer-overlay" onclick="if(event.target===this)closeXfer()">
+  <div class="xfer-box">
+    <div class="xfer-hdr">
+      <div class="xfer-title">Export / Import portfolio</div>
+      <button class="xfer-close" onclick="closeXfer()">×</button>
+    </div>
+    <div class="xfer-body">
+      <div>
+        <div class="xfer-label">📤 Export — copy this and paste it on another device</div>
+        <textarea class="xfer-ta" id="xfer-out" readonly onclick="this.select()"></textarea>
+        <div class="xfer-actions">
+          <button class="kindle-btn primary" onclick="copyExport()"><i class="ti ti-copy"></i> Copy to clipboard</button>
+        </div>
+      </div>
+      <hr style="border:none;border-top:1px solid var(--border)"/>
+      <div>
+        <div class="xfer-label">📥 Import — paste exported data here, then tap Load</div>
+        <div class="xfer-hint" style="margin-bottom:6px">This will replace all current data on this device.</div>
+        <textarea class="xfer-ta" id="xfer-in" placeholder="Paste exported JSON here…"></textarea>
+        <div class="xfer-actions">
+          <button class="kindle-btn primary" onclick="doImport()"><i class="ti ti-database-import"></i> Load data</button>
+          <button class="kindle-btn ghost" onclick="closeXfer()">Cancel</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1017,6 +1060,37 @@ function deleteRow(id){
 })();
 
 renderAll();
+
+// ── EXPORT / IMPORT ──
+function openXfer(){
+  document.getElementById('xfer-out').value=localStorage.getItem(SK)||'(no data saved yet)';
+  document.getElementById('xfer-in').value='';
+  document.getElementById('xfer-overlay').classList.add('show');
+}
+function closeXfer(){document.getElementById('xfer-overlay').classList.remove('show');}
+function copyExport(){
+  const ta=document.getElementById('xfer-out');
+  ta.select();
+  try{navigator.clipboard.writeText(ta.value).then(()=>{}).catch(()=>document.execCommand('copy'));}
+  catch{document.execCommand('copy');}
+  const btn=event.target.closest('button');
+  const orig=btn.innerHTML;
+  btn.innerHTML='<i class="ti ti-check"></i> Copied!';
+  setTimeout(()=>{btn.innerHTML=orig;},2000);
+}
+function doImport(){
+  const raw=document.getElementById('xfer-in').value.trim();
+  if(!raw){alert('Nothing to import — paste your exported JSON first.');return;}
+  try{
+    const parsed=JSON.parse(raw);
+    if(!Array.isArray(parsed)){alert('Invalid data format — must be a JSON array.');return;}
+    localStorage.setItem(SK,raw);
+    stocks=load();
+    closeXfer();
+    renderAll();
+    alert('✓ Portfolio loaded successfully!');
+  }catch(e){alert('Invalid JSON — make sure you copied the full exported text.');}
+}
 
 // ── PWA: SERVICE WORKER + PUSH NOTIFICATIONS ──
 // Replace the placeholder below with your real VAPID public key (see setup instructions)
