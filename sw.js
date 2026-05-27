@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'the-list-v10';
+const CACHE = 'the-list-v11';
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(['index.html', 'icon-192.png'])));
@@ -34,7 +34,7 @@ self.addEventListener('push', e => {
   const data = e.data ? e.data.json() : {};
   e.waitUntil(
     self.registration.showNotification(data.title || 'THE LIST 📈', {
-      body:     data.body  || 'Check your dividend alerts.',
+      body:     data.body  || '',
       icon:     'icon-192.png',
       badge:    'icon-192.png',
       vibrate:  [300, 100, 300],
