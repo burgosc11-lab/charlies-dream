@@ -21,9 +21,9 @@
 :root{
   --bg:#ffffff;--surface:#f2e8d8;--card:#ffffff;--row-alt:#fdf8f0;
   --border:#e0cdb0;--border2:#ccba9a;
-  --text:#1a0e06;--t2:#4a3218;--t3:#8a6848;--t4:#c0a078;
-  --accent:#3d1c08;--green:#1a5c3a;--amber:#8a5a00;--red:#8a1a1a;--blue:#1a3a7a;
-  --coffee:#5c3010;--coffee-light:#7a4a20;
+  --text:#111111;--t2:#3a3028;--t3:#7a6858;--t4:#b0a090;
+  --accent:#1a7a65;--green:#1a5c3a;--amber:#8a5a00;--red:#8a1a1a;--blue:#1a3a7a;
+  --coffee:#111111;--coffee-light:#1e1e1e;
   --sans:'DM Sans',sans-serif;--serif:'Lora',serif;
   --r6:6px;--r10:10px;--r14:14px;--r20:20px;
 }
@@ -254,7 +254,7 @@ tbody tr:hover .row-del{opacity:1}
 .tier-cell{cursor:pointer;user-select:none;text-align:center !important}
 .tier-cell:hover{background:rgba(44,32,16,.06) !important}
 /* Date chip in header */
-.date-chip{font-size:14px;color:var(--t2);white-space:nowrap;font-weight:600;letter-spacing:.3px}
+.date-chip{font-family:'JetBrains Mono','Courier New',monospace;font-size:38px;font-weight:700;color:#4ecfb0;line-height:1;letter-spacing:-2px}
 </style>
 </head>
 <body>
@@ -837,7 +837,6 @@ function renderCards(){
         </div>
         <div class="sc-date">
           <span class="sc-date-label">Ex-div</span>${dateHtml}
-          <a class="sc-tv-btn" href="${url}" target="_blank" onclick="event.stopPropagation()"><i class="ti ti-external-link"></i> TV</a>
         </div>
       </div>`;
     }).join('');
@@ -921,11 +920,7 @@ function renderAll(){rollShares();renderCards();renderTable();updateSummary();ch
 function updateSummary(){
   let annual=0,hasShares=false,withShares=0,nextDays=Infinity,nextTicker='';
   // Set today's date chip once
-  (function(){
-    const MONTHS=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-    const d=new Date();
-    document.getElementById('today-chip').textContent=MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
-  })();
+  document.getElementById('today-chip').textContent=new Date().getDate();
   stocks.forEach(s=>{
     if(s.dividendPerShare!=null&&s.shares!=null){annual+=s.dividendPerShare*freqMult(s)*s.shares;hasShares=true;withShares++;}
     if(s.exDividendDate&&classify(s.exDividendDate)==='upcoming'){const d=daysTo(s.exDividendDate);if(d!=null&&d<nextDays){nextDays=d;nextTicker=s.ticker;}}
