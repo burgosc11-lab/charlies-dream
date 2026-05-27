@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#2c2010"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@700&display=swap"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
@@ -31,8 +31,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .app{padding:16px 16px 48px;max-width:700px;margin:0 auto}
 /* Header */
 .hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:10px}
-.hdr-left h1{font-family:var(--serif);font-size:46px;font-weight:500;letter-spacing:-.5px;color:var(--accent);font-style:italic;line-height:1}
-.hdr-left .tagline{font-family:var(--serif);font-size:10px;color:var(--t3);font-style:italic;margin-top:3px;letter-spacing:.15px}
+.hdr-left h1{font-size:0;line-height:1;margin-bottom:4px;display:flex;align-items:center}
+.term-prompt{font-family:'JetBrains Mono','Courier New',monospace;font-size:40px;font-weight:700;color:#4ecfb0;font-style:normal;margin-right:8px}
+.term-name{font-family:'JetBrains Mono','Courier New',monospace;font-size:40px;font-weight:700;color:var(--text);font-style:normal;letter-spacing:-1px}
+.term-cursor{display:inline-block;width:26px;height:42px;background:#d4522a;border-radius:3px;margin-left:4px;vertical-align:top;flex-shrink:0}
+.hdr-left .tagline{font-family:var(--serif);font-size:10px;color:var(--t3);font-style:italic;margin-top:2px;letter-spacing:.15px}
 .hdr-left .sub{font-size:11px;color:var(--t3);margin-top:4px}
 .hdr-right{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 .tracked-label{font-size:11px;color:var(--t2);background:var(--surface);border:1px solid var(--border);border-radius:var(--r20);padding:4px 9px;white-space:nowrap}
@@ -259,7 +262,7 @@ tbody tr:hover .row-del{opacity:1}
 
   <div class="hdr">
     <div class="hdr-left">
-      <h1>THE LIST</h1>
+      <h1><span class="term-prompt">&gt;</span><span class="term-name">the_list</span><span class="term-cursor"></span></h1>
       <div class="tagline">Closer to Freedom than Yesterday</div>
       <div class="sub" id="pos-label">— positions</div>
     </div>
