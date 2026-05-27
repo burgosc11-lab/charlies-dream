@@ -102,7 +102,7 @@ if (!alerts.length) {
 }
 
 // ── SEND PUSH ──
-const title = 'BUY TODAY 🔥';
+const title = 'BUY TODAY 🚀';
 const body  = 'SSIIIUUUU';
 
 console.log('Sending push notification:');
