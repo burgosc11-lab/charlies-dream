@@ -102,12 +102,13 @@ if (!alerts.length) {
 }
 
 // ── SEND PUSH ──
-const title = 'THE LIST - ALERT - BUY TODAY 🔥';
+const title = 'THE LIST - BUY TODAY 🔥';
+const body  = 'SSIIIUUUU';
 
 console.log('Sending push notification:');
 console.log('  Title:', title);
 
-webpush.sendNotification(subscription, JSON.stringify({ title }))
+webpush.sendNotification(subscription, JSON.stringify({ title, body }))
   .then(() => {
     console.log('✓ Push sent to', alerts.map(a => a.ticker).join(', '));
   })
