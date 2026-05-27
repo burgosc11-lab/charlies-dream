@@ -30,7 +30,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .app{padding:16px 16px 48px;max-width:700px;margin:0 auto}
 /* Header */
 .hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:10px}
-.hdr-left h1{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-.3px;color:var(--accent);font-style:italic;line-height:1.2}
+.hdr-left h1{font-family:var(--serif);font-size:34px;font-weight:500;letter-spacing:-.5px;color:var(--accent);font-style:italic;line-height:1.1}
 .hdr-left .sub{font-size:11px;color:var(--t3);margin-top:3px}
 .hdr-right{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 .tracked-label{font-size:11px;color:var(--t2);background:var(--surface);border:1px solid var(--border);border-radius:var(--r20);padding:4px 9px;white-space:nowrap}
@@ -40,17 +40,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .hdr-btn.notif-off{background:var(--surface);color:var(--t2);border:1px solid var(--border)}
 /* Hero */
 .hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r14);padding:18px 20px;margin-bottom:14px}
-.hero-label{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;font-weight:500}
-.hero-amount{font-family:var(--serif);font-size:54px;font-weight:400;color:var(--accent);letter-spacing:-3px;line-height:1;display:flex;align-items:baseline;gap:4px}
-.hero-currency{font-size:28px;color:var(--t2)}
-.hero-sub{font-size:12px;color:var(--t3);margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 14px}
-.hero-sub strong{color:var(--accent);font-weight:500}
-.next-val{color:var(--amber);font-weight:500}
-.hero-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap;gap:8px}
+.hero-split{display:flex;align-items:stretch;gap:0}
+.hero-left{flex:1;display:flex;flex-direction:column;justify-content:center;padding-right:20px}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-left:20px;border-left:1px solid var(--border)}
+.hero-label{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;font-weight:500}
+.hero-amount{font-family:var(--serif);font-size:68px;font-weight:400;color:var(--accent);letter-spacing:-4px;line-height:1;display:flex;align-items:baseline;gap:4px}
+.hero-currency{font-size:32px;color:var(--t2)}
+.hero-annual-amt{font-family:var(--serif);font-size:34px;font-weight:400;color:var(--text);letter-spacing:-1.5px;line-height:1;display:flex;align-items:baseline;gap:3px}
+.hero-annual-sym{font-size:18px;color:var(--t2)}
+.hero-footer{display:flex;align-items:center;justify-content:flex-start;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
 .last-updated{font-size:11px;color:var(--t4);font-style:italic}
-.refresh-btn{font-family:var(--sans);font-size:12px;font-weight:500;padding:8px 16px;border-radius:var(--r20);cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:var(--t2);display:flex;align-items:center;gap:6px;min-height:36px;transition:all .15s}
-.refresh-btn:hover{background:var(--border);color:var(--accent);border-color:var(--accent)}
-.refresh-btn.spinning i{animation:spin .7s linear infinite}
+#refresh-btn.spinning i{animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 /* Progress */
 .progress-wrap{height:2px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden;display:none}
@@ -227,6 +227,16 @@ tbody tr:hover .row-del{opacity:1}
 .xfer-ta{width:100%;height:100px;font-size:10px;font-family:monospace;background:var(--surface);border:1px solid var(--border);border-radius:var(--r6);padding:8px;color:var(--t2);resize:none;outline:none}
 .xfer-ta:focus{border-color:var(--accent)}
 .xfer-actions{display:flex;gap:8px;flex-wrap:wrap}
+/* Tier badges */
+.tier-s{background:#fff3cd;color:#7a5500;border:1px solid #e8c84a;font-weight:700;letter-spacing:.5px}
+.tier-a{background:#e8f5ee;color:var(--green);border:1px solid #a8d8bb;font-weight:700;letter-spacing:.5px}
+.tier-b{background:#e8f0fd;color:var(--blue);border:1px solid #9ab0e8;font-weight:700;letter-spacing:.5px}
+.tier-c{background:#fdf3e0;color:#8a4f00;border:1px solid #d4a060;font-weight:700;letter-spacing:.5px}
+.tier-d{background:#fde8e8;color:var(--red);border:1px solid #d8a8a8;font-weight:700;letter-spacing:.5px}
+.tier-cell{cursor:pointer;user-select:none;text-align:center !important}
+.tier-cell:hover{background:rgba(44,32,16,.06) !important}
+/* Date chip in header */
+.date-chip{font-size:11px;color:var(--t2);background:var(--surface);border:1px solid var(--border);border-radius:var(--r20);padding:4px 10px;white-space:nowrap;font-weight:500;letter-spacing:.3px}
 </style>
 </head>
 <body>
@@ -238,9 +248,12 @@ tbody tr:hover .row-del{opacity:1}
       <div class="sub" id="pos-label">— positions</div>
     </div>
     <div class="hdr-right">
-      <span class="tracked-label" id="tracked-pill">Tracked: —</span>
+      <span class="date-chip" id="today-chip"></span>
       <button class="hdr-btn notif-off" id="notif-btn" onclick="toggleNotifPanel()" title="Notification settings">
         <i class="ti ti-bell" style="font-size:13px"></i> Alerts
+      </button>
+      <button class="hdr-btn notif-off" id="refresh-btn" onclick="doRefresh()" title="Refresh prices">
+        <i class="ti ti-refresh" style="font-size:13px"></i> Refresh
       </button>
       <button class="hdr-btn" onclick="openXfer()"><i class="ti ti-database-export" style="font-size:13px"></i> Export</button>
       <button class="hdr-btn" onclick="openModal()"><i class="ti ti-pencil" style="font-size:12px"></i> Edit</button>
@@ -292,17 +305,18 @@ tbody tr:hover .row-del{opacity:1}
   </div>
 
   <div class="hero">
-    <div class="hero-label">Monthly income</div>
-    <div class="hero-amount"><span class="hero-currency">$</span><span id="hero-monthly">0.00</span></div>
-    <div class="hero-sub">
-      <span>Annual: <strong id="hero-annual">—</strong></span>
-      <span>Next ex-div: <span class="next-val" id="hero-next">—</span></span>
+    <div class="hero-split">
+      <div class="hero-left">
+        <div class="hero-label">Annual income</div>
+        <div class="hero-annual-amt"><span class="hero-annual-sym">$</span><span id="hero-annual">—</span></div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-label">Monthly income</div>
+        <div class="hero-amount"><span class="hero-currency">$</span><span id="hero-monthly">0.00</span></div>
+      </div>
     </div>
     <div class="hero-footer">
       <span class="last-updated" id="last-updated">Not yet refreshed</span>
-      <button class="refresh-btn" id="refresh-btn" onclick="doRefresh()">
-        <i class="ti ti-refresh" style="font-size:13px"></i> Refresh
-      </button>
     </div>
   </div>
 
@@ -346,6 +360,7 @@ tbody tr:hover .row-del{opacity:1}
           <th style="width:68px"><span class="th-text">Shares</span><div class="resize-handle"></div></th>
           <th style="width:98px"><span class="th-text">SnowBall</span><div class="resize-handle"></div></th>
           <th style="width:78px"><span class="th-text">Status</span><div class="resize-handle"></div></th>
+          <th style="width:56px"><span class="th-text">Tier</span><div class="resize-handle"></div></th>
           <th style="width:28px;padding:0"><span class="th-text"></span></th>
         </tr></thead>
         <tbody id="tbody"></tbody>
@@ -823,15 +838,16 @@ function renderTable(){
         <td class="num editable" onclick="editCell(this,${s.id},'shares')" title="Click to edit">${s.shares!=null?s.shares.toLocaleString():'<span style="color:var(--t4)">—</span>'}</td>
         <td>${mo!=null?`<span class="snow-val">${$c(mo)}</span>`:'<span style="color:var(--t4)">—</span>'}</td>
         <td><span class="badge ${bi.cls}">${bi.label}</span></td>
+        <td class="tier-cell" onclick="cycleTier(${s.id})" title="Click to change tier">${s.tier?`<span class="badge tier-${s.tier.toLowerCase()}">${s.tier}</span>`:'<span style="color:var(--t4);font-size:11px">—</span>'}</td>
         <td class="del-td"><button class="row-del" onclick="deleteRow(${s.id})" title="Remove ${s.ticker}"><i class="ti ti-x"></i></button></td>
       </tr>`;
     }).join('');
   }
   let html='',idx=0;
   if(up.length){html+=rows(up,idx);idx+=up.length;}
-  if(pa.length){html+=`<tr class="divider-row"><td colspan="9">Passed — awaiting next announcement</td></tr>`;html+=rows(pa,idx,'passed');idx+=pa.length;}
-  if(na.length){html+=`<tr class="divider-row"><td colspan="9">Date not yet announced</td></tr>`;html+=rows(na,idx,'na-row');}
-  if(!html)html=`<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--t3);font-size:13px">No positions.</td></tr>`;
+  if(pa.length){html+=`<tr class="divider-row"><td colspan="10">Passed — awaiting next announcement</td></tr>`;html+=rows(pa,idx,'passed');idx+=pa.length;}
+  if(na.length){html+=`<tr class="divider-row"><td colspan="10">Date not yet announced</td></tr>`;html+=rows(na,idx,'na-row');}
+  if(!html)html=`<tr><td colspan="10" style="text-align:center;padding:2rem;color:var(--t3);font-size:13px">No positions.</td></tr>`;
   tb.innerHTML=html;
 }
 
@@ -868,6 +884,12 @@ function renderAll(){rollShares();renderCards();renderTable();updateSummary();ch
 
 function updateSummary(){
   let annual=0,hasShares=false,withShares=0,nextDays=Infinity,nextTicker='';
+  // Set today's date chip once
+  (function(){
+    const MONTHS=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    const d=new Date();
+    document.getElementById('today-chip').textContent=MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+  })();
   stocks.forEach(s=>{
     if(s.dividendPerShare!=null&&s.shares!=null){annual+=s.dividendPerShare*freqMult(s)*s.shares;hasShares=true;withShares++;}
     if(s.exDividendDate&&classify(s.exDividendDate)==='upcoming'){const d=daysTo(s.exDividendDate);if(d!=null&&d<nextDays){nextDays=d;nextTicker=s.ticker;}}
@@ -875,10 +897,8 @@ function updateSummary(){
   const mo=annual/12;
   const unique=new Set(stocks.map(s=>s.ticker)).size;
   document.getElementById('hero-monthly').textContent=hasShares?mo.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'0.00';
-  document.getElementById('hero-annual').textContent=hasShares?$c(annual):'—';
-  document.getElementById('hero-next').textContent=nextTicker?nextTicker+(nextDays===0?' · Today':nextDays===1?' · Tomorrow':` · ${nextDays}d`):'—';
+  document.getElementById('hero-annual').textContent=hasShares?annual.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
   document.getElementById('pos-label').textContent=stocks.length+' entries · '+unique+' tickers';
-  document.getElementById('tracked-pill').textContent=`Tracked: ${withShares}`;
   if(lastRefreshed)document.getElementById('last-updated').textContent='Updated: '+lastRefreshed;
 }
 
@@ -1036,6 +1056,14 @@ function editCell(td,id,field){
 
 function deleteRow(id){
   stocks=stocks.filter(s=>s.id!==id);save(stocks);renderAll();
+}
+
+const TIERS=['S','A','B','C','D'];
+function cycleTier(id){
+  const s=stocks.find(x=>x.id===id);if(!s)return;
+  const idx=TIERS.indexOf(s.tier||'');
+  s.tier=idx===-1?TIERS[0]:idx===TIERS.length-1?null:TIERS[idx+1];
+  save(stocks);renderTable();
 }
 
 /* Column resize */
