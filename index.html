@@ -47,12 +47,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r14);padding:20px 22px;margin-bottom:14px}
 .hero-split{display:flex;align-items:stretch;gap:0}
 .hero-left{flex:1;display:flex;flex-direction:column;justify-content:center;padding-right:22px}
+.hero-left .hero-label{color:#111111}
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-left:22px;border-left:2px solid var(--border)}
 .hero-label{font-size:10px;color:#d4522a;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;font-weight:600}
 .hero-amount{font-family:var(--serif);font-size:68px;font-weight:400;color:#d4522a;letter-spacing:-4px;line-height:1;display:flex;align-items:baseline;gap:4px}
 .hero-currency{font-size:32px;color:#d4522a}
-.hero-annual-amt{font-family:var(--serif);font-size:44px;font-weight:400;color:#d4522a;letter-spacing:-2px;line-height:1;display:flex;align-items:baseline;gap:3px}
-.hero-annual-sym{font-size:22px;color:#d4522a}
+.hero-annual-amt{font-family:var(--serif);font-size:44px;font-weight:400;color:#111111;letter-spacing:-2px;line-height:1;display:flex;align-items:baseline;gap:3px}
+.hero-annual-sym{font-size:22px;color:#111111}
 /* Overflow more-menu */
 .more-menu-wrap{position:relative}
 .more-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border2);border-radius:var(--r10);padding:4px;min-width:148px;display:none;flex-direction:column;gap:1px;z-index:25;box-shadow:0 6px 24px rgba(26,21,16,.14)}
@@ -105,10 +106,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .stock-card.na-row{opacity:.55}
 .sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .sc-ticker-wrap{display:flex;align-items:center;gap:6px}
-.sc-ticker{font-weight:600;font-size:16px;letter-spacing:-.2px;color:var(--accent)}
+.sc-ticker{font-weight:600;font-size:18px;letter-spacing:-.2px;color:var(--accent)}
 .sc-dup{font-size:9px;font-weight:600;color:var(--t3);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 4px}
 .sc-right{display:flex;align-items:center;gap:8px}
-.sc-price{font-size:14px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
+.sc-price{font-size:16px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
 .badge{font-size:10px;font-weight:500;padding:3px 8px;border-radius:5px}
 .b-soon{background:#fdf3d0;color:var(--amber);border:1px solid #e8c84a}
 .b-ok{background:#e8f5ee;color:var(--green);border:1px solid #a8d8bb}
@@ -123,7 +124,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .muted{color:var(--t4);font-style:italic;font-size:11px}
 .sc-date{display:flex;align-items:center;gap:6px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
 .sc-date-label{font-size:10px;color:var(--t3);font-weight:500;text-transform:uppercase;letter-spacing:.3px;flex-shrink:0}
-.sc-date-val{font-size:12px;color:var(--t2);font-variant-numeric:tabular-nums}
+.sc-date-val{font-size:14px;color:var(--t2);font-variant-numeric:tabular-nums}
 .sc-date-na{font-size:11px;color:var(--t4);font-style:italic;display:flex;align-items:center;gap:4px}
 .sc-tv-btn{margin-left:auto;font-size:11px;color:var(--t3);text-decoration:none;display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;background:var(--surface);border:1px solid var(--border);flex-shrink:0}
 /* Desktop table */
@@ -146,14 +147,14 @@ tbody tr.passed{opacity:.60}
 tbody tr.na-row{opacity:.55}
 tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ticker-cell{display:flex;align-items:center;gap:2px}
-.ticker-link{font-weight:700;font-size:14px;letter-spacing:-.3px;color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--t4)}
+.ticker-link{font-weight:700;font-size:15px;letter-spacing:-.3px;color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--t4)}
 .ticker-link:hover{color:var(--accent)}
 .tv-ext{font-size:10px;color:var(--t3);opacity:0;margin-left:3px;text-decoration:none}
 .ticker-cell:hover .tv-ext{opacity:1}
 .dup-badge{font-size:9px;font-weight:600;color:var(--t3);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 4px;margin-left:4px}
 .num{font-variant-numeric:tabular-nums;font-size:14px}
 .snow-val{font-size:14px;font-weight:600;color:var(--green)}
-.col-muted{color:var(--t3) !important;font-size:13px !important}
+.col-muted{color:var(--t3) !important;font-size:14px !important}
 .date-na-wrap{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--t4);font-style:italic;position:relative;cursor:default}
 .date-na-wrap:hover .date-na-tip{display:block}
 .date-na-tip{display:none;position:absolute;left:0;bottom:calc(100%+5px);background:var(--accent);color:#faf7f2;font-size:10px;padding:4px 8px;border-radius:5px;white-space:nowrap;z-index:10;pointer-events:none;font-style:normal}
@@ -387,7 +388,7 @@ tbody tr:hover .row-del{opacity:1}
           <th style="width:160px"><span class="th-text">Ex-div date</span><div class="resize-handle"></div></th>
           <th style="width:68px"><span class="th-text">Shares</span><div class="resize-handle"></div></th>
           <th style="width:98px"><span class="th-text">$/mo</span><div class="resize-handle"></div></th>
-          <th style="width:56px"><span class="th-text">Tier</span><div class="resize-handle"></div></th>
+          <th style="width:56px;cursor:pointer;user-select:none" onclick="sortByTier()" title="Sort by tier priority"><span class="th-text">Tier ↕</span><div class="resize-handle"></div></th>
           <th style="width:28px;padding:0"><span class="th-text"></span></th>
         </tr></thead>
         <tbody id="tbody"></tbody>
@@ -662,7 +663,9 @@ const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
 function fmtDate(ds){if(!ds)return null;const[,m,d]=ds.split('-');return MONTHS[parseInt(m)-1]+' '+parseInt(d);}
 
 // ── SEARCH & SORT STATE ──
-let sortMode='date'; // 'date' | 'alpha'
+let sortMode='date'; // 'date' | 'alpha' | 'tier'
+const TIER_RANK={'S':0,'A':1,'B':2,'C':3,'D':4};
+function tierRank(t){return t&&TIER_RANK[t]!=null?TIER_RANK[t]:5;}
 
 function getSearchQuery(){const el=document.getElementById('search-inp');return el?el.value.trim().toUpperCase():'';}
 function getSearchFiltered(){const q=getSearchQuery();return q?stocks.filter(s=>s.ticker.includes(q)):stocks;}
@@ -678,8 +681,16 @@ function clearSearch(){
   renderAll();
 }
 function toggleSort(){
-  sortMode=sortMode==='date'?'alpha':'date';
-  document.getElementById('sort-alpha-btn').classList.toggle('active',sortMode==='alpha');
+  sortMode=sortMode==='date'?'alpha':sortMode==='alpha'?'tier':'date';
+  const btn=document.getElementById('sort-alpha-btn');
+  btn.classList.toggle('active',sortMode!=='date');
+  btn.textContent=sortMode==='tier'?'Tier':'A–Z';
+  renderAll();
+}
+function sortByTier(){
+  sortMode='tier';
+  const btn=document.getElementById('sort-alpha-btn');
+  btn.classList.add('active');btn.textContent='Tier';
   renderAll();
 }
 
@@ -695,6 +706,9 @@ function getSorted(filtered=true){
       return new Date(a.exDividendDate)-new Date(b.exDividendDate);
     };
     up.sort(byAlphaDate);pa.sort(byAlphaDate);na.sort(byAlphaDate);
+  } else if(sortMode==='tier'){
+    const byTier=(a,b)=>{const td=tierRank(a.tier)-tierRank(b.tier);return td!==0?td:a.ticker.localeCompare(b.ticker);};
+    up.sort(byTier);pa.sort(byTier);na.sort(byTier);
   } else {
     up.sort((a,b)=>new Date(a.exDividendDate)-new Date(b.exDividendDate));
     pa.sort((a,b)=>new Date(b.exDividendDate)-new Date(a.exDividendDate));
@@ -832,8 +846,9 @@ function renderCards(){
         <div class="sc-grid">
           <div class="sc-cell"><span class="sc-cell-label">Yield</span><span class="sc-cell-val">${y?y.toFixed(2)+'%':'<span class="muted">—</span>'}</span></div>
           <div class="sc-cell"><span class="sc-cell-label">Div/share</span><span class="sc-cell-val">${s.dividendPerShare?$div(s.dividendPerShare):'<span class="muted">—</span>'}</span></div>
-          <div class="sc-cell"><span class="sc-cell-label">SnowBall</span><span class="sc-cell-val ${mo!=null?'green':''}">${mo!=null?$c(mo):'<span class="muted">—</span>'}</span></div>
+          <div class="sc-cell"><span class="sc-cell-label">$/mo</span><span class="sc-cell-val ${mo!=null?'green':''}">${mo!=null?$c(mo):'<span class="muted">—</span>'}</span></div>
           <div class="sc-cell"><span class="sc-cell-label">Shares</span><span class="sc-cell-val">${s.shares!=null?s.shares.toLocaleString():'<span class="muted">—</span>'}</span></div>
+          <div class="sc-cell" onclick="cycleTier(${s.id});event.stopPropagation()" style="cursor:pointer" title="Tap to change tier"><span class="sc-cell-label">Tier</span><span class="sc-cell-val">${s.tier?`<span class="badge tier-${s.tier.toLowerCase()}">${s.tier}</span>`:'<span class="muted">—</span>'}</span></div>
         </div>
         <div class="sc-date">
           <span class="sc-date-label">Ex-div</span>${dateHtml}
@@ -862,7 +877,7 @@ function renderTable(){
       const dupLabel=cnt>1?`<span class="dup-badge">${dupIndex(s)}/${cnt}</span>`:'';
       const url=tvUrl(s.ticker);
       const dateCell=s.exDividendDate
-        ?`<div style="display:flex;align-items:center;gap:7px"><span class="num" style="font-size:13px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span><span class="badge ${bi.cls}">${bi.label}</span></div>`
+        ?`<div style="display:flex;align-items:center;gap:7px"><span class="num" style="font-size:14px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span><span class="badge ${bi.cls}">${bi.label}</span></div>`
         :`<span class="badge b-wait">Pending</span>`;
       const tierBorder=tierBorderColor(s.tier);
       return`<tr class="${stripe} ${extraCls}" style="border-left:3px solid ${tierBorder}">
@@ -1104,7 +1119,7 @@ function cycleTier(id){
   const s=stocks.find(x=>x.id===id);if(!s)return;
   const idx=TIERS.indexOf(s.tier||'');
   s.tier=idx===-1?TIERS[0]:idx===TIERS.length-1?null:TIERS[idx+1];
-  save(stocks);renderTable();
+  save(stocks);renderAll();
 }
 
 // ── OVERFLOW MENU ──
