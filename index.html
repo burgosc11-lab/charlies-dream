@@ -86,7 +86,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .kindle-btn.ghost{background:var(--card);color:var(--t2)}
 .kindle-btn.ghost:hover{background:var(--surface)}
 /* Section label */
-.section-lbl{font-size:10px;font-weight:500;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.section-lbl{font-size:13px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.ticker-compact{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:11px;padding:3px 7px;border-radius:var(--r6);outline:none;text-transform:uppercase;letter-spacing:.5px;width:62px;min-height:26px;transition:border-color .15s}
+.ticker-compact::placeholder{color:var(--t4);text-transform:none;letter-spacing:0}
+.ticker-compact:focus{border-color:var(--accent)}
 /* Mobile card list */
 .card-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--r14);overflow:hidden}
 .div-label{padding:6px 14px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,0.75);background:var(--coffee-light);border-bottom:1px solid var(--coffee)}
@@ -98,7 +101,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .stock-card.na-row{opacity:.55}
 .sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .sc-ticker-wrap{display:flex;align-items:center;gap:6px}
-.sc-ticker{font-weight:600;font-size:15px;letter-spacing:-.2px;color:var(--accent)}
+.sc-ticker{font-weight:600;font-size:16px;letter-spacing:-.2px;color:var(--accent)}
 .sc-dup{font-size:9px;font-weight:600;color:var(--t3);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 4px}
 .sc-right{display:flex;align-items:center;gap:8px}
 .sc-price{font-size:14px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
@@ -110,8 +113,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .b-wait{background:#f5ede8;color:#7a4a30;border:1px solid #c8a888;font-style:italic}
 .sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .sc-cell{display:flex;flex-direction:column;gap:2px}
-.sc-cell-label{font-size:9px;color:var(--t4);text-transform:uppercase;letter-spacing:.4px;font-weight:500}
-.sc-cell-val{font-size:12px;color:var(--t2);font-variant-numeric:tabular-nums}
+.sc-cell-label{font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.4px;font-weight:500}
+.sc-cell-val{font-size:13px;color:var(--t2);font-variant-numeric:tabular-nums}
 .sc-cell-val.green{color:var(--green);font-weight:500}
 .muted{color:var(--t4);font-style:italic;font-size:11px}
 .sc-date{display:flex;align-items:center;gap:6px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
@@ -122,7 +125,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 /* Desktop table */
 .table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r14);overflow:hidden;display:none}
 .tbl-scroll{overflow-x:auto}
-table{border-collapse:collapse;font-size:13px;table-layout:fixed;min-width:100%}
+table{border-collapse:collapse;font-size:14px;table-layout:fixed;min-width:100%}
 thead th{padding:9px 0 9px 12px;text-align:left;font-size:10px;font-weight:500;color:rgba(255,255,255,0.80);text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--coffee);background:var(--coffee);white-space:nowrap;position:relative;overflow:visible;user-select:none}
 th .th-text{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding-right:16px}
 tr.divider-row td{padding:5px 12px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,0.70);background:var(--coffee-light);border-bottom:1px solid var(--coffee);border-top:1px solid var(--coffee)}
@@ -144,9 +147,9 @@ tbody td{padding:10px 12px;vertical-align:middle;overflow:hidden;text-overflow:e
 .tv-ext{font-size:10px;color:var(--t3);opacity:0;margin-left:3px;text-decoration:none}
 .ticker-cell:hover .tv-ext{opacity:1}
 .dup-badge{font-size:9px;font-weight:600;color:var(--t3);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 4px;margin-left:4px}
-.num{font-variant-numeric:tabular-nums;font-size:13px}
-.snow-val{font-size:13px;font-weight:600;color:var(--green)}
-.col-muted{color:var(--t3) !important;font-size:12px !important}
+.num{font-variant-numeric:tabular-nums;font-size:14px}
+.snow-val{font-size:14px;font-weight:600;color:var(--green)}
+.col-muted{color:var(--t3) !important;font-size:13px !important}
 .date-na-wrap{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--t4);font-style:italic;position:relative;cursor:default}
 .date-na-wrap:hover .date-na-tip{display:block}
 .date-na-tip{display:none;position:absolute;left:0;bottom:calc(100%+5px);background:var(--accent);color:#faf7f2;font-size:10px;padding:4px 8px;border-radius:5px;white-space:nowrap;z-index:10;pointer-events:none;font-style:normal}
@@ -247,7 +250,7 @@ tbody tr:hover .row-del{opacity:1}
 .tier-cell{cursor:pointer;user-select:none;text-align:center !important}
 .tier-cell:hover{background:rgba(44,32,16,.06) !important}
 /* Date chip in header */
-.date-chip{font-size:11px;color:var(--t2);background:var(--surface);border:1px solid var(--border);border-radius:var(--r20);padding:4px 10px;white-space:nowrap;font-weight:500;letter-spacing:.3px}
+.date-chip{font-size:12px;color:var(--t3);white-space:nowrap;font-weight:500;letter-spacing:.3px}
 </style>
 </head>
 <body>
@@ -260,8 +263,8 @@ tbody tr:hover .row-del{opacity:1}
     </div>
     <div class="hdr-right">
       <span class="date-chip" id="today-chip"></span>
-      <button class="hdr-btn notif-off" id="refresh-btn" onclick="doRefresh()" title="Refresh prices">
-        <i class="ti ti-refresh" style="font-size:13px"></i> Refresh
+      <button class="hdr-btn notif-off" id="refresh-btn" onclick="doRefresh()" title="Refresh prices" style="padding:8px 11px">
+        <i class="ti ti-refresh" style="font-size:16px"></i>
       </button>
       <div class="more-menu-wrap">
         <button class="hdr-btn notif-off" onclick="toggleMoreMenu()" title="More options" style="padding:8px 11px">
@@ -348,18 +351,17 @@ tbody tr:hover .row-del{opacity:1}
     <button onclick="document.getElementById('notif-strip').classList.remove('show')">×</button>
   </div>
 
-  <div class="add-row">
-    <input class="kindle-input" id="inp-ticker" type="text" placeholder="Ticker" maxlength="8" autocapitalize="characters" onkeydown="if(event.key==='Enter')addStock()"/>
-    <button class="kindle-btn primary" id="add-btn" onclick="addStock()"><i class="ti ti-plus"></i> Add</button>
-  </div>
-
   <div class="section-lbl-row">
     <div class="section-lbl">Watchlist</div>
     <div style="display:flex;align-items:center;gap:5px">
+      <input class="ticker-compact" id="inp-ticker" type="text" placeholder="Ticker" maxlength="8" autocapitalize="characters" onkeydown="if(event.key==='Enter')addStock()"/>
+      <button class="sort-btn icon-btn" id="add-btn" onclick="addStock()" title="Add ticker">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
       <button class="sort-btn icon-btn" id="search-toggle-btn" onclick="toggleSearch()" title="Search tickers">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </button>
-      <button class="sort-btn" id="sort-alpha-btn" onclick="toggleSort()" title="Sort alphabetically by ticker" style="font-size:10px;padding:3px 7px;min-height:22px">A–Z</button>
+      <button class="sort-btn" id="sort-alpha-btn" onclick="toggleSort()" title="Sort alphabetically by ticker" style="font-size:10px;padding:3px 7px;min-height:26px">A–Z</button>
     </div>
   </div>
   <div class="search-row" id="search-row">
@@ -856,7 +858,7 @@ function renderTable(){
       const dupLabel=cnt>1?`<span class="dup-badge">${dupIndex(s)}/${cnt}</span>`:'';
       const url=tvUrl(s.ticker);
       const dateCell=s.exDividendDate
-        ?`<div style="display:flex;align-items:center;gap:7px"><span class="badge ${bi.cls}">${bi.label}</span><span class="num" style="font-size:12px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span></div>`
+        ?`<div style="display:flex;align-items:center;gap:7px"><span class="num" style="font-size:13px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span><span class="badge ${bi.cls}">${bi.label}</span></div>`
         :`<span class="badge b-wait">Pending</span>`;
       const tierBorder=tierBorderColor(s.tier);
       return`<tr class="${stripe} ${extraCls}" style="border-left:3px solid ${tierBorder}">
