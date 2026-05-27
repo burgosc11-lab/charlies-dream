@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'the-list-v1';
+const CACHE = 'the-list-v2';
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(['index.html', 'icon-192.png'])));

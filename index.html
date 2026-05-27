@@ -48,7 +48,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .hero-currency{font-size:32px;color:var(--t2)}
 .hero-annual-amt{font-family:var(--serif);font-size:34px;font-weight:400;color:var(--text);letter-spacing:-1.5px;line-height:1;display:flex;align-items:baseline;gap:3px}
 .hero-annual-sym{font-size:18px;color:var(--t2)}
-.hero-footer{display:flex;align-items:center;justify-content:flex-start;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
 .last-updated{font-size:11px;color:var(--t4);font-style:italic}
 #refresh-btn.spinning i{animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -315,9 +314,6 @@ tbody tr:hover .row-del{opacity:1}
         <div class="hero-amount"><span class="hero-currency">$</span><span id="hero-monthly">0.00</span></div>
       </div>
     </div>
-    <div class="hero-footer">
-      <span class="last-updated" id="last-updated">Not yet refreshed</span>
-    </div>
   </div>
 
   <div class="progress-wrap" id="prog-wrap"><div class="progress-fill" id="prog-fill"></div></div>
@@ -356,10 +352,9 @@ tbody tr:hover .row-del{opacity:1}
           <th style="width:86px"><span class="th-text">Price</span><div class="resize-handle"></div></th>
           <th style="width:68px"><span class="th-text">Yield</span><div class="resize-handle"></div></th>
           <th style="width:92px"><span class="th-text">Div / share</span><div class="resize-handle"></div></th>
-          <th style="width:130px"><span class="th-text">Ex-div date</span><div class="resize-handle"></div></th>
+          <th style="width:160px"><span class="th-text">Ex-div date</span><div class="resize-handle"></div></th>
           <th style="width:68px"><span class="th-text">Shares</span><div class="resize-handle"></div></th>
           <th style="width:98px"><span class="th-text">SnowBall</span><div class="resize-handle"></div></th>
-          <th style="width:78px"><span class="th-text">Status</span><div class="resize-handle"></div></th>
           <th style="width:56px"><span class="th-text">Tier</span><div class="resize-handle"></div></th>
           <th style="width:28px;padding:0"><span class="th-text"></span></th>
         </tr></thead>
@@ -370,7 +365,7 @@ tbody tr:hover .row-del{opacity:1}
 
   <div class="footer-row">
     <span id="status-msg">Click cell to edit · Ticker → TradingView · Hover row → delete</span>
-    <span id="updated-at"></span>
+    <span id="last-updated" class="last-updated">Not yet refreshed</span>
   </div>
 </div>
 
@@ -828,16 +823,17 @@ function renderTable(){
       const cnt=countTicker(s.ticker);
       const dupLabel=cnt>1?`<span class="dup-badge">${dupIndex(s)}/${cnt}</span>`:'';
       const url=tvUrl(s.ticker);
-      const dateCell=s.exDividendDate?`<span class="num" style="font-size:12px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span>`:`<div class="date-na-wrap"><i class="ti ti-clock-question"></i> <span style="font-style:italic;font-size:11px;color:var(--t4)">Not announced</span><span class="date-na-tip">No date for ${s.ticker}</span></div>`;
+      const dateCell=s.exDividendDate
+        ?`<div style="display:flex;align-items:center;gap:7px"><span class="badge ${bi.cls}">${bi.label}</span><span class="num" style="font-size:12px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span></div>`
+        :`<span class="badge b-wait">Pending</span>`;
       return`<tr class="${stripe} ${extraCls}">
         <td><div class="ticker-cell"><a class="ticker-link" href="${url}" target="_blank" title="Open ${s.ticker} on TradingView">${s.ticker}</a>${dupLabel}</div></td>
         <td class="num">${s.price?$c(s.price):'<span style="color:var(--t4)">—</span>'}</td>
         <td class="num">${y?y.toFixed(2)+'%':'<span style="color:var(--t4)">—</span>'}</td>
         <td class="num editable" onclick="editCell(this,${s.id},'dividendPerShare')" title="Click to edit">${s.dividendPerShare?$div(s.dividendPerShare):'<span style="color:var(--t4)">—</span>'}</td>
-        <td class="editable" onclick="editCell(this,${s.id},'exDividendDate')" title="Click to edit">${dateCell}</td>
+        <td class="editable" onclick="editCell(this,${s.id},'exDividendDate')" title="Click to edit date">${dateCell}</td>
         <td class="num editable" onclick="editCell(this,${s.id},'shares')" title="Click to edit">${s.shares!=null?s.shares.toLocaleString():'<span style="color:var(--t4)">—</span>'}</td>
         <td>${mo!=null?`<span class="snow-val">${$c(mo)}</span>`:'<span style="color:var(--t4)">—</span>'}</td>
-        <td><span class="badge ${bi.cls}">${bi.label}</span></td>
         <td class="tier-cell" onclick="cycleTier(${s.id})" title="Click to change tier">${s.tier?`<span class="badge tier-${s.tier.toLowerCase()}">${s.tier}</span>`:'<span style="color:var(--t4);font-size:11px">—</span>'}</td>
         <td class="del-td"><button class="row-del" onclick="deleteRow(${s.id})" title="Remove ${s.ticker}"><i class="ti ti-x"></i></button></td>
       </tr>`;
@@ -845,9 +841,9 @@ function renderTable(){
   }
   let html='',idx=0;
   if(up.length){html+=rows(up,idx);idx+=up.length;}
-  if(pa.length){html+=`<tr class="divider-row"><td colspan="10">Passed — awaiting next announcement</td></tr>`;html+=rows(pa,idx,'passed');idx+=pa.length;}
-  if(na.length){html+=`<tr class="divider-row"><td colspan="10">Date not yet announced</td></tr>`;html+=rows(na,idx,'na-row');}
-  if(!html)html=`<tr><td colspan="10" style="text-align:center;padding:2rem;color:var(--t3);font-size:13px">No positions.</td></tr>`;
+  if(pa.length){html+=`<tr class="divider-row"><td colspan="9">Passed — awaiting next announcement</td></tr>`;html+=rows(pa,idx,'passed');idx+=pa.length;}
+  if(na.length){html+=`<tr class="divider-row"><td colspan="9">Date not yet announced</td></tr>`;html+=rows(na,idx,'na-row');}
+  if(!html)html=`<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--t3);font-size:13px">No positions.</td></tr>`;
   tb.innerHTML=html;
 }
 
@@ -980,7 +976,6 @@ function applyLiveData(live){
     const ts=new Date(live.lastUpdated);
     lastRefreshed=ts.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+ts.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     document.getElementById('last-updated').textContent='Updated: '+lastRefreshed;
-    document.getElementById('updated-at').textContent=lastRefreshed;
   }
   return true;
 }
