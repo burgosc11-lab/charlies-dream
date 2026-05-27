@@ -1,5 +1,5 @@
 // Generates icon-192.png, icon-512.png, apple-touch-icon.png
-// Design: gold crypto-style B on white background
+// Design: rising dividend bars + gold trend line on dark warm background
 
 const sharp = require('sharp');
 const path  = require('path');
@@ -7,61 +7,95 @@ const OUT   = __dirname;
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <!-- Gold gradient across the full B height (userSpaceOnUse so all shapes share it) -->
-    <linearGradient id="gB" gradientUnits="userSpaceOnUse" x1="200" y1="88" x2="340" y2="460">
-      <stop offset="0%"   stop-color="#f8d060"/>
-      <stop offset="45%"  stop-color="#c9a028"/>
-      <stop offset="100%" stop-color="#7a4510"/>
+    <!-- Deep warm dark background -->
+    <radialGradient id="bg" cx="38%" cy="32%" r="75%">
+      <stop offset="0%"   stop-color="#2e1608"/>
+      <stop offset="100%" stop-color="#090402"/>
+    </radialGradient>
+
+    <!-- Gold gradient for bars -->
+    <linearGradient id="barGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#f5c84a"/>
+      <stop offset="100%" stop-color="#8a5510"/>
     </linearGradient>
 
-    <!-- Soft gold glow -->
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="10" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <!-- Horizontal shimmer for accent lines -->
+    <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#c9952a" stop-opacity="0"/>
+      <stop offset="35%"  stop-color="#f0c050" stop-opacity="0.9"/>
+      <stop offset="65%"  stop-color="#f0c050" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c9952a" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Soft glow filter for trend line -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Subtle inner shadow for bars -->
+    <filter id="barShadow">
+      <feDropShadow dx="0" dy="-4" stdDeviation="6" flood-color="#f5c84a" flood-opacity="0.25"/>
     </filter>
   </defs>
 
-  <!-- White background -->
-  <rect width="512" height="512" rx="88" fill="#ffffff"/>
+  <!-- ── BACKGROUND ── -->
+  <rect width="512" height="512" rx="88" fill="url(#bg)"/>
 
-  <!-- Subtle warm border -->
-  <rect x="3" y="3" width="506" height="506" rx="86" fill="none" stroke="#e0cdb0" stroke-width="5"/>
+  <!-- Subtle warm glow in top-left -->
+  <ellipse cx="160" cy="160" rx="220" ry="180" fill="#c9952a" opacity="0.04"/>
 
-  <!-- Gold B with glow -->
-  <g filter="url(#glow)">
-    <!-- Vertical spine -->
-    <rect x="140" y="88" width="68" height="372" rx="10" fill="url(#gB)"/>
+  <!-- Top shimmer line -->
+  <rect x="56" y="50" width="400" height="1.5" fill="url(#shimmer)" opacity="0.7"/>
 
-    <!-- Upper bump (D shape, outer) -->
-    <path d="M 204,88
-             C 318,88 370,126 370,188
-             C 370,250 318,272 204,272 Z"
-          fill="url(#gB)"/>
+  <!-- ── GRID LINES (very subtle) ── -->
+  <line x1="64" y1="200" x2="448" y2="200" stroke="#c9952a" stroke-width="0.6" opacity="0.12"/>
+  <line x1="64" y1="280" x2="448" y2="280" stroke="#c9952a" stroke-width="0.6" opacity="0.12"/>
+  <line x1="64" y1="360" x2="448" y2="360" stroke="#c9952a" stroke-width="0.6" opacity="0.12"/>
 
-    <!-- Lower bump (D shape, outer — slightly wider) -->
-    <path d="M 204,272
-             C 326,272 386,314 386,368
-             C 386,422 326,460 204,460 Z"
-          fill="url(#gB)"/>
+  <!-- ── RISING BARS ── -->
+  <!-- Bar 1 — shortest -->
+  <rect x="66"  y="380" width="54" height="62" rx="7" fill="url(#barGold)" opacity="0.45" filter="url(#barShadow)"/>
+  <!-- Bar 2 -->
+  <rect x="146" y="320" width="54" height="122" rx="7" fill="url(#barGold)" opacity="0.58" filter="url(#barShadow)"/>
+  <!-- Bar 3 -->
+  <rect x="226" y="252" width="54" height="190" rx="7" fill="url(#barGold)" opacity="0.72" filter="url(#barShadow)"/>
+  <!-- Bar 4 -->
+  <rect x="306" y="194" width="54" height="248" rx="7" fill="url(#barGold)" opacity="0.87" filter="url(#barShadow)"/>
+  <!-- Bar 5 — tallest, fully opaque -->
+  <rect x="386" y="136" width="54" height="306" rx="7" fill="url(#barGold)" filter="url(#barShadow)"/>
 
-    <!-- Bitcoin-style crossbars -->
-    <rect x="116" y="80"  width="108" height="22" rx="7" fill="url(#gB)"/>
-    <rect x="116" y="261" width="100" height="18" rx="6" fill="url(#gB)"/>
-    <rect x="116" y="450" width="108" height="22" rx="7" fill="url(#gB)"/>
-  </g>
+  <!-- ── TREND LINE connecting bar tops ── -->
+  <polyline
+    points="93,380  173,320  253,252  333,194  413,136"
+    stroke="#f5d060"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    opacity="0.95"
+    filter="url(#glow)"
+  />
 
-  <!-- White interior cutouts (drawn after glow so they're clean) -->
-  <!-- Upper inner D -->
-  <path d="M 204,133
-           C 282,133 318,156 318,188
-           C 318,220 282,238 204,238 Z"
-        fill="#ffffff"/>
+  <!-- Dots at each top -->
+  <circle cx="93"  cy="380" r="7"  fill="#f5d060" opacity="0.65"/>
+  <circle cx="173" cy="320" r="7"  fill="#f5d060" opacity="0.78"/>
+  <circle cx="253" cy="252" r="8"  fill="#f5d060" opacity="0.88"/>
+  <circle cx="333" cy="194" r="9"  fill="#f5d060" opacity="0.94"/>
+  <!-- Top dot — bright star -->
+  <circle cx="413" cy="136" r="11" fill="#fff8d0"/>
+  <circle cx="413" cy="136" r="7"  fill="#f5d060"/>
 
-  <!-- Lower inner D -->
-  <path d="M 204,314
-           C 296,314 336,338 336,368
-           C 336,398 296,422 204,422 Z"
-        fill="#ffffff"/>
+  <!-- ── BOTTOM ACCENT ── -->
+  <rect x="56" y="460" width="400" height="1" fill="url(#shimmer)" opacity="0.45"/>
+
+  <!-- ── "$ " dollar mark — subtle watermark top-left ── -->
+  <text x="80" y="116"
+        font-family="Georgia, serif"
+        font-size="72"
+        font-weight="bold"
+        fill="#c9952a"
+        opacity="0.22">$</text>
 </svg>`;
 
 async function make(svgStr, size, filename) {

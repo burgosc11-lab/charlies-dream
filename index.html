@@ -31,8 +31,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .app{padding:16px 16px 48px;max-width:700px;margin:0 auto}
 /* Header */
 .hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:10px}
-.hdr-left h1{font-family:var(--serif);font-size:34px;font-weight:500;letter-spacing:-.5px;color:var(--accent);font-style:italic;line-height:1.1}
-.hdr-left .sub{font-size:11px;color:var(--t3);margin-top:3px}
+.hdr-left h1{font-family:var(--serif);font-size:46px;font-weight:500;letter-spacing:-.5px;color:var(--accent);font-style:italic;line-height:1}
+.hdr-left .tagline{font-family:var(--serif);font-size:10px;color:var(--t3);font-style:italic;margin-top:3px;letter-spacing:.15px}
+.hdr-left .sub{font-size:11px;color:var(--t3);margin-top:4px}
 .hdr-right{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 .tracked-label{font-size:11px;color:var(--t2);background:var(--surface);border:1px solid var(--border);border-radius:var(--r20);padding:4px 9px;white-space:nowrap}
 .hdr-btn{background:var(--accent);color:#faf7f2;font-family:var(--sans);font-size:12px;font-weight:500;padding:8px 13px;border-radius:var(--r20);border:none;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;min-height:36px}
@@ -57,7 +58,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .more-menu-item:hover{background:var(--surface)}
 .more-menu-item.notif-active{color:var(--blue)}
 .last-updated{font-size:11px;color:var(--t4);font-style:italic}
-#refresh-btn.spinning i{animation:spin .7s linear infinite}
+#refresh-btn.spinning svg{animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 /* Progress */
 .progress-wrap{height:2px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden;display:none}
@@ -250,7 +251,7 @@ tbody tr:hover .row-del{opacity:1}
 .tier-cell{cursor:pointer;user-select:none;text-align:center !important}
 .tier-cell:hover{background:rgba(44,32,16,.06) !important}
 /* Date chip in header */
-.date-chip{font-size:12px;color:var(--t3);white-space:nowrap;font-weight:500;letter-spacing:.3px}
+.date-chip{font-size:14px;color:var(--t2);white-space:nowrap;font-weight:600;letter-spacing:.3px}
 </style>
 </head>
 <body>
@@ -259,12 +260,13 @@ tbody tr:hover .row-del{opacity:1}
   <div class="hdr">
     <div class="hdr-left">
       <h1>THE LIST</h1>
+      <div class="tagline">Closer to Freedom than Yesterday</div>
       <div class="sub" id="pos-label">— positions</div>
     </div>
     <div class="hdr-right">
       <span class="date-chip" id="today-chip"></span>
       <button class="hdr-btn notif-off" id="refresh-btn" onclick="doRefresh()" title="Refresh prices" style="padding:8px 11px">
-        <i class="ti ti-refresh" style="font-size:16px"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       </button>
       <div class="more-menu-wrap">
         <button class="hdr-btn notif-off" onclick="toggleMoreMenu()" title="More options" style="padding:8px 11px">
