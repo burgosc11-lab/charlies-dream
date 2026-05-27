@@ -76,10 +76,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .alert-warn button{color:var(--t3)}
 .alert-info{background:#e8f0fd;border:1px solid #6b8fd4;color:var(--blue)}
 .alert-info button{color:#6b8fd4}
-/* Notif strip */
-.notif-strip{background:#e8f0fd;border:1px solid #6b8fd4;border-radius:var(--r10);padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--blue);display:none;align-items:flex-start;gap:8px}
-.notif-strip.show{display:flex}
-.notif-strip button{background:none;border:none;cursor:pointer;color:#6b8fd4;font-size:18px;margin-left:auto}
 /* Add row */
 .add-row{display:flex;gap:8px;margin-bottom:16px;align-items:center;justify-content:flex-end}
 .kindle-input{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:14px;padding:10px 12px;border-radius:var(--r10);outline:none;text-transform:uppercase;letter-spacing:.5px;width:110px;min-height:42px;transition:border-color .15s}
@@ -351,11 +347,6 @@ tbody tr:hover .row-del{opacity:1}
   <div class="progress-wrap" id="prog-wrap"><div class="progress-fill" id="prog-fill"></div></div>
 
 
-  <div class="notif-strip" id="notif-strip">
-    <i class="ti ti-bell-ringing" style="font-size:14px;flex-shrink:0"></i>
-    <span id="notif-strip-text" style="flex:1"></span>
-    <button onclick="document.getElementById('notif-strip').classList.remove('show')">×</button>
-  </div>
 
   <div class="section-lbl-row">
     <div class="section-lbl">Watchlist</div>
@@ -770,9 +761,6 @@ function checkNotifications(){
     }
   });
   if(!toAlert.length) return;
-  const msgs=toAlert.map(a=>a.msg).join(' · ');
-  document.getElementById('notif-strip-text').textContent=msgs;
-  document.getElementById('notif-strip').classList.add('show');
   if(notifEnabled && Notification.permission==='granted'){
     toAlert.forEach(a=>{
       new Notification('THE LIST — Dividend Alert 📈',{
