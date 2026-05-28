@@ -1268,8 +1268,41 @@ async function subscribePush(){
       if(!r.ok) return;
       const d = await r.json();
       pending = (d.additions || []).filter(a => a && a.id && a.new_ex_date);
-      const applied  = JSON.parse(localStorage.getItem(APK)||'[]');
-      const unapplied = pending.filter(a => !applied.includes(a.id));
+      const applied = JSON.parse(localStorage.getItem(APK)||'[]');
+
+      // AUTO_ADD: app date already passed + scraper found upcoming date — apply silently
+      const autoEntries = pending.filter(a => a.auto_apply && !applied.includes(a.id));
+      if(autoEntries.length){
+        let changed = false;
+        autoEntries.forEach(a => {
+          const existing = stocks.filter(s => s.ticker === a.ticker);
+          if(!existing.length) return;
+          const alreadyIn = stocks.some(s => s.ticker === a.ticker && s.exDividendDate === a.new_ex_date);
+          if(!alreadyIn){
+            stocks.push({
+              ...existing[0],
+              id: newId(),
+              exDividendDate: a.new_ex_date,
+              shares: null,
+              avgCost: null,
+              manualDate: true,
+              manualDivShare: false,
+            });
+            changed = true;
+          }
+          applied.push(a.id);
+        });
+        if(changed){
+          save(stocks);
+          localStorage.setItem(APK, JSON.stringify(applied));
+          try{ renderAll(); }catch(e){ try{ render(); }catch(e2){} }
+        } else {
+          localStorage.setItem(APK, JSON.stringify(applied));
+        }
+      }
+
+      // Badge: only show for manual-review entries (auto_apply:false)
+      const unapplied = pending.filter(a => !a.auto_apply && !applied.includes(a.id));
       const btn   = document.getElementById('import-btn');
       const badge = document.getElementById('import-badge');
       if(unapplied.length){
