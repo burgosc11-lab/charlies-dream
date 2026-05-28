@@ -2,8 +2,7 @@ name: Dividend Push Notifications
 
 on:
   schedule:
-    # 12:00 UTC = ~8 AM ET (adjust if needed — UTC-4 summer / UTC-5 winter)
-    - cron: '0 15 * * 1-5'   # 9am MDT (UTC-6)
+    - cron: '0 15 * * 1-5'   # ← change 12 to 15   # 9am MDT (UTC-6)
   workflow_dispatch:   # lets you trigger manually from the Actions tab
 
 jobs:
