@@ -252,6 +252,29 @@ tbody tr:hover .row-del{opacity:1}
 .tier-cell:hover{background:rgba(44,32,16,.06) !important}
 /* Date chip in header */
 .date-chip{font-family:'JetBrains Mono','Courier New',monospace;font-size:52px;font-weight:700;color:#4ecfb0;line-height:1;letter-spacing:-3px}
+
+/* ── Pending-import button badge ── */
+#import-btn{position:relative}
+.import-badge{
+  position:absolute;top:-5px;right:-5px;
+  background:#ef4444;color:#fff;
+  border-radius:50%;width:17px;height:17px;
+  font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+/* ── Import modal entries ── */
+.import-entry{
+  padding:12px 14px;
+  border:1px solid var(--border,#333);
+  border-radius:8px;margin-bottom:8px;
+  background:var(--card,#1a1a1a);
+}
+.import-entry .ie-ticker{font-weight:700;font-size:15px;letter-spacing:.04em}
+.import-entry .ie-detail{color:var(--muted,#888);font-size:12px;margin-top:3px}
+.import-entry.ie-done{opacity:.45}
+.import-entry.ie-done .ie-ticker::after{content:' ✓';color:#4ade80;font-size:12px}
+
 </style>
 </head>
 <body>
@@ -268,7 +291,8 @@ tbody tr:hover .row-del{opacity:1}
       <button class="hdr-btn notif-off" id="refresh-btn" onclick="doRefresh()" title="Refresh prices" style="padding:8px 11px">
         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       </button>
-      <div class="more-menu-wrap">
+      <button class="hdr-btn notif-off" id="import-btn" onclick="openImportModal()" title="Import pending dates" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="import-badge" id="import-badge"></span></button>
+    <div class="more-menu-wrap">
         <button class="hdr-btn notif-off" onclick="toggleMoreMenu()" title="More options" style="padding:8px 11px">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
         </button>
@@ -1231,6 +1255,126 @@ async function subscribePush(){
     alert('Subscription failed: '+e.message+'\n\nMake sure you opened the app from your Home Screen icon.');
   }
 }
+
+// ── Pending-import pipeline ─────────────────────────────────────────────────
+(function(){
+  const PURL = 'https://raw.githubusercontent.com/burgosc11-lab/charlies-dream/main/pending_additions.json';
+  const APK  = 'charlies_dream_applied_v1';
+  let pending = [];
+
+  async function checkPending(){
+    try{
+      const r = await fetch(PURL + '?t=' + Date.now());
+      if(!r.ok) return;
+      const d = await r.json();
+      pending = (d.additions || []).filter(a => a && a.id && a.new_ex_date);
+      const applied  = JSON.parse(localStorage.getItem(APK)||'[]');
+      const unapplied = pending.filter(a => !applied.includes(a.id));
+      const btn   = document.getElementById('import-btn');
+      const badge = document.getElementById('import-badge');
+      if(unapplied.length){
+        btn.style.display = '';
+        badge.textContent = unapplied.length;
+      } else {
+        btn.style.display = 'none';
+      }
+    }catch(e){}
+  }
+
+  window.openImportModal = function(){
+    const applied = JSON.parse(localStorage.getItem(APK)||'[]');
+    const body = document.getElementById('import-modal-body');
+    if(!pending.length){
+      body.innerHTML='<p style="padding:8px;color:var(--muted)">No pending additions.</p>';
+    } else {
+      body.innerHTML = pending.map(a=>{
+        const done = applied.includes(a.id);
+        return '<div class="import-entry'+(done?' ie-done':'')+'">'+
+          '<div class="ie-ticker">'+a.ticker+'</div>'+
+          '<div class="ie-detail">New ex-date: <strong>'+a.new_ex_date+'</strong>'+
+          (a.scraped_amount && a.scraped_amount!=='N/A' ? ' &nbsp;·&nbsp; $'+a.scraped_amount : '')+
+          ' &nbsp;·&nbsp; <a href="'+a.source_url+'" target="_blank" '+
+          'style="color:inherit;opacity:.7">source ↗</a></div>'+
+          '</div>';
+      }).join('');
+    }
+    const unapplied = pending.filter(a=>!applied.includes(a.id));
+    document.getElementById('import-apply-btn').disabled = !unapplied.length;
+    document.getElementById('import-overlay').classList.add('show');
+  };
+
+  window.closeImportModal = function(){
+    document.getElementById('import-overlay').classList.remove('show');
+  };
+
+  window.applyAllPending = function(){
+    const applied  = JSON.parse(localStorage.getItem(APK)||'[]');
+    const unapplied = pending.filter(a=>!applied.includes(a.id));
+    unapplied.forEach(a=>{
+      const existing = stocks.filter(s=>s.ticker===a.ticker);
+      if(!existing.length) return;
+      const alreadyIn = stocks.some(s=>s.ticker===a.ticker && s.exDividendDate===a.new_ex_date);
+      if(!alreadyIn){
+        stocks.push({
+          ...existing[0],
+          id: newId(),
+          exDividendDate: a.new_ex_date,
+          shares: null,
+          avgCost: null,
+          manualDate: true,
+          manualDivShare: false,
+        });
+      }
+      applied.push(a.id);
+    });
+    save(stocks);
+    localStorage.setItem(APK, JSON.stringify(applied));
+    closeImportModal();
+    checkPending();
+    // re-render — try common function names used in the app
+    try{ renderAll(); }catch(e){
+      try{ render(); }catch(e2){
+        try{ buildCards(); }catch(e3){ location.reload(); }
+      }
+    }
+  };
+
+  // Run on load + refresh
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', checkPending);
+  } else {
+    checkPending();
+  }
+
+  // Re-check after a manual refresh so badge stays in sync
+  const _origDoRefresh = window.doRefresh;
+  if(typeof _origDoRefresh==='function'){
+    window.doRefresh = async function(){
+      await _origDoRefresh();
+      checkPending();
+    };
+  }
+})();
+
 </script>
+
+<!-- ── Pending-import modal ──────────────────────────────────── -->
+<div class="modal-overlay" id="import-overlay" onclick="if(event.target===this)closeImportModal()">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="drag-bar"></div>
+      <div class="modal-title">Import pending dates</div>
+      <button class="modal-close" onclick="closeImportModal()">&#215;</button>
+    </div>
+    <div class="modal-body" id="import-modal-body" style="padding:12px"></div>
+    <div class="modal-ftr">
+      <div class="modal-actions">
+        <button onclick="closeImportModal()">Cancel</button>
+        <button id="import-apply-btn" onclick="applyAllPending()">Apply All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
