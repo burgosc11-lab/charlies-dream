@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-28T00:03:53.058452",
+  "additions": [
+    {
+      "id": "hshp_20260519",
+      "ticker": "HSHP",
+      "new_ex_date": "2026-05-19",
+      "scraped_amount": 0.15,
+      "source_url": "https://stockanalysis.com/stocks/hshp/dividend/",
+      "detected_at": "2026-05-28T00:03:52.695781"
+    },
+    {
+      "id": "psec_20260626",
+      "ticker": "PSEC",
+      "new_ex_date": "2026-06-26",
+      "scraped_amount": 0.035,
+      "source_url": "https://stockanalysis.com/stocks/psec/dividend/",
+      "detected_at": "2026-05-28T00:03:52.695781"
+    }
+  ]
+}
