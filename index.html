@@ -723,10 +723,10 @@ function setupGhSync(){
   if(trimmed){
     localStorage.setItem(GH_TK_KEY,trimmed);
     setSyncStatus('syncing');
-    ghPushPortfolio(stocks).then(ok=>{
+    ghFetchPortfolio().then(()=>ghPushPortfolio(stocks)).then(ok=>{
       setSyncStatus(ok?'ok':'err');
       if(ok)alert('✓ Sync enabled! This device will now keep GitHub in sync on every save.');
-      else alert('⚠ Token saved but first push failed — check the token permissions and try again.');
+      else alert('⚠ Token saved but push failed — check the token has Contents: Read & write permission on the charlies-dream repo.');
     });
   }else{
     localStorage.removeItem(GH_TK_KEY);setSyncStatus('');
