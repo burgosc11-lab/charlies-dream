@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-05-29T21:19:01.907406+00:00",
+  "lastUpdated": "2026-06-01T22:43:25.699734+00:00",
   "fetchSummary": {
     "total": 55,
-    "success": 55,
-    "stale": 0,
+    "success": 30,
+    "stale": 25,
     "error": 0
   },
   "tickers": {
@@ -15,7 +15,7 @@
       "exDividendDate": null,
       "companyName": "JPMorgan Nasdaq Equity Premium Income ETF",
       "fetchedAt": "2026-05-29T21:17:34.968242+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "MAIN": {
       "price": 51.21,
@@ -25,7 +25,7 @@
       "exDividendDate": "2026-06-08",
       "companyName": "Main Street Capital Corporation",
       "fetchedAt": "2026-05-29T21:17:36.577955+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "PECO": {
       "price": 40.15,
@@ -35,7 +35,7 @@
       "exDividendDate": "2026-06-15",
       "companyName": "Phillips Edison & Company, Inc.",
       "fetchedAt": "2026-05-29T21:17:38.103726+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "GLAD": {
       "price": 19.37,
@@ -45,7 +45,7 @@
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Capital Corporation",
       "fetchedAt": "2026-05-29T21:17:39.799082+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "GAIN": {
       "price": 15.8,
@@ -55,7 +55,7 @@
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Investment Corporatio",
       "fetchedAt": "2026-05-29T21:17:41.421573+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "GOOD": {
       "price": 12.61,
@@ -65,7 +65,7 @@
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Commercial Corporation",
       "fetchedAt": "2026-05-29T21:17:43.044933+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "PFLT": {
       "price": 8.21,
@@ -75,7 +75,7 @@
       "exDividendDate": "2026-05-15",
       "companyName": "PennantPark Floating Rate Capital Ltd.",
       "fetchedAt": "2026-05-29T21:17:44.622676+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "ADC": {
       "price": 74.15,
@@ -85,7 +85,7 @@
       "exDividendDate": "2026-05-29",
       "companyName": "Agree Realty Corporation",
       "fetchedAt": "2026-05-29T21:17:46.306179+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "EPR": {
       "price": 57.05,
@@ -95,7 +95,7 @@
       "exDividendDate": "2026-05-29",
       "companyName": "EPR Properties",
       "fetchedAt": "2026-05-29T21:17:47.990164+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "LTC": {
       "price": 37.41,
@@ -105,7 +105,7 @@
       "exDividendDate": "2026-06-22",
       "companyName": "LTC Properties, Inc.",
       "fetchedAt": "2026-05-29T21:17:49.730979+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "O": {
       "price": 61.28,
@@ -115,7 +115,7 @@
       "exDividendDate": "2026-05-29",
       "companyName": "Realty Income Corporation",
       "fetchedAt": "2026-05-29T21:17:51.537600+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "AGNC": {
       "price": 10.41,
@@ -125,7 +125,7 @@
       "exDividendDate": "2026-05-29",
       "companyName": "AGNC Investment Corp.",
       "fetchedAt": "2026-05-29T21:17:53.122178+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "DOC": {
       "price": 19.15,
@@ -135,7 +135,7 @@
       "exDividendDate": "2026-06-15",
       "companyName": "Healthpeak Properties, Inc.",
       "fetchedAt": "2026-05-29T21:17:54.889220+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "DX": {
       "price": 13.09,
@@ -145,7 +145,7 @@
       "exDividendDate": "2026-05-21",
       "companyName": "Dynex Capital, Inc.",
       "fetchedAt": "2026-05-29T21:17:56.646858+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "PSEC": {
       "price": 2.41,
@@ -155,7 +155,7 @@
       "exDividendDate": "2026-06-26",
       "companyName": "Prospect Capital Corporation",
       "fetchedAt": "2026-05-29T21:17:58.284492+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "TYG": {
       "price": 43.99,
@@ -165,7 +165,7 @@
       "exDividendDate": "2026-06-03",
       "companyName": "Tortoise Energy Infrastructure Corporation",
       "fetchedAt": "2026-05-29T21:17:59.864976+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "GROW": {
       "price": 2.64,
@@ -175,7 +175,7 @@
       "exDividendDate": "2026-06-15",
       "companyName": "U.S. Global Investors, Inc.",
       "fetchedAt": "2026-05-29T21:18:01.617771+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "OXSQ": {
       "price": 1.35,
@@ -185,7 +185,7 @@
       "exDividendDate": "2026-06-16",
       "companyName": "Oxford Square Capital Corp.",
       "fetchedAt": "2026-05-29T21:18:03.233072+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "BCIC": {
       "price": 7.52,
@@ -195,7 +195,7 @@
       "exDividendDate": "2026-06-15",
       "companyName": "BCP Investment Corp.",
       "fetchedAt": "2026-05-29T21:18:04.843286+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "NLOP": {
       "price": 12.01,
@@ -205,7 +205,7 @@
       "exDividendDate": "2026-03-30",
       "companyName": "Net Lease Office Properties",
       "fetchedAt": "2026-05-29T21:18:06.391987+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "EARN": {
       "price": 4.74,
@@ -215,7 +215,7 @@
       "exDividendDate": "2026-05-29",
       "companyName": "Ellington Credit Company",
       "fetchedAt": "2026-05-29T21:18:07.918357+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "GWRS": {
       "price": 7.29,
@@ -225,7 +225,7 @@
       "exDividendDate": "2026-05-15",
       "companyName": "Global Water Resources, Inc.",
       "fetchedAt": "2026-05-29T21:18:09.496040+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "MDV": {
       "price": 18.16,
@@ -235,7 +235,7 @@
       "exDividendDate": "2026-05-29",
       "companyName": "Modiv Industrial, Inc.",
       "fetchedAt": "2026-05-29T21:18:10.977180+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "SPMC": {
       "price": 11.25,
@@ -245,7 +245,7 @@
       "exDividendDate": "2026-06-15",
       "companyName": "Sound Point Meridian Capital, Inc.",
       "fetchedAt": "2026-05-29T21:18:12.606116+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "EIC": {
       "price": 10.75,
@@ -255,116 +255,116 @@
       "exDividendDate": "2026-06-10",
       "companyName": "Eagle Point Income Company Inc.",
       "fetchedAt": "2026-05-29T21:18:14.150187+00:00",
-      "error": null
+      "error": "Stale (last fetch failed): Too Many Requests. Rate limited. Try after a while."
     },
     "SCM": {
-      "price": 8.97,
-      "dividendYieldPct": 16.1,
+      "price": 9.06,
+      "dividendYieldPct": 16.49,
       "dividendPerShare": 0.113,
       "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
+      "exDividendDate": "2026-06-30",
       "companyName": "Stellus Capital Investment Corporation",
-      "fetchedAt": "2026-05-29T21:18:15.710057+00:00",
+      "fetchedAt": "2026-06-01T22:42:39.254905+00:00",
       "error": null
     },
     "PNNT": {
-      "price": 3.91,
+      "price": 3.94,
       "dividendYieldPct": 4.09,
       "dividendPerShare": 0.08,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "companyName": "PennantPark Investment Corporation",
-      "fetchedAt": "2026-05-29T21:18:17.322412+00:00",
+      "fetchedAt": "2026-06-01T22:42:40.898282+00:00",
       "error": null
     },
     "HRZN": {
-      "price": 4.39,
-      "dividendYieldPct": 17.18,
+      "price": 4.56,
+      "dividendYieldPct": 16.4,
       "dividendPerShare": 0.06,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-17",
       "companyName": "Horizon Technology Finance Corporation",
-      "fetchedAt": "2026-05-29T21:18:18.904135+00:00",
+      "fetchedAt": "2026-06-01T22:42:42.513236+00:00",
       "error": null
     },
     "SAR": {
-      "price": 22.51,
-      "dividendYieldPct": 13.36,
+      "price": 22.7,
+      "dividendYieldPct": 13.33,
       "dividendPerShare": 0.25,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-04",
       "companyName": "Saratoga Investment Corp.",
-      "fetchedAt": "2026-05-29T21:18:20.549794+00:00",
+      "fetchedAt": "2026-06-01T22:42:44.130470+00:00",
       "error": null
     },
     "CION": {
-      "price": 6.75,
-      "dividendYieldPct": 17.7,
+      "price": 6.82,
+      "dividendYieldPct": 17.78,
       "dividendPerShare": 0.1,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-12",
       "companyName": "CION Investment Corporation",
-      "fetchedAt": "2026-05-29T21:18:22.063087+00:00",
+      "fetchedAt": "2026-06-01T22:42:45.583053+00:00",
       "error": null
     },
     "LAND": {
-      "price": 9.48,
-      "dividendYieldPct": 5.84,
+      "price": 9.19,
+      "dividendYieldPct": 5.91,
       "dividendPerShare": 0.047,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-23",
       "companyName": "Gladstone Land Corporation",
-      "fetchedAt": "2026-05-29T21:18:23.633116+00:00",
+      "fetchedAt": "2026-06-01T22:42:47.277282+00:00",
       "error": null
     },
     "ECC": {
-      "price": 4.12,
-      "dividendYieldPct": 28.64,
+      "price": 4.14,
+      "dividendYieldPct": 29.13,
       "dividendPerShare": 0.06,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-10",
       "companyName": "Eagle Point Credit Company",
-      "fetchedAt": "2026-05-29T21:18:25.169833+00:00",
+      "fetchedAt": "2026-06-01T22:42:48.801047+00:00",
       "error": null
     },
     "XRN": {
-      "price": 36.04,
-      "dividendYieldPct": 15.68,
+      "price": 35.18,
+      "dividendYieldPct": 15.9,
       "dividendPerShare": 0.25,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-22",
       "companyName": "Chiron Real Estate Inc.",
-      "fetchedAt": "2026-05-29T21:18:26.733587+00:00",
+      "fetchedAt": "2026-06-01T22:42:50.399184+00:00",
       "error": null
     },
     "DIV": {
-      "price": 19.07,
+      "price": 19.09,
       "dividendYieldPct": 6.57,
       "dividendPerShare": 0.106,
       "paymentFrequency": "monthly",
       "exDividendDate": null,
       "companyName": "Global X SuperDividend U.S. ETF",
-      "fetchedAt": "2026-05-29T21:18:28.324555+00:00",
+      "fetchedAt": "2026-06-01T22:42:51.967283+00:00",
       "error": null
     },
     "TBLD": {
-      "price": 22.69,
-      "dividendYieldPct": 5.56,
+      "price": 22.44,
+      "dividendYieldPct": 5.53,
       "dividendPerShare": 0.104,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-11",
       "companyName": "Thornburg Income Builder Opportunities Trust",
-      "fetchedAt": "2026-05-29T21:18:29.819306+00:00",
+      "fetchedAt": "2026-06-01T22:42:53.515856+00:00",
       "error": null
     },
     "HSHP": {
-      "price": 14.75,
-      "dividendYieldPct": 6.49,
+      "price": 15.04,
+      "dividendYieldPct": 6.44,
       "dividendPerShare": 0.15,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-18",
       "companyName": "Himalaya Shipping Ltd.",
-      "fetchedAt": "2026-05-29T21:18:31.293428+00:00",
+      "fetchedAt": "2026-06-01T22:42:55.158526+00:00",
       "error": null
     },
     "IVR": {
@@ -374,187 +374,187 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-26",
       "companyName": "Invesco Mortgage Capital Inc.",
-      "fetchedAt": "2026-05-29T21:18:32.879570+00:00",
+      "fetchedAt": "2026-06-01T22:42:56.737611+00:00",
       "error": null
     },
     "DSL": {
-      "price": 11.06,
-      "dividendYieldPct": 11.96,
+      "price": 10.96,
+      "dividendYieldPct": 11.93,
       "dividendPerShare": 0.11,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-13",
       "companyName": "DoubleLine Income Solutions Fund",
-      "fetchedAt": "2026-05-29T21:18:34.546456+00:00",
+      "fetchedAt": "2026-06-01T22:42:58.278160+00:00",
       "error": null
     },
     "ORC": {
       "price": 6.78,
-      "dividendYieldPct": 17.27,
+      "dividendYieldPct": 17.7,
       "dividendPerShare": 0.1,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Orchid Island Capital, Inc.",
-      "fetchedAt": "2026-05-29T21:18:36.179028+00:00",
+      "fetchedAt": "2026-06-01T22:42:59.891253+00:00",
       "error": null
     },
     "CSWC": {
-      "price": 23.22,
-      "dividendYieldPct": 10.98,
+      "price": 23.31,
+      "dividendYieldPct": 11.03,
       "dividendPerShare": 0.193,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "Capital Southwest Corporation",
-      "fetchedAt": "2026-05-29T21:18:38.008229+00:00",
+      "fetchedAt": "2026-06-01T22:43:01.697006+00:00",
       "error": null
     },
     "TRIN": {
-      "price": 16.86,
-      "dividendYieldPct": 12.12,
+      "price": 17.17,
+      "dividendYieldPct": 12.1,
       "dividendPerShare": 0.17,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-11",
       "companyName": "Trinity Capital Inc.",
-      "fetchedAt": "2026-05-29T21:18:39.490461+00:00",
+      "fetchedAt": "2026-06-01T22:43:03.226494+00:00",
       "error": null
     },
     "BST": {
-      "price": 49.53,
-      "dividendYieldPct": 6.09,
+      "price": 49.31,
+      "dividendYieldPct": 6.06,
       "dividendPerShare": 0.25,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "BlackRock Science and Technology Trust",
-      "fetchedAt": "2026-05-29T21:18:41.027906+00:00",
+      "fetchedAt": "2026-06-01T22:43:04.816759+00:00",
       "error": null
     },
     "EFC": {
-      "price": 13.57,
-      "dividendYieldPct": 11.48,
+      "price": 13.43,
+      "dividendYieldPct": 11.5,
       "dividendPerShare": 0.13,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Ellington Financial Inc.",
-      "fetchedAt": "2026-05-29T21:18:42.600625+00:00",
+      "fetchedAt": "2026-06-01T22:43:06.397090+00:00",
       "error": null
     },
     "BTX": {
-      "price": 9.18,
-      "dividendYieldPct": 6.88,
+      "price": 9.24,
+      "dividendYieldPct": 6.86,
       "dividendPerShare": 0.053,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "companyName": "BlackRock Innovation and Growth Term Trust",
-      "fetchedAt": "2026-05-29T21:18:44.112208+00:00",
+      "fetchedAt": "2026-06-01T22:43:07.854730+00:00",
       "error": null
     },
     "SMA": {
-      "price": 31.25,
-      "dividendYieldPct": 5.07,
-      "dividendPerShare": 0.132,
+      "price": 30.68,
+      "dividendYieldPct": 5.12,
+      "dividendPerShare": 0.136,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "SmartStop Self Storage REIT, Inc.",
-      "fetchedAt": "2026-05-29T21:18:45.578082+00:00",
+      "fetchedAt": "2026-06-01T22:43:09.337451+00:00",
       "error": null
     },
     "ARR": {
-      "price": 17.15,
-      "dividendYieldPct": 16.83,
+      "price": 17.13,
+      "dividendYieldPct": 16.79,
       "dividendPerShare": 0.24,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "companyName": "ARMOUR Residential REIT, Inc.",
-      "fetchedAt": "2026-05-29T21:18:47.168442+00:00",
+      "fetchedAt": "2026-06-01T22:43:10.963287+00:00",
       "error": null
     },
     "BBAR": {
-      "price": 18.35,
-      "dividendYieldPct": 1.69,
+      "price": 18.81,
+      "dividendYieldPct": 1.62,
       "dividendPerShare": 0.038,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-04-20",
       "companyName": "Banco BBVA Argentina S.A.",
-      "fetchedAt": "2026-05-29T21:18:48.842687+00:00",
+      "fetchedAt": "2026-06-01T22:43:12.671916+00:00",
       "error": null
     },
     "APLE": {
-      "price": 14.69,
-      "dividendYieldPct": 6.41,
+      "price": 14.65,
+      "dividendYieldPct": 6.54,
       "dividendPerShare": 0.08,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "companyName": "Apple Hospitality REIT, Inc.",
-      "fetchedAt": "2026-05-29T21:18:50.450063+00:00",
+      "fetchedAt": "2026-06-01T22:43:14.202766+00:00",
       "error": null
     },
     "SLG": {
-      "price": 45.4,
+      "price": 44.74,
       "dividendYieldPct": 5.9,
       "dividendPerShare": 0.618,
       "paymentFrequency": "quarterly",
       "exDividendDate": "2026-03-31",
       "companyName": "SL Green Realty Corp.",
-      "fetchedAt": "2026-05-29T21:18:52.163345+00:00",
+      "fetchedAt": "2026-06-01T22:43:15.887674+00:00",
       "error": null
     },
     "BMA": {
-      "price": 90.78,
-      "dividendYieldPct": 5.45,
+      "price": 91.57,
+      "dividendYieldPct": 5.28,
       "dividendPerShare": 0.553,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-02",
       "companyName": "Banco Macro S.A.",
-      "fetchedAt": "2026-05-29T21:18:53.734286+00:00",
+      "fetchedAt": "2026-06-01T22:43:17.479372+00:00",
       "error": null
     },
     "AVAL": {
-      "price": 4.61,
-      "dividendYieldPct": 3.69,
+      "price": 5.15,
+      "dividendYieldPct": 3.76,
       "dividendPerShare": 0.014,
       "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
+      "exDividendDate": "2026-06-30",
       "companyName": "Grupo Aval Acciones y Valores S.A.",
-      "fetchedAt": "2026-05-29T21:18:55.350108+00:00",
+      "fetchedAt": "2026-06-01T22:43:19.078382+00:00",
       "error": null
     },
     "VIV": {
-      "price": 13.14,
-      "dividendYieldPct": 7.07,
+      "price": 13.19,
+      "dividendYieldPct": 7.17,
       "dividendPerShare": 0.075,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-28",
       "companyName": "Telef\u00f4nica Brasil S.A.",
-      "fetchedAt": "2026-05-29T21:18:57.066151+00:00",
+      "fetchedAt": "2026-06-01T22:43:20.788983+00:00",
       "error": null
     },
     "AMRZ": {
-      "price": 54.39,
+      "price": 53.79,
       "dividendYieldPct": 0.22,
       "dividendPerShare": 0.11,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-12",
       "companyName": "Amrize Ltd",
-      "fetchedAt": "2026-05-29T21:18:58.504840+00:00",
+      "fetchedAt": "2026-06-01T22:43:22.262726+00:00",
       "error": null
     },
     "BBD": {
-      "price": 3.49,
-      "dividendYieldPct": 4.71,
+      "price": 3.47,
+      "dividendYieldPct": 4.75,
       "dividendPerShare": 0.004,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-03",
       "companyName": "Banco Bradesco S.A.",
-      "fetchedAt": "2026-05-29T21:19:00.185024+00:00",
+      "fetchedAt": "2026-06-01T22:43:23.963415+00:00",
       "error": null
     },
     "ITUB": {
-      "price": 7.88,
+      "price": 7.79,
       "dividendYieldPct": 1.34,
       "dividendPerShare": 0.003,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-02",
       "companyName": "Ita\u00fa Unibanco Holding S.A.",
-      "fetchedAt": "2026-05-29T21:19:01.907042+00:00",
+      "fetchedAt": "2026-06-01T22:43:25.699642+00:00",
       "error": null
     }
   }
