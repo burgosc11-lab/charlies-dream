@@ -415,7 +415,10 @@ tbody tr:hover .row-del{opacity:1}
 
   <div class="footer-row">
     <span id="last-updated" class="last-updated">Not yet refreshed</span>
-    <span id="sync-status" style="font-size:11px;color:var(--t3)"></span>
+    <span style="display:flex;align-items:center;gap:10px">
+      <span id="sync-status" style="font-size:11px;color:var(--t3)"></span>
+      <span id="app-version" style="font-size:10px;color:var(--t4)"></span>
+    </span>
   </div>
 </div>
 
@@ -662,6 +665,9 @@ const GH_TK_KEY='charlies_dream_ghtoken';
 let _ghSha=null,_ghSyncTimer=null;
 
 function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
+
+const APP_VERSION='v20';
+(function(){const el=document.getElementById('app-version');if(el)el.textContent='v'+APP_VERSION.replace(/^v/,'');})();
 
 function setSyncStatus(state){
   const el=document.getElementById('sync-status');if(!el)return;
