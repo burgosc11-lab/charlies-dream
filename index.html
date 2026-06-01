@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -306,6 +306,9 @@ tbody tr:hover .row-del{opacity:1}
           <button class="more-menu-item" onclick="openModal();closeMoreMenu()">
             <i class="ti ti-pencil" style="font-size:14px"></i> Edit portfolio
           </button>
+          <button class="more-menu-item" onclick="setupGhSync()">
+            <i class="ti ti-cloud-upload" style="font-size:14px"></i> Sync setup
+          </button>
         </div>
       </div>
     </div>
@@ -413,6 +416,7 @@ tbody tr:hover .row-del{opacity:1}
 
   <div class="footer-row">
     <span id="last-updated" class="last-updated">Not yet refreshed</span>
+    <span id="sync-status" style="font-size:11px;color:var(--t3)"></span>
   </div>
 </div>
 
@@ -641,7 +645,7 @@ function load(){
   try{const s=JSON.parse(localStorage.getItem(SK)||'null');if(s&&s.length){s.forEach(r=>{if(!r.id){r.id=newId();}else{uid=Math.max(uid,r.id+1);}if(r.manualDivShare===undefined)r.manualDivShare=false;if(r.paymentFrequency===undefined)r.paymentFrequency='monthly';});return s;}}catch(e){}
   return makeBase();
 }
-function save(s){try{localStorage.setItem(SK,JSON.stringify(s));}catch(e){}}
+function save(s){try{localStorage.setItem(SK,JSON.stringify(s));}catch(e){}scheduleSyncToGitHub();}
 
 // ── ONE-TIME DATA RESTORE — runs once, then flag prevents re-run ──
 (function(){
@@ -651,6 +655,103 @@ function save(s){try{localStorage.setItem(SK,JSON.stringify(s));}catch(e){}}
 })();
 
 let stocks=load(),lastRefreshed=null;
+
+// ── GITHUB PORTFOLIO SYNC ──
+const GH_REPO='burgosc11-lab/charlies-dream';
+const GH_FILE='portfolio.json';
+const GH_TK_KEY='charlies_dream_ghtoken';
+let _ghSha=null,_ghSyncTimer=null;
+
+function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
+
+function setSyncStatus(state){
+  const el=document.getElementById('sync-status');if(!el)return;
+  if(state==='ok'){el.textContent='☁ Synced';el.style.color='var(--green)';}
+  else if(state==='syncing'){el.textContent='☁ Syncing…';el.style.color='var(--t3)';}
+  else if(state==='err'){el.textContent='☁ Sync failed';el.style.color='var(--red)';}
+  else{el.textContent=getGhToken()?'☁ Sync on':'';el.style.color='var(--t4)';}
+}
+
+async function ghFetchPortfolio(){
+  const tok=getGhToken();if(!tok)return null;
+  try{
+    const r=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+      headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+    });
+    if(r.status===404)return null;if(!r.ok)return null;
+    const meta=await r.json();
+    _ghSha=meta.sha;
+    return JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\s/g,'')))));
+  }catch(e){return null;}
+}
+
+async function ghPushPortfolio(s){
+  const tok=getGhToken();if(!tok)return false;
+  const payload={_syncedAt:new Date().toISOString(),stocks:s};
+  const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
+  const body={message:'portfolio: sync',content:encoded};
+  if(_ghSha)body.sha=_ghSha;
+  try{
+    const r=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+      method:'PUT',
+      headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},
+      body:JSON.stringify(body)
+    });
+    if(!r.ok)return false;
+    const res=await r.json();_ghSha=res.content.sha;
+    localStorage.setItem(SK+'_ghat',payload._syncedAt);
+    return true;
+  }catch(e){return false;}
+}
+
+function scheduleSyncToGitHub(){
+  if(!getGhToken())return;
+  clearTimeout(_ghSyncTimer);setSyncStatus('syncing');
+  _ghSyncTimer=setTimeout(async()=>{
+    const ok=await ghPushPortfolio(stocks);setSyncStatus(ok?'ok':'err');
+  },800);
+}
+
+function setupGhSync(){
+  const current=getGhToken();
+  const msg=current
+    ?'GitHub sync is active.\n\nPaste a new token to update, or leave blank and click OK to disable sync.'
+    :'Paste your GitHub Fine-Grained PAT to enable live sync across all devices.\n\nGenerate one at: github.com/settings/tokens\nPermissions needed: Contents → Read & write on the charlies-dream repo only.';
+  const val=prompt(msg,current);
+  if(val===null)return;
+  const trimmed=val.trim();
+  if(trimmed){
+    localStorage.setItem(GH_TK_KEY,trimmed);
+    setSyncStatus('syncing');
+    ghPushPortfolio(stocks).then(ok=>{
+      setSyncStatus(ok?'ok':'err');
+      if(ok)alert('✓ Sync enabled! This device will now keep GitHub in sync on every save.');
+      else alert('⚠ Token saved but first push failed — check the token permissions and try again.');
+    });
+  }else{
+    localStorage.removeItem(GH_TK_KEY);setSyncStatus('');
+    alert('Sync disabled.');
+  }
+  closeMoreMenu();
+}
+
+// On startup: pull from GitHub if remote is newer than local
+(async function initGhSync(){
+  if(!getGhToken()){return;}
+  setSyncStatus('syncing');
+  const remote=await ghFetchPortfolio();
+  if(!remote||!remote.stocks){setSyncStatus(getGhToken()?'err':'');return;}
+  const localAt=localStorage.getItem(SK+'_ghat')||'0';
+  const remoteAt=remote._syncedAt||'0';
+  if(remoteAt>localAt){
+    stocks=remote.stocks;
+    stocks.forEach(r=>{if(!r.id)r.id=newId();else uid=Math.max(uid,r.id+1);});
+    try{localStorage.setItem(SK,JSON.stringify(stocks));}catch(e){}
+    localStorage.setItem(SK+'_ghat',remoteAt);
+    renderAll();
+  }
+  setSyncStatus('ok');
+})();
 
 // Notification state
 let notifEnabled=false;
@@ -1411,3 +1512,4 @@ async function subscribePush(){
 
 </body>
 </html>
+
