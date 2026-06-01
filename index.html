@@ -724,14 +724,12 @@ function setupGhSync(){
     localStorage.setItem(GH_TK_KEY,trimmed);
     setSyncStatus('syncing');
     ghFetchPortfolio().then(remote=>{
-      const localAt=localStorage.getItem(SK+'_ghat')||'0';
-      const remoteAt=remote&&remote._syncedAt?remote._syncedAt:'0';
-      if(remote&&remote.stocks&&remoteAt>=localAt){
-        // GitHub has data — apply it to this device
+      if(remote&&remote.stocks){
+        // GitHub has data — always apply it on manual setup
         stocks=remote.stocks;
         stocks.forEach(r=>{if(!r.id)r.id=newId();else uid=Math.max(uid,r.id+1);});
         try{localStorage.setItem(SK,JSON.stringify(stocks));}catch(e){}
-        localStorage.setItem(SK+'_ghat',remoteAt);
+        if(remote._syncedAt)localStorage.setItem(SK+'_ghat',remote._syncedAt);
         renderAll();setSyncStatus('ok');
         alert('✓ Sync enabled! Portfolio loaded from GitHub.');
       } else {
