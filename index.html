@@ -291,6 +291,7 @@ tbody tr:hover .row-del{opacity:1}
       <button class="hdr-btn notif-off" id="refresh-btn" onclick="doRefresh()" title="Refresh prices" style="padding:8px 11px">
         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       </button>
+      <button class="hdr-btn notif-off" id="summary-btn" onclick="openSummaryModal()" title="Scraper daily summary" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="import-badge" id="summary-badge" style="background:#2563eb"></span></button>
       <button class="hdr-btn notif-off" id="import-btn" onclick="openImportModal()" title="Import pending dates" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="import-badge" id="import-badge"></span></button>
     <div class="more-menu-wrap">
         <button class="hdr-btn notif-off" onclick="toggleMoreMenu()" title="More options" style="padding:8px 11px">
@@ -351,9 +352,7 @@ tbody tr:hover .row-del{opacity:1}
         <button onclick="subscribePush()" id="push-sub-btn" style="font-family:var(--sans);font-size:12px;padding:5px 12px;border-radius:var(--r10);border:1px solid var(--border);background:var(--surface);color:var(--t2);cursor:pointer;white-space:nowrap;flex-shrink:0">Subscribe</button>
       </div>
       <div id="push-sub-wrap" style="display:none;width:100%">
-        <div style="font-size:10px;color:var(--t3);margin-bottom:5px;font-weight:500">Step 2 — Copy this entire JSON and paste it into GitHub Secret named <code style="background:var(--surface);border:1px solid var(--border);padding:1px 5px;border-radius:3px;font-size:9px">PUSH_SUBSCRIPTION</code>:</div>
-        <textarea id="push-sub-json" onclick="this.select()" style="width:100%;height:72px;font-size:9px;font-family:monospace;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r6);padding:6px;color:var(--t2);resize:none;outline:none" readonly></textarea>
-        <div style="font-size:10px;color:var(--green);margin-top:4px">✓ Subscription active — GitHub Actions will push alerts to this device every weekday morning.</div>
+        <div id="push-sub-status" style="font-size:11px;color:var(--green);font-weight:500"></div>
       </div>
     </div>
   </div>
@@ -1353,6 +1352,7 @@ async function subscribePush(){
     alert('Notifications blocked. Go to iPhone Settings → THE LIST → Notifications and enable them.');
     return;
   }
+  const btn=document.getElementById('push-sub-btn');
   try{
     const reg=await navigator.serviceWorker.ready;
     const existing=await reg.pushManager.getSubscription();
@@ -1361,11 +1361,28 @@ async function subscribePush(){
       userVisibleOnly:true,
       applicationServerKey:urlB64ToUint8(VAPID_PUBLIC_KEY)
     });
-    document.getElementById('push-sub-json').value=JSON.stringify(sub);
-    document.getElementById('push-sub-wrap').style.display='block';
-    document.getElementById('push-sub-btn').textContent='Resubscribe';
-    document.getElementById('push-sub-json').select();
+    btn.textContent='Saving…';
+    const wrap=document.getElementById('push-sub-wrap');
+    const status=document.getElementById('push-sub-status');
+    wrap.style.display='block';
+    if(getGhToken()){
+      const ok=await ghSavePushSubscription(sub);
+      if(ok){
+        btn.textContent='Subscribed ✓';
+        status.style.color='var(--green)';
+        status.textContent='✓ Saved to GitHub — alerts will arrive automatically every weekday morning.';
+      } else {
+        btn.textContent='Resubscribe';
+        status.style.color='var(--amber)';
+        status.textContent='GitHub save failed. Make sure your sync PAT has Contents: Read & write permission, then tap Subscribe again.';
+      }
+    } else {
+      btn.textContent='Resubscribe';
+      status.style.color='var(--amber)';
+      status.textContent='Sync not set up. Go to ⋮ → Sync setup, enter your GitHub PAT, then tap Subscribe again.';
+    }
   }catch(e){
+    btn.textContent='Subscribe';
     alert('Subscription failed: '+e.message+'\n\nMake sure you opened the app from your Home Screen icon.');
   }
 }
@@ -1522,6 +1539,118 @@ async function subscribePush(){
     </div>
   </div>
 </div>
+
+<!-- ── Scraper summary modal ──────────────────────────────────── -->
+<div class="modal-overlay" id="summary-overlay" onclick="if(event.target===this)closeSummaryModal()">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="drag-bar"></div>
+      <div class="modal-title">Scraper Summary</div>
+      <button class="modal-close" onclick="closeSummaryModal()">&#215;</button>
+    </div>
+    <div class="modal-body" id="summary-modal-body" style="padding:14px"></div>
+    <div class="modal-ftr">
+      <div class="modal-actions">
+        <button onclick="closeSummaryModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Scraper summary notification pipeline ────────────────────────────────────
+(function(){
+  const NURL = 'https://raw.githubusercontent.com/burgosc11-lab/charlies-dream/main/notifications.json';
+  const NSK  = 'charlies_dream_last_summary';
+  let _summaryData = null;
+
+  async function checkSummary(){
+    try{
+      const r = await fetch(NURL + '?t=' + Date.now());
+      if(!r.ok) return;
+      const data = await r.json();
+      if(!data.generated_at) return;
+      const lastSeen = localStorage.getItem(NSK)||'';
+      if(data.generated_at <= lastSeen) return;
+      _summaryData = data;
+      const btn = document.getElementById('summary-btn');
+      if(btn){ btn.style.display=''; document.getElementById('summary-badge').textContent=''; }
+    }catch(e){}
+  }
+
+  window.openSummaryModal = function(){
+    if(!_summaryData) return;
+    const d = _summaryData;
+    const c = d.counts||{};
+    const date = d.generated_at ? d.generated_at.slice(0,10) : '';
+    const rows = [
+      {key:'MATCH',       label:'✅ MATCH',         val: c.MATCH||0,         tickers:[]},
+      {key:'AUTO_ADD',    label:'★  AUTO_ADD',       val: c.AUTO_ADD||0,      tickers: d.auto_add||[]},
+      {key:'SCRAPED_AHEAD',label:'🔴 SCRAPED_AHEAD', val: c.SCRAPED_AHEAD||0, tickers: d.scraped_ahead||[]},
+      {key:'APP_AHEAD',   label:'⏳ APP_AHEAD',      val: c.APP_AHEAD||0,     tickers:[]},
+      {key:'APP_NA',      label:'⬜ APP_NA',          val: c.APP_NA||0,        tickers:[]},
+      {key:'NO_DATA',     label:'❌ NO_DATA',         val: c.NO_DATA||0,       tickers:[]},
+    ];
+    let html = `<div style="font-size:11px;color:var(--t3);margin-bottom:12px">Run: ${date}</div>`;
+    html += '<div style="display:flex;flex-direction:column;gap:8px">';
+    rows.forEach(row=>{
+      if(!row.val) return;
+      const extra = row.tickers.length ? `<span style="color:var(--t2);margin-left:6px">${row.tickers.join(', ')}</span>` : '';
+      html += `<div style="display:flex;align-items:baseline;gap:4px;font-size:13px">
+        <span style="font-family:monospace;font-weight:600;min-width:26px;color:var(--text)">${row.val}</span>
+        <span style="color:var(--t2)">${row.label}</span>${extra}
+      </div>`;
+    });
+    html += '</div>';
+    if((c.SCRAPED_AHEAD||0)>0){
+      html += `<div style="margin-top:14px;font-size:11px;color:var(--amber);background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:9px 11px">
+        Review SCRAPED_AHEAD entries — tap the download icon in the header to import them.
+      </div>`;
+    }
+    document.getElementById('summary-modal-body').innerHTML = html;
+    document.getElementById('summary-overlay').style.display='flex';
+    // Mark as seen
+    localStorage.setItem(NSK, d.generated_at);
+    document.getElementById('summary-btn').style.display='none';
+  };
+
+  window.closeSummaryModal = function(){
+    document.getElementById('summary-overlay').style.display='none';
+  };
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', checkSummary);
+  } else {
+    checkSummary();
+  }
+})();
+</script>
+
+<script>
+// ── Auto-save push subscription to GitHub ────────────────────────────────────
+async function ghSavePushSubscription(sub){
+  const tok = getGhToken();
+  if(!tok) return false;
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(sub, null, 2))));
+  let sha = null;
+  try{
+    const r = await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/push_subscription.json',{
+      headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+    });
+    if(r.ok){ const d=await r.json(); sha=d.sha; }
+  }catch(e){}
+  const body={message:'push: update subscription',content};
+  if(sha) body.sha=sha;
+  try{
+    const r = await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/push_subscription.json',{
+      method:'PUT',
+      headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},
+      body:JSON.stringify(body)
+    });
+    return r.ok;
+  }catch(e){ return false; }
+}
+</script>
 
 </body>
 </html>

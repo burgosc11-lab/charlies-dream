@@ -3,18 +3,18 @@
 
 // ── THE LIST — GitHub Actions push notification sender ──
 // Runs daily via .github/workflows/notify.yml
-// Reads BASE_TICKERS from index.html, checks today's alert dates,
-// sends a Web Push notification to the subscribed iPhone.
+// Reads ex-dates from portfolio.json (live synced data),
+// sends a Web Push notification to the subscribed device.
 
 const webpush = require('web-push');
 const fs      = require('fs');
 const path    = require('path');
 
-// ── ENV VARS (set in GitHub Secrets) ──
-const { VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_SUBJECT, PUSH_SUBSCRIPTION } = process.env;
+// ── VAPID keys (stored in GitHub Secrets) ──
+const { VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_SUBJECT } = process.env;
 
-if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY || !PUSH_SUBSCRIPTION) {
-  console.error('Missing required env vars: VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, PUSH_SUBSCRIPTION');
+if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) {
+  console.error('Missing required env vars: VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY');
   process.exit(1);
 }
 
@@ -24,15 +24,49 @@ webpush.setVapidDetails(
   VAPID_PRIVATE_KEY
 );
 
-const subscription = JSON.parse(PUSH_SUBSCRIPTION);
+// ── Load push subscription ──
+// Reads from push_subscription.json (saved by the app when user subscribes).
+// Falls back to PUSH_SUBSCRIPTION env var if file doesn't exist yet.
+let subscription;
+const subPath = path.join(__dirname, 'push_subscription.json');
+if (fs.existsSync(subPath)) {
+  try {
+    subscription = JSON.parse(fs.readFileSync(subPath, 'utf8'));
+    console.log('Loaded subscription from push_subscription.json');
+  } catch (e) {
+    console.error('Failed to parse push_subscription.json:', e.message);
+    process.exit(1);
+  }
+} else if (process.env.PUSH_SUBSCRIPTION) {
+  try {
+    subscription = JSON.parse(process.env.PUSH_SUBSCRIPTION);
+    console.log('Loaded subscription from PUSH_SUBSCRIPTION secret');
+  } catch (e) {
+    console.error('Failed to parse PUSH_SUBSCRIPTION secret:', e.message);
+    process.exit(1);
+  }
+} else {
+  console.log('No push subscription found (push_subscription.json missing, PUSH_SUBSCRIPTION secret not set).');
+  console.log('Open the app on your phone, go to Alerts, and tap Subscribe.');
+  process.exit(0);
+}
 
-// ── PARSE BASE_TICKERS FROM index.html ──
-const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-const match = html.match(/const BASE_TICKERS\s*=\s*(\[[\s\S]*?\]);/);
-if (!match) { console.error('BASE_TICKERS not found in index.html'); process.exit(1); }
-let BASE_TICKERS;
-try { BASE_TICKERS = eval(match[1]); }
-catch (e) { console.error('Failed to parse BASE_TICKERS:', e.message); process.exit(1); }
+// ── Load portfolio.json ──
+// portfolio.json has structure: { _syncedAt, stocks: [{ticker, exDividendDate, ...}] }
+const portfolioPath = path.join(__dirname, 'portfolio.json');
+if (!fs.existsSync(portfolioPath)) {
+  console.log('portfolio.json not found — no ex-dates to check. Run the app once to sync.');
+  process.exit(0);
+}
+
+let entries = [];
+try {
+  const raw = JSON.parse(fs.readFileSync(portfolioPath, 'utf8'));
+  entries = Array.isArray(raw) ? raw : (raw.stocks || []);
+} catch (e) {
+  console.error('Failed to parse portfolio.json:', e.message);
+  process.exit(1);
+}
 
 // ── MARKET HOLIDAYS (keep in sync with index.html) ──
 const MARKET_HOLIDAYS = new Set([
@@ -73,7 +107,7 @@ const alerts = [];
 const seen   = new Set();
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-BASE_TICKERS.forEach(t => {
+entries.forEach(t => {
   if (!t.exDividendDate) return;
   const key = t.ticker + '_' + t.exDividendDate;
   if (seen.has(key)) return;
@@ -102,17 +136,19 @@ if (!alerts.length) {
 }
 
 // ── SEND PUSH ──
-const title = 'BUY TODAY 🚀';
-const body  = 'SSIIIUUUU';
+const title = 'BUY TODAY';
+const body  = alerts.map(a => a.msg).join('\n');
 
 console.log('Sending push notification:');
 console.log('  Title:', title);
+console.log('  Body:', body);
 
 webpush.sendNotification(subscription, JSON.stringify({ title, body }))
   .then(() => {
-    console.log('✓ Push sent to', alerts.map(a => a.ticker).join(', '));
+    console.log('Push sent to', alerts.map(a => a.ticker).join(', '));
   })
   .catch(e => {
-    console.error('✗ Push failed:', e.statusCode, e.body || e.message);
-    process.exit(1);
+    console.error('Push failed:', e.statusCode, e.body || e.message);
+    // Exit 0 so the workflow doesn't fail — a stale subscription is expected occasionally
+    process.exit(0);
   });
