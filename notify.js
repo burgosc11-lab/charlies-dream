@@ -130,14 +130,18 @@ entries.forEach(t => {
   alerts.push({ ticker: t.ticker, msg });
 });
 
-if (!alerts.length) {
+const isTest = process.env.TEST_PUSH === 'true';
+
+if (!alerts.length && !isTest) {
   console.log('No dividend alerts for today (' + today.toDateString() + '). Done.');
   process.exit(0);
 }
 
 // ── SEND PUSH ──
-const title = 'BUY TODAY';
-const body  = alerts.map(a => a.msg).join('\n');
+const title = isTest && !alerts.length ? 'Test Alert' : 'BUY TODAY';
+const body  = isTest && !alerts.length
+  ? 'Push notifications are working correctly.'
+  : alerts.map(a => a.msg).join('\n');
 
 console.log('Sending push notification:');
 console.log('  Title:', title);

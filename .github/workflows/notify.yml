@@ -2,8 +2,13 @@ name: Dividend Push Notifications
 
 on:
   schedule:
-    - cron: '0 15 * * 1-5'   # ← change 12 to 15   # 9am MDT (UTC-6)
-  workflow_dispatch:   # lets you trigger manually from the Actions tab
+    - cron: '0 15 * * 1-5'   # 9am MDT (UTC-6)
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Send test push (bypasses date check)'
+        required: false
+        default: 'false'
 
 jobs:
   notify:
@@ -25,6 +30,7 @@ jobs:
           VAPID_PUBLIC_KEY:  ${{ secrets.VAPID_PUBLIC_KEY }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           VAPID_SUBJECT:     ${{ secrets.VAPID_SUBJECT }}
-          # PUSH_SUBSCRIPTION secret no longer needed — subscription is now saved
+          TEST_PUSH:         ${{ github.event.inputs.test }}
+          # PUSH_SUBSCRIPTION secret no longer needed - subscription is now saved
           # automatically to push_subscription.json when user taps Subscribe in the app.
         run: node notify.js
