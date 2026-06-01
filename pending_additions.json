@@ -1,21 +1,41 @@
 {
-  "generated_at": "2026-05-28T00:03:53.058452",
+  "generated_at": "2026-06-01T11:38:20.248496",
   "additions": [
+    {
+      "id": "arr_20260615",
+      "ticker": "ARR",
+      "new_ex_date": "2026-06-15",
+      "scraped_amount": 0.24,
+      "source_url": "https://stockanalysis.com/stocks/arr/dividend/",
+      "detected_at": "2026-06-01T11:38:19.760723",
+      "auto_apply": true
+    },
     {
       "id": "hshp_20260519",
       "ticker": "HSHP",
       "new_ex_date": "2026-05-19",
       "scraped_amount": 0.15,
       "source_url": "https://stockanalysis.com/stocks/hshp/dividend/",
-      "detected_at": "2026-05-28T00:03:52.695781"
+      "detected_at": "2026-06-01T11:38:19.760723",
+      "auto_apply": false
     },
     {
-      "id": "psec_20260626",
-      "ticker": "PSEC",
-      "new_ex_date": "2026-06-26",
-      "scraped_amount": 0.035,
-      "source_url": "https://stockanalysis.com/stocks/psec/dividend/",
-      "detected_at": "2026-05-28T00:03:52.695781"
+      "id": "mdv_20260630",
+      "ticker": "MDV",
+      "new_ex_date": "2026-06-30",
+      "scraped_amount": 0.1,
+      "source_url": "https://stockanalysis.com/stocks/mdv/dividend/",
+      "detected_at": "2026-06-01T11:38:19.760723",
+      "auto_apply": true
+    },
+    {
+      "id": "scm_20260630",
+      "ticker": "SCM",
+      "new_ex_date": "2026-06-30",
+      "scraped_amount": 0.1133,
+      "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
+      "detected_at": "2026-06-01T11:38:19.760723",
+      "auto_apply": true
     }
   ]
 }
