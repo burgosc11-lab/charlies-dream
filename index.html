@@ -674,7 +674,10 @@ function setSyncStatus(state){
   const el=document.getElementById('sync-status');if(!el)return;
   if(state==='ok'){el.textContent='☁ Synced';el.style.color='var(--green)';}
   else if(state==='syncing'){el.textContent='☁ Syncing…';el.style.color='var(--t3)';}
-  else if(state==='err'){el.textContent='☁ Sync failed';el.style.color='var(--red)';}
+  else if(state==='notoken'){el.textContent='☁ No token — go to ⋮ → Sync setup';el.style.color='var(--amber)';}
+  else if(state==='authfail'){el.textContent='☁ Sync auth failed — check PAT';el.style.color='var(--red)';}
+  else if(state==='network'){el.textContent='☁ Sync network error';el.style.color='var(--red)';}
+  else if(state&&state.startsWith('err')){el.textContent='☁ Sync failed ('+state.slice(3)+')';el.style.color='var(--red)';}
   else{el.textContent=getGhToken()?'☁ Sync on':'';el.style.color='var(--t4)';}
 }
 
@@ -691,30 +694,42 @@ async function ghFetchPortfolio(){
   }catch(e){return null;}
 }
 
-async function ghPushPortfolio(s){
-  const tok=getGhToken();if(!tok)return false;
+async async function ghPushPortfolio(s){
+  const tok=getGhToken();if(!tok)return 'notoken';
   const payload={_syncedAt:new Date().toISOString(),stocks:s};
-  const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
-  const body={message:'portfolio: sync',content:encoded};
-  if(_ghSha)body.sha=_ghSha;
-  try{
+  async function tryPush(sha){
+    const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
+    const body={message:'portfolio: sync',content:encoded};
+    if(sha)body.sha=sha;
     const r=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
       method:'PUT',
       headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},
       body:JSON.stringify(body)
     });
-    if(!r.ok)return false;
+    return r;
+  }
+  try{
+    let r=await tryPush(_ghSha);
+    if(r.status===409||r.status===422){
+      // SHA conflict — re-fetch latest SHA and retry once
+      const gr=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+        headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+      });
+      if(gr.ok){const gd=await gr.json();_ghSha=gd.sha;}
+      r=await tryPush(_ghSha);
+    }
+    if(!r.ok)return r.status===401||r.status===403?'authfail':('err'+r.status);
     const res=await r.json();_ghSha=res.content.sha;
     localStorage.setItem(SK+'_ghat',payload._syncedAt);
-    return true;
-  }catch(e){return false;}
+    return 'ok';
+  }catch(e){return 'network';}
 }
 
 function scheduleSyncToGitHub(){
-  if(!getGhToken())return;
+  if(!getGhToken()){setSyncStatus('notoken');return;}
   clearTimeout(_ghSyncTimer);setSyncStatus('syncing');
   _ghSyncTimer=setTimeout(async()=>{
-    const ok=await ghPushPortfolio(stocks);setSyncStatus(ok?'ok':'err');
+    const code=await ghPushPortfolio(stocks);setSyncStatus(code);
   },800);
 }
 
