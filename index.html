@@ -660,13 +660,14 @@ let stocks=load(),lastRefreshed=null;
 
 // ── GITHUB PORTFOLIO SYNC ──
 const GH_REPO='burgosc11-lab/charlies-dream';
+let ghSavePushLastError='';
 const GH_FILE='portfolio.json';
 const GH_TK_KEY='charlies_dream_ghtoken';
 let _ghSha=null,_ghSyncTimer=null;
 
 function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
 
-const APP_VERSION='v20';
+const APP_VERSION='v21';
 (function(){const el=document.getElementById('app-version');if(el)el.textContent='v'+APP_VERSION.replace(/^v/,'');})();
 
 function setSyncStatus(state){
@@ -1418,7 +1419,7 @@ async function subscribePush(){
         localStorage.removeItem(SK+'_pushsaved');
         btn.textContent='Resubscribe';
         status.style.color='var(--amber)';
-        status.textContent='GitHub save failed. Your PAT needs Contents: Read & write — go to GitHub → Settings → Developer settings → Personal access tokens, edit your token, add Contents write, then tap Resubscribe.';
+        status.textContent='GitHub save failed ('+ghSavePushLastError+'). If you see 401/403: go to ⋯ → Sync setup and re-enter your PAT. If 422: tap Resubscribe again.';
       }
     } else {
       btn.textContent='Resubscribe';
@@ -1691,8 +1692,14 @@ async function ghSavePushSubscription(sub){
       headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},
       body:JSON.stringify(body)
     });
+    if(!r.ok){
+      let detail='';
+      try{const j=await r.clone().json();detail=' — '+(j.message||'');} catch(e){}
+      console.error('ghSavePushSubscription failed',r.status,detail);
+      ghSavePushLastError=r.status+detail;
+    }
     return r.ok;
-  }catch(e){ return false; }
+  }catch(e){ ghSavePushLastError='network error: '+e.message; return false; }
 }
 </script>
 
