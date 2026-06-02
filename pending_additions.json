@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T11:38:20.248496",
+  "generated_at": "2026-06-02T09:46:19.508907",
   "additions": [
     {
       "id": "arr_20260615",
@@ -7,17 +7,26 @@
       "new_ex_date": "2026-06-15",
       "scraped_amount": 0.24,
       "source_url": "https://stockanalysis.com/stocks/arr/dividend/",
-      "detected_at": "2026-06-01T11:38:19.760723",
+      "detected_at": "2026-06-02T09:46:18.964531",
       "auto_apply": true
     },
     {
-      "id": "hshp_20260519",
-      "ticker": "HSHP",
-      "new_ex_date": "2026-05-19",
-      "scraped_amount": 0.15,
-      "source_url": "https://stockanalysis.com/stocks/hshp/dividend/",
-      "detected_at": "2026-06-01T11:38:19.760723",
-      "auto_apply": false
+      "id": "dsl_20260617",
+      "ticker": "DSL",
+      "new_ex_date": "2026-06-17",
+      "scraped_amount": 0.11,
+      "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
+      "detected_at": "2026-06-02T09:46:18.964531",
+      "auto_apply": true
+    },
+    {
+      "id": "gwrs_20260615",
+      "ticker": "GWRS",
+      "new_ex_date": "2026-06-15",
+      "scraped_amount": 0.02533,
+      "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
+      "detected_at": "2026-06-02T09:46:18.964531",
+      "auto_apply": true
     },
     {
       "id": "mdv_20260630",
@@ -25,16 +34,7 @@
       "new_ex_date": "2026-06-30",
       "scraped_amount": 0.1,
       "source_url": "https://stockanalysis.com/stocks/mdv/dividend/",
-      "detected_at": "2026-06-01T11:38:19.760723",
-      "auto_apply": true
-    },
-    {
-      "id": "scm_20260630",
-      "ticker": "SCM",
-      "new_ex_date": "2026-06-30",
-      "scraped_amount": 0.1133,
-      "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-06-01T11:38:19.760723",
+      "detected_at": "2026-06-02T09:46:18.964531",
       "auto_apply": true
     }
   ]
