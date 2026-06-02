@@ -931,10 +931,12 @@ async function handleNotifToggle(on){
     const perm=await Notification.requestPermission();
     if(perm==='granted'){
       notifEnabled=true;
+      localStorage.setItem(SK+'_notifon','1');
       document.getElementById('notif-btn').classList.add('notif-active');
       document.getElementById('notif-btn').innerHTML='<i class="ti ti-bell-ringing" style="font-size:14px"></i> Alerts ON';
     } else {
       notifEnabled=false;
+      localStorage.removeItem(SK+'_notifon');
       document.getElementById('toggle-notif').checked=false;
       document.getElementById('notif-btn').classList.remove('notif-active');
       document.getElementById('notif-btn').innerHTML='<i class="ti ti-bell" style="font-size:14px"></i> Alerts';
@@ -942,6 +944,7 @@ async function handleNotifToggle(on){
     }
   } else {
     notifEnabled=false;
+    localStorage.removeItem(SK+'_notifon');
     document.getElementById('notif-btn').classList.remove('notif-active');
     document.getElementById('notif-btn').innerHTML='<i class="ti ti-bell" style="font-size:14px"></i> Alerts';
   }
@@ -1294,6 +1297,17 @@ function countUp(el,from,to,ms){
 
 renderAll();
 
+// Restore browser notification toggle state on startup
+(function(){
+  if(localStorage.getItem(SK+'_notifon')==='1'&&typeof Notification!=='undefined'&&Notification.permission==='granted'){
+    notifEnabled=true;
+    const cb=document.getElementById('toggle-notif');
+    if(cb)cb.checked=true;
+    const btn=document.getElementById('notif-btn');
+    if(btn){btn.classList.add('notif-active');btn.innerHTML='<i class="ti ti-bell-ringing" style="font-size:14px"></i> Alerts ON';}
+  }
+})();
+
 // ── EXPORT / IMPORT ──
 function openXfer(){
   document.getElementById('xfer-out').value=localStorage.getItem(SK)||'(no data saved yet)';
@@ -1340,10 +1354,28 @@ function urlB64ToUint8(b64){
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').then(reg=>{
     console.log('SW registered, scope:',reg.scope);
+    // Restore push subscription button state on every page load
+    reg.pushManager.getSubscription().then(sub=>{
+      if(!sub) return;
+      const btn=document.getElementById('push-sub-btn');
+      const wrap=document.getElementById('push-sub-wrap');
+      const status=document.getElementById('push-sub-status');
+      if(!btn||!wrap||!status) return;
+      wrap.style.display='block';
+      if(localStorage.getItem(SK+'_pushsaved')==='1'){
+        btn.textContent='Subscribed ✓';
+        status.style.color='var(--green)';
+        status.textContent='✓ Active — push alerts are enabled.';
+      } else {
+        btn.textContent='Resubscribe';
+        status.style.color='var(--amber)';
+        status.textContent='Subscribed but GitHub save pending. Tap Resubscribe to retry.';
+      }
+    }).catch(()=>{});
   }).catch(e=>console.warn('SW registration failed:',e));
 }
 
-// Called when user taps "Subscribe" in the Alerts panel
+// Called when user taps "Subscribe"/"Resubscribe" in the Alerts panel
 async function subscribePush(){
   if(!('serviceWorker' in navigator)||!('PushManager' in window)){
     alert('Push not available. Make sure you opened this app from your Home Screen icon, not Safari directly.');
@@ -1359,33 +1391,39 @@ async function subscribePush(){
     return;
   }
   const btn=document.getElementById('push-sub-btn');
+  const wrap=document.getElementById('push-sub-wrap');
+  const status=document.getElementById('push-sub-status');
+  wrap.style.display='block';
+  btn.textContent='Saving…';
   try{
     const reg=await navigator.serviceWorker.ready;
-    const existing=await reg.pushManager.getSubscription();
-    if(existing) await existing.unsubscribe();
-    const sub=await reg.pushManager.subscribe({
-      userVisibleOnly:true,
-      applicationServerKey:urlB64ToUint8(VAPID_PUBLIC_KEY)
-    });
-    btn.textContent='Saving…';
-    const wrap=document.getElementById('push-sub-wrap');
-    const status=document.getElementById('push-sub-status');
-    wrap.style.display='block';
+    // Reuse existing subscription — only create a new one if none exists.
+    // Force-unsubscribing would invalidate any previously-saved endpoint.
+    let sub=await reg.pushManager.getSubscription();
+    if(!sub){
+      sub=await reg.pushManager.subscribe({
+        userVisibleOnly:true,
+        applicationServerKey:urlB64ToUint8(VAPID_PUBLIC_KEY)
+      });
+    }
+    localStorage.setItem(SK+'_pushsub','1');
     if(getGhToken()){
       const ok=await ghSavePushSubscription(sub);
       if(ok){
+        localStorage.setItem(SK+'_pushsaved','1');
         btn.textContent='Subscribed ✓';
         status.style.color='var(--green)';
         status.textContent='✓ Saved to GitHub — alerts will arrive automatically every weekday morning.';
       } else {
+        localStorage.removeItem(SK+'_pushsaved');
         btn.textContent='Resubscribe';
         status.style.color='var(--amber)';
-        status.textContent='GitHub save failed. Make sure your sync PAT has Contents: Read & write permission, then tap Subscribe again.';
+        status.textContent='GitHub save failed. Your PAT needs Contents: Read & write — go to GitHub → Settings → Developer settings → Personal access tokens, edit your token, add Contents write, then tap Resubscribe.';
       }
     } else {
       btn.textContent='Resubscribe';
       status.style.color='var(--amber)';
-      status.textContent='Sync not set up. Go to ⋮ → Sync setup, enter your GitHub PAT, then tap Subscribe again.';
+      status.textContent='Sync not set up. Go to ⋮ → Sync setup, enter your GitHub PAT, then tap Resubscribe.';
     }
   }catch(e){
     btn.textContent='Subscribe';
