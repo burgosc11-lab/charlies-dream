@@ -27,15 +27,6 @@
       "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
       "detected_at": "2026-06-02T09:46:18.964531",
       "auto_apply": true
-    },
-    {
-      "id": "mdv_20260630",
-      "ticker": "MDV",
-      "new_ex_date": "2026-06-30",
-      "scraped_amount": 0.1,
-      "source_url": "https://stockanalysis.com/stocks/mdv/dividend/",
-      "detected_at": "2026-06-02T09:46:18.964531",
-      "auto_apply": true
     }
   ]
 }
