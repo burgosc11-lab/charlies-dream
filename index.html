@@ -777,7 +777,9 @@ let notifEnabled=false;
 let notifiedKeys=JSON.parse(localStorage.getItem(SK+'_notifkeys')||'[]');
 function saveNotifKeys(){localStorage.setItem(SK+'_notifkeys',JSON.stringify(notifiedKeys));}
 
-function tvUrl(t){return`https://www.tradingview.com/symbols/${t}/financials-dividends/`;}
+// TV_SYM overrides: tickers whose plain symbol resolves wrong on TradingView
+const TV_SYM={'ORC':'NYSE-ORC'};
+function tvUrl(t){return`https://www.tradingview.com/symbols/${TV_SYM[t]||t}/financials-dividends/`;}
 function today0(){const d=new Date();d.setHours(0,0,0,0);return d;}
 function daysTo(ds){if(!ds)return null;return Math.round((new Date(ds)-today0())/86400000);}
 function classify(ds){if(!ds)return'na';return daysTo(ds)>=0?'upcoming':'passed';}
