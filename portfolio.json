@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-02T16:38:46.783Z",
+  "_syncedAt": "2026-06-02T17:57:15.598Z",
   "stocks": [
     {
       "ticker": "DSL",
@@ -386,7 +386,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-03",
       "id": 32,
-      "shares": 1.703613,
+      "shares": 2.703613,
       "avgCost": 46.96,
       "manualDate": true,
       "manualDivShare": true,
