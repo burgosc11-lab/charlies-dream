@@ -694,7 +694,7 @@ async function ghFetchPortfolio(){
   }catch(e){return null;}
 }
 
-async async function ghPushPortfolio(s){
+async function ghPushPortfolio(s){
   const tok=getGhToken();if(!tok)return 'notoken';
   const payload={_syncedAt:new Date().toISOString(),stocks:s};
   async function tryPush(sha){
