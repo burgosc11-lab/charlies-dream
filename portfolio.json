@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-03T18:40:18.451Z",
+  "_syncedAt": "2026-06-03T18:40:34.980Z",
   "stocks": [
     {
       "ticker": "DSL",
@@ -883,20 +883,6 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-07-24",
       "id": 74,
-      "shares": null,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
-    },
-    {
-      "ticker": "PSEC",
-      "price": 2.42,
-      "dividendYieldPct": 20.37,
-      "dividendPerShare": 0.035,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-29",
-      "id": 75,
       "shares": null,
       "avgCost": null,
       "manualDate": true,
