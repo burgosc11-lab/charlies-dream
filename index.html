@@ -660,11 +660,11 @@ const GH_REPO='burgosc11-lab/charlies-dream';
 let ghSavePushLastError='';
 const GH_FILE='portfolio.json';
 const GH_TK_KEY='charlies_dream_ghtoken';
-let _ghSha=null,_ghSyncTimer=null;
+let _ghSha=null,_ghSyncTimer=null,_ghRetry=0;
 
 function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
 
-const APP_VERSION='v27';
+const APP_VERSION='v28';
 (function(){const el=document.getElementById('app-version');if(el)el.textContent='v'+APP_VERSION.replace(/^v/,'');})();
 
 function setSyncStatus(state){
@@ -694,6 +694,14 @@ async function ghFetchPortfolio(){
 async function ghPushPortfolio(s){
   const tok=getGhToken();if(!tok)return 'notoken';
   const payload={_syncedAt:new Date().toISOString(),stocks:s};
+  async function refreshSha(){
+    try{
+      const gr=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+        headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+      });
+      if(gr.ok){const gd=await gr.json();_ghSha=gd.sha;}
+    }catch(e){}
+  }
   async function tryPush(sha){
     const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
     const body={message:'portfolio: sync',content:encoded};
@@ -706,13 +714,11 @@ async function ghPushPortfolio(s){
     return r;
   }
   try{
+    await refreshSha();
     let r=await tryPush(_ghSha);
     for(let i=0;i<2&&(r.status===409||r.status===422);i++){
-      await new Promise(res=>setTimeout(res,400*(i+1)));
-      const gr=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
-        headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
-      });
-      if(gr.ok){const gd=await gr.json();_ghSha=gd.sha;}
+      await new Promise(res=>setTimeout(res,500*(i+1)));
+      await refreshSha();
       r=await tryPush(_ghSha);
     }
     if(!r.ok)return r.status===401||r.status===403?'authfail':('err'+r.status);
@@ -727,6 +733,10 @@ function scheduleSyncToGitHub(){
   clearTimeout(_ghSyncTimer);setSyncStatus('syncing');
   _ghSyncTimer=setTimeout(async()=>{
     const code=await ghPushPortfolio(stocks);setSyncStatus(code);
+    if(code==='ok'){_ghRetry=0;}
+    else if((code==='err409'||code==='err422')&&_ghRetry<3){
+      _ghRetry++;setTimeout(()=>scheduleSyncToGitHub(),3000*_ghRetry);
+    }else{_ghRetry=0;}
   },800);
 }
 
