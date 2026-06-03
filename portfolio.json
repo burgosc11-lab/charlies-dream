@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-03T18:39:53.492Z",
+  "_syncedAt": "2026-06-03T18:40:12.308Z",
   "stocks": [
     {
       "ticker": "DSL",
@@ -709,20 +709,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "S"
-    },
-    {
-      "ticker": "PSEC",
-      "price": 2.42,
-      "dividendYieldPct": 20.37,
-      "dividendPerShare": 0.035,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-26",
-      "id": 59,
-      "shares": 126.080877,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
     },
     {
       "ticker": "SCM",
