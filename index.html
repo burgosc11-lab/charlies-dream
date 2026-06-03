@@ -660,11 +660,11 @@ const GH_REPO='burgosc11-lab/charlies-dream';
 let ghSavePushLastError='';
 const GH_FILE='portfolio.json';
 const GH_TK_KEY='charlies_dream_ghtoken';
-let _ghSha=null,_ghSyncTimer=null,_ghRetry=0;
+let _ghSha=null,_ghSyncTimer=null,_ghRetry=0,_ghPushing=false;
 
 function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
 
-const APP_VERSION='v28';
+const APP_VERSION='v29';
 (function(){const el=document.getElementById('app-version');if(el)el.textContent='v'+APP_VERSION.replace(/^v/,'');})();
 
 function setSyncStatus(state){
@@ -692,7 +692,13 @@ async function ghFetchPortfolio(){
 }
 
 async function ghPushPortfolio(s){
-  const tok=getGhToken();if(!tok)return 'notoken';
+  // Mutex: prevent concurrent pushes that would collide on the same SHA
+  if(_ghPushing){
+    await new Promise(res=>{const t=setInterval(()=>{if(!_ghPushing){clearInterval(t);res();}},200);});
+  }
+  _ghPushing=true;
+  const tok=getGhToken();
+  if(!tok){_ghPushing=false;return 'notoken';}
   const payload={_syncedAt:new Date().toISOString(),stocks:s};
   async function refreshSha(){
     try{
@@ -726,6 +732,7 @@ async function ghPushPortfolio(s){
     localStorage.setItem(SK+'_ghat',payload._syncedAt);
     return 'ok';
   }catch(e){return 'network';}
+  finally{_ghPushing=false;}
 }
 
 function scheduleSyncToGitHub(){
