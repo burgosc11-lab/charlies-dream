@@ -1,32 +1,14 @@
 {
-  "generated_at": "2026-06-02T09:46:19.508907",
+  "generated_at": "2026-06-03T12:01:18.575879",
   "additions": [
     {
-      "id": "arr_20260615",
-      "ticker": "ARR",
-      "new_ex_date": "2026-06-15",
-      "scraped_amount": 0.24,
-      "source_url": "https://stockanalysis.com/stocks/arr/dividend/",
-      "detected_at": "2026-06-02T09:46:18.964531",
-      "auto_apply": true
-    },
-    {
-      "id": "dsl_20260617",
-      "ticker": "DSL",
-      "new_ex_date": "2026-06-17",
-      "scraped_amount": 0.11,
-      "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
-      "detected_at": "2026-06-02T09:46:18.964531",
-      "auto_apply": true
-    },
-    {
-      "id": "gwrs_20260615",
-      "ticker": "GWRS",
-      "new_ex_date": "2026-06-15",
-      "scraped_amount": 0.02533,
-      "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
-      "detected_at": "2026-06-02T09:46:18.964531",
-      "auto_apply": true
+      "id": "tyg_20260724",
+      "ticker": "TYG",
+      "new_ex_date": "2026-07-24",
+      "scraped_amount": 0.475,
+      "source_url": "https://stockanalysis.com/stocks/tyg/dividend/",
+      "detected_at": "2026-06-03T12:01:18.132385",
+      "auto_apply": false
     }
   ]
 }
