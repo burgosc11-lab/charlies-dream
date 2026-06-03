@@ -37,7 +37,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .term-cursor{display:inline-block;width:26px;height:42px;background:#d4522a;border-radius:3px;margin-left:4px;vertical-align:top;flex-shrink:0}
 .hdr-left .tagline{font-family:var(--serif);font-size:10px;color:var(--t3);font-style:italic;margin-top:2px;letter-spacing:.15px}
 .hdr-left .sub{font-size:11px;color:var(--t3);margin-top:4px}
-.hdr-right{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.hdr-right{display:flex;align-items:flex-start;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 .tracked-label{font-size:11px;color:var(--t2);background:var(--surface);border:1px solid var(--border);border-radius:var(--r20);padding:4px 9px;white-space:nowrap}
 .hdr-btn{background:var(--accent);color:#faf7f2;font-family:var(--sans);font-size:12px;font-weight:500;padding:8px 13px;border-radius:var(--r20);border:none;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;min-height:36px}
 .hdr-btn:active{opacity:.75}
@@ -55,7 +55,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .hero-annual-amt{font-family:var(--serif);font-size:44px;font-weight:400;color:#111111;letter-spacing:-2px;line-height:1;display:flex;align-items:baseline;gap:3px}
 .hero-annual-sym{font-size:22px;color:#111111}
 /* Overflow more-menu */
-.more-menu-wrap{position:relative}
+.more-menu-wrap{position:relative;display:flex;flex-direction:column;align-items:flex-end}
 .more-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border2);border-radius:var(--r10);padding:4px;min-width:148px;display:none;flex-direction:column;gap:1px;z-index:25;box-shadow:0 6px 24px rgba(26,21,16,.14)}
 .more-menu.show{display:flex}
 .more-menu-item{background:none;border:none;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--text);padding:9px 13px;border-radius:var(--r6);cursor:pointer;display:flex;align-items:center;gap:9px;text-align:left;width:100%;white-space:nowrap}
@@ -297,6 +297,7 @@ tbody tr:hover .row-del{opacity:1}
         <button class="hdr-btn notif-off" onclick="toggleMoreMenu()" title="More options" style="padding:8px 11px">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
         </button>
+        <span id="sync-status" style="font-size:10px;color:var(--t3);white-space:nowrap;margin-top:3px;text-align:right"></span>
         <div class="more-menu" id="more-menu">
           <button class="more-menu-item" id="notif-btn" onclick="toggleNotifPanel();closeMoreMenu()">
             <i class="ti ti-bell" style="font-size:14px"></i> Alerts
@@ -415,10 +416,7 @@ tbody tr:hover .row-del{opacity:1}
 
   <div class="footer-row">
     <span id="last-updated" class="last-updated">Not yet refreshed</span>
-    <span style="display:flex;align-items:center;gap:10px">
-      <span id="sync-status" style="font-size:11px;color:var(--t3)"></span>
-      <span id="app-version" style="font-size:10px;color:var(--t4)"></span>
-    </span>
+    <span id="app-version" style="font-size:10px;color:var(--t4)"></span>
   </div>
 </div>
 
@@ -667,7 +665,7 @@ let _ghSha=null,_ghSyncTimer=null;
 
 function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
 
-const APP_VERSION='v24';
+const APP_VERSION='v25';
 (function(){const el=document.getElementById('app-version');if(el)el.textContent='v'+APP_VERSION.replace(/^v/,'');})();
 
 function setSyncStatus(state){
