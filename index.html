@@ -297,7 +297,7 @@ tbody tr:hover .row-del{opacity:1}
         <button class="hdr-btn notif-off" onclick="toggleMoreMenu()" title="More options" style="padding:8px 11px">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
         </button>
-        <span id="sync-status" style="font-size:10px;color:var(--t3);white-space:nowrap;margin-top:3px;text-align:right"></span>
+        <span style="display:flex;align-items:center;gap:5px;margin-top:3px;justify-content:flex-end"><span id="sync-status" style="font-size:10px;color:var(--t3);white-space:nowrap"></span><span id="app-version" style="font-size:10px;color:var(--t4)"></span></span>
         <div class="more-menu" id="more-menu">
           <button class="more-menu-item" id="notif-btn" onclick="toggleNotifPanel();closeMoreMenu()">
             <i class="ti ti-bell" style="font-size:14px"></i> Alerts
@@ -416,7 +416,6 @@ tbody tr:hover .row-del{opacity:1}
 
   <div class="footer-row">
     <span id="last-updated" class="last-updated">Not yet refreshed</span>
-    <span id="app-version" style="font-size:10px;color:var(--t4)"></span>
   </div>
 </div>
 
@@ -665,7 +664,7 @@ let _ghSha=null,_ghSyncTimer=null;
 
 function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
 
-const APP_VERSION='v25';
+const APP_VERSION='v26';
 (function(){const el=document.getElementById('app-version');if(el)el.textContent='v'+APP_VERSION.replace(/^v/,'');})();
 
 function setSyncStatus(state){
