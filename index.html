@@ -1490,15 +1490,17 @@ async function subscribePush(){
           if(!existing.length) return;
           const alreadyIn = stocks.some(s => s.ticker === a.ticker && s.exDividendDate === a.new_ex_date);
           if(!alreadyIn){
+            const donor1 = existing.reduce((b,s)=>((s.shares||0)>(b.shares||0)?s:b), existing[0]);
             stocks.push({
               ...existing[0],
               id: newId(),
               exDividendDate: a.new_ex_date,
-              shares: null,
+              shares: donor1.shares,
               avgCost: null,
               manualDate: true,
               manualDivShare: false,
             });
+            donor1.shares = null;
             changed = true;
           }
           applied.push(a.id);
@@ -1559,15 +1561,17 @@ async function subscribePush(){
       if(!existing.length) return;
       const alreadyIn = stocks.some(s=>s.ticker===a.ticker && s.exDividendDate===a.new_ex_date);
       if(!alreadyIn){
+        const donor2 = existing.reduce((b,s)=>((s.shares||0)>(b.shares||0)?s:b), existing[0]);
         stocks.push({
           ...existing[0],
           id: newId(),
           exDividendDate: a.new_ex_date,
-          shares: null,
+          shares: donor2.shares,
           avgCost: null,
           manualDate: true,
           manualDivShare: false,
         });
+        donor2.shares = null;
       }
       applied.push(a.id);
     });
