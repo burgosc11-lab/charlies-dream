@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T06:31:12.169Z",
+  "_syncedAt": "2026-06-04T06:31:24.480Z",
   "stocks": [
     {
       "ticker": "DSL",
@@ -9,7 +9,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-13",
       "id": 1,
-      "shares": 7.368993,
+      "shares": null,
       "avgCost": 10.86,
       "manualDate": true,
       "manualDivShare": true,
@@ -37,7 +37,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "id": 3,
-      "shares": 11.869436,
+      "shares": null,
       "avgCost": 6.74,
       "manualDate": true,
       "manualDivShare": true,
@@ -51,7 +51,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "id": 4,
-      "shares": 4.721156,
+      "shares": null,
       "avgCost": 16.95,
       "manualDate": true,
       "manualDivShare": true,
@@ -1162,6 +1162,48 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "A"
+    },
+    {
+      "ticker": "ARR",
+      "price": 17.07,
+      "dividendYieldPct": 16.69,
+      "dividendPerShare": 0.24,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-15",
+      "id": 100,
+      "shares": 4.721156,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
+    },
+    {
+      "ticker": "DSL",
+      "price": 10.89,
+      "dividendYieldPct": 12.03,
+      "dividendPerShare": 0.11,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-17",
+      "id": 101,
+      "shares": 7.368993,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "GWRS",
+      "price": 7.1,
+      "dividendYieldPct": 4.28,
+      "dividendPerShare": 0.03,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-15",
+      "id": 102,
+      "shares": 11.869436,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
     }
   ]
 }
