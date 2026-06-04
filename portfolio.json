@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T05:58:15.597Z",
+  "_syncedAt": "2026-06-04T05:58:23.554Z",
   "stocks": [
     {
       "ticker": "DSL",
@@ -107,7 +107,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-11",
       "id": 8,
-      "shares": 3.639672,
+      "shares": null,
       "avgCost": 21.98,
       "manualDate": true,
       "manualDivShare": true,
@@ -1148,6 +1148,20 @@
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": false
+    },
+    {
+      "ticker": "TBLD",
+      "price": 22.04,
+      "dividendYieldPct": 5.62,
+      "dividendPerShare": 0.1042,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-11",
+      "id": 99,
+      "shares": 3.639672,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
     }
   ]
 }
