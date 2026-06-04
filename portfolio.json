@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T05:37:13.372Z",
+  "_syncedAt": "2026-06-04T05:50:28.586Z",
   "stocks": [
     {
       "ticker": "DSL",
@@ -331,7 +331,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-29",
       "id": 27,
-      "shares": 2.703616,
+      "shares": null,
       "avgCost": 29.59,
       "manualDate": true,
       "manualDivShare": true
@@ -1135,6 +1135,19 @@
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true
+    },
+    {
+      "ticker": "SMA",
+      "price": 30.28,
+      "dividendYieldPct": 5.21,
+      "dividendPerShare": 0.136,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 98,
+      "shares": 2.703616,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false
     }
   ]
 }
