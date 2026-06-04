@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T14:57:34.968Z",
+  "_syncedAt": "2026-06-04T14:58:08.428Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -56,20 +56,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "D"
-    },
-    {
-      "ticker": "BBAR",
-      "price": 17.71,
-      "dividendYieldPct": 1.58,
-      "dividendPerShare": 0.04,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-04-20",
-      "id": 10,
-      "shares": 5.610098,
-      "avgCost": 14.26,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
     },
     {
       "ticker": "DIV",
