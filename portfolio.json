@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T14:45:56.150Z",
+  "_syncedAt": "2026-06-04T14:46:14.909Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -1008,7 +1008,7 @@
       "shares": 2.703616,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false
+      "manualDivShare": true
     },
     {
       "ticker": "TBLD",
@@ -1021,7 +1021,7 @@
       "shares": 3.639672,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "A"
     },
     {
@@ -1035,7 +1035,7 @@
       "shares": 4.721156,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "A"
     },
     {
@@ -1049,7 +1049,7 @@
       "shares": 7.368993,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "B"
     },
     {
@@ -1063,7 +1063,7 @@
       "shares": 11.869436,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "B"
     }
   ]
