@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T00:09:00.000Z",
+  "_syncedAt": "2026-06-04T06:13:58.866Z",
   "stocks": [
     {
       "ticker": "DSL",
@@ -9,7 +9,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-13",
       "id": 1,
-      "shares": null,
+      "shares": 7.368993,
       "avgCost": 10.86,
       "manualDate": true,
       "manualDivShare": true,
@@ -37,7 +37,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "id": 3,
-      "shares": null,
+      "shares": 11.869436,
       "avgCost": 6.74,
       "manualDate": true,
       "manualDivShare": true,
@@ -51,7 +51,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "id": 4,
-      "shares": null,
+      "shares": 4.721156,
       "avgCost": 16.95,
       "manualDate": true,
       "manualDivShare": true,
@@ -1161,48 +1161,6 @@
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": false,
-      "tier": "A"
-    },
-    {
-      "ticker": "DSL",
-      "price": 10.89,
-      "dividendYieldPct": 12.03,
-      "dividendPerShare": 0.11,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-17",
-      "id": 100,
-      "shares": 7.368993,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "GWRS",
-      "price": 7.1,
-      "dividendYieldPct": 4.28,
-      "dividendPerShare": 0.02533,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-15",
-      "id": 101,
-      "shares": 11.869436,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "ARR",
-      "price": 17.07,
-      "dividendYieldPct": 16.69,
-      "dividendPerShare": 0.24,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-15",
-      "id": 102,
-      "shares": 4.721156,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
       "tier": "A"
     }
   ]
