@@ -664,7 +664,7 @@ let _ghSha=null,_ghSyncTimer=null,_ghRetry=0,_ghPushing=false;
 
 function getGhToken(){return localStorage.getItem(GH_TK_KEY)||'';}
 
-const APP_VERSION='v29';
+const APP_VERSION='v30';
 (function(){const el=document.getElementById('app-version');if(el)el.textContent='v'+APP_VERSION.replace(/^v/,'');})();
 
 function setSyncStatus(state){
@@ -682,6 +682,7 @@ async function ghFetchPortfolio(){
   const tok=getGhToken();if(!tok)return null;
   try{
     const r=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+      cache:'no-store',
       headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
     });
     if(r.status===404)return null;if(!r.ok)return null;
@@ -703,6 +704,7 @@ async function ghPushPortfolio(s){
   async function refreshSha(){
     try{
       const gr=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+        cache:'no-store',
         headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
       });
       if(gr.ok){const gd=await gr.json();_ghSha=gd.sha;}
