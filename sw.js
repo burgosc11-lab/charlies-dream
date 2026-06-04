@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'the-list-v30';
+const CACHE = 'the-list-v31';
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(['index.html', 'icon-192.png'])));
@@ -17,6 +17,9 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  // Only serve/cache same-origin requests (app shell).
+  // External API calls (GitHub, fonts, CDN) go straight to network — no SW cache.
+  if (!e.request.url.startsWith(self.location.origin)) return;
   e.respondWith(
     caches.match(e.request).then(cached => {
       return cached || fetch(e.request).then(resp => {
