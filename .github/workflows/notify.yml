@@ -1,8 +1,10 @@
 name: Dividend Push Notifications
 
 on:
-  schedule:
-    - cron: '0 15 * * 1-5'   # 9am MDT (UTC-6)
+  push:
+    branches: [main]
+    paths:
+      - 'notifications.json'   # fires at 9am when scraper pushes
   workflow_dispatch:
     inputs:
       test:
