@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T14:58:12.777Z",
+  "_syncedAt": "2026-06-04T15:01:12.168Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -81,20 +81,6 @@
       "id": 14,
       "shares": 10,
       "avgCost": 8,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "VIV",
-      "price": 13.21,
-      "dividendYieldPct": 6.98,
-      "dividendPerShare": 0.062,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-28",
-      "id": 16,
-      "shares": 20.550689,
-      "avgCost": 13.62,
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
