@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T15:14:19.320Z",
+  "_syncedAt": "2026-06-04T15:15:33.107Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -63,11 +63,11 @@
       "dividendYieldPct": 6.57,
       "dividendPerShare": 0.106,
       "paymentFrequency": "monthly",
-      "exDividendDate": null,
+      "exDividendDate": "2026-06-03",
       "id": 13,
       "shares": 4.193971,
       "avgCost": 19.08,
-      "manualDate": false,
+      "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
     },
