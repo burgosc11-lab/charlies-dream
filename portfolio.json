@@ -1,20 +1,6 @@
 {
-  "_syncedAt": "2026-06-04T06:31:24.480Z",
+  "_syncedAt": "2026-06-04T01:00:00.000Z",
   "stocks": [
-    {
-      "ticker": "DSL",
-      "price": 10.89,
-      "dividendYieldPct": 12.03,
-      "dividendPerShare": 0.11,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-13",
-      "id": 1,
-      "shares": null,
-      "avgCost": 10.86,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
     {
       "ticker": "DX",
       "price": 12.79,
@@ -25,34 +11,6 @@
       "id": 2,
       "shares": 6.170458,
       "avgCost": 12.97,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
-      "ticker": "GWRS",
-      "price": 7.1,
-      "dividendYieldPct": 4.28,
-      "dividendPerShare": 0.03,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-15",
-      "id": 3,
-      "shares": null,
-      "avgCost": 6.74,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "ARR",
-      "price": 17.07,
-      "dividendYieldPct": 16.69,
-      "dividendPerShare": 0.24,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-15",
-      "id": 4,
-      "shares": null,
-      "avgCost": 16.95,
       "manualDate": true,
       "manualDivShare": true,
       "tier": "A"
@@ -98,20 +56,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "D"
-    },
-    {
-      "ticker": "TBLD",
-      "price": 22.04,
-      "dividendYieldPct": 5.62,
-      "dividendPerShare": 0.1042,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-11",
-      "id": 8,
-      "shares": null,
-      "avgCost": 21.98,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "BBAR",
@@ -268,20 +212,6 @@
       "tier": "A"
     },
     {
-      "ticker": "SCM",
-      "price": 8.68,
-      "dividendYieldPct": 16.51,
-      "dividendPerShare": 0.113,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 23,
-      "shares": null,
-      "avgCost": 9.21,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
-    },
-    {
       "ticker": "EFC",
       "price": 13.36,
       "dividendYieldPct": 11.47,
@@ -324,33 +254,6 @@
       "tier": "S"
     },
     {
-      "ticker": "SMA",
-      "price": 30.28,
-      "dividendYieldPct": 5.21,
-      "dividendPerShare": 0.136,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 27,
-      "shares": null,
-      "avgCost": 29.59,
-      "manualDate": true,
-      "manualDivShare": true
-    },
-    {
-      "ticker": "AVAL",
-      "price": 4.98,
-      "dividendYieldPct": 3.51,
-      "dividendPerShare": 0.012,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 28,
-      "shares": null,
-      "avgCost": 4.09,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
-    },
-    {
       "ticker": "JEPQ",
       "price": 60.8,
       "dividendYieldPct": 10.43,
@@ -377,20 +280,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "TYG",
-      "price": 43.42,
-      "dividendYieldPct": 12.2,
-      "dividendPerShare": 0.475,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-03",
-      "id": 32,
-      "shares": null,
-      "avgCost": 46.96,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
     },
     {
       "ticker": "SAR",
