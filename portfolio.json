@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-04T14:45:53.949Z",
+  "_syncedAt": "2026-06-04T14:45:56.150Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -70,20 +70,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "AMRZ",
-      "price": 53.85,
-      "dividendYieldPct": 0.22,
-      "dividendPerShare": 0.11,
-      "paymentFrequency": "quarterly",
-      "exDividendDate": "2026-05-12",
-      "id": 12,
-      "shares": 1.633986,
-      "avgCost": 48.96,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "DIV",
