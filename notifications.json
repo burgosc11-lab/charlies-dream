@@ -1,15 +1,17 @@
 {
-  "generated_at": "2026-06-03T12:01:19.563918",
+  "generated_at": "2026-06-03T23:46:52.929570",
   "counts": {
-    "MATCH": 51,
-    "AUTO_ADD": 0,
+    "MATCH": 45,
+    "AUTO_ADD": 1,
     "SCRAPED_AHEAD": 1,
-    "APP_AHEAD": 1,
+    "APP_AHEAD": 6,
     "APP_NA": 2,
     "NO_DATA": 0
   },
   "scraped_ahead": [
     "TYG"
   ],
-  "auto_add": []
+  "auto_add": [
+    "SMA"
+  ]
 }
