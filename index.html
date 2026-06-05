@@ -112,6 +112,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .b-dim{background:var(--surface);color:var(--t3);border:1px solid var(--border)}
 .b-pass{background:var(--bg);color:var(--t4);border:1px solid var(--border)}
 .b-wait{background:#f5ede8;color:#7a4a30;border:1px solid #c8a888;font-style:italic}
+.expand-toggle{cursor:pointer;user-select:none;transition:background .12s,color .12s,border-color .12s}
+.expand-toggle:hover,.expand-toggle.open{background:var(--accent);color:#faf7f2;border-color:var(--accent)}
 .sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .sc-cell{display:flex;flex-direction:column;gap:2px}
 .sc-cell-label{font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.4px;font-weight:500}
@@ -481,6 +483,8 @@ tbody tr:hover .row-del{opacity:1}
 const SK='charlies_dream_v5';
 let uid=1;
 function newId(){return uid++;}
+const expandedTickers=new Set();
+function toggleTickerExpand(t){if(expandedTickers.has(t))expandedTickers.delete(t);else expandedTickers.add(t);renderAll();}
 
 // dividendPerShare = per-payment amount (monthly, quarterly, etc.)
 // paymentFrequency = 'monthly' | 'quarterly' | 'semi-annual' | 'annual'
@@ -998,19 +1002,33 @@ function sendTestNotif(){
 function renderCards(){
   const cl=document.getElementById('card-list');
   const{up,pa,na}=getSorted();
-  let html='',idx=0;
+  let html='',visIdx=0;
   function block(arr,extraCls=''){
-    return arr.map((s,i)=>{
+    const firstOcc={};
+    arr.forEach((s,i)=>{if(!(s.ticker in firstOcc))firstOcc[s.ticker]=i;});
+    let bHtml='';
+    arr.forEach((s,i)=>{
+      const cntHere=arr.filter(x=>x.ticker===s.ticker).length;
+      const isPrimary=firstOcc[s.ticker]===i;
+      const isExtra=cntHere>1&&!isPrimary;
+      const expanded=expandedTickers.has(s.ticker);
+      if(isExtra&&!expanded)return;
       const bi=badgeInfo(s.exDividendDate);
-      const cnt=countTicker(s.ticker);
-      const dupLabel=cnt>1?`<span class="sc-dup">${dupIndex(s)}/${cnt}</span>`:'';
       const y=s.dividendYieldPct;
       const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*freqMult(s)*s.shares:null;
       const mo=annual!=null?annual/12:null;
-      const alt=(idx+i)%2===1?'alt':'';
+      const alt=visIdx%2===1?'alt':'';visIdx++;
       const url=tvUrl(s.ticker);
       const dateHtml=s.exDividendDate?`<span class="sc-date-val">${fmtDate(s.exDividendDate)}</span>`:`<span class="sc-date-na"><i class="ti ti-clock-question"></i> Not announced</span>`;
-      return`<div class="stock-card ${alt} ${extraCls}">
+      let dupLabel='';
+      if(cntHere>1&&isPrimary){
+        dupLabel=`<span class="sc-dup expand-toggle${expanded?' open':''}" onclick="toggleTickerExpand('${s.ticker}');event.stopPropagation()" title="${expanded?'Collapse dates':'Show all '+cntHere+' dates'}">${expanded?'▴':'+'+(cntHere-1)+' ▾'}</span>`;
+      }else if(isExtra){
+        const pos=i-firstOcc[s.ticker];
+        dupLabel=`<span class="sc-dup">${pos+1}/${cntHere}</span>`;
+      }
+      const extraStyle=isExtra?'border-left:3px solid var(--border2);':'';
+      bHtml+=`<div class="stock-card ${alt} ${extraCls}" style="${extraStyle}">
         <div class="sc-top">
           <div class="sc-ticker-wrap"><a class="sc-ticker" href="${url}" target="_blank" style="text-decoration:none;color:var(--accent)">${s.ticker}</a>${dupLabel}</div>
           <div class="sc-right"><span class="sc-price">${s.price?$c(s.price):'—'}</span><span class="badge ${bi.cls}">${bi.label}</span></div>
@@ -1026,10 +1044,11 @@ function renderCards(){
           <span class="sc-date-label">Ex-div</span>${dateHtml}
         </div>
       </div>`;
-    }).join('');
+    });
+    return bHtml;
   }
-  if(up.length){html+=block(up);idx+=up.length;}
-  if(pa.length){html+=`<div class="div-label">Passed — awaiting next announcement</div>`;html+=block(pa,'passed');idx+=pa.length;}
+  if(up.length){html+=block(up);}
+  if(pa.length){html+=`<div class="div-label">Passed — awaiting next announcement</div>`;html+=block(pa,'passed');}
   if(na.length){html+=`<div class="div-label">Date not yet announced</div>`;html+=block(na,'na-row');}
   if(!html)html=`<div style="padding:2rem;text-align:center;font-size:13px;color:var(--t3)">No positions yet.</div>`;
   cl.innerHTML=html;
@@ -1038,22 +1057,38 @@ function renderCards(){
 function renderTable(){
   const tb=document.getElementById('tbody');
   const{up,pa,na}=getSorted();
-  function rows(arr,idx,extraCls=''){
-    return arr.map((s,i)=>{
+  function rows(arr,startIdx,extraCls=''){
+    const firstOcc={};
+    arr.forEach((s,i)=>{if(!(s.ticker in firstOcc))firstOcc[s.ticker]=i;});
+    let html='',si=startIdx;
+    arr.forEach((s,i)=>{
+      const cntHere=arr.filter(x=>x.ticker===s.ticker).length;
+      const isPrimary=firstOcc[s.ticker]===i;
+      const isExtra=cntHere>1&&!isPrimary;
+      const expanded=expandedTickers.has(s.ticker);
+      if(isExtra&&!expanded)return;
       const bi=badgeInfo(s.exDividendDate);
       const y=s.dividendYieldPct;
       const annual=(s.dividendPerShare!=null&&s.shares!=null)?s.dividendPerShare*freqMult(s)*s.shares:null;
       const mo=annual!=null?annual/12:null;
-      const stripe=(idx+i)%2===0?'even':'odd';
-      const cnt=countTicker(s.ticker);
-      const dupLabel=cnt>1?`<span class="dup-badge">${dupIndex(s)}/${cnt}</span>`:'';
+      const stripe=si%2===0?'even':'odd';si++;
       const url=tvUrl(s.ticker);
       const dateCell=s.exDividendDate
         ?`<div style="display:flex;align-items:center;gap:7px"><span class="num" style="font-size:14px;color:var(--t2)">${fmtDate(s.exDividendDate)}</span><span class="badge ${bi.cls}">${bi.label}</span></div>`
         :`<span class="badge b-wait">Pending</span>`;
       const tierBorder=tierBorderColor(s.tier);
-      return`<tr class="${stripe} ${extraCls}" style="border-left:3px solid ${tierBorder}">
-        <td><div class="ticker-cell"><a class="ticker-link" href="${url}" target="_blank" title="Open ${s.ticker} on TradingView">${s.ticker}</a>${dupLabel}</div></td>
+      let tickerCellInner;
+      if(cntHere>1&&isPrimary){
+        const tit=expanded?'Collapse dates':'Show all '+cntHere+' dates';
+        tickerCellInner=`<div class="ticker-cell"><a class="ticker-link" href="${url}" target="_blank" title="Open ${s.ticker} on TradingView">${s.ticker}</a><span class="dup-badge expand-toggle${expanded?' open':''}" onclick="toggleTickerExpand('${s.ticker}');event.stopPropagation()" title="${tit}">${expanded?'▴':'+'+(cntHere-1)+'▾'}</span></div>`;
+      }else if(isExtra){
+        const pos=i-firstOcc[s.ticker];
+        tickerCellInner=`<div class="ticker-cell" style="padding-left:14px"><span style="font-size:11px;color:var(--t4);margin-right:2px">└</span><a class="ticker-link" href="${url}" target="_blank" style="font-size:13px;color:var(--t3)">${s.ticker}</a><span class="dup-badge" style="font-size:8px">${pos+1}/${cntHere}</span></div>`;
+      }else{
+        tickerCellInner=`<div class="ticker-cell"><a class="ticker-link" href="${url}" target="_blank" title="Open ${s.ticker} on TradingView">${s.ticker}</a></div>`;
+      }
+      html+=`<tr class="${stripe} ${extraCls}" style="border-left:3px solid ${tierBorder}${isExtra?';opacity:.82':''}">
+        <td>${tickerCellInner}</td>
         <td class="num col-muted">${s.price?$c(s.price):'<span style="color:var(--t4)">—</span>'}</td>
         <td class="num col-muted">${y?y.toFixed(2)+'%':'<span style="color:var(--t4)">—</span>'}</td>
         <td class="num col-muted editable" onclick="editCell(this,${s.id},'dividendPerShare')" title="Click to edit">${s.dividendPerShare?$div(s.dividendPerShare):'<span style="color:var(--t4)">—</span>'}</td>
@@ -1063,7 +1098,8 @@ function renderTable(){
         <td class="tier-cell" onclick="cycleTier(${s.id})" title="Click to change tier">${s.tier?`<span class="badge tier-${s.tier.toLowerCase()}">${s.tier}</span>`:'<span style="color:var(--t4);font-size:11px">—</span>'}</td>
         <td class="del-td"><button class="row-del" onclick="deleteRow(${s.id})" title="Remove ${s.ticker}"><i class="ti ti-x"></i></button></td>
       </tr>`;
-    }).join('');
+    });
+    return html;
   }
   let html='',idx=0;
   if(up.length){html+=rows(up,idx);idx+=up.length;}
@@ -1206,7 +1242,7 @@ function applyLiveData(live){
   save(stocks);
   if(live.lastUpdated){
     const ts=new Date(live.lastUpdated);
-    lastRefreshed=ts.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+ts.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    lastRefreshed=ts.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+ts.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',timeZoneName:'short'});
     document.getElementById('last-updated').textContent='Updated: '+lastRefreshed;
   }
   return true;
