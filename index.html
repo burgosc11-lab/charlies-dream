@@ -1137,6 +1137,17 @@ function rollShares(){
     // Clear shares from ALL passed entries for this ticker to prevent double-counting
     passedWithShares.forEach(s=>{if(s.shares!=null){s.shares=null;changed=true;}});
   });
+  // Rule 2: remove stale shell entries — passed + null shares + ticker has a confirmed upcoming entry
+  const tickersWithUpcoming=new Set(
+    stocks.filter(s=>classify(s.exDividendDate)==='upcoming').map(s=>s.ticker)
+  );
+  const before=stocks.length;
+  stocks=stocks.filter(s=>
+    classify(s.exDividendDate)!=='passed' || // keep all non-passed rows
+    s.shares!=null ||                         // keep passed rows that still hold shares
+    !tickersWithUpcoming.has(s.ticker)        // keep passed rows with no upcoming sibling
+  );
+  if(stocks.length!==before)changed=true;
   if(changed)save(stocks);
 }
 
