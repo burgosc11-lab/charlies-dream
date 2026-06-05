@@ -6,12 +6,12 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
-<title>THE LIST — Dividend Tracker</title>
+<title>The List — Ex-Dividend Date Tracker</title>
 <link rel="manifest" href="manifest.json"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<meta name="apple-mobile-web-app-title" content="THE LIST"/>
+<meta name="apple-mobile-web-app-title" content="The List"/>
 <meta name="theme-color" content="#2c2010"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -350,7 +350,7 @@ tbody tr:hover .row-del{opacity:1}
       <div style="display:flex;align-items:flex-start;justify-content:space-between;width:100%;gap:10px">
         <div>
           <strong style="font-size:12px;color:var(--text)">📱 iPhone background alerts</strong><br>
-          <span>Add THE LIST to your Home Screen first, then tap Subscribe. You'll get a real push alert the day before each ex-div date — even when the app is closed.</span>
+          <span>Add The List to your Home Screen first, then tap Subscribe. You'll get a real push alert the day before each ex-div date — even when the app is closed.</span>
         </div>
         <button onclick="subscribePush()" id="push-sub-btn" style="font-family:var(--sans);font-size:12px;padding:5px 12px;border-radius:var(--r10);border:1px solid var(--border);background:var(--surface);color:var(--t2);cursor:pointer;white-space:nowrap;flex-shrink:0">Subscribe</button>
       </div>
@@ -950,7 +950,7 @@ function checkNotifications(){
   if(!toAlert.length) return;
   if(notifEnabled && Notification.permission==='granted'){
     toAlert.forEach(a=>{
-      new Notification('THE LIST — Dividend Alert 📈',{
+      new Notification('The List — Dividend Alert 📈',{
         body:a.msg,
         icon:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%232c2010"/><text x="16" y="22" text-anchor="middle" font-size="18" fill="white">$</text></svg>',
         tag:a.key
@@ -997,7 +997,7 @@ async function handleNotifToggle(on){
 function sendTestNotif(){
   if(!('Notification' in window)){alert('Notifications not supported in this browser.');return;}
   if(Notification.permission!=='granted'){alert('Enable notifications first using the toggle above.');return;}
-  new Notification("THE LIST — Test Alert 📈",{body:"This is a test. You'll receive alerts like this the day before ex-dividend dates (Thursday for Mondays).",tag:'test-'+Date.now()});
+  new Notification("The List — Test Alert 📈",{body:"This is a test. You'll receive alerts like this the day before ex-dividend dates (Thursday for Mondays).",tag:'test-'+Date.now()});
 }
 
 // ── RENDER ──
@@ -1474,7 +1474,7 @@ async function subscribePush(){
   }
   const perm=await Notification.requestPermission();
   if(perm!=='granted'){
-    alert('Notifications blocked. Go to iPhone Settings → THE LIST → Notifications and enable them.');
+    alert('Notifications blocked. Go to iPhone Settings → The List → Notifications and enable them.');
     return;
   }
   const btn=document.getElementById('push-sub-btn');
