@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-05T16:43:00.768Z",
+  "_syncedAt": "2026-06-05T16:46:57.131Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -1042,7 +1042,7 @@
       "ticker": "PFLT",
       "price": 8.33,
       "dividendYieldPct": 15.04,
-      "dividendPerShare": 0.1,
+      "dividendPerShare": 0.103,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "id": 103,
@@ -1056,7 +1056,7 @@
       "ticker": "PNNT",
       "price": 4.03,
       "dividendYieldPct": 12.34,
-      "dividendPerShare": 0.0133,
+      "dividendPerShare": 0.08,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-15",
       "id": 104,
