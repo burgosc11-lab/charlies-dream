@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-05T15:38:27.105Z",
+  "_syncedAt": "2026-06-05T15:38:39.091Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -243,7 +243,7 @@
       "ticker": "MAIN",
       "price": 52.02,
       "dividendYieldPct": 8.64,
-      "dividendPerShare": 0.26,
+      "dividendPerShare": 0.265,
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-08",
       "id": 35,
