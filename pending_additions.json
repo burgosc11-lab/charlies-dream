@@ -1,31 +1,22 @@
 {
-  "generated_at": "2026-06-04T00:30:00.000Z",
+  "generated_at": "2026-06-05T10:25:36.296898",
   "additions": [
     {
-      "id": "arr_20260615_r2",
-      "ticker": "ARR",
+      "id": "pflt_20260615",
+      "ticker": "PFLT",
       "new_ex_date": "2026-06-15",
-      "scraped_amount": 0.24,
-      "source_url": "https://stockanalysis.com/stocks/arr/dividend/",
-      "detected_at": "2026-06-04T00:30:00.000Z",
+      "scraped_amount": 0.0833,
+      "source_url": "https://stockanalysis.com/stocks/pflt/dividend/",
+      "detected_at": "2026-06-05T10:25:35.854443",
       "auto_apply": false
     },
     {
-      "id": "dsl_20260617_r2",
-      "ticker": "DSL",
-      "new_ex_date": "2026-06-17",
-      "scraped_amount": 0.11,
-      "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
-      "detected_at": "2026-06-04T00:30:00.000Z",
-      "auto_apply": false
-    },
-    {
-      "id": "gwrs_20260615_r2",
-      "ticker": "GWRS",
+      "id": "pnnt_20260615",
+      "ticker": "PNNT",
       "new_ex_date": "2026-06-15",
-      "scraped_amount": 0.02533,
-      "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
-      "detected_at": "2026-06-04T00:30:00.000Z",
+      "scraped_amount": 0.08,
+      "source_url": "https://stockanalysis.com/stocks/pnnt/dividend/",
+      "detected_at": "2026-06-05T10:25:35.854443",
       "auto_apply": false
     }
   ]
