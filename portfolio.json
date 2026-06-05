@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-05T16:42:24.513Z",
+  "_syncedAt": "2026-06-05T16:43:00.768Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -23,7 +23,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "id": 5,
-      "shares": 15.083918,
+      "shares": null,
       "avgCost": 8.44,
       "manualDate": true,
       "manualDivShare": true,
@@ -37,7 +37,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-05-15",
       "id": 6,
-      "shares": 19.393939,
+      "shares": null,
       "avgCost": 4.13,
       "manualDate": true,
       "manualDivShare": true,
@@ -1037,6 +1037,34 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
+    },
+    {
+      "ticker": "PFLT",
+      "price": 8.33,
+      "dividendYieldPct": 15.04,
+      "dividendPerShare": 0.1,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-15",
+      "id": 103,
+      "shares": 15.083918,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
+    },
+    {
+      "ticker": "PNNT",
+      "price": 4.03,
+      "dividendYieldPct": 12.34,
+      "dividendPerShare": 0.0133,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-15",
+      "id": 104,
+      "shares": 19.393939,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
     }
   ]
 }
