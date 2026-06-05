@@ -1552,7 +1552,18 @@ async function subscribePush(){
         }
       }
 
-      // Badge: only show for manual-review entries (auto_apply:false)
+      // Silently mark as applied any entry whose date is already in stocks
+      // (covers the case where the user manually edited the date instead of using the import button)
+      const alreadyPresent = pending.filter(a =>
+        !applied.includes(a.id) &&
+        stocks.some(s => s.ticker === a.ticker && s.exDividendDate === a.new_ex_date)
+      );
+      if(alreadyPresent.length){
+        alreadyPresent.forEach(a => applied.push(a.id));
+        localStorage.setItem(APK, JSON.stringify(applied));
+      }
+
+      // Badge: only show for manual-review entries (auto_apply:false) not yet in stocks
       const unapplied = pending.filter(a => !a.auto_apply && !applied.includes(a.id));
       const btn   = document.getElementById('import-btn');
       const badge = document.getElementById('import-badge');
