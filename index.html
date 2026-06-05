@@ -908,8 +908,10 @@ function prevBizDay(d){
 function alertDateFor(exDateStr){
   if(!exDateStr) return null;
   const ex=new Date(exDateStr); ex.setHours(0,0,0,0);
-  // Monday or market holiday: alert 2 business days before so user has 1 full trading day to buy
-  if(ex.getDay()===1||isMarketHoliday(ex)){return prevBizDay(prevBizDay(ex));}
+  // Holidays: alert 2 business days early so user has time to act.
+  // Monday ex-divs: prevBizDay() already skips the weekend and lands on Friday —
+  // the correct last trading day to buy. No double-step needed.
+  if(isMarketHoliday(ex)){return prevBizDay(prevBizDay(ex));}
   return prevBizDay(ex);
 }
 
