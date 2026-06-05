@@ -93,7 +93,10 @@ function prevBizDay(d) {
 function alertDateFor(exDateStr) {
   if (!exDateStr) return null;
   const ex = new Date(exDateStr + 'T00:00:00');
-  if (ex.getDay()===1 || isMarketHoliday(ex)) return prevBizDay(prevBizDay(ex));
+  // Holidays: alert 2 business days early so the user has time to act.
+  // Monday ex-divs: prevBizDay() already skips the weekend and lands on Friday —
+  // the correct last trading day. No double-step needed.
+  if (isMarketHoliday(ex)) return prevBizDay(prevBizDay(ex));
   return prevBizDay(ex);
 }
 
