@@ -950,7 +950,7 @@ function checkNotifications(){
   if(!toAlert.length) return;
   if(notifEnabled && Notification.permission==='granted'){
     toAlert.forEach(a=>{
-      new Notification('The List — Dividend Alert 📈',{
+      new Notification('The List — Ex-Dividend Date Alert 📈',{
         body:a.msg,
         icon:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%232c2010"/><text x="16" y="22" text-anchor="middle" font-size="18" fill="white">$</text></svg>',
         tag:a.key
@@ -997,7 +997,7 @@ async function handleNotifToggle(on){
 function sendTestNotif(){
   if(!('Notification' in window)){alert('Notifications not supported in this browser.');return;}
   if(Notification.permission!=='granted'){alert('Enable notifications first using the toggle above.');return;}
-  new Notification("The List — Test Alert 📈",{body:"This is a test. You'll receive alerts like this the day before ex-dividend dates (Thursday for Mondays).",tag:'test-'+Date.now()});
+  new Notification("The List — Ex-Dividend Date Alert (Test) 📈",{body:"This is a test. You'll receive alerts like this the day before ex-dividend dates (Thursday for Mondays).",tag:'test-'+Date.now()});
 }
 
 // ── RENDER ──
