@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-09T04:57:11.623Z",
+  "_syncedAt": "2026-06-09T14:57:21.699Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -212,20 +212,6 @@
       "tier": "S"
     },
     {
-      "ticker": "MAIN",
-      "price": 51.49,
-      "dividendYieldPct": 8.42,
-      "dividendPerShare": 0.265,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-08",
-      "id": 35,
-      "shares": 19.944476,
-      "avgCost": 51.56,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
-    },
-    {
       "ticker": "ECC",
       "price": 4.025,
       "dividendYieldPct": 29.27,
@@ -426,7 +412,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-22",
       "id": 52,
-      "shares": null,
+      "shares": 19.944476,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
