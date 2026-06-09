@@ -27,6 +27,12 @@
   --sans:'DM Sans',sans-serif;--serif:'Lora',serif;
   --r6:6px;--r10:10px;--r14:14px;--r20:20px;
 }
+[data-theme="dark"]{
+  --bg:#0f0e0d;--surface:#1a1916;--card:#1e1c18;--row-alt:#161513;
+  --border:#2e2b26;--border2:#3a3530;
+  --text:#e8e0d0;--t2:#c0b098;--t3:#807060;--t4:#504030;
+  --accent:#2a9a82;--green:#2a8a50;--amber:#c08020;--red:#c04040;--blue:#4a6ac0;
+}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-webkit-font-smoothing:antialiased;min-height:100vh;font-size:14px}
 .app{padding:16px 16px 48px;max-width:700px;margin:0 auto}
 /* Header */
@@ -112,6 +118,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:0;-w
 .b-dim{background:var(--surface);color:var(--t3);border:1px solid var(--border)}
 .b-pass{background:var(--bg);color:var(--t4);border:1px solid var(--border)}
 .b-wait{background:#f5ede8;color:#7a4a30;border:1px solid #c8a888;font-style:italic}
+.b-buy{background:#1a5c3a;color:#e8f5ee;border:1px solid #2a9a62;font-weight:700;letter-spacing:.5px}
 .expand-toggle{cursor:pointer;user-select:none;transition:background .12s,color .12s,border-color .12s}
 .expand-toggle:hover,.expand-toggle.open{background:var(--accent);color:#faf7f2;border-color:var(--accent)}
 .sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -312,6 +319,9 @@ tbody tr:hover .row-del{opacity:1}
           </button>
           <button class="more-menu-item" onclick="setupGhSync()">
             <i class="ti ti-cloud-upload" style="font-size:14px"></i> Sync setup
+          </button>
+          <button class="more-menu-item" id="theme-btn" onclick="toggleTheme();closeMoreMenu()">
+            <i class="ti ti-moon" style="font-size:14px"></i> Dark mode
           </button>
         </div>
       </div>
@@ -827,6 +837,7 @@ function badgeInfo(ds){
   const d=daysTo(ds);
   if(d<0)  return{label:'Passed', cls:'b-pass'};
   if(d===0)return{label:'Today',  cls:'b-soon'};
+  if(d===1)return{label:'BUY',    cls:'b-buy'};
   if(d<=7) return{label:d+'d',    cls:'b-soon'};
   if(d<=30)return{label:d+'d',    cls:'b-ok'};
   return{label:d+'d',cls:'b-dim'};
@@ -1346,6 +1357,20 @@ function cycleTier(id){
 // ── OVERFLOW MENU ──
 function toggleMoreMenu(){document.getElementById('more-menu').classList.toggle('show');}
 function closeMoreMenu(){document.getElementById('more-menu').classList.remove('show');}
+function toggleTheme(){
+  const dark=document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme',dark?'light':'dark');
+  localStorage.setItem('theme',dark?'light':'dark');
+  document.getElementById('theme-btn').innerHTML=dark?'<i class="ti ti-moon" style="font-size:14px"></i> Dark mode':'<i class="ti ti-sun" style="font-size:14px"></i> Light mode';
+}
+(function(){
+  const t=localStorage.getItem('theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  window.addEventListener('DOMContentLoaded',()=>{
+    const btn=document.getElementById('theme-btn');
+    if(btn&&t==='dark')btn.innerHTML='<i class="ti ti-sun" style="font-size:14px"></i> Light mode';
+  });
+})();
 document.addEventListener('click',e=>{
   const wrap=document.querySelector('.more-menu-wrap');
   if(wrap&&!wrap.contains(e.target))closeMoreMenu();
