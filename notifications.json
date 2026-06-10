@@ -1,13 +1,17 @@
 {
-  "generated_at": "2026-06-09T19:28:13.583633",
+  "generated_at": "2026-06-10T21:34:02.324036",
   "counts": {
     "MATCH": 17,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 0,
+    "SCRAPED_AHEAD": 3,
     "APP_AHEAD": 11,
-    "APP_NA": 15,
+    "APP_NA": 12,
     "NO_DATA": 1
   },
-  "scraped_ahead": [],
+  "scraped_ahead": [
+    "ADC",
+    "EARN",
+    "EFC"
+  ],
   "auto_add": []
 }
