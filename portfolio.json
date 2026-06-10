@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-10T13:57:39.544Z",
+  "_syncedAt": "2026-06-10T22:21:39.277Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -114,34 +114,6 @@
       "tier": "D"
     },
     {
-      "ticker": "EARN",
-      "price": 4.63,
-      "dividendYieldPct": 20.6,
-      "dividendPerShare": 0.08,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 21,
-      "shares": 37.002104,
-      "avgCost": 4.86,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
-      "ticker": "EFC",
-      "price": 13.38,
-      "dividendYieldPct": 11.51,
-      "dividendPerShare": 0.13,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 24,
-      "shares": 13.385737,
-      "avgCost": 13.45,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
       "ticker": "APLE",
       "price": 15.59,
       "dividendYieldPct": 6.14,
@@ -154,20 +126,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "ADC",
-      "price": 73.24,
-      "dividendYieldPct": 4.36,
-      "dividendPerShare": 0.267,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 26,
-      "shares": 3.761889,
-      "avgCost": 74.43,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
     },
     {
       "ticker": "JEPQ",
@@ -1022,6 +980,48 @@
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
+      "tier": "A"
+    },
+    {
+      "ticker": "ADC",
+      "price": 73.24,
+      "dividendYieldPct": 4.36,
+      "dividendPerShare": 0.267,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 105,
+      "shares": 3.761889,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
+    },
+    {
+      "ticker": "EARN",
+      "price": 4.63,
+      "dividendYieldPct": 20.6,
+      "dividendPerShare": 0.08,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 106,
+      "shares": 37.002104,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
+    },
+    {
+      "ticker": "EFC",
+      "price": 13.38,
+      "dividendYieldPct": 11.51,
+      "dividendPerShare": 0.13,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 107,
+      "shares": 13.385737,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
       "tier": "A"
     }
   ]
