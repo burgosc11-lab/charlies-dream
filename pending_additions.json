@@ -1,4 +1,32 @@
 {
-  "generated_at": "2026-06-09T19:28:12.757833",
-  "additions": []
+  "generated_at": "2026-06-10T21:34:01.643332",
+  "additions": [
+    {
+      "id": "adc_20260630",
+      "ticker": "ADC",
+      "new_ex_date": "2026-06-30",
+      "scraped_amount": 0.267,
+      "source_url": "https://stockanalysis.com/stocks/adc/dividend/",
+      "detected_at": "2026-06-10T21:34:01.433538",
+      "auto_apply": false
+    },
+    {
+      "id": "earn_20260630",
+      "ticker": "EARN",
+      "new_ex_date": "2026-06-30",
+      "scraped_amount": 0.08,
+      "source_url": "https://stockanalysis.com/stocks/earn/dividend/",
+      "detected_at": "2026-06-10T21:34:01.433552",
+      "auto_apply": false
+    },
+    {
+      "id": "efc_20260630",
+      "ticker": "EFC",
+      "new_ex_date": "2026-06-30",
+      "scraped_amount": 0.13,
+      "source_url": "https://stockanalysis.com/stocks/efc/dividend/",
+      "detected_at": "2026-06-10T21:34:01.433556",
+      "auto_apply": false
+    }
+  ]
 }
