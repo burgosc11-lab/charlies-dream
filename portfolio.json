@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-11T04:59:33.046Z",
+  "_syncedAt": "2026-06-11T14:17:59.501Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -168,34 +168,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "S"
-    },
-    {
-      "ticker": "ECC",
-      "price": 3.83,
-      "dividendYieldPct": 29.78,
-      "dividendPerShare": 0.06,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-10",
-      "id": 36,
-      "shares": 44.875454,
-      "avgCost": 4.03,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
-    },
-    {
-      "ticker": "EIC",
-      "price": 10.27,
-      "dividendYieldPct": 13.11,
-      "dividendPerShare": 0.11,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-10",
-      "id": 37,
-      "shares": 16.892193,
-      "avgCost": 10.66,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "TRIN",
@@ -509,7 +481,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-07-13",
       "id": 64,
-      "shares": null,
+      "shares": 44.875454,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
@@ -523,7 +495,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-07-13",
       "id": 65,
-      "shares": null,
+      "shares": 16.892193,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
