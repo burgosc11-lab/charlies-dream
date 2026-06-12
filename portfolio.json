@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-12T04:51:18.920Z",
+  "_syncedAt": "2026-06-12T04:51:27.739Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -14,20 +14,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "A"
-    },
-    {
-      "ticker": "HSHP",
-      "price": 14.73,
-      "dividendYieldPct": 7.8,
-      "dividendPerShare": 0.15,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-18",
-      "id": 7,
-      "shares": 5.13258,
-      "avgCost": 15.59,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "D"
     },
     {
       "ticker": "DIV",
@@ -72,20 +58,6 @@
       "tier": "C"
     },
     {
-      "ticker": "O",
-      "price": 62.11,
-      "dividendYieldPct": 5.3,
-      "dividendPerShare": 0.271,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 18,
-      "shares": 2.912733,
-      "avgCost": 61.8,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
-    },
-    {
       "ticker": "AGNC",
       "price": 10.18,
       "dividendYieldPct": 13.97,
@@ -98,20 +70,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "ORC",
-      "price": 6.55,
-      "dividendYieldPct": 18.07,
-      "dividendPerShare": 0.1,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 20,
-      "shares": 26.04385,
-      "avgCost": 6.91,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "D"
     },
     {
       "ticker": "APLE",
@@ -995,6 +953,48 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "A"
+    },
+    {
+      "ticker": "HSHP",
+      "price": 14.73,
+      "dividendYieldPct": 7.8,
+      "dividendPerShare": 0.15,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-22",
+      "id": 108,
+      "shares": 5.13258,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "D"
+    },
+    {
+      "ticker": "O",
+      "price": 62.11,
+      "dividendYieldPct": 5.3,
+      "dividendPerShare": 0.271,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 109,
+      "shares": 2.912733,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
+    },
+    {
+      "ticker": "ORC",
+      "price": 6.55,
+      "dividendYieldPct": 18.07,
+      "dividendPerShare": 0.1,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 110,
+      "shares": 26.04385,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "D"
     }
   ]
 }
