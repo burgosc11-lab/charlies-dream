@@ -1,32 +1,4 @@
 {
-  "generated_at": "2026-06-11T21:33:35.596965",
-  "additions": [
-    {
-      "id": "hshp_20260622",
-      "ticker": "HSHP",
-      "new_ex_date": "2026-06-22",
-      "scraped_amount": 0.22,
-      "source_url": "https://stockanalysis.com/stocks/hshp/dividend/",
-      "detected_at": "2026-06-11T21:33:35.376958",
-      "auto_apply": false
-    },
-    {
-      "id": "o_20260630",
-      "ticker": "O",
-      "new_ex_date": "2026-06-30",
-      "scraped_amount": 0.271,
-      "source_url": "https://stockanalysis.com/stocks/o/dividend/",
-      "detected_at": "2026-06-11T21:33:35.376970",
-      "auto_apply": false
-    },
-    {
-      "id": "orc_20260630",
-      "ticker": "ORC",
-      "new_ex_date": "2026-06-30",
-      "scraped_amount": 0.1,
-      "source_url": "https://stockanalysis.com/stocks/orc/dividend/",
-      "detected_at": "2026-06-11T21:33:35.376975",
-      "auto_apply": false
-    }
-  ]
+  "generated_at": "2026-06-12T21:04:20.858513",
+  "additions": []
 }
