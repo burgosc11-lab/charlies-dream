@@ -1,17 +1,13 @@
 {
-  "generated_at": "2026-06-11T21:33:36.345300",
+  "generated_at": "2026-06-12T21:04:21.506779",
   "counts": {
-    "MATCH": 19,
+    "MATCH": 22,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 3,
+    "SCRAPED_AHEAD": 0,
     "APP_AHEAD": 11,
     "APP_NA": 11,
     "NO_DATA": 0
   },
-  "scraped_ahead": [
-    "HSHP",
-    "O",
-    "ORC"
-  ],
+  "scraped_ahead": [],
   "auto_add": []
 }
