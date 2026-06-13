@@ -1,20 +1,6 @@
 {
-  "_syncedAt": "2026-06-13T22:55:50.103Z",
+  "_syncedAt": "2026-06-13T22:55:58.958Z",
   "stocks": [
-    {
-      "ticker": "DX",
-      "price": 12.76,
-      "dividendYieldPct": 15.74,
-      "dividendPerShare": 0.17,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-21",
-      "id": 2,
-      "shares": 6.170458,
-      "avgCost": 12.97,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
     {
       "ticker": "DIV",
       "price": 19.14,
@@ -981,6 +967,20 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "D"
+    },
+    {
+      "ticker": "DX",
+      "price": 12.76,
+      "dividendYieldPct": 15.74,
+      "dividendPerShare": 0.17,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-22",
+      "id": 111,
+      "shares": 6.170458,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
     }
   ]
 }
