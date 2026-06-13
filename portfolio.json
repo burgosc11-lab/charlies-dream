@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-12T22:28:18.405Z",
+  "_syncedAt": "2026-06-13T06:02:12.515Z",
   "stocks": [
     {
       "ticker": "DX",
@@ -137,20 +137,6 @@
       "id": 38,
       "shares": 4.735128,
       "avgCost": 16.9,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
-      "ticker": "CION",
-      "price": 6.98,
-      "dividendYieldPct": 17.17,
-      "dividendPerShare": 0.1,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-12",
-      "id": 39,
-      "shares": 11.75278,
-      "avgCost": 6.81,
       "manualDate": true,
       "manualDivShare": true,
       "tier": "A"
@@ -535,7 +521,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-07-17",
       "id": 71,
-      "shares": null,
+      "shares": 11.75278,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
