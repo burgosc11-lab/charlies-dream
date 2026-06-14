@@ -1,13 +1,22 @@
 {
-  "generated_at": "2026-06-13T17:57:41.574805",
+  "generated_at": "2026-06-14T18:03:28.149961",
   "additions": [
     {
-      "id": "dx_20260622",
-      "ticker": "DX",
-      "new_ex_date": "2026-06-22",
-      "scraped_amount": 0.17,
-      "source_url": "https://stockanalysis.com/stocks/dx/dividend/",
-      "detected_at": "2026-06-13T17:57:41.306425",
+      "id": "agnc_20260630",
+      "ticker": "AGNC",
+      "new_ex_date": "2026-06-30",
+      "scraped_amount": 0.12,
+      "source_url": "https://stockanalysis.com/stocks/agnc/dividend/",
+      "detected_at": "2026-06-14T18:03:27.854473",
+      "auto_apply": false
+    },
+    {
+      "id": "sar_20260706",
+      "ticker": "SAR",
+      "new_ex_date": "2026-07-06",
+      "scraped_amount": 0.25,
+      "source_url": "https://stockanalysis.com/stocks/sar/dividend/",
+      "detected_at": "2026-06-14T18:03:27.854492",
       "auto_apply": false
     }
   ]
