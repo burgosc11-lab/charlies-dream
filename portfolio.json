@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-15T03:39:35.470Z",
+  "_syncedAt": "2026-06-15T03:39:44.177Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -44,20 +44,6 @@
       "tier": "C"
     },
     {
-      "ticker": "AGNC",
-      "price": 10.18,
-      "dividendYieldPct": 13.97,
-      "dividendPerShare": 0.12,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 19,
-      "shares": 17.200898,
-      "avgCost": 10.46,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
       "ticker": "APLE",
       "price": 15.86,
       "dividendYieldPct": 6.03,
@@ -98,20 +84,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "SAR",
-      "price": 22.34,
-      "dividendYieldPct": 13.43,
-      "dividendPerShare": 0.25,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-04",
-      "id": 34,
-      "shares": 34.251067,
-      "avgCost": 22.1,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
     },
     {
       "ticker": "TRIN",
@@ -981,6 +953,34 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "A"
+    },
+    {
+      "ticker": "AGNC",
+      "price": 10.18,
+      "dividendYieldPct": 13.97,
+      "dividendPerShare": 0.12,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 112,
+      "shares": 17.200898,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "SAR",
+      "price": 22.34,
+      "dividendYieldPct": 13.43,
+      "dividendPerShare": 0.25,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-06",
+      "id": 113,
+      "shares": 34.251067,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
     }
   ]
 }
