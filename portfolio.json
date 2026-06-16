@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-16T20:46:57.457Z",
+  "_syncedAt": "2026-06-16T20:47:05.553Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -11,20 +11,6 @@
       "id": 13,
       "shares": 4.193971,
       "avgCost": 19.08,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "IVR",
-      "price": 7.9,
-      "dividendYieldPct": 18.09,
-      "dividendPerShare": 0.12,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-26",
-      "id": 14,
-      "shares": 10,
-      "avgCost": 8,
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
@@ -927,6 +913,20 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "S"
+    },
+    {
+      "ticker": "IVR",
+      "price": 7.9,
+      "dividendYieldPct": 18.09,
+      "dividendPerShare": 0.12,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-23",
+      "id": 117,
+      "shares": 10,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
     }
   ]
 }
