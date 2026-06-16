@@ -1,31 +1,13 @@
 {
-  "generated_at": "2026-06-15T22:07:23.481627",
+  "generated_at": "2026-06-16T18:14:18.065209",
   "additions": [
     {
-      "id": "bst_20260715",
-      "ticker": "BST",
-      "new_ex_date": "2026-07-15",
-      "scraped_amount": 0.25,
-      "source_url": "https://stockanalysis.com/stocks/bst/dividend/",
-      "detected_at": "2026-06-15T22:07:23.338243",
-      "auto_apply": false
-    },
-    {
-      "id": "btx_20260715",
-      "ticker": "BTX",
-      "new_ex_date": "2026-07-15",
-      "scraped_amount": 0.0525,
-      "source_url": "https://stockanalysis.com/stocks/btx/dividend/",
-      "detected_at": "2026-06-15T22:07:23.338256",
-      "auto_apply": false
-    },
-    {
-      "id": "cswc_20260715",
-      "ticker": "CSWC",
-      "new_ex_date": "2026-07-15",
-      "scraped_amount": 0.1934,
-      "source_url": "https://stockanalysis.com/stocks/cswc/dividend/",
-      "detected_at": "2026-06-15T22:07:23.338261",
+      "id": "ivr_20260623",
+      "ticker": "IVR",
+      "new_ex_date": "2026-06-23",
+      "scraped_amount": 0.12,
+      "source_url": "https://stockanalysis.com/stocks/ivr/dividend/",
+      "detected_at": "2026-06-16T18:14:17.896213",
       "auto_apply": false
     }
   ]
