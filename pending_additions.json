@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-16T18:14:18.065209",
+  "generated_at": "2026-06-17T16:45:39.306478",
   "additions": [
     {
-      "id": "ivr_20260623",
-      "ticker": "IVR",
-      "new_ex_date": "2026-06-23",
-      "scraped_amount": 0.12,
-      "source_url": "https://stockanalysis.com/stocks/ivr/dividend/",
-      "detected_at": "2026-06-16T18:14:17.896213",
+      "id": "epr_20260630",
+      "ticker": "EPR",
+      "new_ex_date": "2026-06-30",
+      "scraped_amount": 0.31,
+      "source_url": "https://stockanalysis.com/stocks/epr/dividend/",
+      "detected_at": "2026-06-17T16:45:39.143061",
       "auto_apply": false
     }
   ]
