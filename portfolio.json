@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-17T17:56:57.011Z",
+  "_syncedAt": "2026-06-17T17:57:02.791Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -14,20 +14,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "EPR",
-      "price": 59.36,
-      "dividendYieldPct": 6.07,
-      "dividendPerShare": 0.31,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 17,
-      "shares": 3.107209,
-      "avgCost": 57.93,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
     },
     {
       "ticker": "APLE",
@@ -927,6 +913,20 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "B"
+    },
+    {
+      "ticker": "EPR",
+      "price": 59.36,
+      "dividendYieldPct": 6.07,
+      "dividendPerShare": 0.31,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 118,
+      "shares": 3.107209,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "C"
     }
   ]
 }
