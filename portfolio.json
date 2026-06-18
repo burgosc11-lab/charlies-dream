@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-18T02:21:41.646Z",
+  "_syncedAt": "2026-06-18T18:04:29.478Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -84,34 +84,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "S"
-    },
-    {
-      "ticker": "HRZN",
-      "price": 4.255,
-      "dividendYieldPct": 16.71,
-      "dividendPerShare": 0.06,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-17",
-      "id": 50,
-      "shares": 18.411967,
-      "avgCost": 4.35,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
-      "ticker": "HRZN",
-      "price": 4.255,
-      "dividendYieldPct": 16.71,
-      "dividendPerShare": 0.03,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-17",
-      "id": 51,
-      "shares": 18.411967,
-      "avgCost": 4.35,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "MAIN",
@@ -328,7 +300,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-07-16",
       "id": 69,
-      "shares": null,
+      "shares": 18.411967,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
