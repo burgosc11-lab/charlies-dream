@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-22T03:06:55.485Z",
+  "_syncedAt": "2026-06-22T03:19:10.128Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -11,20 +11,6 @@
       "id": 13,
       "shares": 4.193971,
       "avgCost": 19.08,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "APLE",
-      "price": 16.535,
-      "dividendYieldPct": 5.86,
-      "dividendPerShare": 0.08,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-05-29",
-      "id": 25,
-      "shares": 12.48988,
-      "avgCost": 14.41,
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
@@ -56,20 +42,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "TRIN",
-      "price": 16.885,
-      "dividendYieldPct": 11.98,
-      "dividendPerShare": 0.17,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-11",
-      "id": 38,
-      "shares": 4.735128,
-      "avgCost": 16.9,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "DOC",
@@ -899,6 +871,34 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "C"
+    },
+    {
+      "ticker": "APLE",
+      "price": 16.535,
+      "dividendYieldPct": 5.86,
+      "dividendPerShare": 0.08,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-06-30",
+      "id": 119,
+      "shares": 12.48988,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "TRIN",
+      "price": 16.885,
+      "dividendYieldPct": 11.98,
+      "dividendPerShare": 0.17,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-15",
+      "id": 120,
+      "shares": 4.735128,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
     }
   ]
 }
