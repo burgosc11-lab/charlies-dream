@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-22T18:12:35.089Z",
+  "_syncedAt": "2026-06-22T18:28:58.243Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -106,7 +106,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-06-23",
       "id": 55,
-      "shares": 22.621201,
+      "shares": 26.313467,
       "avgCost": 19.38,
       "manualDate": true,
       "manualDivShare": true,
