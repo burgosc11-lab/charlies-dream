@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-22T18:01:05.878043",
+  "generated_at": "2026-06-23T13:25:31.723365",
   "counts": {
-    "MATCH": 20,
+    "MATCH": 14,
     "AUTO_ADD": 0,
     "SCRAPED_AHEAD": 0,
-    "APP_AHEAD": 11,
-    "APP_NA": 13,
+    "APP_AHEAD": 12,
+    "APP_NA": 18,
     "NO_DATA": 0
   },
   "scraped_ahead": [],
