@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-22T18:31:24.810Z",
+  "_syncedAt": "2026-06-23T20:08:42.697Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -58,20 +58,6 @@
       "tier": "S"
     },
     {
-      "ticker": "MAIN",
-      "price": 51.395,
-      "dividendYieldPct": 8.53,
-      "dividendPerShare": 0.3,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-22",
-      "id": 52,
-      "shares": 19.944476,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
-    },
-    {
       "ticker": "LTC",
       "price": 36.31,
       "dividendYieldPct": 6.18,
@@ -84,19 +70,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "A"
-    },
-    {
-      "ticker": "XRN",
-      "price": 35.57,
-      "dividendYieldPct": 15.46,
-      "dividendPerShare": 0.16,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-22",
-      "id": 54,
-      "shares": 2.351903,
-      "avgCost": 34.02,
-      "manualDate": true,
-      "manualDivShare": true
     },
     {
       "ticker": "GLAD",
@@ -190,7 +163,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-07-08",
       "id": 63,
-      "shares": null,
+      "shares": 19.944476,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
@@ -314,7 +287,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-07-20",
       "id": 73,
-      "shares": null,
+      "shares": 2.351903,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true
