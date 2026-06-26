@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T13:25:23.687439",
+  "generated_at": "2026-06-26T15:36:40.579773",
   "additions": [
     {
       "id": "arr_20260715",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-07-15",
       "scraped_amount": 0.24,
       "source_url": "https://stockanalysis.com/stocks/arr/dividend/",
-      "detected_at": "2026-06-26T13:25:23.510121",
+      "detected_at": "2026-06-26T15:36:40.282001",
       "auto_apply": false
     }
   ]
