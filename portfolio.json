@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-27T06:37:17.419Z",
+  "_syncedAt": "2026-06-27T06:37:27.487Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -581,20 +581,6 @@
       "tier": "A"
     },
     {
-      "ticker": "ARR",
-      "price": 16.735,
-      "dividendYieldPct": 16.9,
-      "dividendPerShare": 0.24,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-15",
-      "id": 100,
-      "shares": 4.721156,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
       "ticker": "DSL",
       "price": 10.88,
       "dividendYieldPct": 12.03,
@@ -868,6 +854,20 @@
       "exDividendDate": "2026-07-15",
       "id": 120,
       "shares": 4.735128,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
+    },
+    {
+      "ticker": "ARR",
+      "price": 16.735,
+      "dividendYieldPct": 16.9,
+      "dividendPerShare": 0.24,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-15",
+      "id": 121,
+      "shares": 4.721156,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": false,
