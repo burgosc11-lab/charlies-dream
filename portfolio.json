@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-29T19:30:47.747Z",
+  "_syncedAt": "2026-06-29T19:31:04.007Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -647,7 +647,7 @@
       "shares": 3.761889,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "S"
     },
     {
@@ -661,7 +661,7 @@
       "shares": 37.002104,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "A"
     },
     {
@@ -675,7 +675,7 @@
       "shares": 13.385737,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "A"
     },
     {
@@ -689,7 +689,7 @@
       "shares": 5.13258,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "D"
     },
     {
@@ -703,7 +703,7 @@
       "shares": 2.912733,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "S"
     },
     {
@@ -717,7 +717,7 @@
       "shares": 6.170458,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "A"
     },
     {
@@ -731,7 +731,7 @@
       "shares": 17.200898,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "B"
     },
     {
@@ -745,7 +745,7 @@
       "shares": 34.251067,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "S"
     },
     {
@@ -759,7 +759,7 @@
       "shares": 1.735734,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "S"
     },
     {
@@ -773,7 +773,7 @@
       "shares": 9.169054,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false
+      "manualDivShare": true
     },
     {
       "ticker": "CSWC",
@@ -786,7 +786,7 @@
       "shares": 3.372681,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "S"
     },
     {
@@ -800,7 +800,7 @@
       "shares": 15.025125,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "B"
     },
     {
@@ -814,7 +814,7 @@
       "shares": 3.107209,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "C"
     },
     {
@@ -828,7 +828,7 @@
       "shares": 12.48988,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "B"
     },
     {
@@ -842,7 +842,7 @@
       "shares": 4.735128,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "A"
     },
     {
@@ -856,7 +856,7 @@
       "shares": 4.721156,
       "avgCost": null,
       "manualDate": true,
-      "manualDivShare": false,
+      "manualDivShare": true,
       "tier": "A"
     }
   ]
