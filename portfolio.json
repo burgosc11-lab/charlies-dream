@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-29T19:35:00.721Z",
+  "_syncedAt": "2026-06-29T19:35:07.688Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -287,20 +287,6 @@
       "exDividendDate": "2026-07-24",
       "id": 74,
       "shares": 2.703613,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
-    },
-    {
-      "ticker": "AVAL",
-      "price": 5.12,
-      "dividendYieldPct": 3.41,
-      "dividendPerShare": 0.012,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-31",
-      "id": 76,
-      "shares": null,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
