@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-06-29T19:27:14.344Z",
+  "_syncedAt": "2026-06-29T19:30:47.747Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -705,20 +705,6 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "S"
-    },
-    {
-      "ticker": "ORC",
-      "price": 6.62,
-      "dividendYieldPct": 18.07,
-      "dividendPerShare": 0.1,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-30",
-      "id": 110,
-      "shares": 26.04385,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false,
-      "tier": "D"
     },
     {
       "ticker": "DX",
