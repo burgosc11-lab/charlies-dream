@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-02T04:20:57.734Z",
+  "_syncedAt": "2026-07-02T15:39:04.078Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -539,34 +539,6 @@
       "tier": "A"
     },
     {
-      "ticker": "DSL",
-      "price": 11.035,
-      "dividendYieldPct": 11.93,
-      "dividendPerShare": 0.11,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-17",
-      "id": 101,
-      "shares": 7.368993,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "GWRS",
-      "price": 7.345,
-      "dividendYieldPct": 4.2,
-      "dividendPerShare": 0.03,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-15",
-      "id": 102,
-      "shares": 11.869436,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
       "ticker": "PFLT",
       "price": 7.55,
       "dividendYieldPct": 16.19,
@@ -816,6 +788,34 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "A"
+    },
+    {
+      "ticker": "DSL",
+      "price": 11.035,
+      "dividendYieldPct": 11.93,
+      "dividendPerShare": 0.11,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-15",
+      "id": 122,
+      "shares": 7.368993,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "GWRS",
+      "price": 7.345,
+      "dividendYieldPct": 4.2,
+      "dividendPerShare": 0.03,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-17",
+      "id": 123,
+      "shares": 11.869436,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
     }
   ]
 }
