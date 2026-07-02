@@ -1,13 +1,22 @@
 {
-  "generated_at": "2026-07-02T13:25:26.541045",
+  "generated_at": "2026-07-02T15:38:25.182192",
   "additions": [
+    {
+      "id": "dsl_20260715",
+      "ticker": "DSL",
+      "new_ex_date": "2026-07-15",
+      "scraped_amount": 0.11,
+      "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
+      "detected_at": "2026-07-02T15:38:24.776825",
+      "auto_apply": false
+    },
     {
       "id": "gwrs_20260717",
       "ticker": "GWRS",
       "new_ex_date": "2026-07-17",
       "scraped_amount": 0.02533,
       "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
-      "detected_at": "2026-07-02T13:25:26.271200",
+      "detected_at": "2026-07-02T15:38:24.776839",
       "auto_apply": false
     }
   ]
