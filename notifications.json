@@ -1,16 +1,15 @@
 {
-  "generated_at": "2026-07-02T15:38:25.879757",
+  "generated_at": "2026-07-03T13:25:26.731893",
   "counts": {
-    "MATCH": 6,
+    "MATCH": 8,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 2,
+    "SCRAPED_AHEAD": 1,
     "APP_AHEAD": 10,
-    "APP_NA": 24,
+    "APP_NA": 23,
     "NO_DATA": 0
   },
   "scraped_ahead": [
-    "DSL",
-    "GWRS"
+    "LTC"
   ],
   "auto_add": []
 }
