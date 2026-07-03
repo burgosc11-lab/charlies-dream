@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T13:25:25.868082",
+  "generated_at": "2026-07-03T15:32:39.720363",
   "additions": [
     {
       "id": "ltc_20260723",
@@ -7,7 +7,16 @@
       "new_ex_date": "2026-07-23",
       "scraped_amount": 0.19,
       "source_url": "https://stockanalysis.com/stocks/ltc/dividend/",
-      "detected_at": "2026-07-03T13:25:25.706454",
+      "detected_at": "2026-07-03T15:32:39.440123",
+      "auto_apply": false
+    },
+    {
+      "id": "sma_20260731",
+      "ticker": "SMA",
+      "new_ex_date": "2026-07-31",
+      "scraped_amount": 0.13589,
+      "source_url": "https://stockanalysis.com/stocks/sma/dividend/",
+      "detected_at": "2026-07-03T15:32:39.440138",
       "auto_apply": false
     }
   ]
