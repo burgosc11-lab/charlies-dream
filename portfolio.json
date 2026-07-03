@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-03T15:46:30.783Z",
+  "_syncedAt": "2026-07-03T15:46:39.896Z",
   "stocks": [
     {
       "ticker": "DIV",
@@ -56,20 +56,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "S"
-    },
-    {
-      "ticker": "LTC",
-      "price": 38.85,
-      "dividendYieldPct": 5.93,
-      "dividendPerShare": 0.19,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-22",
-      "id": 53,
-      "shares": 2.100288,
-      "avgCost": 38.09,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "GLAD",
@@ -512,19 +498,6 @@
       "manualDivShare": true
     },
     {
-      "ticker": "SMA",
-      "price": 32.945,
-      "dividendYieldPct": 4.92,
-      "dividendPerShare": 0.136,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-30",
-      "id": 98,
-      "shares": 2.703616,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true
-    },
-    {
       "ticker": "TBLD",
       "price": 22.01,
       "dividendYieldPct": 5.65,
@@ -816,6 +789,33 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "B"
+    },
+    {
+      "ticker": "LTC",
+      "price": 38.85,
+      "dividendYieldPct": 5.93,
+      "dividendPerShare": 0.19,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-23",
+      "id": 124,
+      "shares": 2.100288,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
+    },
+    {
+      "ticker": "SMA",
+      "price": 32.945,
+      "dividendYieldPct": 4.92,
+      "dividendPerShare": 0.136,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-31",
+      "id": 125,
+      "shares": 2.703616,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false
     }
   ]
 }
