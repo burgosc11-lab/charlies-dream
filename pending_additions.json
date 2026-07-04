@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-07-03T15:32:39.720363",
+  "generated_at": "2026-07-04T13:25:24.517977",
   "additions": [
     {
-      "id": "ltc_20260723",
-      "ticker": "LTC",
-      "new_ex_date": "2026-07-23",
-      "scraped_amount": 0.19,
-      "source_url": "https://stockanalysis.com/stocks/ltc/dividend/",
-      "detected_at": "2026-07-03T15:32:39.440123",
+      "id": "div_20260706",
+      "ticker": "DIV",
+      "new_ex_date": "2026-07-06",
+      "scraped_amount": 0.106,
+      "source_url": "https://stockanalysis.com/etf/div/dividend/",
+      "detected_at": "2026-07-04T13:25:24.055348",
       "auto_apply": false
     },
     {
-      "id": "sma_20260731",
-      "ticker": "SMA",
-      "new_ex_date": "2026-07-31",
-      "scraped_amount": 0.13589,
-      "source_url": "https://stockanalysis.com/stocks/sma/dividend/",
-      "detected_at": "2026-07-03T15:32:39.440138",
+      "id": "pflt_20260715",
+      "ticker": "PFLT",
+      "new_ex_date": "2026-07-15",
+      "scraped_amount": 0.0833,
+      "source_url": "https://stockanalysis.com/stocks/pflt/dividend/",
+      "detected_at": "2026-07-04T13:25:24.055364",
       "auto_apply": false
     }
   ]
