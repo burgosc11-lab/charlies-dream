@@ -1,20 +1,6 @@
 {
-  "_syncedAt": "2026-07-04T20:07:18.810Z",
+  "_syncedAt": "2026-07-04T20:07:25.411Z",
   "stocks": [
-    {
-      "ticker": "DIV",
-      "price": 19.23,
-      "dividendYieldPct": 6.7,
-      "dividendPerShare": 0.106,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-03",
-      "id": 13,
-      "shares": 4.193971,
-      "avgCost": 19.08,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
     {
       "ticker": "JEPQ",
       "price": 60.455,
@@ -512,20 +498,6 @@
       "tier": "A"
     },
     {
-      "ticker": "PFLT",
-      "price": 7.55,
-      "dividendYieldPct": 16.19,
-      "dividendPerShare": 0.103,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-15",
-      "id": 103,
-      "shares": 15.083918,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
-    },
-    {
       "ticker": "PNNT",
       "price": 3.545,
       "dividendYieldPct": 13.83,
@@ -816,6 +788,34 @@
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": false
+    },
+    {
+      "ticker": "DIV",
+      "price": 19.23,
+      "dividendYieldPct": 6.7,
+      "dividendPerShare": 0.106,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-06",
+      "id": 126,
+      "shares": 4.193971,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "PFLT",
+      "price": 7.55,
+      "dividendYieldPct": 16.19,
+      "dividendPerShare": 0.103,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-15",
+      "id": 127,
+      "shares": 15.083918,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
     }
   ]
 }
