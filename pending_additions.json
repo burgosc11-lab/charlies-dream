@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T13:25:24.517977",
+  "generated_at": "2026-07-04T14:48:37.321702",
   "additions": [
     {
       "id": "div_20260706",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-07-06",
       "scraped_amount": 0.106,
       "source_url": "https://stockanalysis.com/etf/div/dividend/",
-      "detected_at": "2026-07-04T13:25:24.055348",
+      "detected_at": "2026-07-04T14:48:36.998885",
       "auto_apply": false
     },
     {
@@ -16,7 +16,7 @@
       "new_ex_date": "2026-07-15",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/pflt/dividend/",
-      "detected_at": "2026-07-04T13:25:24.055364",
+      "detected_at": "2026-07-04T14:48:36.998899",
       "auto_apply": false
     }
   ]
