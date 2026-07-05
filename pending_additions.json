@@ -1,22 +1,13 @@
 {
-  "generated_at": "2026-07-04T14:48:37.321702",
+  "generated_at": "2026-07-05T13:25:25.053407",
   "additions": [
     {
-      "id": "div_20260706",
-      "ticker": "DIV",
-      "new_ex_date": "2026-07-06",
-      "scraped_amount": 0.106,
-      "source_url": "https://stockanalysis.com/etf/div/dividend/",
-      "detected_at": "2026-07-04T14:48:36.998885",
-      "auto_apply": false
-    },
-    {
-      "id": "pflt_20260715",
-      "ticker": "PFLT",
+      "id": "pnnt_20260715",
+      "ticker": "PNNT",
       "new_ex_date": "2026-07-15",
-      "scraped_amount": 0.0833,
-      "source_url": "https://stockanalysis.com/stocks/pflt/dividend/",
-      "detected_at": "2026-07-04T14:48:36.998899",
+      "scraped_amount": 0.08,
+      "source_url": "https://stockanalysis.com/stocks/pnnt/dividend/",
+      "detected_at": "2026-07-05T13:25:24.766674",
       "auto_apply": false
     }
   ]
