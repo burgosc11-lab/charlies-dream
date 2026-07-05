@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-05T15:39:39.053Z",
+  "_syncedAt": "2026-07-05T15:39:42.645Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -498,20 +498,6 @@
       "tier": "A"
     },
     {
-      "ticker": "PNNT",
-      "price": 3.545,
-      "dividendYieldPct": 13.83,
-      "dividendPerShare": 0.08,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-15",
-      "id": 104,
-      "shares": 19.393939,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
       "ticker": "ADC",
       "price": 76.205,
       "dividendYieldPct": 4.23,
@@ -816,6 +802,20 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "S"
+    },
+    {
+      "ticker": "PNNT",
+      "price": 3.545,
+      "dividendYieldPct": 13.83,
+      "dividendPerShare": 0.08,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-15",
+      "id": 128,
+      "shares": 19.393939,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
     }
   ]
 }
