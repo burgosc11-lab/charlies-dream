@@ -1,4 +1,14 @@
 {
-  "generated_at": "2026-07-06T13:25:38.439515",
-  "additions": []
+  "generated_at": "2026-07-06T16:34:48.440498",
+  "additions": [
+    {
+      "id": "sar_20260805",
+      "ticker": "SAR",
+      "new_ex_date": "2026-08-05",
+      "scraped_amount": 0.25,
+      "source_url": "https://stockanalysis.com/stocks/sar/dividend/",
+      "detected_at": "2026-07-06T16:34:48.265975",
+      "auto_apply": false
+    }
+  ]
 }
