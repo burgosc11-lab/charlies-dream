@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-07T14:53:55.782Z",
+  "_syncedAt": "2026-07-07T14:54:05.838Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -596,20 +596,6 @@
       "tier": "B"
     },
     {
-      "ticker": "SAR",
-      "price": 22.495,
-      "dividendYieldPct": 13.45,
-      "dividendPerShare": 0.25,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-06",
-      "id": 113,
-      "shares": 35.861548,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
-    },
-    {
       "ticker": "BST",
       "price": 50.48,
       "dividendYieldPct": 5.92,
@@ -816,6 +802,20 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "A"
+    },
+    {
+      "ticker": "SAR",
+      "price": 22.495,
+      "dividendYieldPct": 13.45,
+      "dividendPerShare": 0.25,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-05",
+      "id": 129,
+      "shares": 35.861548,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
     }
   ]
 }
