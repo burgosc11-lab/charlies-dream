@@ -1,41 +1,4 @@
 {
-  "generated_at": "2026-07-10T15:44:05.779894",
-  "additions": [
-    {
-      "id": "earn_20260731",
-      "ticker": "EARN",
-      "new_ex_date": "2026-07-31",
-      "scraped_amount": 0.08,
-      "source_url": "https://stockanalysis.com/stocks/earn/dividend/",
-      "detected_at": "2026-07-10T15:44:05.493279",
-      "auto_apply": false
-    },
-    {
-      "id": "efc_20260731",
-      "ticker": "EFC",
-      "new_ex_date": "2026-07-31",
-      "scraped_amount": 0.13,
-      "source_url": "https://stockanalysis.com/stocks/efc/dividend/",
-      "detected_at": "2026-07-10T15:44:05.493292",
-      "auto_apply": false
-    },
-    {
-      "id": "hshp_20260720",
-      "ticker": "HSHP",
-      "new_ex_date": "2026-07-20",
-      "scraped_amount": 0.22,
-      "source_url": "https://stockanalysis.com/stocks/hshp/dividend/",
-      "detected_at": "2026-07-10T15:44:05.493299",
-      "auto_apply": false
-    },
-    {
-      "id": "o_20260731",
-      "ticker": "O",
-      "new_ex_date": "2026-07-31",
-      "scraped_amount": 0.271,
-      "source_url": "https://stockanalysis.com/stocks/o/dividend/",
-      "detected_at": "2026-07-10T15:44:05.493304",
-      "auto_apply": false
-    }
-  ]
+  "generated_at": "2026-07-11T13:25:27.530633",
+  "additions": []
 }
