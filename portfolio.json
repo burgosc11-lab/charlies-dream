@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-11T01:45:15.694Z",
+  "_syncedAt": "2026-07-12T15:40:41.245Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -28,20 +28,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "DOC",
-      "price": 21.67,
-      "dividendYieldPct": 5.7,
-      "dividendPerShare": 0.102,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-15",
-      "id": 40,
-      "shares": 4.101512,
-      "avgCost": 19.51,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
     },
     {
       "ticker": "GLAD",
@@ -798,6 +784,20 @@
       "exDividendDate": "2026-07-31",
       "id": 133,
       "shares": 2.912733,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
+    },
+    {
+      "ticker": "DOC",
+      "price": 21.67,
+      "dividendYieldPct": 5.7,
+      "dividendPerShare": 0.102,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-20",
+      "id": 134,
+      "shares": 4.101512,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": false,
