@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T13:25:28.802271",
+  "generated_at": "2026-07-12T14:39:31.561635",
   "additions": [
     {
       "id": "doc_20260720",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-07-20",
       "scraped_amount": 0.10167,
       "source_url": "https://stockanalysis.com/stocks/doc/dividend/",
-      "detected_at": "2026-07-12T13:25:28.600874",
+      "detected_at": "2026-07-12T14:39:31.306631",
       "auto_apply": false
     }
   ]
