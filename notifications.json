@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-12T14:39:32.241700",
+  "generated_at": "2026-07-13T16:02:50.828136",
   "counts": {
     "MATCH": 16,
     "AUTO_ADD": 0,
     "SCRAPED_AHEAD": 1,
-    "APP_AHEAD": 10,
-    "APP_NA": 15,
+    "APP_AHEAD": 11,
+    "APP_NA": 14,
     "NO_DATA": 0
   },
   "scraped_ahead": [
-    "DOC"
+    "AGNC"
   ],
   "auto_add": []
 }
