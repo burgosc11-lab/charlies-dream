@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-12T14:39:31.561635",
+  "generated_at": "2026-07-13T16:02:49.953720",
   "additions": [
     {
-      "id": "doc_20260720",
-      "ticker": "DOC",
-      "new_ex_date": "2026-07-20",
-      "scraped_amount": 0.10167,
-      "source_url": "https://stockanalysis.com/stocks/doc/dividend/",
-      "detected_at": "2026-07-12T14:39:31.306631",
+      "id": "agnc_20260731",
+      "ticker": "AGNC",
+      "new_ex_date": "2026-07-31",
+      "scraped_amount": 0.12,
+      "source_url": "https://stockanalysis.com/stocks/agnc/dividend/",
+      "detected_at": "2026-07-13T16:02:49.725129",
       "auto_apply": false
     }
   ]
