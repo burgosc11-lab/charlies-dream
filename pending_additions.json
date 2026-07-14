@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T13:25:29.010780",
+  "generated_at": "2026-07-14T15:07:23.560139",
   "additions": [
     {
       "id": "agnc_20260731",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-07-31",
       "scraped_amount": 0.12,
       "source_url": "https://stockanalysis.com/stocks/agnc/dividend/",
-      "detected_at": "2026-07-14T13:25:28.758305",
+      "detected_at": "2026-07-14T15:07:23.356725",
       "auto_apply": false
     }
   ]
