@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T13:25:30.816370",
+  "generated_at": "2026-07-15T15:06:30.899263",
   "additions": [
     {
       "id": "bst_20260814",
@@ -7,7 +7,16 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.25,
       "source_url": "https://stockanalysis.com/stocks/bst/dividend/",
-      "detected_at": "2026-07-15T13:25:30.484245",
+      "detected_at": "2026-07-15T15:06:30.705689",
+      "auto_apply": false
+    },
+    {
+      "id": "cswc_20260814",
+      "ticker": "CSWC",
+      "new_ex_date": "2026-08-14",
+      "scraped_amount": 0.1934,
+      "source_url": "https://stockanalysis.com/stocks/cswc/dividend/",
+      "detected_at": "2026-07-15T15:06:30.705703",
       "auto_apply": false
     },
     {
@@ -16,7 +25,7 @@
       "new_ex_date": "2026-07-23",
       "scraped_amount": 0.17,
       "source_url": "https://stockanalysis.com/stocks/dx/dividend/",
-      "detected_at": "2026-07-15T13:25:30.484261",
+      "detected_at": "2026-07-15T15:06:30.705708",
       "auto_apply": false
     },
     {
@@ -25,7 +34,7 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.17,
       "source_url": "https://stockanalysis.com/stocks/trin/dividend/",
-      "detected_at": "2026-07-15T13:25:30.484267",
+      "detected_at": "2026-07-15T15:06:30.705715",
       "auto_apply": false
     }
   ]
