@@ -1,13 +1,31 @@
 {
-  "generated_at": "2026-07-14T15:07:23.560139",
+  "generated_at": "2026-07-15T13:25:30.816370",
   "additions": [
     {
-      "id": "agnc_20260731",
-      "ticker": "AGNC",
-      "new_ex_date": "2026-07-31",
-      "scraped_amount": 0.12,
-      "source_url": "https://stockanalysis.com/stocks/agnc/dividend/",
-      "detected_at": "2026-07-14T15:07:23.356725",
+      "id": "bst_20260814",
+      "ticker": "BST",
+      "new_ex_date": "2026-08-14",
+      "scraped_amount": 0.25,
+      "source_url": "https://stockanalysis.com/stocks/bst/dividend/",
+      "detected_at": "2026-07-15T13:25:30.484245",
+      "auto_apply": false
+    },
+    {
+      "id": "dx_20260723",
+      "ticker": "DX",
+      "new_ex_date": "2026-07-23",
+      "scraped_amount": 0.17,
+      "source_url": "https://stockanalysis.com/stocks/dx/dividend/",
+      "detected_at": "2026-07-15T13:25:30.484261",
+      "auto_apply": false
+    },
+    {
+      "id": "trin_20260814",
+      "ticker": "TRIN",
+      "new_ex_date": "2026-08-14",
+      "scraped_amount": 0.17,
+      "source_url": "https://stockanalysis.com/stocks/trin/dividend/",
+      "detected_at": "2026-07-15T13:25:30.484267",
       "auto_apply": false
     }
   ]
