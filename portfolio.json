@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-12T15:40:41.245Z",
+  "_syncedAt": "2026-07-15T07:32:34.074Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -98,34 +98,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "S"
-    },
-    {
-      "ticker": "ECC",
-      "price": 3.7693,
-      "dividendYieldPct": 32.26,
-      "dividendPerShare": 0.06,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-13",
-      "id": 64,
-      "shares": 44.875454,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
-    },
-    {
-      "ticker": "EIC",
-      "price": 10.13,
-      "dividendYieldPct": 13.7,
-      "dividendPerShare": 0.11,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-13",
-      "id": 65,
-      "shares": 16.892193,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "PECO",
@@ -258,7 +230,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-11",
       "id": 79,
-      "shares": null,
+      "shares": 44.875454,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
@@ -272,7 +244,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-11",
       "id": 80,
-      "shares": null,
+      "shares": 16.892193,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
