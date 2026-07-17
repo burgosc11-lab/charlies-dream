@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T13:25:23.715128",
+  "generated_at": "2026-07-17T14:56:11.126683",
   "additions": [
     {
       "id": "adc_20260731",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-07-31",
       "scraped_amount": 0.267,
       "source_url": "https://stockanalysis.com/stocks/adc/dividend/",
-      "detected_at": "2026-07-17T13:25:23.485961",
+      "detected_at": "2026-07-17T14:56:10.771716",
       "auto_apply": false
     },
     {
@@ -16,7 +16,7 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.0525,
       "source_url": "https://stockanalysis.com/stocks/btx/dividend/",
-      "detected_at": "2026-07-17T13:25:23.485975",
+      "detected_at": "2026-07-17T14:56:10.771730",
       "auto_apply": false
     },
     {
@@ -25,7 +25,7 @@
       "new_ex_date": "2026-07-31",
       "scraped_amount": 0.31,
       "source_url": "https://stockanalysis.com/stocks/epr/dividend/",
-      "detected_at": "2026-07-17T13:25:23.485982",
+      "detected_at": "2026-07-17T14:56:10.771736",
       "auto_apply": false
     }
   ]
