@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-16T04:32:45.927Z",
+  "_syncedAt": "2026-07-19T07:22:22.173Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -114,74 +114,6 @@
       "tier": "A"
     },
     {
-      "ticker": "BCIC",
-      "price": 7.35,
-      "dividendYieldPct": 15.25,
-      "dividendPerShare": 0.09,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 67,
-      "shares": 10.38961,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true
-    },
-    {
-      "ticker": "SPMC",
-      "price": 9.9198,
-      "dividendYieldPct": 24.24,
-      "dividendPerShare": 0.2,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 68,
-      "shares": 7.285576,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true
-    },
-    {
-      "ticker": "HRZN",
-      "price": 4.755,
-      "dividendYieldPct": 15.22,
-      "dividendPerShare": 0.06,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-16",
-      "id": 69,
-      "shares": 18.411967,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
-      "ticker": "HRZN",
-      "price": 4.755,
-      "dividendYieldPct": 15.22,
-      "dividendPerShare": 0.03,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-16",
-      "id": 70,
-      "shares": null,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
-      "ticker": "CION",
-      "price": 6.465,
-      "dividendYieldPct": 19.26,
-      "dividendPerShare": 0.1,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-17",
-      "id": 71,
-      "shares": 11.75278,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
       "ticker": "XRN",
       "price": 38.23,
       "dividendYieldPct": 15.27,
@@ -258,7 +190,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-14",
       "id": 81,
-      "shares": null,
+      "shares": 11.75278,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
@@ -272,7 +204,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-14",
       "id": 82,
-      "shares": null,
+      "shares": 10.38961,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true
@@ -285,7 +217,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-14",
       "id": 83,
-      "shares": null,
+      "shares": 7.285576,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true
@@ -298,7 +230,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-17",
       "id": 84,
-      "shares": null,
+      "shares": 18.411967,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
@@ -456,20 +388,6 @@
       "tier": "S"
     },
     {
-      "ticker": "BST",
-      "price": 50.48,
-      "dividendYieldPct": 5.92,
-      "dividendPerShare": 0.25,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 114,
-      "shares": null,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
-    },
-    {
       "ticker": "BTX",
       "price": 9.045,
       "dividendYieldPct": 6.98,
@@ -481,20 +399,6 @@
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true
-    },
-    {
-      "ticker": "CSWC",
-      "price": 24.03,
-      "dividendYieldPct": 10.77,
-      "dividendPerShare": 0.253,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 116,
-      "shares": null,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
     },
     {
       "ticker": "IVR",
@@ -537,20 +441,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "TRIN",
-      "price": 17.935,
-      "dividendYieldPct": 14.25,
-      "dividendPerShare": 0.17,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 120,
-      "shares": null,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "ARR",
