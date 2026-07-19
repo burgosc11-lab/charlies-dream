@@ -1,22 +1,15 @@
 {
-  "generated_at": "2026-07-18T14:33:28.016014",
+  "generated_at": "2026-07-19T13:25:25.009213",
   "counts": {
-    "MATCH": 12,
+    "MATCH": 19,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 8,
-    "APP_AHEAD": 10,
-    "APP_NA": 12,
+    "SCRAPED_AHEAD": 1,
+    "APP_AHEAD": 11,
+    "APP_NA": 11,
     "NO_DATA": 0
   },
   "scraped_ahead": [
-    "ADC",
-    "BTX",
-    "EPR",
-    "GAIN",
-    "GLAD",
-    "GOOD",
-    "IVR",
-    "SCM"
+    "LAND"
   ],
   "auto_add": []
 }
