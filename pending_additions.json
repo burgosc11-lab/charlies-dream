@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T13:25:24.238364",
+  "generated_at": "2026-07-19T14:36:15.772474",
   "additions": [
     {
       "id": "land_20260724",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-07-24",
       "scraped_amount": 0.0467,
       "source_url": "https://stockanalysis.com/stocks/land/dividend/",
-      "detected_at": "2026-07-19T13:25:23.893065",
+      "detected_at": "2026-07-19T14:36:15.599190",
       "auto_apply": false
     }
   ]
