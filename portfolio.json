@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-19T15:35:22.824Z",
+  "_syncedAt": "2026-07-19T15:35:31.374Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -28,20 +28,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "LAND",
-      "price": 8.6514,
-      "dividendYieldPct": 6.58,
-      "dividendPerShare": 0.047,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-23",
-      "id": 56,
-      "shares": 13.228177,
-      "avgCost": 9.34,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "D"
     },
     {
       "ticker": "PECO",
@@ -706,6 +692,20 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "S"
+    },
+    {
+      "ticker": "LAND",
+      "price": 8.6514,
+      "dividendYieldPct": 6.58,
+      "dividendPerShare": 0.047,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-24",
+      "id": 148,
+      "shares": 13.228177,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "D"
     }
   ]
 }
