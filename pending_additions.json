@@ -1,4 +1,14 @@
 {
-  "generated_at": "2026-07-20T13:25:27.120146",
-  "additions": []
+  "generated_at": "2026-07-20T15:26:11.470642",
+  "additions": [
+    {
+      "id": "doc_20260817",
+      "ticker": "DOC",
+      "new_ex_date": "2026-08-17",
+      "scraped_amount": 0.10167,
+      "source_url": "https://stockanalysis.com/stocks/doc/dividend/",
+      "detected_at": "2026-07-20T15:26:11.196092",
+      "auto_apply": false
+    }
+  ]
 }
