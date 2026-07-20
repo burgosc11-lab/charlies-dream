@@ -1,15 +1,13 @@
 {
-  "generated_at": "2026-07-19T14:36:16.369020",
+  "generated_at": "2026-07-20T13:25:28.418831",
   "counts": {
-    "MATCH": 19,
+    "MATCH": 18,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 1,
+    "SCRAPED_AHEAD": 0,
     "APP_AHEAD": 11,
-    "APP_NA": 11,
+    "APP_NA": 13,
     "NO_DATA": 0
   },
-  "scraped_ahead": [
-    "LAND"
-  ],
+  "scraped_ahead": [],
   "auto_add": []
 }
