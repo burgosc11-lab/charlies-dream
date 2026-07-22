@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T15:21:01.648348",
+  "generated_at": "2026-07-22T13:25:23.228508",
   "additions": [
     {
       "id": "aple_20260731",
@@ -7,16 +7,7 @@
       "new_ex_date": "2026-07-31",
       "scraped_amount": 0.08,
       "source_url": "https://stockanalysis.com/stocks/aple/dividend/",
-      "detected_at": "2026-07-21T15:21:01.359143",
-      "auto_apply": false
-    },
-    {
-      "id": "doc_20260817",
-      "ticker": "DOC",
-      "new_ex_date": "2026-08-17",
-      "scraped_amount": 0.10167,
-      "source_url": "https://stockanalysis.com/stocks/doc/dividend/",
-      "detected_at": "2026-07-21T15:21:01.359157",
+      "detected_at": "2026-07-22T13:25:22.999157",
       "auto_apply": false
     }
   ]
