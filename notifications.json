@@ -1,16 +1,15 @@
 {
-  "generated_at": "2026-07-21T15:21:02.583548",
+  "generated_at": "2026-07-22T13:25:24.132040",
   "counts": {
-    "MATCH": 18,
+    "MATCH": 22,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 2,
-    "APP_AHEAD": 11,
-    "APP_NA": 11,
+    "SCRAPED_AHEAD": 1,
+    "APP_AHEAD": 7,
+    "APP_NA": 12,
     "NO_DATA": 0
   },
   "scraped_ahead": [
-    "APLE",
-    "DOC"
+    "APLE"
   ],
   "auto_add": []
 }
