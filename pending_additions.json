@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T13:25:27.031907",
+  "generated_at": "2026-07-23T15:30:27.969178",
   "additions": [
     {
       "id": "aple_20260731",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-07-31",
       "scraped_amount": 0.08,
       "source_url": "https://stockanalysis.com/stocks/aple/dividend/",
-      "detected_at": "2026-07-23T13:25:26.554748",
+      "detected_at": "2026-07-23T15:30:27.592387",
       "auto_apply": false
     },
     {
@@ -16,7 +16,7 @@
       "new_ex_date": "2026-08-17",
       "scraped_amount": 0.24,
       "source_url": "https://stockanalysis.com/stocks/arr/dividend/",
-      "detected_at": "2026-07-23T13:25:26.554761",
+      "detected_at": "2026-07-23T15:30:27.592399",
       "auto_apply": false
     },
     {
@@ -25,7 +25,7 @@
       "new_ex_date": "2026-08-17",
       "scraped_amount": 0.10167,
       "source_url": "https://stockanalysis.com/stocks/doc/dividend/",
-      "detected_at": "2026-07-23T13:25:26.554767",
+      "detected_at": "2026-07-23T15:30:27.592405",
       "auto_apply": false
     },
     {
@@ -34,7 +34,7 @@
       "new_ex_date": "2026-08-21",
       "scraped_amount": 0.19,
       "source_url": "https://stockanalysis.com/stocks/ltc/dividend/",
-      "detected_at": "2026-07-23T13:25:26.554772",
+      "detected_at": "2026-07-23T15:30:27.592411",
       "auto_apply": false
     }
   ]
