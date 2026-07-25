@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-25T15:44:09.719Z",
+  "_syncedAt": "2026-07-25T15:44:19.115Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -277,34 +277,6 @@
       "tier": "A"
     },
     {
-      "ticker": "APLE",
-      "price": 16.61,
-      "dividendYieldPct": 5.71,
-      "dividendPerShare": 0.08,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-06-30",
-      "id": 119,
-      "shares": 12.48988,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "B"
-    },
-    {
-      "ticker": "ARR",
-      "price": 17.465,
-      "dividendYieldPct": 16.5,
-      "dividendPerShare": 0.24,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 121,
-      "shares": 4.721156,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
-    },
-    {
       "ticker": "DSL",
       "price": 11.035,
       "dividendYieldPct": 11.93,
@@ -331,20 +303,6 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "B"
-    },
-    {
-      "ticker": "LTC",
-      "price": 38.85,
-      "dividendYieldPct": 5.93,
-      "dividendPerShare": 0.19,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-23",
-      "id": 124,
-      "shares": 2.100288,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false,
-      "tier": "A"
     },
     {
       "ticker": "SMA",
@@ -466,20 +424,6 @@
       "exDividendDate": "2026-07-31",
       "id": 133,
       "shares": 2.912733,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false,
-      "tier": "S"
-    },
-    {
-      "ticker": "DOC",
-      "price": 21.67,
-      "dividendYieldPct": 5.7,
-      "dividendPerShare": 0.102,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-20",
-      "id": 134,
-      "shares": 4.101512,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": false,
@@ -667,18 +611,74 @@
       "tier": "S"
     },
     {
+      "ticker": "APLE",
+      "price": 16.61,
+      "dividendYieldPct": 5.71,
+      "dividendPerShare": 0.08,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-07-31",
+      "id": 149,
+      "shares": 12.48988,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "ARR",
+      "price": 17.465,
+      "dividendYieldPct": 16.5,
+      "dividendPerShare": 0.24,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-17",
+      "id": 150,
+      "shares": 4.721156,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
+    },
+    {
+      "ticker": "DOC",
+      "price": 21.67,
+      "dividendYieldPct": 5.7,
+      "dividendPerShare": 0.102,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-17",
+      "id": 151,
+      "shares": 4.101512,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
+    },
+    {
       "ticker": "LAND",
       "price": 8.6514,
       "dividendYieldPct": 6.58,
       "dividendPerShare": 0.047,
       "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-24",
-      "id": 148,
+      "exDividendDate": "2026-08-18",
+      "id": 152,
       "shares": 13.228177,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": false,
       "tier": "D"
+    },
+    {
+      "ticker": "LTC",
+      "price": 38.85,
+      "dividendYieldPct": 5.93,
+      "dividendPerShare": 0.19,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-21",
+      "id": 153,
+      "shares": 2.100288,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
     }
   ]
 }
