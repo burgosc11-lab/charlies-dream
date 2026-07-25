@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-19T15:35:31.374Z",
+  "_syncedAt": "2026-07-25T15:44:08.532Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -42,33 +42,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "A"
-    },
-    {
-      "ticker": "XRN",
-      "price": 38.23,
-      "dividendYieldPct": 15.27,
-      "dividendPerShare": 0.16,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-20",
-      "id": 73,
-      "shares": 2.351903,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true
-    },
-    {
-      "ticker": "TYG",
-      "price": 42.485,
-      "dividendYieldPct": 12.63,
-      "dividendPerShare": 0.475,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-24",
-      "id": 74,
-      "shares": 2.703613,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "C"
     },
     {
       "ticker": "MAIN",
@@ -188,7 +161,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-20",
       "id": 87,
-      "shares": null,
+      "shares": 2.351903,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true
@@ -201,7 +174,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-08-24",
       "id": 88,
-      "shares": null,
+      "shares": 2.703613,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
