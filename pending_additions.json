@@ -1,49 +1,31 @@
 {
-  "generated_at": "2026-07-25T14:44:58.813149",
+  "generated_at": "2026-07-26T13:25:25.218581",
   "additions": [
     {
-      "id": "aple_20260731",
-      "ticker": "APLE",
-      "new_ex_date": "2026-07-31",
-      "scraped_amount": 0.08,
-      "source_url": "https://stockanalysis.com/stocks/aple/dividend/",
-      "detected_at": "2026-07-25T14:44:58.594255",
-      "auto_apply": false
-    },
-    {
-      "id": "arr_20260817",
-      "ticker": "ARR",
-      "new_ex_date": "2026-08-17",
-      "scraped_amount": 0.24,
-      "source_url": "https://stockanalysis.com/stocks/arr/dividend/",
-      "detected_at": "2026-07-25T14:44:58.594266",
-      "auto_apply": false
-    },
-    {
-      "id": "doc_20260817",
-      "ticker": "DOC",
-      "new_ex_date": "2026-08-17",
-      "scraped_amount": 0.10167,
-      "source_url": "https://stockanalysis.com/stocks/doc/dividend/",
-      "detected_at": "2026-07-25T14:44:58.594272",
-      "auto_apply": false
-    },
-    {
-      "id": "land_20260818",
-      "ticker": "LAND",
+      "id": "gain_20260818",
+      "ticker": "GAIN",
       "new_ex_date": "2026-08-18",
-      "scraped_amount": 0.0467,
-      "source_url": "https://stockanalysis.com/stocks/land/dividend/",
-      "detected_at": "2026-07-25T14:44:58.594278",
+      "scraped_amount": 0.08,
+      "source_url": "https://stockanalysis.com/stocks/gain/dividend/",
+      "detected_at": "2026-07-26T13:25:24.901296",
       "auto_apply": false
     },
     {
-      "id": "ltc_20260821",
-      "ticker": "LTC",
-      "new_ex_date": "2026-08-21",
-      "scraped_amount": 0.19,
-      "source_url": "https://stockanalysis.com/stocks/ltc/dividend/",
-      "detected_at": "2026-07-25T14:44:58.594282",
+      "id": "glad_20260818",
+      "ticker": "GLAD",
+      "new_ex_date": "2026-08-18",
+      "scraped_amount": 0.15,
+      "source_url": "https://stockanalysis.com/stocks/glad/dividend/",
+      "detected_at": "2026-07-26T13:25:24.901310",
+      "auto_apply": false
+    },
+    {
+      "id": "good_20260818",
+      "ticker": "GOOD",
+      "new_ex_date": "2026-08-18",
+      "scraped_amount": 0.1,
+      "source_url": "https://stockanalysis.com/stocks/good/dividend/",
+      "detected_at": "2026-07-26T13:25:24.901314",
       "auto_apply": false
     }
   ]
