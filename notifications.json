@@ -1,19 +1,17 @@
 {
-  "generated_at": "2026-07-25T14:44:59.586413",
+  "generated_at": "2026-07-26T13:25:25.991304",
   "counts": {
-    "MATCH": 16,
+    "MATCH": 22,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 5,
-    "APP_AHEAD": 7,
-    "APP_NA": 14,
+    "SCRAPED_AHEAD": 3,
+    "APP_AHEAD": 6,
+    "APP_NA": 11,
     "NO_DATA": 0
   },
   "scraped_ahead": [
-    "APLE",
-    "ARR",
-    "DOC",
-    "LAND",
-    "LTC"
+    "GAIN",
+    "GLAD",
+    "GOOD"
   ],
   "auto_add": []
 }
