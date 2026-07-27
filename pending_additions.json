@@ -1,32 +1,4 @@
 {
-  "generated_at": "2026-07-26T14:47:08.525748",
-  "additions": [
-    {
-      "id": "gain_20260818",
-      "ticker": "GAIN",
-      "new_ex_date": "2026-08-18",
-      "scraped_amount": 0.08,
-      "source_url": "https://stockanalysis.com/stocks/gain/dividend/",
-      "detected_at": "2026-07-26T14:47:08.223422",
-      "auto_apply": false
-    },
-    {
-      "id": "glad_20260818",
-      "ticker": "GLAD",
-      "new_ex_date": "2026-08-18",
-      "scraped_amount": 0.15,
-      "source_url": "https://stockanalysis.com/stocks/glad/dividend/",
-      "detected_at": "2026-07-26T14:47:08.223434",
-      "auto_apply": false
-    },
-    {
-      "id": "good_20260818",
-      "ticker": "GOOD",
-      "new_ex_date": "2026-08-18",
-      "scraped_amount": 0.1,
-      "source_url": "https://stockanalysis.com/stocks/good/dividend/",
-      "detected_at": "2026-07-26T14:47:08.223439",
-      "auto_apply": false
-    }
-  ]
+  "generated_at": "2026-07-27T13:25:24.240816",
+  "additions": []
 }
