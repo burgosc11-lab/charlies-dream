@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T13:25:33.625005",
+  "generated_at": "2026-08-01T14:43:25.159571",
   "additions": [
     {
       "id": "scm_20260831",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-01T13:25:33.469436",
+      "detected_at": "2026-08-01T14:43:25.003245",
       "auto_apply": false
     }
   ]
