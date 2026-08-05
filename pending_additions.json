@@ -1,13 +1,31 @@
 {
-  "generated_at": "2026-08-04T15:44:06.843593",
+  "generated_at": "2026-08-05T13:25:25.544275",
   "additions": [
+    {
+      "id": "dsl_20260819",
+      "ticker": "DSL",
+      "new_ex_date": "2026-08-19",
+      "scraped_amount": 0.11,
+      "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
+      "detected_at": "2026-08-05T13:25:25.320498",
+      "auto_apply": false
+    },
+    {
+      "id": "gwrs_20260817",
+      "ticker": "GWRS",
+      "new_ex_date": "2026-08-17",
+      "scraped_amount": 0.02533,
+      "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
+      "detected_at": "2026-08-05T13:25:25.320513",
+      "auto_apply": false
+    },
     {
       "id": "scm_20260831",
       "ticker": "SCM",
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-04T15:44:06.355830",
+      "detected_at": "2026-08-05T13:25:25.320520",
       "auto_apply": false
     }
   ]
