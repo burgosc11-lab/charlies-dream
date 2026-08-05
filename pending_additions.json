@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T13:25:25.544275",
+  "generated_at": "2026-08-05T15:35:58.958011",
   "additions": [
     {
       "id": "dsl_20260819",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-08-19",
       "scraped_amount": 0.11,
       "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
-      "detected_at": "2026-08-05T13:25:25.320498",
+      "detected_at": "2026-08-05T15:35:58.741762",
       "auto_apply": false
     },
     {
@@ -16,7 +16,16 @@
       "new_ex_date": "2026-08-17",
       "scraped_amount": 0.02533,
       "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
-      "detected_at": "2026-08-05T13:25:25.320513",
+      "detected_at": "2026-08-05T15:35:58.741778",
+      "auto_apply": false
+    },
+    {
+      "id": "sar_20260903",
+      "ticker": "SAR",
+      "new_ex_date": "2026-09-03",
+      "scraped_amount": 0.25,
+      "source_url": "https://stockanalysis.com/stocks/sar/dividend/",
+      "detected_at": "2026-08-05T15:35:58.741784",
       "auto_apply": false
     },
     {
@@ -25,7 +34,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-05T13:25:25.320520",
+      "detected_at": "2026-08-05T15:35:58.741787",
       "auto_apply": false
     }
   ]
