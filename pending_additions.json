@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T13:25:38.607210",
+  "generated_at": "2026-08-06T15:41:57.060729",
   "additions": [
     {
       "id": "dsl_20260819",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-08-19",
       "scraped_amount": 0.11,
       "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
-      "detected_at": "2026-08-06T13:25:38.321335",
+      "detected_at": "2026-08-06T15:41:56.879810",
       "auto_apply": false
     },
     {
@@ -16,7 +16,7 @@
       "new_ex_date": "2026-08-17",
       "scraped_amount": 0.02533,
       "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
-      "detected_at": "2026-08-06T13:25:38.321367",
+      "detected_at": "2026-08-06T15:41:56.879823",
       "auto_apply": false
     },
     {
@@ -25,7 +25,7 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/pflt/dividend/",
-      "detected_at": "2026-08-06T13:25:38.321373",
+      "detected_at": "2026-08-06T15:41:56.879829",
       "auto_apply": false
     },
     {
@@ -34,7 +34,7 @@
       "new_ex_date": "2026-09-03",
       "scraped_amount": 0.25,
       "source_url": "https://stockanalysis.com/stocks/sar/dividend/",
-      "detected_at": "2026-08-06T13:25:38.321377",
+      "detected_at": "2026-08-06T15:41:56.879832",
       "auto_apply": false
     },
     {
@@ -43,7 +43,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-06T13:25:38.321380",
+      "detected_at": "2026-08-06T15:41:56.879835",
       "auto_apply": false
     }
   ]
