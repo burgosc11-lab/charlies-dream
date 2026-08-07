@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T15:41:57.060729",
+  "generated_at": "2026-08-07T13:25:31.723562",
   "additions": [
     {
       "id": "dsl_20260819",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-08-19",
       "scraped_amount": 0.11,
       "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
-      "detected_at": "2026-08-06T15:41:56.879810",
+      "detected_at": "2026-08-07T13:25:31.449469",
       "auto_apply": false
     },
     {
@@ -16,7 +16,7 @@
       "new_ex_date": "2026-08-17",
       "scraped_amount": 0.02533,
       "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
-      "detected_at": "2026-08-06T15:41:56.879823",
+      "detected_at": "2026-08-07T13:25:31.449483",
       "auto_apply": false
     },
     {
@@ -25,7 +25,7 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/pflt/dividend/",
-      "detected_at": "2026-08-06T15:41:56.879829",
+      "detected_at": "2026-08-07T13:25:31.449489",
       "auto_apply": false
     },
     {
@@ -34,16 +34,16 @@
       "new_ex_date": "2026-09-03",
       "scraped_amount": 0.25,
       "source_url": "https://stockanalysis.com/stocks/sar/dividend/",
-      "detected_at": "2026-08-06T15:41:56.879832",
+      "detected_at": "2026-08-07T13:25:31.449493",
       "auto_apply": false
     },
     {
-      "id": "scm_20260831",
-      "ticker": "SCM",
+      "id": "sma_20260831",
+      "ticker": "SMA",
       "new_ex_date": "2026-08-31",
-      "scraped_amount": 0.0833,
-      "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-06T15:41:56.879835",
+      "scraped_amount": 0.1359,
+      "source_url": "https://stockanalysis.com/stocks/sma/dividend/",
+      "detected_at": "2026-08-07T13:25:31.449496",
       "auto_apply": false
     }
   ]
