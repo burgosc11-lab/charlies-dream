@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T14:30:04.658415",
+  "generated_at": "2026-08-08T13:25:23.134497",
   "additions": [
     {
       "id": "dsl_20260819",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-08-19",
       "scraped_amount": 0.11,
       "source_url": "https://stockanalysis.com/stocks/dsl/dividend/",
-      "detected_at": "2026-08-07T14:30:04.483869",
+      "detected_at": "2026-08-08T13:25:22.932187",
       "auto_apply": false
     },
     {
@@ -16,7 +16,16 @@
       "new_ex_date": "2026-08-17",
       "scraped_amount": 0.02533,
       "source_url": "https://stockanalysis.com/stocks/gwrs/dividend/",
-      "detected_at": "2026-08-07T14:30:04.483886",
+      "detected_at": "2026-08-08T13:25:22.932201",
+      "auto_apply": false
+    },
+    {
+      "id": "peco_20260817",
+      "ticker": "PECO",
+      "new_ex_date": "2026-08-17",
+      "scraped_amount": 0.1083,
+      "source_url": "https://stockanalysis.com/stocks/peco/dividend/",
+      "detected_at": "2026-08-08T13:25:22.932206",
       "auto_apply": false
     },
     {
@@ -25,7 +34,7 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/pflt/dividend/",
-      "detected_at": "2026-08-07T14:30:04.483891",
+      "detected_at": "2026-08-08T13:25:22.932210",
       "auto_apply": false
     },
     {
@@ -34,7 +43,7 @@
       "new_ex_date": "2026-09-03",
       "scraped_amount": 0.25,
       "source_url": "https://stockanalysis.com/stocks/sar/dividend/",
-      "detected_at": "2026-08-07T14:30:04.483895",
+      "detected_at": "2026-08-08T13:25:22.932214",
       "auto_apply": false
     },
     {
@@ -43,7 +52,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.1359,
       "source_url": "https://stockanalysis.com/stocks/sma/dividend/",
-      "detected_at": "2026-08-07T14:30:04.483899",
+      "detected_at": "2026-08-08T13:25:22.932217",
       "auto_apply": false
     }
   ]
