@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-08-09T07:07:21.797Z",
+  "_syncedAt": "2026-08-09T07:07:27.241Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -28,20 +28,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "B"
-    },
-    {
-      "ticker": "PECO",
-      "price": 41.57,
-      "dividendYieldPct": 3.12,
-      "dividendPerShare": 0.108,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 66,
-      "shares": 2.021733,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "A"
     },
     {
       "ticker": "ECC",
@@ -263,47 +249,6 @@
       "tier": "A"
     },
     {
-      "ticker": "DSL",
-      "price": 11.035,
-      "dividendYieldPct": 11.93,
-      "dividendPerShare": 0.11,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 122,
-      "shares": 7.368993,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false,
-      "tier": "B"
-    },
-    {
-      "ticker": "GWRS",
-      "price": 7.345,
-      "dividendYieldPct": 4.2,
-      "dividendPerShare": 0.03,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-17",
-      "id": 123,
-      "shares": 11.869436,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false,
-      "tier": "B"
-    },
-    {
-      "ticker": "SMA",
-      "price": 32.945,
-      "dividendYieldPct": 4.92,
-      "dividendPerShare": 0.136,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-31",
-      "id": 125,
-      "shares": 2.703616,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false
-    },
-    {
       "ticker": "DIV",
       "price": 19.23,
       "dividendYieldPct": 6.7,
@@ -318,20 +263,6 @@
       "tier": "B"
     },
     {
-      "ticker": "PFLT",
-      "price": 7.55,
-      "dividendYieldPct": 16.19,
-      "dividendPerShare": 0.103,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-07-15",
-      "id": 127,
-      "shares": 15.083918,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false,
-      "tier": "S"
-    },
-    {
       "ticker": "PNNT",
       "price": 3.545,
       "dividendYieldPct": 13.83,
@@ -344,20 +275,6 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "A"
-    },
-    {
-      "ticker": "SAR",
-      "price": 22.495,
-      "dividendYieldPct": 13.45,
-      "dividendPerShare": 0.25,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-08-05",
-      "id": 129,
-      "shares": 35.861548,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": false,
-      "tier": "S"
     },
     {
       "ticker": "EARN",
@@ -665,6 +582,89 @@
       "manualDate": true,
       "manualDivShare": false,
       "tier": "A"
+    },
+    {
+      "ticker": "DSL",
+      "price": 11.035,
+      "dividendYieldPct": 11.93,
+      "dividendPerShare": 0.11,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-19",
+      "id": 157,
+      "shares": 7.368993,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "GWRS",
+      "price": 7.345,
+      "dividendYieldPct": 4.2,
+      "dividendPerShare": 0.03,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-17",
+      "id": 158,
+      "shares": 11.869436,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "B"
+    },
+    {
+      "ticker": "PECO",
+      "price": 41.57,
+      "dividendYieldPct": 3.12,
+      "dividendPerShare": 0.108,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-17",
+      "id": 159,
+      "shares": 2.021733,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "A"
+    },
+    {
+      "ticker": "PFLT",
+      "price": 7.55,
+      "dividendYieldPct": 16.19,
+      "dividendPerShare": 0.103,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-14",
+      "id": 160,
+      "shares": 15.083918,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
+    },
+    {
+      "ticker": "SAR",
+      "price": 22.495,
+      "dividendYieldPct": 13.45,
+      "dividendPerShare": 0.25,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-09-03",
+      "id": 161,
+      "shares": 35.861548,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false,
+      "tier": "S"
+    },
+    {
+      "ticker": "SMA",
+      "price": 32.945,
+      "dividendYieldPct": 4.92,
+      "dividendPerShare": 0.136,
+      "paymentFrequency": "monthly",
+      "exDividendDate": "2026-08-31",
+      "id": 162,
+      "shares": 2.703616,
+      "avgCost": null,
+      "manualDate": true,
+      "manualDivShare": false
     }
   ]
 }
