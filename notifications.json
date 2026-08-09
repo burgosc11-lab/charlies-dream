@@ -1,20 +1,16 @@
 {
-  "generated_at": "2026-08-08T14:04:45.532223",
+  "generated_at": "2026-08-09T13:25:26.264953",
   "counts": {
-    "MATCH": 13,
+    "MATCH": 19,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 6,
+    "SCRAPED_AHEAD": 2,
     "APP_AHEAD": 7,
-    "APP_NA": 16,
+    "APP_NA": 14,
     "NO_DATA": 0
   },
   "scraped_ahead": [
-    "DSL",
-    "GWRS",
-    "PECO",
-    "PFLT",
-    "SAR",
-    "SMA"
+    "PNNT",
+    "SCM"
   ],
   "auto_add": []
 }
