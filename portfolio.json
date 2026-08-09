@@ -1,5 +1,5 @@
 {
-  "_syncedAt": "2026-07-27T03:39:30.435Z",
+  "_syncedAt": "2026-08-09T07:07:20.804Z",
   "stocks": [
     {
       "ticker": "JEPQ",
@@ -42,20 +42,6 @@
       "manualDate": true,
       "manualDivShare": true,
       "tier": "A"
-    },
-    {
-      "ticker": "MAIN",
-      "price": 52.506,
-      "dividendYieldPct": 8.44,
-      "dividendPerShare": 0.265,
-      "paymentFrequency": "monthly",
-      "exDividendDate": "2026-08-07",
-      "id": 78,
-      "shares": 19.944476,
-      "avgCost": null,
-      "manualDate": true,
-      "manualDivShare": true,
-      "tier": "S"
     },
     {
       "ticker": "ECC",
@@ -188,7 +174,7 @@
       "paymentFrequency": "monthly",
       "exDividendDate": "2026-09-08",
       "id": 92,
-      "shares": null,
+      "shares": 19.944476,
       "avgCost": null,
       "manualDate": true,
       "manualDivShare": true,
