@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-09T14:04:24.099634",
+  "generated_at": "2026-08-10T13:25:34.992764",
   "additions": [
     {
       "id": "pnnt_20260814",
@@ -7,16 +7,7 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.08,
       "source_url": "https://stockanalysis.com/stocks/pnnt/dividend/",
-      "detected_at": "2026-08-09T14:04:23.765979",
-      "auto_apply": false
-    },
-    {
-      "id": "scm_20260831",
-      "ticker": "SCM",
-      "new_ex_date": "2026-08-31",
-      "scraped_amount": 0.0833,
-      "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-09T14:04:23.765992",
+      "detected_at": "2026-08-10T13:25:34.790732",
       "auto_apply": false
     }
   ]
