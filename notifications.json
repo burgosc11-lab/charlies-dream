@@ -1,15 +1,18 @@
 {
-  "generated_at": "2026-08-12T14:34:50.149740",
+  "generated_at": "2026-08-13T13:25:39.664115",
   "counts": {
-    "MATCH": 20,
+    "MATCH": 21,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 3,
-    "APP_AHEAD": 6,
-    "APP_NA": 13,
+    "SCRAPED_AHEAD": 6,
+    "APP_AHEAD": 5,
+    "APP_NA": 10,
     "NO_DATA": 0
   },
   "scraped_ahead": [
+    "ADC",
+    "EARN",
     "EFC",
+    "HSHP",
     "PNNT",
     "SCM"
   ],
