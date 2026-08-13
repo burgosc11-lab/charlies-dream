@@ -1,13 +1,40 @@
 {
-  "generated_at": "2026-08-12T14:34:49.161897",
+  "generated_at": "2026-08-13T13:25:38.925757",
   "additions": [
+    {
+      "id": "adc_20260831",
+      "ticker": "ADC",
+      "new_ex_date": "2026-08-31",
+      "scraped_amount": 0.267,
+      "source_url": "https://stockanalysis.com/stocks/adc/dividend/",
+      "detected_at": "2026-08-13T13:25:38.614705",
+      "auto_apply": false
+    },
+    {
+      "id": "earn_20260831",
+      "ticker": "EARN",
+      "new_ex_date": "2026-08-31",
+      "scraped_amount": 0.08,
+      "source_url": "https://stockanalysis.com/stocks/earn/dividend/",
+      "detected_at": "2026-08-13T13:25:38.614723",
+      "auto_apply": false
+    },
     {
       "id": "efc_20260831",
       "ticker": "EFC",
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.13,
       "source_url": "https://stockanalysis.com/stocks/efc/dividend/",
-      "detected_at": "2026-08-12T14:34:48.873345",
+      "detected_at": "2026-08-13T13:25:38.614727",
+      "auto_apply": false
+    },
+    {
+      "id": "hshp_20260821",
+      "ticker": "HSHP",
+      "new_ex_date": "2026-08-21",
+      "scraped_amount": 0.22,
+      "source_url": "https://stockanalysis.com/stocks/hshp/dividend/",
+      "detected_at": "2026-08-13T13:25:38.614731",
       "auto_apply": false
     },
     {
@@ -16,7 +43,7 @@
       "new_ex_date": "2026-08-14",
       "scraped_amount": 0.08,
       "source_url": "https://stockanalysis.com/stocks/pnnt/dividend/",
-      "detected_at": "2026-08-12T14:34:48.873362",
+      "detected_at": "2026-08-13T13:25:38.614735",
       "auto_apply": false
     },
     {
@@ -25,7 +52,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-12T14:34:48.873369",
+      "detected_at": "2026-08-13T13:25:38.614738",
       "auto_apply": false
     }
   ]
