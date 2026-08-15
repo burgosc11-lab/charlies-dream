@@ -1,24 +1,22 @@
 {
-  "generated_at": "2026-08-14T14:29:14.107394",
+  "generated_at": "2026-08-15T13:25:30.582901",
   "counts": {
-    "MATCH": 21,
+    "MATCH": 19,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 10,
-    "APP_AHEAD": 0,
-    "APP_NA": 11,
+    "SCRAPED_AHEAD": 8,
+    "APP_AHEAD": 2,
+    "APP_NA": 13,
     "NO_DATA": 0
   },
   "scraped_ahead": [
     "ADC",
     "AGNC",
-    "BST",
     "BTX",
     "CSWC",
     "EARN",
     "EFC",
     "HSHP",
-    "SCM",
-    "TRIN"
+    "SCM"
   ],
   "auto_add": []
 }
