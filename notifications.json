@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-16T13:50:55.654830",
+  "generated_at": "2026-08-17T13:25:27.087816",
   "counts": {
-    "MATCH": 20,
+    "MATCH": 15,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 11,
+    "SCRAPED_AHEAD": 13,
     "APP_AHEAD": 1,
-    "APP_NA": 10,
+    "APP_NA": 13,
     "NO_DATA": 0
   },
   "scraped_ahead": [
@@ -14,6 +14,8 @@
     "BST",
     "BTX",
     "CSWC",
+    "DOC",
+    "DX",
     "EARN",
     "EFC",
     "EPR",
