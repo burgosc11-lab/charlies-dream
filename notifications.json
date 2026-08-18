@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-17T13:59:15.040455",
+  "generated_at": "2026-08-18T13:25:25.200527",
   "counts": {
-    "MATCH": 15,
+    "MATCH": 12,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 13,
-    "APP_AHEAD": 1,
-    "APP_NA": 13,
+    "SCRAPED_AHEAD": 16,
+    "APP_AHEAD": 0,
+    "APP_NA": 14,
     "NO_DATA": 0
   },
   "scraped_ahead": [
@@ -19,6 +19,9 @@
     "EARN",
     "EFC",
     "EPR",
+    "GAIN",
+    "GOOD",
+    "HRZN",
     "HSHP",
     "SCM",
     "TRIN"
