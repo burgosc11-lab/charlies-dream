@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-18T13:25:25.200527",
+  "generated_at": "2026-08-18T14:04:05.408262",
   "counts": {
-    "MATCH": 12,
+    "MATCH": 10,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 16,
+    "SCRAPED_AHEAD": 19,
     "APP_AHEAD": 0,
-    "APP_NA": 14,
+    "APP_NA": 13,
     "NO_DATA": 0
   },
   "scraped_ahead": [
@@ -13,16 +13,19 @@
     "AGNC",
     "BST",
     "BTX",
+    "CION",
     "CSWC",
     "DOC",
     "DX",
     "EARN",
+    "ECC",
     "EFC",
     "EPR",
     "GAIN",
     "GOOD",
     "HRZN",
     "HSHP",
+    "LAND",
     "SCM",
     "TRIN"
   ],
