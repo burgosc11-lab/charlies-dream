@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T13:59:14.013415",
+  "generated_at": "2026-08-18T13:25:24.366658",
   "additions": [
     {
       "id": "adc_20260831",
@@ -7,7 +7,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.267,
       "source_url": "https://stockanalysis.com/stocks/adc/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908393",
+      "detected_at": "2026-08-18T13:25:24.087149",
       "auto_apply": false
     },
     {
@@ -16,7 +16,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.12,
       "source_url": "https://stockanalysis.com/stocks/agnc/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908405",
+      "detected_at": "2026-08-18T13:25:24.087163",
       "auto_apply": false
     },
     {
@@ -25,7 +25,7 @@
       "new_ex_date": "2026-09-15",
       "scraped_amount": 2.5541,
       "source_url": "https://stockanalysis.com/stocks/bst/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908410",
+      "detected_at": "2026-08-18T13:25:24.087168",
       "auto_apply": false
     },
     {
@@ -34,7 +34,7 @@
       "new_ex_date": "2026-09-15",
       "scraped_amount": 0.0525,
       "source_url": "https://stockanalysis.com/stocks/btx/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908414",
+      "detected_at": "2026-08-18T13:25:24.087172",
       "auto_apply": false
     },
     {
@@ -43,7 +43,7 @@
       "new_ex_date": "2026-09-15",
       "scraped_amount": 0.2534,
       "source_url": "https://stockanalysis.com/stocks/cswc/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908417",
+      "detected_at": "2026-08-18T13:25:24.087176",
       "auto_apply": false
     },
     {
@@ -52,7 +52,7 @@
       "new_ex_date": "2026-09-14",
       "scraped_amount": 0.10167,
       "source_url": "https://stockanalysis.com/stocks/doc/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908421",
+      "detected_at": "2026-08-18T13:25:24.087181",
       "auto_apply": false
     },
     {
@@ -61,7 +61,7 @@
       "new_ex_date": "2026-08-21",
       "scraped_amount": 0.17,
       "source_url": "https://stockanalysis.com/stocks/dx/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908425",
+      "detected_at": "2026-08-18T13:25:24.087184",
       "auto_apply": false
     },
     {
@@ -70,7 +70,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.08,
       "source_url": "https://stockanalysis.com/stocks/earn/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908428",
+      "detected_at": "2026-08-18T13:25:24.087188",
       "auto_apply": false
     },
     {
@@ -79,7 +79,7 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.13,
       "source_url": "https://stockanalysis.com/stocks/efc/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908431",
+      "detected_at": "2026-08-18T13:25:24.087192",
       "auto_apply": false
     },
     {
@@ -88,7 +88,34 @@
       "new_ex_date": "2026-08-31",
       "scraped_amount": 0.31,
       "source_url": "https://stockanalysis.com/stocks/epr/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908435",
+      "detected_at": "2026-08-18T13:25:24.087196",
+      "auto_apply": false
+    },
+    {
+      "id": "gain_20260921",
+      "ticker": "GAIN",
+      "new_ex_date": "2026-09-21",
+      "scraped_amount": 0.08,
+      "source_url": "https://stockanalysis.com/stocks/gain/dividend/",
+      "detected_at": "2026-08-18T13:25:24.087200",
+      "auto_apply": false
+    },
+    {
+      "id": "good_20260921",
+      "ticker": "GOOD",
+      "new_ex_date": "2026-09-21",
+      "scraped_amount": 0.1,
+      "source_url": "https://stockanalysis.com/stocks/good/dividend/",
+      "detected_at": "2026-08-18T13:25:24.087203",
+      "auto_apply": false
+    },
+    {
+      "id": "hrzn_20260916",
+      "ticker": "HRZN",
+      "new_ex_date": "2026-09-16",
+      "scraped_amount": 0.09,
+      "source_url": "https://stockanalysis.com/stocks/hrzn/dividend/",
+      "detected_at": "2026-08-18T13:25:24.087208",
       "auto_apply": false
     },
     {
@@ -97,16 +124,16 @@
       "new_ex_date": "2026-08-21",
       "scraped_amount": 0.22,
       "source_url": "https://stockanalysis.com/stocks/hshp/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908439",
+      "detected_at": "2026-08-18T13:25:24.087212",
       "auto_apply": false
     },
     {
-      "id": "scm_20260831",
+      "id": "scm_20260930",
       "ticker": "SCM",
-      "new_ex_date": "2026-08-31",
+      "new_ex_date": "2026-09-30",
       "scraped_amount": 0.0833,
       "source_url": "https://stockanalysis.com/stocks/scm/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908444",
+      "detected_at": "2026-08-18T13:25:24.087217",
       "auto_apply": false
     },
     {
@@ -115,7 +142,7 @@
       "new_ex_date": "2026-09-10",
       "scraped_amount": 0.17,
       "source_url": "https://stockanalysis.com/stocks/trin/dividend/",
-      "detected_at": "2026-08-17T13:59:12.908447",
+      "detected_at": "2026-08-18T13:25:24.087222",
       "auto_apply": false
     }
   ]
