@@ -1,16 +1,17 @@
 {
-  "generated_at": "2026-08-18T14:04:05.408262",
+  "generated_at": "2026-08-19T13:25:28.391438",
   "counts": {
-    "MATCH": 10,
+    "MATCH": 4,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 19,
+    "SCRAPED_AHEAD": 26,
     "APP_AHEAD": 0,
-    "APP_NA": 13,
+    "APP_NA": 12,
     "NO_DATA": 0
   },
   "scraped_ahead": [
     "ADC",
     "AGNC",
+    "BCIC",
     "BST",
     "BTX",
     "CION",
@@ -20,13 +21,19 @@
     "EARN",
     "ECC",
     "EFC",
+    "EIC",
     "EPR",
     "GAIN",
+    "GLAD",
     "GOOD",
     "HRZN",
     "HSHP",
+    "IVR",
     "LAND",
+    "LTC",
+    "MAIN",
     "SCM",
+    "SPMC",
     "TRIN"
   ],
   "auto_add": []
