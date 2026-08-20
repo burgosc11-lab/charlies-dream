@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-19T14:04:31.029192",
+  "generated_at": "2026-08-20T13:25:28.414634",
   "counts": {
-    "MATCH": 4,
+    "MATCH": 3,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 26,
+    "SCRAPED_AHEAD": 28,
     "APP_AHEAD": 0,
-    "APP_NA": 12,
+    "APP_NA": 11,
     "NO_DATA": 0
   },
   "scraped_ahead": [
@@ -32,9 +32,11 @@
     "LAND",
     "LTC",
     "MAIN",
+    "O",
     "SCM",
     "SPMC",
-    "TRIN"
+    "TRIN",
+    "XRN"
   ],
   "auto_add": []
 }
