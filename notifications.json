@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-24T14:08:42.077039",
+  "generated_at": "2026-08-25T13:25:24.462560",
   "counts": {
     "MATCH": 2,
     "AUTO_ADD": 0,
-    "SCRAPED_AHEAD": 28,
+    "SCRAPED_AHEAD": 27,
     "APP_AHEAD": 0,
-    "APP_NA": 12,
+    "APP_NA": 13,
     "NO_DATA": 0
   },
   "scraped_ahead": [
@@ -27,7 +27,6 @@
     "GLAD",
     "GOOD",
     "HRZN",
-    "IVR",
     "LAND",
     "LTC",
     "MAIN",
